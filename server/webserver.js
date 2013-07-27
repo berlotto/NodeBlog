@@ -4,32 +4,33 @@
  */
 
 var express = require('express')
+  , connect = require('connect')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , routes = require('./routes/routes.js')
+  , blogs = require('./repository/blogs.js');
 
-var app = express();
+var server = express.createServer();
 
-app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
-  app.use(express.favicon());
-  app.use(express.logger('dev'));
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(app.router);
-  app.use(express.static(path.join(__dirname, 'public')));
+server.configure(function(){
+    server.set('port', process.env.PORT || 3000);
+    server.use(express.favicon());
+    server.use(express.logger('dev'));
+    server.use(express.bodyParser());
+    server.use(express.methodOverride());
+    server.use(server.router);
+    server.use(express.static(path.join(__dirname, 'public')));
 });
 
-app.configure('development', function(){
-  app.use(express.errorHandler());
+server.configure('development', function(){
+    server.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
-app.get('/users', user.list);
+/***************setup routes*******************/
+routes.setupRoutes(server);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
+http.createServer(server).listen(server.get('port'), function(){
+  console.log("Express server listening on port " + server.get('port'));
 });
