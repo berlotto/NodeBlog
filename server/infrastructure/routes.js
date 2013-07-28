@@ -1,6 +1,9 @@
 var fs = require('fs'),
     path = require('path'),
-    data = require('../repository/data'),
+    blogs = require('../repository/blogs.js'),
+    comments = require('../repository/comments.js'),
+    files = require('../repository/files.js'),
+    users = require('../repository/users.js'),
     errors = require('./errors');
 
 ///////////////////////////////////////////
@@ -24,11 +27,11 @@ var setupRoutes = function(server)
 
     /////// PAGE ROUTING  /////////
     server.get('/', function(req,res){
-        mapResource(req, res, fs, '../../client', 'index.html');
+        mapResource(req, res, fs, '../../client/app', 'index.html');
     });
 
     server.get('/admin', function(req,res){
-        mapResource(req, res, fs, '../../private', 'admin.html');
+        mapResource(req, res, fs, '../../client/app', 'admin.html');
     });
 
     server.get('/cookie', function(req,res){
@@ -37,33 +40,27 @@ var setupRoutes = function(server)
         res.send(req.session.name);
     });
 
-//    server.get('/apps/:name', function(req,res){
-//        var name = req.params.name;
-//        mapResource(req, res, fs, '../client/apps', name);
-//    });
-
-
     /////// RESTFUL API ROUTING  /////////
     //TODO implement findALl and patch/update
-    server.get('/blogs', data.games.findAlbl);
-    server.get('/games/:id', data.games.find);
-    server.put('/games/:id', data.games.update);
-    server.patch('/games/:id', data.games.patch);
-    server.delete('/games/:id', data.games.delete);
-    server.post('/games', data.games.create);
+    server.get('/blogs', blogs.findAll);
+    server.get('/blogs/:id', blogs.find);
+    server.put('/blogs/:id', blogs.update);
+    server.patch('/blogs/:id', blogs.patch);
+    server.delete('/blogs/:id', blogs.delete);
+    server.post('/blogs', blogs.create);
 
-    server.get('/stats', data.stats.findAll);
-    server.get('/stats/:id', data.stats.find);
-    server.put('/stats/:id', data.stats.update);
-    server.delete('/stats/:id', data.stats.delete);
-    server.post('/stat', data.stats.create);
+    server.get('/comments', comments.findAll);
+    server.get('/comments/:id', comments.find);
+    server.put('/comments/:id', comments.update);
+    server.delete('/comments/:id', comments.delete);
+    server.post('/comments', comments.create);
 
     /////// ERROR ROUTING  /////////
     //A Route for Creating a 500 Error (Useful to keep around)
     server.get('/500',errors.serverError );
 
     //The 404 Route (ALWAYS Keep this as the last route)
-    server.get('/*',errors.notFound);
+    //server.get('/*',errors.notFound);
 };
 
 exports.setupRoutes = setupRoutes;

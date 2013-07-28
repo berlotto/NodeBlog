@@ -7048,7 +7048,7 @@ function qFactory(nextTick, exceptionHandler) {
  *
  * @description
  *
- * Used for configuring routes. See {@link ng.$route $route} for an example.
+ * Used for configuring infrastructure. See {@link ng.$route $route} for an example.
  */
 function $RouteProvider(){
   var routes = {};
@@ -7169,13 +7169,13 @@ function $RouteProvider(){
      *     - `$scope` - The current route scope.
      *     - `$template` - The current route template HTML.
      *
-     * @property {Array.<Object>} routes Array of all configured routes.
+     * @property {Array.<Object>} infrastructure Array of all configured infrastructure.
      *
      * @description
      * Is used for deep-linking URLs to controllers and views (HTML partials).
      * It watches `$location.url()` and tries to map the path to an existing route definition.
      *
-     * You can define routes through {@link ng.$routeProvider $routeProvider}'s API.
+     * You can define infrastructure through {@link ng.$routeProvider $routeProvider}'s API.
      *
      * The `$route` service is typically used in conjunction with {@link ng.directive:ngView ngView}
      * directive and the {@link ng.$routeParams $routeParams} service.

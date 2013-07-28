@@ -5,14 +5,11 @@
 
 var express = require('express')
   , connect = require('connect')
-  , routes = require('./routes')
-  , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , routes = require('./routes/routes.js')
-  , blogs = require('./repository/blogs.js');
+  , routes = require('./server/infrastructure/routes.js');
 
-var server = express.createServer();
+var server = express();
 
 server.configure(function(){
     server.set('port', process.env.PORT || 3000);
@@ -21,14 +18,15 @@ server.configure(function(){
     server.use(express.bodyParser());
     server.use(express.methodOverride());
     server.use(server.router);
-    server.use(express.static(path.join(__dirname, 'public')));
+    server.use(express.static(path.join(__dirname, '/client/app')));
+    server.use('/public', express.static(path.join(__dirname, '/server/public')));
 });
 
 server.configure('development', function(){
     server.use(express.errorHandler());
 });
 
-/***************setup routes*******************/
+/***************setup infrastructure*******************/
 routes.setupRoutes(server);
 
 http.createServer(server).listen(server.get('port'), function(){
