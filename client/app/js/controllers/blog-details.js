@@ -2,7 +2,8 @@
 
 /* Controllers */
 
-angular.module('chinook.controllers', []).
-  controller('BlogDetailsCtrl', [function() {
+(function(module) {
+  module.controller('BlogDetailsCtrl', [function() {
         console.log('Initializing Blog Details Controller');
     }]);
+})(window.CtrlModule);

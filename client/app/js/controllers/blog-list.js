@@ -2,7 +2,8 @@
 
 /* Controllers */
 
-angular.module('chinook.controllers', []).
-  controller('BlogListCtrl', ['$scope', function($scope) {
+(function(module) {
+    module.controller('BlogListCtrl', ['$scope', function($scope) {
         console.log('Initializing Blog List Controller');
     }]);
+})(window.CtrlModule);
