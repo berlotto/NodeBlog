@@ -2,37 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58370d6d-ffaf-422f-ac76-347ccfcf6035" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/busy.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/del_sprite_tagComplete.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/editorbuttons.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/external.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/success.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/title.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/transparent.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-bg_flat_0_aaaaaa_40x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-bg_flat_75_ffffff_40x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-bg_glass_55_fbf9ee_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-bg_glass_65_ffffff_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-bg_glass_75_dadada_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-bg_glass_75_e6e6e6_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-bg_glass_95_fef1ec_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-bg_highlight-soft_75_cccccc_1x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-icons_222222_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-icons_2e83ff_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-icons_454545_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-icons_888888_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-icons_cd0a0a_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/admin.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/base.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/jquery-ui.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/theme.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/css/app.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/NodeBlog.iml" afterPath="$PROJECT_DIR$/.idea/NodeBlog.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/index.html" afterPath="$PROJECT_DIR$/client/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/css/theme.css" afterPath="$PROJECT_DIR$/client/app/css/theme.css" />
     </list>
     <ignored path="NodeBlog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,7 +22,7 @@
     <file path="/BlogAdminCtrl.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375156473013" ignored="false" />
     <file path="/BlogListCtrl.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375156648115" ignored="false" />
     <file path="/blog-admin.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375158553359" ignored="false" />
-    <file path="/a.dummy" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375243650187" ignored="false" />
+    <file path="/a.dummy" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375244928123" ignored="false" />
     <file path="/blog-details.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375158916549" ignored="false" />
     <file path="/blog-list.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375158907871" ignored="false" />
     <file path="/bootstrap.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375159101949" ignored="false" />
@@ -100,10 +70,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="base.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/app/css/base.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="359" column="28" selection-start="6532" selection-end="6532" vertical-scroll-proportion="0.33333334">
+            <state line="359" column="28" selection-start="6532" selection-end="6532" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -127,10 +97,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="theme.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="theme.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/app/css/theme.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="249" column="0" selection-start="4898" selection-end="4898" vertical-scroll-proportion="0.0">
+            <state line="217" column="20" selection-start="4302" selection-end="4302" vertical-scroll-proportion="0.29333332">
               <folding />
             </state>
           </provider>
@@ -200,8 +170,8 @@
         <option value="$PROJECT_DIR$/client/app/js/bootstrap.js" />
         <option value="$PROJECT_DIR$/client/app/js/services/services.js" />
         <option value="$PROJECT_DIR$/client/app/index.html" />
-        <option value="$PROJECT_DIR$/client/app/css/theme.css" />
         <option value="$PROJECT_DIR$/client/app/css/base.css" />
+        <option value="$PROJECT_DIR$/client/app/css/theme.css" />
       </list>
     </option>
   </component>
@@ -385,14 +355,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-4" width="1377" height="905" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32756326" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962963" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2562963" sideWeight="0.6724368" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2562963" sideWeight="0.6724368" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -564,16 +534,16 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/css/theme.css">
+    <entry file="file://$PROJECT_DIR$/client/app/css/base.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="249" column="0" selection-start="4898" selection-end="4898" vertical-scroll-proportion="0.0">
+        <state line="359" column="28" selection-start="6532" selection-end="6532" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/css/base.css">
+    <entry file="file://$PROJECT_DIR$/client/app/css/theme.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="359" column="28" selection-start="6532" selection-end="6532" vertical-scroll-proportion="0.33333334">
+        <state line="217" column="20" selection-start="4302" selection-end="4302" vertical-scroll-proportion="0.29333332">
           <folding />
         </state>
       </provider>
