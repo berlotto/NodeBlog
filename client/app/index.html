@@ -1,21 +1,65 @@
 <!doctype html>
-<html lang="en" ng-app="chinook">
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <title>JEFF'S BLOG ENGINE</title>
-  <link rel="stylesheet" href="css/app.css"/>
+    <title>The Law of the Jungle</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta content="english" name="language">
+    <meta content="The Law of the Jungle" name="author">
+    <link title="Blog Feed" rel="alternate" type="application/atom+xml" href="http://localhost:8033/feed">
+    <link title="Comments Feed" rel="alternate" type="application/atom+xml" href="http://localhost:8033/commentfeed">
+    <link rel="EditURI" type="application/rsd+xml" href="http://localhost:8033/rsd.xml" title="RSD">
+    <link href="img/favicon.png" type="image/png" rel="icon">
+    <link rel="stylesheet" type="text/css" href="css/base.css?cdv=1">
+    <link rel="stylesheet" type="text/css" href="css/theme.css?cdv=1">
+
+    <meta content="Jeff Jin Consulting" name="description">
+    <meta content=".net, c#, WCF, javascript, jquery, AngularJS, NodeJs, NoSQL, MVC" name="keywords">
+
+
+    <script>
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        window.disqus_shortname = ''; // required: replace example with your forum shortname
+        window.disqus_identifier = document.title || 'Home';
+        window.disqus_developer = !! ~document.location.href.indexOf("localhost") ? 1 : 0;
+        window.disqus_url = document.location.href;
+    </script>
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#/">Home</a></li>
-      <li><a href="#/latest">Latest Blog Details</a></li>
-      <li><a href="#/admin">Admin</a></li>
-  </ul>
+    <header>
+        <a title="The Law of the Jungle" href="/" class="logo">The Law of the Jungle</a>
+        <div>
+            <nav>
+                <ul>
+                    <li><a href="#/">Home</a></li>
+                    <li><a href="#/latest">Latest Blog</a></li>
+                    <li><a href="https://www.github.com/JeffJin">Projects</a></li>
+                    <li><a href="https://www.fishoverflow.com">Games</a></li>
+                    <li><a href="#/admin">Admin</a></li>
+                </ul>
+            </nav>
+            <div class="search">
+                <form method="get" action="/search" novalidate="novalidate">
+                    <p>
+                        <input type="text" value="" name="q" id="q" class="medium" alt="Search">
+                        <input type="submit" value="Search" class="submit" id="search">
+                    </p>
+                </form>
+            </div>
+        </div>
+    </header>
 
-  <div ng-view></div>
+    <div ng-view></div>
 
-  <div>JEFF'S BLOG v<span app-version></span></div>
-
+    <footer>
+        <p>Powered by <a href="http://www.nodeblog.ca">NodeBlog</a>, the blog engine of real developers.</p>
+        <p>And the wolf that shall keep it may prosper, but the wolf that shall break it must die.</p>
+    </footer>
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
   -->

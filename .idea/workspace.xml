@@ -2,20 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58370d6d-ffaf-422f-ac76-347ccfcf6035" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/js/controllers/blog-admin.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/js/controllers/blog-details.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/js/controllers/blog-list.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/partials/blogDetails.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/js/bootstrap.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/js/controllers.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/index-async.html" afterPath="$PROJECT_DIR$/client/app/admin.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/js/directives.js" afterPath="$PROJECT_DIR$/client/app/js/directives/directives.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/js/filters.js" afterPath="$PROJECT_DIR$/client/app/js/filters/filters.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/js/services.js" afterPath="$PROJECT_DIR$/client/app/js/services/services.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/partials/partial1.html" afterPath="$PROJECT_DIR$/client/app/partials/blogs.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/partials/partial2.html" afterPath="$PROJECT_DIR$/client/app/partials/admin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/js/app.js" afterPath="$PROJECT_DIR$/client/app/js/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/busy.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/del_sprite_tagComplete.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/editorbuttons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/external.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/success.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/title.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/transparent.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-bg_flat_0_aaaaaa_40x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-bg_flat_75_ffffff_40x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-bg_glass_55_fbf9ee_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-bg_glass_65_ffffff_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-bg_glass_75_dadada_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-bg_glass_75_e6e6e6_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-bg_glass_95_fef1ec_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-bg_highlight-soft_75_cccccc_1x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-icons_222222_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-icons_2e83ff_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-icons_454545_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-icons_888888_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/images/ui-icons_cd0a0a_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/admin.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/base.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/jquery-ui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/css/theme.css" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/css/app.css" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/NodeBlog.iml" afterPath="$PROJECT_DIR$/.idea/NodeBlog.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/index.html" afterPath="$PROJECT_DIR$/client/app/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="NodeBlog.iws" />
@@ -29,14 +45,14 @@
     <file path="$PROJECT_DIR$/node_modules/connect/lib/middleware/timeout.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1374989006268" ignored="false" />
     <file path="/interaction.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1374989159702" ignored="false" />
     <file path="/comments.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1374989705849" ignored="false" />
-    <file path="/index.html" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375158881531" ignored="false" />
+    <file path="/index.html" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375243182567" ignored="false" />
     <file path="/blogDetails.html" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375155949252" ignored="false" />
     <file path="/blogs.html" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375155957764" ignored="false" />
     <file path="/admin.html" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375155964286" ignored="false" />
     <file path="/BlogAdminCtrl.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375156473013" ignored="false" />
     <file path="/BlogListCtrl.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375156648115" ignored="false" />
     <file path="/blog-admin.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375158553359" ignored="false" />
-    <file path="/a.dummy" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375158407144" ignored="false" />
+    <file path="/a.dummy" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375243650187" ignored="false" />
     <file path="/blog-details.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375158916549" ignored="false" />
     <file path="/blog-list.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375158907871" ignored="false" />
     <file path="/bootstrap.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375159101949" ignored="false" />
@@ -44,6 +60,9 @@
     <file path="/filters.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375159039122" ignored="false" />
     <file path="/directives.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375159072144" ignored="false" />
     <file path="/services.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375159229719" ignored="false" />
+    <file path="/base.css" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375244603790" ignored="false" />
+    <file path="/theme.css" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375241675368" ignored="false" />
+    <file path="/a.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375242248196" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,10 +100,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="base.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/app/css/base.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="359" column="28" selection-start="6532" selection-end="6532" vertical-scroll-proportion="0.33333334">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="24" selection-start="590" selection-end="590" vertical-scroll-proportion="0.5910448">
+            <state line="34" column="61" selection-start="1792" selection-end="1796" vertical-scroll-proportion="-19.384615">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/app/css/admin.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="9" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="theme.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/app/css/theme.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="249" column="0" selection-start="4898" selection-end="4898" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -108,46 +154,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blog-list.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/app/js/controllers/blog-list.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="15" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="blog-admin.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/app/js/controllers/blog-admin.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="13" selection-start="165" selection-end="180" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/app/js/services/services.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="12" column="13" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/app/partials/admin.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="38" selection-end="38" vertical-scroll-proportion="-0.6923077">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="blog-details.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/app/js/controllers/blog-details.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="27" selection-start="32" selection-end="32" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -176,15 +186,12 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/client/app/partials/blogs.html" />
-        <option value="$PROJECT_DIR$/client/app/js/controllers/BlogAdminCtrl.js" />
         <option value="$PROJECT_DIR$/client/app/js/controllers/BlogDetailsCtrl.js" />
         <option value="$PROJECT_DIR$/client/app/js/controllers/BlogListCtrl.js" />
         <option value="$PROJECT_DIR$/client/app/partials/blogDetails.html" />
         <option value="$PROJECT_DIR$/webserver.js" />
         <option value="$PROJECT_DIR$/client/app/partials/admin.html" />
         <option value="$PROJECT_DIR$/client/app/js/controllers/blog-admin.js" />
-        <option value="$PROJECT_DIR$/client/app/index.html" />
         <option value="$PROJECT_DIR$/client/app/js/controllers/blog-list.js" />
         <option value="$PROJECT_DIR$/client/app/js/controllers/blog-details.js" />
         <option value="$PROJECT_DIR$/client/app/js/app.js" />
@@ -192,6 +199,9 @@
         <option value="$PROJECT_DIR$/client/app/js/directives/directives.js" />
         <option value="$PROJECT_DIR$/client/app/js/bootstrap.js" />
         <option value="$PROJECT_DIR$/client/app/js/services/services.js" />
+        <option value="$PROJECT_DIR$/client/app/index.html" />
+        <option value="$PROJECT_DIR$/client/app/css/theme.css" />
+        <option value="$PROJECT_DIR$/client/app/css/base.css" />
       </list>
     </option>
   </component>
@@ -291,172 +301,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NodeBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NodeBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NodeBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NodeBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NodeBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NodeBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NodeBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NodeBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NodeBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NodeBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="filters" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NodeBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NodeBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="directives" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NodeBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NodeBlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -465,25 +309,25 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.sourceCode" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="last_opened_file_path" value="$USER_HOME$" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/app/css/images" />
+      <recent name="$PROJECT_DIR$/client/app/css" />
       <recent name="$PROJECT_DIR$/client/app/js" />
       <recent name="$PROJECT_DIR$/client/app/js/controllers" />
       <recent name="$PROJECT_DIR$/client/app/partials" />
-      <recent name="$PROJECT_DIR$/server/public" />
-      <recent name="$PROJECT_DIR$/client/app/js/" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/app/css" />
       <recent name="$PROJECT_DIR$/client/app/js/services" />
       <recent name="$PROJECT_DIR$/client/app/js/filters" />
       <recent name="$PROJECT_DIR$/client/app/js/directives" />
       <recent name="$PROJECT_DIR$/client/app/js/controllers" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">
@@ -505,6 +349,23 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="58370d6d-ffaf-422f-ac76-347ccfcf6035" name="Default" comment="" />
@@ -524,14 +385,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-4" width="1377" height="905" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32780084" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32756326" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962963" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24962963" sideWeight="0.68442076" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2562963" sideWeight="0.6724368" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -607,37 +468,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/repository/blogs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="32" selection-start="3192" selection-end="3192" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <marker date="1374992724625" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/admin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="16.615385">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="48" selection-start="202" selection-end="202" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/infrastructure/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="1006" selection-end="1127" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/app/partials/blogs.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="36" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0">
@@ -661,14 +491,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/app/js/controllers/blog-list.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="15" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0">
+        <state line="3" column="0" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/app/js/controllers/blog-details.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="27" selection-start="32" selection-end="32" vertical-scroll-proportion="0.0">
+        <state line="2" column="17" selection-start="32" selection-end="32" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -717,7 +547,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="24" selection-start="590" selection-end="590" vertical-scroll-proportion="0.5910448">
+        <state line="34" column="61" selection-start="1792" selection-end="1796" vertical-scroll-proportion="-19.384615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/css/admin.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="9" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/css/images/title.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/css/theme.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="249" column="0" selection-start="4898" selection-end="4898" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/css/base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="359" column="28" selection-start="6532" selection-end="6532" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>
