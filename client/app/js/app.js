@@ -7,6 +7,7 @@
     $routeProvider.when('/', {templateUrl: 'partials/blogs.html', controller: 'BlogListCtrl'});
     $routeProvider.when('/latest', {templateUrl: 'partials/blogDetails.html', controller: 'BlogDetailsCtrl'});
     $routeProvider.when('/admin', {templateUrl: 'partials/admin.html', controller: 'BlogAdminCtrl'});
+    $routeProvider.when('/search', {templateUrl: 'partials/search.html', controller: 'BlogSearchCtrl'});
     $routeProvider.otherwise({redirectTo: '/admin'});
   }]);
 })(window.MainModule);

@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58370d6d-ffaf-422f-ac76-347ccfcf6035" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/js/controllers/blog-search.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/partials/search.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/js/app.js" afterPath="$PROJECT_DIR$/client/app/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/css/base.css" afterPath="$PROJECT_DIR$/client/app/css/base.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/partials/blogs.html" afterPath="$PROJECT_DIR$/client/app/partials/blogs.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/index.html" afterPath="$PROJECT_DIR$/client/app/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/css/theme.css" afterPath="$PROJECT_DIR$/client/app/css/theme.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="NodeBlog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -15,9 +22,9 @@
     <file path="$PROJECT_DIR$/node_modules/connect/lib/middleware/timeout.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1374989006268" ignored="false" />
     <file path="/interaction.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1374989159702" ignored="false" />
     <file path="/comments.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1374989705849" ignored="false" />
-    <file path="/index.html" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375243182567" ignored="false" />
+    <file path="/index.html" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375329809827" ignored="false" />
     <file path="/blogDetails.html" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375155949252" ignored="false" />
-    <file path="/blogs.html" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375155957764" ignored="false" />
+    <file path="/blogs.html" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375330784721" ignored="false" />
     <file path="/admin.html" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375155964286" ignored="false" />
     <file path="/BlogAdminCtrl.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375156473013" ignored="false" />
     <file path="/BlogListCtrl.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375156648115" ignored="false" />
@@ -31,8 +38,10 @@
     <file path="/directives.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375159072144" ignored="false" />
     <file path="/services.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375159229719" ignored="false" />
     <file path="/base.css" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375244603790" ignored="false" />
-    <file path="/theme.css" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375241675368" ignored="false" />
+    <file path="/theme.css" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375328489077" ignored="false" />
     <file path="/a.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375242248196" ignored="false" />
+    <file path="/search.html" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375328128484" ignored="false" />
+    <file path="/blog-search.js" changelist="58370d6d-ffaf-422f-ac76-347ccfcf6035" time="1375328715756" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,16 +64,52 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/app/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="83" selection-end="111" vertical-scroll-proportion="0.0">
+            <state line="12" column="86" selection-start="661" selection-end="661" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bootstrap.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/app/js/bootstrap.js">
+      <file leaf-file-name="blog-search.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/app/js/controllers/blog-search.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="51" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
+            <state line="12" column="21" selection-start="305" selection-end="305" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="blogs.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/app/partials/blogs.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="63" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.46575344">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/app/partials/search.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="41" selection-start="41" selection-end="41" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="blog-list.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/app/js/controllers/blog-list.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="0" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/app/partials/admin.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="0" selection-start="38" selection-end="38" vertical-scroll-proportion="-0.6923077">
               <folding />
             </state>
           </provider>
@@ -73,7 +118,7 @@
       <file leaf-file-name="base.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/app/css/base.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="359" column="28" selection-start="6532" selection-end="6532" vertical-scroll-proportion="0.0">
+            <state line="54" column="13" selection-start="963" selection-end="963" vertical-scroll-proportion="-7.928571">
               <folding />
             </state>
           </provider>
@@ -82,7 +127,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="61" selection-start="1792" selection-end="1796" vertical-scroll-proportion="-19.384615">
+            <state line="59" column="0" selection-start="2848" selection-end="2848" vertical-scroll-proportion="-17.653847">
               <folding />
             </state>
           </provider>
@@ -91,43 +136,16 @@
       <file leaf-file-name="admin.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/app/css/admin.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="9" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0">
+            <state line="31" column="13" selection-start="393" selection-end="398" vertical-scroll-proportion="-7.928571">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="theme.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="theme.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/app/css/theme.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="217" column="20" selection-start="4302" selection-end="4302" vertical-scroll-proportion="0.29333332">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="filters.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/app/js/filters/filters.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="30" selection-end="58" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="directives.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/app/js/directives/directives.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="19" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/app/js/services/services.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="13" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0">
+            <state line="200" column="22" selection-start="3889" selection-end="3893" vertical-scroll-proportion="-7.928571">
               <folding />
             </state>
           </provider>
@@ -156,22 +174,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/client/app/js/controllers/BlogDetailsCtrl.js" />
-        <option value="$PROJECT_DIR$/client/app/js/controllers/BlogListCtrl.js" />
-        <option value="$PROJECT_DIR$/client/app/partials/blogDetails.html" />
-        <option value="$PROJECT_DIR$/webserver.js" />
         <option value="$PROJECT_DIR$/client/app/partials/admin.html" />
         <option value="$PROJECT_DIR$/client/app/js/controllers/blog-admin.js" />
         <option value="$PROJECT_DIR$/client/app/js/controllers/blog-list.js" />
         <option value="$PROJECT_DIR$/client/app/js/controllers/blog-details.js" />
-        <option value="$PROJECT_DIR$/client/app/js/app.js" />
         <option value="$PROJECT_DIR$/client/app/js/filters/filters.js" />
         <option value="$PROJECT_DIR$/client/app/js/directives/directives.js" />
         <option value="$PROJECT_DIR$/client/app/js/bootstrap.js" />
         <option value="$PROJECT_DIR$/client/app/js/services/services.js" />
+        <option value="$PROJECT_DIR$/client/app/js/app.js" />
+        <option value="$PROJECT_DIR$/client/app/partials/search.html" />
+        <option value="$PROJECT_DIR$/client/app/css/admin.css" />
+        <option value="$PROJECT_DIR$/client/app/js/controllers/blog-search.js" />
         <option value="$PROJECT_DIR$/client/app/index.html" />
-        <option value="$PROJECT_DIR$/client/app/css/base.css" />
         <option value="$PROJECT_DIR$/client/app/css/theme.css" />
+        <option value="$PROJECT_DIR$/client/app/css/base.css" />
+        <option value="$PROJECT_DIR$/client/app/partials/blogs.html" />
       </list>
     </option>
   </component>
@@ -271,6 +289,94 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeBlog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeBlog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeBlog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeBlog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeBlog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeBlog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeBlog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NodeBlog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -286,11 +392,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/app/partials" />
+      <recent name="$PROJECT_DIR$/client/app/js/controllers" />
       <recent name="$PROJECT_DIR$/client/app/css/images" />
       <recent name="$PROJECT_DIR$/client/app/css" />
       <recent name="$PROJECT_DIR$/client/app/js" />
-      <recent name="$PROJECT_DIR$/client/app/js/controllers" />
-      <recent name="$PROJECT_DIR$/client/app/partials" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/client/app/css" />
@@ -360,7 +466,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32756326" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32756326" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962963" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2562963" sideWeight="0.6724368" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -438,51 +544,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/app/partials/blogs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="36" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/partials/blogDetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="45" selection-end="45" vertical-scroll-proportion="-0.6923077">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/js/controllers/blog-admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="165" selection-end="180" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/js/controllers/blog-list.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/app/js/controllers/blog-details.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="17" selection-start="32" selection-end="32" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/partials/admin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="38" selection-end="38" vertical-scroll-proportion="-0.6923077">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="83" selection-end="111" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -515,35 +579,77 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/css/images/title.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/partials/admin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="38" selection-end="38" vertical-scroll-proportion="-0.6923077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/js/controllers/blog-list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="86" selection-start="661" selection-end="661" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/partials/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="41" selection-start="41" selection-end="41" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/js/controllers/blog-search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="21" selection-start="305" selection-end="305" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="61" selection-start="1792" selection-end="1796" vertical-scroll-proportion="-19.384615">
+        <state line="59" column="0" selection-start="2848" selection-end="2848" vertical-scroll-proportion="-17.653847">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/app/css/admin.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="9" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/css/images/title.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/css/base.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="359" column="28" selection-start="6532" selection-end="6532" vertical-scroll-proportion="0.0">
+        <state line="31" column="13" selection-start="393" selection-end="398" vertical-scroll-proportion="-7.928571">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/app/css/theme.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="217" column="20" selection-start="4302" selection-end="4302" vertical-scroll-proportion="0.29333332">
+        <state line="200" column="22" selection-start="3889" selection-end="3893" vertical-scroll-proportion="-7.928571">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/css/base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="13" selection-start="963" selection-end="963" vertical-scroll-proportion="-7.928571">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/partials/blogs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="63" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.46575344">
           <folding />
         </state>
       </provider>
