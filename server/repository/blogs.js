@@ -104,7 +104,45 @@
 //                res.send(results);
 //            });
 //        });
-        res.send('find all blogs');
+
+      var posts = [];
+      posts.push({
+        year: 2012,
+        month: 'July',
+        day: 12,
+        topic: 'Singleton with JavaScript',
+        urlLink: '#/posts/javascript-singleton',
+        summary: 'Singleton is one of the most widely used design patterns in any programming languages.',
+        comments: []
+      });
+      posts.push({
+        year: 2012,
+        month: 'June',
+        day: 12,
+        topic: 'Aspect Oriented Programming with JavaScript',
+        urlLink: '#/posts/aop-with-javascript',
+        summary: 'Aspect Oriented Programming has always been an interesting topic for me. With JavaScript it is not that obvious.',
+        comments: [{},{}]
+      });
+      posts.push({
+        year: 2011,
+        month: 'July',
+        day: 11,
+        topic: 'Javascript Pitfalls',
+        urlLink: '#/posts/javascript-pitfalls',
+        summary: 'A list of potential areas where .net or Java developers easily make mistakes in Javascript programming.',
+        comments: [{},{},{}]
+      });
+      posts.push({
+        year: 2013,
+        month: 'July',
+        day: 12,
+        topic: 'Will JavaScript be universal?',
+        urlLink: '#/posts/javascript-universal',
+        summary: 'With JavasSript based apps are getting more and more popular, will it become universal programming language?',
+        comments: [{}]
+      });
+        res.send(posts);
     };
     module.exports.find = function(req, res){
 //        _findById(req.params.id).then(function(result){

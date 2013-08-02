@@ -137,6 +137,10 @@ header div.search {
     text-align: center;
     width: 76px;
 }
+.post-line .revised div{
+    margin-top:3px;
+}
+
 .post-line .revised .month {
     font-size: 14pt;
 }
@@ -158,6 +162,9 @@ header div.search {
 .post-line .comments .comment-count {
     display: block;
     font-size: 14pt;
+}
+.post-line .comments div {
+    margin-top:4px;
 }
 .post-line .comments a {
     color: #555555;

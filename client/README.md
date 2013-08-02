@@ -110,7 +110,7 @@ fetch the changes and merge them into your project with git.
         controllers.js  --> application controllers
         directives.js   --> application directives
         filters.js      --> custom angular filters
-        services.js     --> custom angular services
+        blog-service.js     --> custom angular services
       lib/              --> angular and 3rd party javascript libraries
         angular/
           angular.js        --> the latest angular js

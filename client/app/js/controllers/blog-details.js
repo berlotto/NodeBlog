@@ -3,7 +3,10 @@
 /* Controllers */
 
 (function(module) {
-  module.controller('BlogDetailsCtrl', [function() {
-        console.log('Initializing Blog Details Controller');
-    }]);
+  module.controller('BlogDetailsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+    console.log('Initializing Blog Details Controller');
+    var postId = $routeParams.pid;
+    console.log('Searching for ' + postId);
+
+  }]);
 })(window.CtrlModule);
