@@ -1,2 +1,152 @@
-<p>This is the partial for blog details.</p>
+<div class="intro">
+    <div class="intro-in">
+        <p>{{summary}}</p>
+    </div>
+</div>
+<div class="content">
+    <h1>
+        <a href="/javascript-singleton">{{topic}}</a>
+    </h1>
+    <div class="entry-date">
+        <span class="month" >{{post.month}} {{post.day}}</span>
+        <span class="year">{{post.year}}</span>
+    </div>
+    <div class="entry-container">
 
+        <div class="entry ">
+            <p>What would be expected from a Singleton class?</p>
+
+            <p>Let's start from some tests.</p>
+
+            <pre class="prettyprint"><code><span class="pln">describe</span><span class="pun">(</span><span class="str">"Singleton constructor test"</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br><br>&nbsp; it</span><span class="pun">(</span><span class="str">"Singleton constructor should always return the same isntance"</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="kwd">var</span><span class="pln"> config1 </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Config</span><span class="pun">();</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="kwd">var</span><span class="pln"> config2 </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Config</span><span class="pun">();</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; expect</span><span class="pun">(</span><span class="pln">config1</span><span class="pun">.</span><span class="pln">applicationName</span><span class="pun">).</span><span class="pln">toEqual</span><span class="pun">(</span><span class="pln">config2</span><span class="pun">.</span><span class="pln">applicationName</span><span class="pun">);</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; expect</span><span class="pun">(</span><span class="pln">config1</span><span class="pun">.</span><span class="pln">maxConnections</span><span class="pun">).</span><span class="pln">toEqual</span><span class="pun">(</span><span class="lit">1000</span><span class="pun">);</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; expect</span><span class="pun">(</span><span class="pln">config2</span><span class="pun">.</span><span class="pln">maxConnections</span><span class="pun">).</span><span class="pln">toEqual</span><span class="pun">(</span><span class="lit">1000</span><span class="pun">);</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; expect</span><span class="pun">(</span><span class="pln">config1</span><span class="pun">).</span><span class="pln">toEqual</span><span class="pun">(</span><span class="pln">config2</span><span class="pun">);</span><span class="pln"><br>&nbsp; </span><span class="pun">});</span><span class="pln"><br><br>&nbsp; it</span><span class="pun">(</span><span class="str">"Singleton instance change will be reflected in other referenced objects"</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="kwd">var</span><span class="pln"> config1 </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Config</span><span class="pun">();</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="kwd">var</span><span class="pln"> config2 </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Config</span><span class="pun">();</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; config1</span><span class="pun">.</span><span class="pln">maxConnections </span><span class="pun">=</span><span class="pln"> </span><span class="lit">2000</span><span class="pun">;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; expect</span><span class="pun">(</span><span class="pln">config1</span><span class="pun">.</span><span class="pln">maxConnections</span><span class="pun">).</span><span class="pln">toEqual</span><span class="pun">(</span><span class="lit">2000</span><span class="pun">);</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; expect</span><span class="pun">(</span><span class="pln">config2</span><span class="pun">.</span><span class="pln">maxConnections</span><span class="pun">).</span><span class="pln">toEqual</span><span class="pun">(</span><span class="lit">2000</span><span class="pun">);</span><span class="pln"><br>&nbsp; </span><span class="pun">});</span><span class="pln"><br></span><span class="pun">});</span><span class="pln"><br></span></code></pre>
+
+            <p>From the test expectations, we can see that only one Config instance is ever created.</p>
+
+            <p>We need also to make sure prototype inheritance is not affected by implementing this singleton pattern.</p>
+
+            <p>The important idea when implementing this is that function in JavaScript is special object, so that it can also have properties, which is kind of singleton, similar to static properties in C#.</p>
+
+            <pre class="prettyprint"><code><span class="kwd">function</span><span class="pln"> </span><span class="typ">Config</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; </span><span class="kwd">var</span><span class="pln"> instance </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">;</span><span class="pln"><br><br>&nbsp; </span><span class="typ">Config</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="typ">Config</span><span class="pun">(){</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">return</span><span class="pln"> instance</span><span class="pun">;</span><span class="pln"><br>&nbsp; </span><span class="pun">}</span><span class="pln"><br><br>&nbsp; </span><span class="typ">Config</span><span class="pun">.</span><span class="pln">prototype </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">;</span><span class="pln"><br><br>&nbsp; instance </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Config</span><span class="pun">();</span><span class="pln"><br><br>&nbsp; instance</span><span class="pun">.</span><span class="kwd">constructor</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Config</span><span class="pun">;</span><span class="pln"><br><br>&nbsp; instance</span><span class="pun">.</span><span class="pln">applicationName </span><span class="pun">=</span><span class="pln"> </span><span class="str">"Jeff's Personal Website"</span><span class="pun">;</span><span class="pln"><br>&nbsp; instance</span><span class="pun">.</span><span class="pln">urls </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{};</span><span class="pln"><br>&nbsp; instance</span><span class="pun">.</span><span class="pln">maxConnections </span><span class="pun">=</span><span class="pln"> </span><span class="lit">1000</span><span class="pun">;</span><span class="pln"><br>&nbsp; instance</span><span class="pun">.</span><span class="pln">logger </span><span class="pun">=</span><span class="pln"> console</span><span class="pun">;</span><span class="pln"><br><br>&nbsp; </span><span class="kwd">return</span><span class="pln"> instance</span><span class="pun">;</span><span class="pln"><br>&nbsp;</span><span class="pun">}</span><span class="pln"><br></span></code></pre>
+
+            <p>First an private instance is defined using closure and then function definition and prototype as well as constructor is redefined.</p>
+
+            <p>Using closure, the original instance is still available, when the constructor is called second time, thus making sure the same instance is always returned.</p>
+
+        </div>
+
+        <div class="facebook">
+            <iframe src="http://www.facebook.com/plugins/like.php?href=http%3a%2f%2flocalhost%3a8033%2fjavascript-singleton&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border: none; overflow: hidden; width: 450px; height: 80px;" allowtransparency="true"></iframe>
+        </div>
+        <span class="tags"></span>
+        <div class="entry-tools">
+            <span>Posted by: {{author}}</span>
+            <br>
+            <span>Last revised: <a ng-href="/{{urlLink}}?revision={{revision}}"><span class="date" title="{{month}} {{day}}, {{year}}">{{month}} {{day}}, {{year}}</span></a></span>
+            <span><a href="/history-of/{{topic}}">History</a></span>
+        </div>
+
+    </div>
+    <div class="clear">
+    </div>
+    <div class="comments">
+        <div class="comments-in">
+            <a name="comments"></a>
+            <h2>Comments</h2>
+
+            <div ng-repeat="cmt in comments" class="comment">
+                <a name="comment-2"></a>
+                <div class="comment-author vcard">
+                    <img class="gravatar photo" ng-src="{{cmt.gravatar}}" alt="{{cmt.author}}">
+                    <br>
+                    <span class="fn" url="">{{cmt.author}}</span>
+                </div>
+                <div class="comment-body">
+                    <div class="comment-date">
+                        <span class="date" title="{{cmt.month}} {{cmt.day}}, {{cmt.year}}">{{cmt.month}} {{cmt.day}}, {{cmt.year}}</span>
+
+                    </div>
+                    <p>{{cmt.content}}</p>
+
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2>Your Comments</h2>
+    <div class="entry-comment">
+        <form class="promptBeforeUnload" method="post" novalidate="novalidate">
+            <div class="form-body">
+                <div class="editor-label">
+                    <label for="CommenterName">Name</label>
+                </div>
+                <div class="editor-field">
+                    <input class="medium" data-val="true" data-val-length="The field Name must be a string with a maximum length of 50."
+                           data-val-length-max="50" data-val-notallowed="Name contains inappropriate content."
+                           data-val-notallowed-notallowedwords="porn,adult,sex" data-val-required="The Name field is required."
+                           id="CommenterName" maxlength="50" name="CommenterName" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="CommenterName" data-valmsg-replace="true"></span>
+
+                </div>
+                <div class="editor-label">
+                    <label for="CommenterBlog">Blog URL</label>
+                </div>
+                <div class="editor-field">
+                    <input class="medium" data-val="true" data-val-length="The field Blog URL must be a string with a maximum length of 200."
+                           data-val-length-max="200" id="CommenterBlog" maxlength="200" name="CommenterBlog" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="CommenterBlog" data-valmsg-replace="true"></span>
+
+                </div>
+                <div class="editor-label">
+                    <label for="CommenterEmail">E-mail</label>
+                </div>
+                <div class="editor-field">
+                    <input class="medium" data-val="true" data-val-length="The field E-mail must be a string with a maximum length of 100."
+                           data-val-length-max="100" data-val-regex="Please enter a valid email address"
+                           data-val-regex-pattern="^[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+\.)+([A-Za-z0-9]{2,4}|museum)$"
+                           id="CommenterEmail" maxlength="100" name="CommenterEmail" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="CommenterEmail" data-valmsg-replace="true"></span>
+                    <span class="hint">Used for your <a href="http://en.gravatar.com/" class="new-window">gravatar</a>. Not required. Will not be public.</span>
+                </div>
+                <div class="editor-label">
+                    <label for="Comments">Comments</label>
+                </div>
+                <div class="editor-field">
+
+                    <div id="wmd-button-bar" class="wmd-panel">
+                        <ul id="wmd-button-row">
+                            <li class="wmd-button" id="wmd-bold-button" title="Strong &lt;strong&gt; Ctrl+B" style="background-position: 0px 0px;"></li>
+                            <li class="wmd-button" id="wmd-italic-button" title="Emphasis &lt;em&gt; Ctrl+I" style="background-position: -20px 0px;"></li>
+                            <li class="wmd-spacer" id="wmd-spacer1"></li>
+                            <li class="wmd-button" id="wmd-link-button" title="Hyperlink &lt;a&gt; Ctrl+L" style="background-position: -40px 0px;"></li>
+                            <li class="wmd-button" id="wmd-quote-button" title="Blockquote &lt;blockquote&gt; Ctrl+Q" style="background-position: -60px 0px;"></li>
+                            <li class="wmd-button" id="wmd-code-button" title="Code Sample &lt;pre&gt;&lt;code&gt; Ctrl+K" style="background-position: -80px 0px;"></li>
+                            <li class="wmd-button" id="wmd-image-button" title="Image &lt;img&gt; Ctrl+G" style="background-position: -100px 0px;"></li>
+                            <li class="wmd-spacer" id="wmd-spacer2"></li>
+                            <li class="wmd-button" id="wmd-olist-button" title="Numbered List &lt;ol&gt; Ctrl+O" style="background-position: -120px 0px;"></li>
+                            <li class="wmd-button" id="wmd-ulist-button" title="Bulleted List &lt;ul&gt; Ctrl+U" style="background-position: -140px 0px;"></li>
+                            <li class="wmd-button" id="wmd-heading-button" title="Heading &lt;h1&gt;/&lt;h2&gt; Ctrl+H" style="background-position: -160px 0px;"></li>
+                            <li class="wmd-button" id="wmd-hr-button" title="Horizontal Rule &lt;hr&gt; Ctrl+R" style="background-position: -180px 0px;"></li>
+                            <li class="wmd-spacer" id="wmd-spacer3"></li>
+                            <li class="wmd-button" id="wmd-undo-button" title="Undo - Ctrl+Z" style="background-position: -200px -20px;"></li>
+                            <li class="wmd-button" id="wmd-redo-button" title="Redo - Ctrl+Y" style="background-position: -220px -20px;"></li>
+                            <li class="wmd-button" id="wmd-help-button" style="background-position: -240px 0px;"><a href="http://stackoverflow.com/editing-help" target="_blank" title="WMD website"></a></li>
+                        </ul>
+                    </div>
+
+                    <textarea id="wmd-input" name="Comments" cols="80" rows="18" class="wmd-panel"></textarea>
+                    <span class="field-validation-valid" data-valmsg-for="Comments" data-valmsg-replace="true"></span>
+                    <span class="hint">Posting code? Indent it by four spaces to make it look nice. Learn more about <a href="http://daringfireball.net/projects/markdown/syntax" class="new-window">Markdown</a>.</span>
+                </div>
+                <div class="editor-field">
+                    <input type="submit" id="submit" class="submit" value="Submit">
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <h3>Preview</h3>
+    <div id="wmd-preview" class="wmd-panel">
+
+    </div>
+</div>
