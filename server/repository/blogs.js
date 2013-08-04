@@ -14,10 +14,111 @@
  * To change this template use File | Settings | File Templates.
  */
 (function(){
-//    var mongo = require('mongodb'),
-//        q = require('q'),
-//        client = mongo.createClient();
-//
+  var MongoClient = require('mongodb').MongoClient
+    , format = require('util').format
+    , q = require('q');
+
+  var host = process.env['MONGO_NODE_DRIVER_HOST'] != null ? process.env['MONGO_NODE_DRIVER_HOST'] : 'localhost';
+  var port = process.env['MONGO_NODE_DRIVER_PORT'] != null ? process.env['MONGO_NODE_DRIVER_PORT'] : 27017;
+  var database = null;
+  var _init = function(callback){
+    MongoClient.connect(format("mongodb://%s:%s/blogs?w=1", host, port), function(err, db) {
+      database = db;
+      if(callback){
+        callback(db);
+      }
+    });
+  };
+/*********************Private functions*************************/
+  var _findAll = function(options){
+    var deferred = q.defer();
+
+    var posts = [];//sample test data
+    posts.push({
+      year: 2012,
+      month: 'July',
+      day: 12,
+      topic: 'Singleton with JavaScript',
+      urlLink: '#/posts/javascript-singleton',
+      summary: 'Singleton is one of the most widely used design patterns in any programming languages.',
+      comments: []
+    });
+    posts.push({
+      year: 2012,
+      month: 'June',
+      day: 12,
+      topic: 'Aspect Oriented Programming with JavaScript',
+      urlLink: '#/posts/aop-with-javascript',
+      summary: 'Aspect Oriented Programming has always been an interesting topic for me. With JavaScript it is not that obvious.',
+      comments: [{},{}]
+    });
+    posts.push({
+      year: 2011,
+      month: 'July',
+      day: 11,
+      topic: 'Javascript Pitfalls',
+      urlLink: '#/posts/javascript-pitfalls',
+      summary: 'A list of potential areas where .net or Java developers easily make mistakes in Javascript programming.',
+      comments: [{},{},{}]
+    });
+    posts.push({
+      year: 2013,
+      month: 'July',
+      day: 12,
+      topic: 'Will JavaScript be universal?',
+      urlLink: '#/posts/javascript-universal',
+      summary: 'With JavasSript based apps are getting more and more popular, will it become universal programming language?',
+      comments: [{}]
+    });
+    var postRecords = [];
+    console.log("Connecting to " + host + ":" + port);
+
+    var getPosts = function(coll, callback){
+      coll.find().each(function(err, item) {
+        if(item != null) {
+          //console.dir(item);
+          //console.log("created at " + new Date(item._id.generationTime) + "\n");
+          postRecords.push(item);
+        }
+        else{//end of the query
+          if(callback){
+            callback(postRecords);
+          }
+        }
+      })
+    };
+    var setupPostsAndFind = function(){
+      var collection = database.collection('posts');
+      collection.count({}, function(err, count) {
+        if(err){
+          deferred.reject(err);
+        }
+        if(count === 0){
+          collection.insert(posts, {safe: true}, function(err, records){
+            console.log(records.length + " records are inserted into the posts collection.");
+            getPosts(collection, function(list){
+              deferred.resolve(list);
+            });
+          });
+        }
+        else{
+          getPosts(collection, function(list){
+            deferred.resolve(list);
+          });
+        }
+      });
+    };
+    if(!database){
+      _init(function(db){
+        setupPostsAndFind();
+      })
+    }
+    else{
+      setupPostsAndFind();
+    }
+    return deferred.promise;
+  };
+/*********************End of Private functions*************************/
 //    var _findById = function(gameId) {
 //        var deferred = q.defer();
 //        client.get(gameId, function (err, reply) {
@@ -84,65 +185,10 @@
 //    };
 
     module.exports.findAll = function(req, res) {
-//        client.keys('*', function (err, keys) {
-//            var temp = [],
-//                results = [];
-//            if (err) {
-//                console.log(err);
-//                return;
-//            }
-//
-//            for(var i = 0, len = keys.length; i < len; i++) {
-//                console.log(keys[i]);
-//                var p = _findById(keys[i]).then(function(data){
-//                    console.log(keys[i], data);
-//                    results.push(data);
-//                });
-//                temp.push(p);
-//            }
-//            q.all(temp).then(function(){
-//                res.send(results);
-//            });
-//        });
-
-      var posts = [];
-      posts.push({
-        year: 2012,
-        month: 'July',
-        day: 12,
-        topic: 'Singleton with JavaScript',
-        urlLink: '#/posts/javascript-singleton',
-        summary: 'Singleton is one of the most widely used design patterns in any programming languages.',
-        comments: []
+      _findAll(null).then(function(result){
+        //console.log(result);
+        res.send(result);
       });
-      posts.push({
-        year: 2012,
-        month: 'June',
-        day: 12,
-        topic: 'Aspect Oriented Programming with JavaScript',
-        urlLink: '#/posts/aop-with-javascript',
-        summary: 'Aspect Oriented Programming has always been an interesting topic for me. With JavaScript it is not that obvious.',
-        comments: [{},{}]
-      });
-      posts.push({
-        year: 2011,
-        month: 'July',
-        day: 11,
-        topic: 'Javascript Pitfalls',
-        urlLink: '#/posts/javascript-pitfalls',
-        summary: 'A list of potential areas where .net or Java developers easily make mistakes in Javascript programming.',
-        comments: [{},{},{}]
-      });
-      posts.push({
-        year: 2013,
-        month: 'July',
-        day: 12,
-        topic: 'Will JavaScript be universal?',
-        urlLink: '#/posts/javascript-universal',
-        summary: 'With JavasSript based apps are getting more and more popular, will it become universal programming language?',
-        comments: [{}]
-      });
-        res.send(posts);
     };
     module.exports.find = function(req, res){
 //        _findById(req.params.id).then(function(result){
