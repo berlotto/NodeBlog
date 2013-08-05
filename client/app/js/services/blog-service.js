@@ -8,10 +8,10 @@
 (function(module){
   module.service('blogService', ['$http', function($http){
     var getList = function(dateRange, size){
-        return $http.get('/blogs');
+        return $http.get('posts');
     };
     var getDetails = function(id){
-        return $http.get('/blogs/' + id);
+        return $http.get('posts/' + id);
     };
     return {
       getPosts: getList,

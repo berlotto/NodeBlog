@@ -39,7 +39,7 @@
       month: 'July',
       day: 12,
       topic: 'Singleton with JavaScript',
-      urlLink: '#/posts/javascript-singleton',
+      urlLink: 'posts/javascript-singleton',
       summary: 'Singleton is one of the most widely used design patterns in any programming languages.',
       comments: []
     });
@@ -48,7 +48,7 @@
       month: 'June',
       day: 12,
       topic: 'Aspect Oriented Programming with JavaScript',
-      urlLink: '#/posts/aop-with-javascript',
+      urlLink: 'posts/aop-with-javascript',
       summary: 'Aspect Oriented Programming has always been an interesting topic for me. With JavaScript it is not that obvious.',
       comments: [{},{}]
     });
@@ -57,7 +57,7 @@
       month: 'July',
       day: 11,
       topic: 'Javascript Pitfalls',
-      urlLink: '#/posts/javascript-pitfalls',
+      urlLink: 'posts/javascript-pitfalls',
       summary: 'A list of potential areas where .net or Java developers easily make mistakes in Javascript programming.',
       comments: [{},{},{}]
     });
@@ -66,7 +66,7 @@
       month: 'July',
       day: 12,
       topic: 'Will JavaScript be universal?',
-      urlLink: '#/posts/javascript-universal',
+      urlLink: 'posts/javascript-universal',
       summary: 'With JavasSript based apps are getting more and more popular, will it become universal programming language?',
       comments: [{}]
     });

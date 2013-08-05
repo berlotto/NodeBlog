@@ -42,12 +42,12 @@ var setupRoutes = function(server)
 
     /////// RESTFUL API ROUTING  /////////
     //TODO implement findALl and patch/update
-    server.get('/blogs', blogs.findAll);
-    server.get('/blogs/:id', blogs.find);
-    server.put('/blogs/:id', blogs.update);
-    server.patch('/blogs/:id', blogs.patch);
-    server.delete('/blogs/:id', blogs.delete);
-    server.post('/blogs', blogs.create);
+    server.get('/posts', blogs.findAll);
+    server.get('/posts/:id', blogs.find);
+    server.put('/posts/:id', blogs.update);
+    server.patch('/posts/:id', blogs.patch);
+    server.delete('/posts/:id', blogs.delete);
+    server.post('/posts', blogs.create);
 
     server.get('/comments', comments.findAll);
     server.get('/comments/:id', comments.find);
