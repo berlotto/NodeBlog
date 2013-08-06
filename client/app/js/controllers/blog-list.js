@@ -11,7 +11,7 @@
       }).
       error(function(data, status, headers, config) {
         alert(status + ',' +data);
-      });;
+      });
 
   }]);
 })(window.CtrlModule);

@@ -119,28 +119,24 @@
     return deferred.promise;
   };
 /*********************End of Private functions*************************/
-//    var _findById = function(gameId) {
-//        var deferred = q.defer();
-//        client.get(gameId, function (err, reply) {
-//            if(err)
-//            {
-//                console.log('error: ' + err);
-//                deferred.reject(err);
-//            }
-//            else{
-//                console.log('success: ' + reply);
-//                var temp;
-//                try{
-//                    temp = JSON.parse(reply);
-//                    deferred.resolve(temp);
-//                }
-//                catch(ex){
-//                    deferred.resolve(reply);
-//                }
-//            }
-//        });
-//        return deferred.promise;
-//    };
+  var _findById = function(gameId, callback) {
+    var deferred = q.defer();
+    var collection = database.collection('posts');
+    collection.findOne({topic: gameId}, function(err, item) {
+      if(item != null) {
+        if(callback){
+          callback(item);
+        }
+      }
+      else{//end of the query
+        if(callback){
+          return callback(item);
+        }
+        return item;
+      }
+})
+      return deferred.promise;
+  };
 //
 //    var _create = function(settings) {
 //        if((typeof settings) == 'object'){
@@ -191,9 +187,9 @@
       });
     };
     module.exports.find = function(req, res){
-//        _findById(req.params.id).then(function(result){
-//            res.send(result);
-//        });
+        _findById(req.params.id).then(function(result){
+            res.send(result);
+        });
     };
     module.exports.update = function(req, res){
 //        _update(req.params.id, req.body);

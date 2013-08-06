@@ -1,11 +1,11 @@
 <div class="intro">
     <div class="intro-in">
-        <p>{{summary}}</p>
+        <p>{{post.summary}}</p>
     </div>
 </div>
 <div class="content">
     <h1>
-        <a href="/javascript-singleton">{{topic}}</a>
+        <a href="/javascript-singleton">{{post.topic}}</a>
     </h1>
     <div class="entry-date">
         <span class="month" >{{post.month}} {{post.day}}</span>
@@ -39,10 +39,16 @@
         </div>
         <span class="tags"></span>
         <div class="entry-tools">
-            <span>Posted by: {{author}}</span>
+            <span>Posted by: {{post.author}}</span>
             <br>
-            <span>Last revised: <a ng-href="/{{urlLink}}?revision={{revision}}"><span class="date" title="{{month}} {{day}}, {{year}}">{{month}} {{day}}, {{year}}</span></a></span>
-            <span><a href="/history-of/{{topic}}">History</a></span>
+            <span>Last revised:
+                <a ng-href="/{{post.urlLink}}?revision={{revision}}">
+                <span class="date" title="{{post.month}} {{post.day}}, {{post.year}}">
+                    {{post.month}} {{post.day}}, {{post.year}}
+                </span>
+                </a>
+            </span>
+            <span><a href="/history-of/{{post.topic}}">History</a></span>
         </div>
 
     </div>
@@ -53,7 +59,7 @@
             <a name="comments"></a>
             <h2>Comments</h2>
 
-            <div ng-repeat="cmt in comments" class="comment">
+            <div ng-repeat="cmt in post.comments" class="comment">
                 <a name="comment-2"></a>
                 <div class="comment-author vcard">
                     <img class="gravatar photo" ng-src="{{cmt.gravatar}}" alt="{{cmt.author}}">

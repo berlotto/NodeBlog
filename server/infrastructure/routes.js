@@ -34,33 +34,43 @@ var setupRoutes = function(server)
         mapResource(req, res, fs, '../../client/app', 'admin.html');
     });
 
-    server.get('/cookie', function(req,res){
-        console.log(req.sessionID);
-        req.session.name = req.session.name || new Date().toUTCString();
-        res.send(req.session.name);
+    server.post('/postmarkinbound', function(req, res){
+      console.log('postmarkinbound => ' + JSON.stringify(req.body));
+      res.send(req.body);
     });
 
-    /////// RESTFUL API ROUTING  /////////
-    //TODO implement findALl and patch/update
-    server.get('/posts', blogs.findAll);
-    server.get('/posts/:id', blogs.find);
-    server.put('/posts/:id', blogs.update);
-    server.patch('/posts/:id', blogs.patch);
-    server.delete('/posts/:id', blogs.delete);
-    server.post('/posts', blogs.create);
+  server.post('/postmarkbounce', function(req, res){
+      console.log('postmarkbounce => ' + req.body);
+      res.send(req.body);
+    });
 
-    server.get('/comments', comments.findAll);
-    server.get('/comments/:id', comments.find);
-    server.put('/comments/:id', comments.update);
-    server.delete('/comments/:id', comments.delete);
-    server.post('/comments', comments.create);
+  server.get('/cookie', function(req,res){
+      console.log(req.sessionID);
+      req.session.name = req.session.name || new Date().toUTCString();
+      res.send(req.session.name);
+  });
 
-    /////// ERROR ROUTING  /////////
-    //A Route for Creating a 500 Error (Useful to keep around)
-    server.get('/500',errors.serverError );
+  /////// RESTFUL API ROUTING  /////////
+  //TODO implement findALl and patch/update
+  server.get('/posts', blogs.findAll);
+  server.get('/posts/:id', blogs.find);
+  server.put('/posts/:id', blogs.update);
+  server.patch('/posts/:id', blogs.patch);
+  server.delete('/posts/:id', blogs.delete);
+  server.post('/posts', blogs.create);
 
-    //The 404 Route (ALWAYS Keep this as the last route)
-    //server.get('/*',errors.notFound);
+  server.get('/comments', comments.findAll);
+  server.get('/comments/:id', comments.find);
+  server.put('/comments/:id', comments.update);
+  server.delete('/comments/:id', comments.delete);
+  server.post('/comments', comments.create);
+
+  /////// ERROR ROUTING  /////////
+  //A Route for Creating a 500 Error (Useful to keep around)
+  server.get('/500',errors.serverError );
+
+  //The 404 Route (ALWAYS Keep this as the last route)
+  //server.get('/*',errors.notFound);
 };
 
 exports.setupRoutes = setupRoutes;
