@@ -3,10 +3,15 @@
 /* Controllers */
 
 (function(module) {
-  module.controller('BlogDetailsCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+  module.controller('BlogDetailsCtrl', ['$scope', '$routeParams', 'blogService',
+    function($scope, $routeParams, blogService) {
     console.log('Initializing Blog Details Controller');
     var postId = $routeParams.pid;
     console.log('Searching for ' + postId);
-
+    blogService.getPostDetails(postId).success(function(data, status, headers, config) {
+      $scope.post = data;
+    }).error(function(data, status, headers, config) {
+        alert(status + ',' +data);
+      });;
   }]);
 })(window.CtrlModule);

@@ -21,14 +21,18 @@
   var host = process.env['MONGO_NODE_DRIVER_HOST'] != null ? process.env['MONGO_NODE_DRIVER_HOST'] : 'localhost';
   var port = process.env['MONGO_NODE_DRIVER_PORT'] != null ? process.env['MONGO_NODE_DRIVER_PORT'] : 27017;
   var database = null;
-  var _init = function(callback){
+  var _init = function(){
+    var deferred = q.defer();
+    if(database){
+      deferred.resolve(database);
+    }
     MongoClient.connect(format("mongodb://%s:%s/blogs?w=1", host, port), function(err, db) {
       database = db;
-      if(callback){
-        callback(db);
-      }
+      deferred.resolve(db);
     });
+    return deferred.promise;
   };
+
 /*********************Private functions*************************/
   var _findAll = function(options){
     var deferred = q.defer();
@@ -87,8 +91,9 @@
         }
       })
     };
-    var setupPostsAndFind = function(){
-      var collection = database.collection('posts');
+
+    _init().then(function(db){
+      var collection = db.collection('posts');
       collection.count({}, function(err, count) {
         if(err){
           deferred.reject(err);
@@ -107,36 +112,26 @@
           });
         }
       });
-    };
-    if(!database){
-      _init(function(db){
-        setupPostsAndFind();
-      })
-    }
-    else{
-      setupPostsAndFind();
-    }
+    });
+    return deferred.promise;
+  };
+
+  var _findById = function(gameId) {
+    console.log('searching for ' + gameId);
+    var deferred = q.defer();
+    _init().then(function(db){
+      var collection = db.collection('posts');
+      collection.findOne({urlLink: 'posts/' + gameId}, function(err, item) {
+        if(err || !item) {
+          deferred.reject(item);
+        }
+        deferred.resolve(item);
+      });
+    });
     return deferred.promise;
   };
 /*********************End of Private functions*************************/
-  var _findById = function(gameId, callback) {
-    var deferred = q.defer();
-    var collection = database.collection('posts');
-    collection.findOne({topic: gameId}, function(err, item) {
-      if(item != null) {
-        if(callback){
-          callback(item);
-        }
-      }
-      else{//end of the query
-        if(callback){
-          return callback(item);
-        }
-        return item;
-      }
-})
-      return deferred.promise;
-  };
+
 //
 //    var _create = function(settings) {
 //        if((typeof settings) == 'object'){
@@ -182,7 +177,7 @@
 
     module.exports.findAll = function(req, res) {
       _findAll(null).then(function(result){
-        //console.log(result);
+        console.log(result);
         res.send(result);
       });
     };
