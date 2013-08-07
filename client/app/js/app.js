@@ -10,4 +10,7 @@
     $routeProvider.when('/search', {templateUrl: 'partials/search.html', controller: 'BlogSearchCtrl'});
     $routeProvider.otherwise({redirectTo: '/admin'});
   }]);
+  module.run(function($rootScope, $window) {
+    $rootScope.r = $window.r;
+  });
 })(window.MainModule);
