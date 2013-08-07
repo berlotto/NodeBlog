@@ -1,4 +1,4 @@
 NodeBlog
 ========
 
-New blog engine with NodeJS, SocketIO and MongoDB.
+Blog engine with AugularJS, NodeJS, SocketIO and MongoDB.
