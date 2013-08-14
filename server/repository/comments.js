@@ -6,6 +6,14 @@
  * To change this template use File | Settings | File Templates.
  */
 (function(){
+
+  var MongoClient = require('mongodb').MongoClient
+    , format = require('util').format
+    , marked = require('marked')
+    , io = require('socket.io')
+    , q = require('q');
+
+
     module.exports.findAll = function(req, res){
 //        _findById(req.params.id).then(function(result){
 //            res.send(result);
@@ -30,10 +38,11 @@
     };
 //http post create new resource
     module.exports.create = function(req, res){
-//        console.log('creating new settings...');
-//        var id = _create(req.body);
-//        console.log('New id is '+ id);
-//        res.send({'id':id});
+      console.log('inserting new comment...');
+        var comment = JSON.parse(req.body);
+        //save into mongodb
+
+        //broadcast this event to all clients with socket IO
     };
 
 })();

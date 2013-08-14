@@ -13,9 +13,13 @@
     var getDetails = function(id){
         return $http.get('posts/' + id);
     };
+    var addComment = function(comment, postId){
+        return $http.post('comments/', {postId: postId, comment: comment});
+    };
     return {
       getPosts: getList,
-      getPostDetails: getDetails
+      getPostDetails: getDetails,
+      addComment: addComment
     }
   }]);
 })(window.ServiceModule);

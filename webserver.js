@@ -28,6 +28,7 @@ server.configure('development', function(){
 
 /***************setup infrastructure*******************/
 routes.setupRoutes(server);
+routes.setupSockets(server);
 
 http.createServer(server).listen(server.get('port'), function(){
   console.log("Express server listening on port " + server.get('port'));

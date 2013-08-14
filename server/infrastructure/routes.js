@@ -13,31 +13,31 @@ var fs = require('fs'),
 //param: server is expressJs instance
 var setupRoutes = function(server)
 {
-    var mapResource = function(req, res, fs, folder, file){
-        var p = path.join(__dirname, folder, file);
-        fs.readFile(p, function(err, data){
-            if (err) {
-                res.writeHead(500);
-                return res.end('Error loading ' + file);
-            }
-            res.writeHead(200);
-            res.end(data);
-        });
-    };
+  var mapResource = function(req, res, fs, folder, file){
+      var p = path.join(__dirname, folder, file);
+      fs.readFile(p, function(err, data){
+          if (err) {
+              res.writeHead(500);
+              return res.end('Error loading ' + file);
+          }
+          res.writeHead(200);
+          res.end(data);
+      });
+  };
 
-    /////// PAGE ROUTING  /////////
-    server.get('/', function(req,res){
-        mapResource(req, res, fs, '../../client/app', 'index.html');
-    });
+  /////// PAGE ROUTING  /////////
+  server.get('/', function(req,res){
+      mapResource(req, res, fs, '../../client/app', 'index.html');
+  });
 
-    server.get('/admin', function(req,res){
-        mapResource(req, res, fs, '../../client/app', 'admin.html');
-    });
+  server.get('/admin', function(req,res){
+      mapResource(req, res, fs, '../../client/app', 'admin.html');
+  });
 
-    server.post('/postmarkinbound', function(req, res){
-      console.log('postmarkinbound => ' + JSON.stringify(req.body));
-      res.send(req.body);
-    });
+  server.post('/postmarkinbound', function(req, res){
+    console.log('postmarkinbound => ' + JSON.stringify(req.body));
+    res.send(req.body);
+  });
 
   server.post('/postmarkbounce', function(req, res){
       console.log('postmarkbounce => ' + req.body);
@@ -73,4 +73,9 @@ var setupRoutes = function(server)
   //server.get('/*',errors.notFound);
 };
 
+var setupSockets = function(server){
+
+};
+
 exports.setupRoutes = setupRoutes;
+exports.setupSockets = setupSockets;

@@ -22,7 +22,7 @@
       if(!locale){
         //get browser settings
         locale = navigator.language.split('-')[0];
-        console.log('navigator.language => ' + locale);
+        //console.log('navigator.language => ' + locale);
       }
     }
     var temp = resources[key];

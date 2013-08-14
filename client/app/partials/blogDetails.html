@@ -63,7 +63,7 @@
     </div>
     <h2>Your Comments</h2>
     <div class="entry-comment">
-        <form class="promptBeforeUnload" method="post" novalidate="novalidate">
+        <form class="promptBeforeUnload" novalidate="novalidate">
             <div class="form-body">
                 <div class="editor-label">
                     <label for="CommenterName">Name</label>
@@ -100,24 +100,14 @@
                     <label for="Comments">Comments</label>
                 </div>
                 <div class="editor-field">
-                    <div wmd-editor></div>
+                    <div wmd-editor comment="post.activeComment"></div>
                 </div>
                 <div class="editor-field">
-                    <input type="submit" id="submit" class="submit" value="Submit">
+                    <input type="button" ng-click="addComment(post.activeComment)" id="submit" class="submit" value="Submit">
                 </div>
             </div>
-            <script>
-                //TODO move into directive
-                if ($("#wmd-input").size() > 0) {
-                    console.log('initializeWmd => ' + $("#wmd-input").size());
-                    window.initializeWmd();
-                }
-            </script>
-        </form>
 
-    </div>
-    <h3>Preview</h3>
-    <div id="wmd-preview" class="wmd-panel">
+        </form>
 
     </div>
 </div>

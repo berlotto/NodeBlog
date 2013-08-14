@@ -189,7 +189,7 @@
     module.exports.find = function(req, res){
         _findById(req.params.id).then(function(result){
           result.body = marked(result.body);
-            res.send(result);
+          res.send(result);
         });
     };
     module.exports.update = function(req, res){
