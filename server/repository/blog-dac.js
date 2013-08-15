@@ -16,7 +16,6 @@
 (function(){
   var MongoClient = require('mongodb').MongoClient
     , format = require('util').format
-    , marked = require('marked')
     , q = require('q');
 
   var host = process.env['MONGO_NODE_DRIVER_HOST'] != null ? process.env['MONGO_NODE_DRIVER_HOST'] : 'localhost';
@@ -121,12 +120,12 @@
     return deferred.promise;
   };
 
-  var _findById = function(gameId) {
-    console.log('searching for ' + gameId);
+  var _findById = function(id) {
+    console.log('searching for ' + id);
     var deferred = q.defer();
     _init().then(function(db){
       var collection = db.collection('posts');
-      collection.findOne({urlLink: 'posts/' + gameId}, function(err, item) {
+      collection.findOne({urlLink: 'posts/' + id}, function(err, item) {
         if(err || !item) {
           deferred.reject(item);
         }
@@ -135,81 +134,72 @@
     });
     return deferred.promise;
   };
+
+  var _update = function(id, post) {
+    var deferred = q.defer();
+    _init().then(function(db){
+      var collection = db.collection('posts');
+      collection.update(
+        {urlLink: 'posts/' + id},
+        { $set: { 'body': post.body } },
+        function(err, result){
+          if(err || !result) {
+            deferred.reject(err);
+          }
+          console.log(post.topic + " is inserted into the posts collection.");
+          deferred.resolve(result);
+        }
+      );
+    });
+    return deferred.promise;
+  };
+  var _delete = function(id) {
+
+  };
+  var _create = function(post) {
+    var deferred = q.defer();
+    _init().then(function(db){
+      var collection = db.collection('posts');
+      collection.insert(post, {safe: true}, function(err, result){
+        if(err || !result) {
+          deferred.reject(err);
+        }
+        console.log(post.topic + " is inserted into the posts collection.");
+        deferred.resolve(result);
+      });
+    });
+    return deferred.promise;
+  };
+  var _addComment = function(postId, comment) {
+//    return _findById(postId).then(function(post){
+//      post.comments.push(comment);
+//      return _update(postId, post);
+//    });
+    var deferred = q.defer();
+    _init().then(function(db){
+      var collection = db.collection('posts');
+      collection.update(
+        {urlLink: 'posts/' + postId},
+        { $push: { 'comments': comment } },
+        function(err, result){
+          if(err || !result) {
+            deferred.reject(err);
+          }
+          console.log(comment.authorName + " is inserted into the comments collection.");
+          deferred.resolve(result);
+        }
+      );
+    });
+    return deferred.promise;
+  };
+
 /*********************End of Private functions*************************/
 
-//
-//    var _create = function(settings) {
-//        if((typeof settings) == 'object'){
-//            settings = JSON.stringify(settings);
-//        }
-//        var id = _generateId();
-//        //calculate new id and return
-//        client.set(id, settings);
-//        return id;
-//    };
-//    var _patch = function(id, updateFields) {
-//        var p = _findById(id).then(function(data){
-//            for(var key in updateFields){
-//                console.log(key, updateFields.hasOwnProperty(key), data.hasOwnProperty(key));
-//                if(updateFields.hasOwnProperty(key)
-//                    && data.hasOwnProperty(key)){
-//                    data[key] = updateFields[key];
-//                }
-//            }
-//            _update(id, data);
-//        }, function(err){
-//        });
-//
-//        return p;
-//    };
-//
-//    var _delete = function(gameId) {
-//        client.del(gameId);
-//    };
-//    //TODO: need to implement the logic
-//    var _generateId = function() {
-//        var newId = new Date().getTime();
-//        console.log('Generated new id is '+ newId);
-//        return newId;
-//    };
-//
-//    var _update = function(id, settings) {
-//        if((typeof settings) == 'object'){
-//            settings = JSON.stringify(settings);
-//        }
-//        client.set(id, settings);
-//    };
-
-    module.exports.findAll = function(req, res) {
-      _findAll(null).then(function(result){
-        console.log(result);
-        res.send(result);
-      });
-    };
-    module.exports.find = function(req, res){
-        _findById(req.params.id).then(function(result){
-          result.body = marked(result.body);
-          res.send(result);
-        });
-    };
-    module.exports.update = function(req, res){
-//        _update(req.params.id, req.body);
-//        res.send(200);
-    };
-    module.exports.delete = function(req, res) {
-//        _delete(req.id);
-//        res.send(200) ;
-    };
-    module.exports.patch = function(req, res) {
-//        _patch(req.params.id, req.body);
-//        res.send(200);
-    };
-    //http post create new resource
-    module.exports.create = function(req, res){
-//        console.log('creating new settings...');
-//        var id = _create(req.body);
-//        console.log('New id is '+ id);
-//        res.send({'id':id});
-    };
+    module.exports.findAll = _findAll;
+    module.exports.findById = _findById;
+    module.exports.update = _update;
+    module.exports.delete = _delete;
+    module.exports.create = _create;
+    module.exports.addComment = _addComment;
 
 })();

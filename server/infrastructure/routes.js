@@ -1,9 +1,9 @@
 var fs = require('fs'),
     path = require('path'),
-    blogs = require('../repository/blogs.js'),
-    comments = require('../repository/comments.js'),
-    files = require('../repository/files.js'),
-    users = require('../repository/users.js'),
+    blogs = require('../services/blogs.js'),
+    comments = require('../services/comments.js'),
+    files = require('../services/files.js'),
+    users = require('../services/users.js'),
     errors = require('./errors');
 
 ///////////////////////////////////////////

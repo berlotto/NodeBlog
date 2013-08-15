@@ -15,6 +15,11 @@
       });
 
       $scope.addComment = function(cmt){
+        console.log(cmt);
+        var today = new Date();
+        cmt.year = today.year;
+        cmt.month = today.month;
+        cmt.day = today.day;
         blogService.addComment(cmt, postId);
       };
 

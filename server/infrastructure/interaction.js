@@ -1,6 +1,6 @@
 var io = require('socket.io'),
     util = require('util'),
-    comments = require('../repository/comments');
+    comments = require('../services/comments');
 
 var masterMoveEvent = 'masterMove',
     gameSetupEvent = 'gameSetup',
