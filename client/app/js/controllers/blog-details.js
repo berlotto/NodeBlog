@@ -15,13 +15,21 @@
       });
 
       $scope.addComment = function(cmt){
-        console.log(cmt);
         var today = new Date();
         cmt.year = today.year;
         cmt.month = today.month;
         cmt.day = today.day;
         blogService.addComment(cmt, postId);
       };
+
+      //initialize socket io
+      var socket = $window.io.connect();
+      console.log("initialize socket io => " + socket);
+      //setup events for slave piece move
+      socket.on("comments-inserted-" + postId, function(data){
+        console.log("comments-inserted-" + postId  + ' => ' + data);
+        $scope.post.comments.push(data);
+      });
 
   }]);
 })(window.CtrlModule);

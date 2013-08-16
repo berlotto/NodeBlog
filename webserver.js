@@ -5,10 +5,14 @@
 
 var express = require('express')
   , connect = require('connect')
-  , http = require('http')
   , path = require('path')
+  , interaction = require('./server/infrastructure/interaction.js')
   , routes = require('./server/infrastructure/routes.js');
 
+/////////////////////////////////
+////////Setup and configure//////
+/////////ExpressJS Server////////
+/////////////////////////////////
 var server = express();
 
 server.configure(function(){
@@ -26,10 +30,22 @@ server.configure('development', function(){
     server.use(express.errorHandler());
 });
 
-/***************setup infrastructure*******************/
-routes.setupRoutes(server);
-routes.setupSockets(server);
-
-http.createServer(server).listen(server.get('port'), function(){
+var serverListener = server.listen(server.get('port'), function(){
   console.log("Express server listening on port " + server.get('port'));
+});
+
+////////////////////////////////
+////////Setup Socket.IO/////////
+////////for interaction/////////
+////////////////////////////////
+console.log('setting up sockets...');
+var socketPromise = interaction.setupSockets(serverListener);
+
+////////////////////////////////
+////////Setting up the routes/////////
+////////for this application/////////
+////////////////////////////////
+routes.setupRoutes(server);
+socketPromise.then(function(socket){
+  routes.setupSockets(socket);
 });

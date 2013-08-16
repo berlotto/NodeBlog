@@ -73,9 +73,10 @@ var setupRoutes = function(server)
   //server.get('/*',errors.notFound);
 };
 
-var setupSockets = function(server){
-
-};
+var setupSockets = function (s){
+   comments.initSocket(s);
+  //blogs.initSocket(s);
+} ;
 
 exports.setupRoutes = setupRoutes;
 exports.setupSockets = setupSockets;

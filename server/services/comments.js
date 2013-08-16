@@ -9,9 +9,13 @@
 
   var blogDac = require('../repository/blog-dac.js')
     , marked = require('marked')
-    , socket = require('socket.io')
     , q = require('q');
 
+    var socket = null;
+
+    module.exports.initSocket = function(s){
+       socket = s;
+    };
 
     module.exports.findAll = function(req, res){
 //        _findById(req.params.id).then(function(result){
@@ -43,6 +47,7 @@
       //save into mongodb
       blogDac.addComment(postId, comment).then(function(result){
           //broadcast this event to all clients with socket IO
+          console.log("broadcasting ...  => comments-inserted-" + postId);
           socket.broadcast.emit("comments-inserted-" + postId, comment);
       }).then(function(){
           res.send(200);
