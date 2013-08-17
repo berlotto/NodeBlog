@@ -15,7 +15,8 @@
  */
 (function(){
   var dac = require('../repository/blog-dac.js')
-    , marked = require('marked');
+    , marked = require('marked')
+    , _ = require('underscore');
 
   /*********************End of Private functions*************************/
 
@@ -27,9 +28,13 @@
     };
     module.exports.find = function(req, res){
       dac.findById(req.params.id).then(function(result){
-          result.body = marked(result.body);
-          res.send(result);
+        result.body = marked(result.body);
+        _.forEach(result.comments, function(item){
+          item.body = marked(item.body);
+          console.log(item.body);
         });
+        res.send(result);
+      });
     };
     module.exports.update = function(req, res){
         dac.update(req.params.id, req.body);

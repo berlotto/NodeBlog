@@ -44,7 +44,7 @@
             <div ng-repeat="cmt in post.comments" class="comment">
                 <a name="comment-2"></a>
                 <div class="comment-author vcard">
-                    <img class="gravatar photo" ng-src="{{cmt.authorEmail}}" alt="{{cmt.authorName}}">
+                    <img class="gravatar photo" ng-src="http://www.gravatar.com/avatar/{{cmt.authorEmailHash}}&amp;size=50&amp;default=identicon" alt="{{cmt.authorName}}">
                     <br>
                     <span class="fn" url="">{{cmt.authorName}}</span>
                 </div>
@@ -52,7 +52,7 @@
                     <div class="comment-date">
                         <span class="date" title="{{cmt.month}} {{cmt.day}}, {{cmt.year}}">{{cmt.month}} {{cmt.day}}, {{cmt.year}}</span>
                     </div>
-                    <p>{{cmt.body}}</p>
+                    <p ng-bind-html-unsafe="cmt.body"></p>
 
                 </div>
                 <div class="clear">
