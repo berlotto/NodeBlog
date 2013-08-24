@@ -23,7 +23,7 @@ server.configure(function(){
     server.use(express.methodOverride());
     server.use(server.router);
     server.use(express.static(path.join(__dirname, '/client/app')));
-    server.use('/public', express.static(path.join(__dirname, '/server/public')));
+    server.use('/public', express.static(path.join(__dirname, '/public')));
 });
 
 server.configure('development', function(){

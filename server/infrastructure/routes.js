@@ -27,11 +27,13 @@ var setupRoutes = function(server)
 
   /////// PAGE ROUTING  /////////
   server.get('/', function(req,res){
-      mapResource(req, res, fs, '../../client/app', 'index.html');
+    mapResource(req, res, fs, '../../client/app', 'index.html');
   });
-
+  server.get('/admin/', function(req,res){
+    mapResource(req, res, fs, '../../client/app', 'admin.html');
+  });
   server.get('/admin', function(req,res){
-      mapResource(req, res, fs, '../../client/app', 'admin.html');
+      res.redirect('/admin/');
   });
 
   server.post('/postmarkinbound', function(req, res){

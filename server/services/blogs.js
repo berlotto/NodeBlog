@@ -31,7 +31,7 @@
         result.body = marked(result.body);
         _.forEach(result.comments, function(item){
           item.body = marked(item.body);
-          console.log(item.body);
+          console.log(item.authorName + ' commented at ' + item.createdOn);
         });
         res.send(result);
       });
@@ -50,7 +50,7 @@
     };
     //http post create new resource
     module.exports.create = function(req, res){
-        console.log('creating new settings...');
+        console.log('creating new post...');
         var id = dac.create(req.body);
         console.log('New id is '+ id);
         res.send({'id':id});
