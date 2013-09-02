@@ -20,12 +20,17 @@
         </ul>
     </div>
 
-    <textarea id="wmd-input" name="Comments" ng-model="comment" cols="80" rows="18" class="wmd-panel"></textarea>
-    <span class="field-validation-valid" data-valmsg-for="Comments" data-valmsg-replace="true"></span>
+    <textarea id="wmd-input" name="Contents" ng-model="content" cols="80" rows="18" class="wmd-panel">
+
+    </textarea>
+    <span class="field-validation-valid"></span>
     <span class="hint">Posting code? Indent it by four spaces to make it look nice. Learn more about <a href="http://daringfireball.net/projects/markdown/syntax" class="new-window">Markdown</a>.</span>
 
-    <h3>Preview</h3>
-    <div id="wmd-preview" class="wmd-panel">
-         {{markdown(comment)}}
+    <div ng-if="preview">
+        <h3>Preview</h3>
+        <div id="wmd-preview" class="wmd-panel">
+            {{markdown(content)}}
+        </div>
     </div>
+
 </div>

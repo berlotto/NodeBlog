@@ -5,7 +5,7 @@
 </div>
 <div class="content">
     <h1>
-        <a href="/javascript-singleton">{{post.topic}}</a>
+        <a href="/{{post.topic}}">{{post.topic}}</a>
     </h1>
     <div class="entry-date">
         <span class="month" >{{post.month}} {{post.day}}</span>
@@ -13,7 +13,7 @@
     </div>
     <div class="entry-container">
 
-        <div class="entry" ng-bind-html-unsafe="post.body">
+        <div class="entry" ng-bind-html-unsafe="post.markedBody">
         </div>
 
         <div class="facebook">
@@ -30,7 +30,7 @@
                 </span>
                 </a>
             </span>
-            <span><a href="/history-of/{{post.topic}}">History</a></span>
+            <span><a href="/#/history-of/{{post.topic}}">History</a></span>
         </div>
 
     </div>
@@ -102,7 +102,7 @@
                     <label for="Comments">Comments</label>
                 </div>
                 <div class="editor-field">
-                    <div wmd-editor comment="post.activeComment.body"></div>
+                    <div wmd-editor content="post.activeComment.body"  preview="true"></div>
                 </div>
                 <div class="editor-field">
                     <input type="button" ng-click="addComment(post.activeComment)" id="submit" class="submit" value="Submit">

@@ -28,9 +28,9 @@
     };
     module.exports.find = function(req, res){
       dac.findById(req.params.id).then(function(result){
-        result.body = marked(result.body);
+        result.markedBody = marked(result.body);
         _.forEach(result.comments, function(item){
-          item.body = marked(item.body);
+          item.markedBody = marked(item.body);
           console.log(item.authorName + ' commented at ' + item.createdOn);
         });
         res.send(result);

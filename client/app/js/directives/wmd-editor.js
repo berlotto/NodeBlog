@@ -14,7 +14,8 @@
       replace: true, // The element containing the directive will be replaced with the template
       templateUrl: './js/directives/templates/wmd-template.html',
       scope: {// Create an isolated scope and interpolate the entry attribute onto this scope
-        comment: '='
+        content: '=',
+        preview: '='
       },
       link: function (scope, element, attrs) {
         initialize();

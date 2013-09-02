@@ -11,7 +11,7 @@
     $routeProvider.when('/admin/login', {templateUrl: 'partials/admin/login.html', controller: 'AdminLoginCtrl'});
     $routeProvider.when('/admin/posts', {templateUrl: 'partials/admin/posts.html', controller: 'AdminPostsCtrl'});
     $routeProvider.when('/admin/create', {templateUrl: 'partials/admin/create.html', controller: 'AdminPostCreateCtrl'});
-    $routeProvider.when('/admin/edit/:pid', {templateUrl: 'partials/admin/edit.html', controller: 'AdminPostEditCtrl'});
+    $routeProvider.when('/admin/posts/:pid', {templateUrl: 'partials/admin/edit.html', controller: 'AdminPostEditCtrl'});
     $routeProvider.when('/admin/comments', {templateUrl: 'partials/admin/comments.html', controller: 'AdminCommentsCtrl'});
     $routeProvider.when('/admin/tasks', {templateUrl: 'partials/admin/tasks.html', controller: 'AdminTasksCtrl'});
     $routeProvider.when('/admin/files', {templateUrl: 'partials/admin/files.html', controller: 'AdminFilesCtrl'});

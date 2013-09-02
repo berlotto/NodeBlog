@@ -21,7 +21,7 @@
                 </div>
                 <div class="comments">
                     <div>
-                    <a href="/#/{{post.urlLink}}#comments" ng-disabled="post.comments.length == 0">
+                    <a href="/#/posts/{{post.urlLink}}#comments" ng-disabled="post.comments.length == 0">
                         <span ng-if="post.comments.length >= 1" class="comment-count">{{post.comments.length}}</span>
                         <span ng-if="post.comments.length == 0">&nbsp;&nbsp;no&nbsp;&nbsp;</span>
                         <span ng-if="post.comments.length > 1">comments</span>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="summary">
-                    <h2><a ng-href="/#/{{post.urlLink}}" >{{post.topic}}</a></h2>
+                    <h2><a ng-href="/#/posts/{{post.urlLink}}" >{{post.topic}}</a></h2>
                     <p></p><p>{{post.summary}}</p>
                     <p></p>
                      <span class="tags">
