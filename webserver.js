@@ -39,7 +39,7 @@ var serverListener = server.listen(server.get('port'), function(){
 ////////for interaction/////////
 ////////////////////////////////
 console.log('setting up sockets...');
-var socketPromise = interaction.setupSockets(serverListener);
+var socketPromise = interaction.initSockets(serverListener);
 
 ////////////////////////////////
 ////////Setting up the routes/////////

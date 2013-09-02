@@ -3,7 +3,7 @@ var io = require('socket.io'),
     util = require('util');
 
 //server is expressJS instance
-var setupSockets = function(server){
+var initSockets = function(server){
   var exprIo = io.listen(server);
   var deferred = q.defer();
   //Setup socket IO connections with clients
@@ -28,4 +28,4 @@ var setupSockets = function(server){
   return deferred.promise;
 };
 
-module.exports.setupSockets = setupSockets;
+module.exports.initSockets = initSockets;

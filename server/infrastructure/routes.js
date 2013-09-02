@@ -29,12 +29,6 @@ var setupRoutes = function(server)
   server.get('/', function(req,res){
     mapResource(req, res, fs, '../../client/app', 'index.html');
   });
-  server.get('/admin/', function(req,res){
-    mapResource(req, res, fs, '../../client/app', 'admin.html');
-  });
-  server.get('/admin', function(req,res){
-      res.redirect('/admin/');
-  });
 
   server.post('/postmarkinbound', function(req, res){
     console.log('postmarkinbound => ' + JSON.stringify(req.body));
