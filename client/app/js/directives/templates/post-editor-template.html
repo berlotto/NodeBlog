@@ -1,0 +1,35 @@
+<div>
+    <div id="wmd-button-bar" class="wmd-panel">
+        <ul id="wmd-button-row">
+            <li class="wmd-button" id="wmd-bold-button" ng-click="bold" title="Strong &lt;strong&gt; Ctrl+B" style="cursor:pointer;background-position: 0px 0px;"></li>
+            <li class="wmd-button" id="wmd-italic-button" title="Emphasis &lt;em&gt; Ctrl+I" style="background-position: -20px 0px;"></li>
+            <li class="wmd-spacer" id="wmd-spacer1"></li>
+            <li class="wmd-button" id="wmd-link-button" title="Hyperlink &lt;a&gt; Ctrl+L" style="background-position: -40px 0px;"></li>
+            <li class="wmd-button" id="wmd-quote-button" title="Blockquote &lt;blockquote&gt; Ctrl+Q" style="background-position: -60px 0px;"></li>
+            <li class="wmd-button" id="wmd-code-button" title="Code Sample &lt;pre&gt;&lt;code&gt; Ctrl+K" style="background-position: -80px 0px;"></li>
+            <li class="wmd-button" id="wmd-image-button" title="Image &lt;img&gt; Ctrl+G" style="background-position: -100px 0px;"></li>
+            <li class="wmd-spacer" id="wmd-spacer2"></li>
+            <li class="wmd-button" id="wmd-olist-button" title="Numbered List &lt;ol&gt; Ctrl+O" style="background-position: -120px 0px;"></li>
+            <li class="wmd-button" id="wmd-ulist-button" title="Bulleted List &lt;ul&gt; Ctrl+U" style="background-position: -140px 0px;"></li>
+            <li class="wmd-button" id="wmd-heading-button" title="Heading &lt;h1&gt;/&lt;h2&gt; Ctrl+H" style="background-position: -160px 0px;"></li>
+            <li class="wmd-button" id="wmd-hr-button" title="Horizontal Rule &lt;hr&gt; Ctrl+R" style="background-position: -180px 0px;"></li>
+            <li class="wmd-spacer" id="wmd-spacer3"></li>
+            <li class="wmd-button" id="wmd-undo-button" title="Undo - Ctrl+Z" style="background-position: -200px -20px;"></li>
+            <li class="wmd-button" id="wmd-redo-button" title="Redo - Ctrl+Y" style="background-position: -220px -20px;"></li>
+            <li class="wmd-button" id="wmd-help-button" style="background-position: -240px 0px;"><a href="http://stackoverflow.com/editing-help" target="_blank" title="WMD website"></a></li>
+        </ul>
+    </div>
+
+    <textarea id="wmd-input" name="Contents" ng-model="content" cols="80" rows="18" class="wmd-panel">
+    </textarea>
+    <span class="field-validation-valid"></span>
+    <span class="hint">Posting code? Indent it by four spaces to make it look nice. Learn more about <a href="http://www.daringfireball.net/projects/markdown/syntax" class="new-window">Markdown</a>.</span>
+
+    <div ng-if="preview">
+        <h3>Preview</h3>
+        <div id="wmd-preview" class="wmd-panel">
+            {{markdown(content)}}
+        </div>
+    </div>
+
+</div>
