@@ -661,6 +661,7 @@ footer a:hover {
     padding: 0;
     position: absolute;
     width: 20px;
+    cursor:pointer;
 }
 .wmd-button > a {
     display: inline-block;
