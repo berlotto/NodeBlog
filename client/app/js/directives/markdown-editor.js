@@ -70,6 +70,8 @@
         startPos = el.selectionStart;
         endPos = el.selectionEnd;
         var selectedTxt = val.substring(startPos, endPos);
+        selectedTxt = $.trim(selectedTxt);
+        endPos = startPos + selectedTxt.length;
         //check if it is undo action
         var preTemp =   val.substring(startPos - txtPre.length, startPos);
         var postTemp =   val.substring(endPos, endPos + txtPost.length);
@@ -143,7 +145,7 @@
       restrict: 'EA',
       //transclude: true, // It transcludes(transfer includes) the contents of the directive into the template
       replace: true, // The element containing the directive will be replaced with the template
-      templateUrl: './js/directives/templates/post-editor-template.html',
+      templateUrl: './js/directives/templates/markdown-editor-template.html',
       scope: {// Create an isolated scope and interpolate the entry attribute onto this scope
         content: '=',
         preview: '=',
