@@ -41,8 +41,8 @@
             <p>You can also use the name of the page for inter-page links.</p>
             <p>Example:<br></p><ul><li>http://foo.com/bar</li><li>my-page</li></ul>
             <p></p></div><form style="padding: 0px; margin: 0px; float: left; width: 100%; text-align: center; position: relative;">
-        <input type="text" style="display: block; width: 80%; margin-right: auto; margin-left: auto;">
-        <input type="button" value="OK" style="margin: 10px; display: inline; width: 7em;">
-        <input type="button" value="Cancel" style="margin: 10px; display: inline; width: 7em;"></form>
+        <input type="text" ng-model="linkUrl" style="display: block; width: 80%; margin-right: auto; margin-left: auto;">
+        <input type="button" value="OK" ng-click="setHyperlink(linkUrl)" style="margin: 10px; display: inline; width: 7em;">
+        <input type="button" value="Cancel" ng-click="cancelHyperlink()" style="margin: 10px; display: inline; width: 7em;"></form>
     </div>
 </div>
