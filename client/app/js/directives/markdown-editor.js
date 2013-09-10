@@ -11,23 +11,26 @@
     };
     var getSelection = function(elm)
     {
-      var selectedText;
+      var selectedText, startPos, endPos;
+      var val = elm.value;
       // IE version
       if (document.selection !== undefined)
       {
         elm.focus();
         var sel = document.selection.createRange();
         selectedText = sel.text;
+        startPos = val.indexOf(selectedText);
+        endPos = startPos + selectedText.length;
       }
       // Mozilla version
       else if (elm.selectionStart != undefined)
       {
-        var startPos = elm.selectionStart;
-        var endPos = elm.selectionEnd;
+        startPos = elm.selectionStart;
+        endPos = elm.selectionEnd;
         selectedText = elm.value.substring(startPos, endPos)
       }
       console.log("You selected: " + selectedText);
-      return selectedText;
+      return {start: startPos, end: endPos, text: selectedText};
     }
 
     var setSelectionRange = function(input, selectionStart, selectionEnd) {
@@ -64,7 +67,7 @@
     }
 
     //set texts around the selected element
-    var setTextAroundSelection = function(el, txtPre, txtPost) {
+    var setTextAroundSelection = function(el, txtPre, txtPost, preCount, postCount) {
       var val = el.value, range, startPos, endPos,
         textBeforeSelection, textAfterSelection;
       if (typeof el.selectionStart != "undefined" && typeof el.selectionEnd != "undefined") {
@@ -77,7 +80,13 @@
         textBeforeSelection = val.substr(0, startPos);
         textAfterSelection = val.substr(endPos, val.length);
         el.value = textBeforeSelection + txtPre + selectedTxt + txtPost + textAfterSelection;
-        setSelectionRange(el, startPos + txtPre.length, endPos + txtPost.length);
+        if(!preCount){
+          preCount = txtPre.length;
+        }
+        if(!postCount){
+          postCount = txtPost.length;
+        }
+        setSelectionRange(el, startPos + preCount, endPos + postCount);
       } else if (typeof document.selection != "undefined" && typeof document.selection.createRange != "undefined") {
         el.focus();
         range = document.selection.createRange();
@@ -143,6 +152,14 @@
       return {pre: preTemp, post: postTemp};
     }
 
+    var testSelectedTextByRegex = function(el, expr, start, end) {
+      var val = el.value.substring(start, end);
+      if(val.test(expr)){
+        return true;
+      }
+      return false;
+    }
+
     var setupEvents = function(scope, elm){
       console.log('setting up events ...');
 
@@ -178,14 +195,32 @@
         scope.showHyperlinkDialog = show;
       }
       scope.hyperlink = function(){
-        showDialog(true);
-
+        var val = elm.value, textBeforeSelection, textAfterSelection;
+        var selection = getSelection(elm);
+        var prePostTxt = getTextAroundSelection(elm, 1, 1);
+        if(prePostTxt.pre === '[' && prePostTxt.post === ']'){
+          var tempStart = val.indexOf('(', selection.end);
+          var tempEnd = val.indexOf(')', selection.end);
+          if(tempEnd > tempStart){
+            textBeforeSelection = val.substr(0, selection.start - 1);
+            textAfterSelection = val.substr(tempEnd + 1);
+            elm.value = textBeforeSelection + selection.text + textAfterSelection;
+            setSelectionRange(elm, tempStart - 1, selection.end - 2);
+          }
+        }
+        else{
+          showDialog(true);
+        }
       };
       scope.setHyperlink = function(link){
-        console.log(link);
+        console.log('validating hyperlink ' + link);
+        //TODO: validate using ajax
+        setTextAroundSelection(elm, '[', '](' + link + ')', 1, 1);
+        scope.linkUrl = '';
         showDialog(false);
       }
       scope.cancelHyperlink = function(){
+        scope.linkUrl = '';
         showDialog(false);
       }
       scope.blockQuote = function(){
