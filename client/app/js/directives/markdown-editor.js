@@ -12,14 +12,21 @@
     var getSelection = function(elm)
     {
       var selectedText, startPos, endPos;
-      var val = elm.value;
       // IE version
       if (document.selection !== undefined)
       {
         elm.focus();
-        var sel = document.selection.createRange();
-        selectedText = sel.text;
-        startPos = val.indexOf(selectedText);
+        // The current selection
+        var range = document.selection.createRange();
+        selectedText = range.text;
+        // We'll use this as a 'dummy'
+        var stored_range = range.duplicate();
+        // Select all text
+        stored_range.moveToElementText( elm );
+        // Now move 'dummy' end point to end point of original range
+        stored_range.setEndPoint( 'EndToStart', range );
+        // Now we can calculate start and end points
+        startPos = stored_range.text.length - 5;
         endPos = startPos + selectedText.length;
       }
       // Mozilla version
@@ -75,6 +82,9 @@
         endPos = el.selectionEnd;
         var selectedTxt = val.substring(startPos, endPos);
         selectedTxt = $.trim(selectedTxt);
+        if(!selectedTxt){
+          return;
+        }
         endPos = startPos + selectedTxt.length;
         //append and prepend markdown symbols
         textBeforeSelection = val.substr(0, startPos);
@@ -92,6 +102,9 @@
         range = document.selection.createRange();
         range.collapse(false);
         var selectedTxt = range.text;
+        if(!selectedTxt){
+          return;
+        }
         selectedTxt = $.trim(selectedTxt);
         range.text = txtPre + selectedTxt + txtPost;
         range.select();
@@ -152,21 +165,11 @@
       return {pre: preTemp, post: postTemp};
     }
 
-    var testSelectedTextByRegex = function(el, expr, start, end) {
-      var val = el.value.substring(start, end);
-      if(val.test(expr)){
-        return true;
-      }
-      return false;
-    }
-
     var setupEvents = function(scope, elm){
       console.log('setting up events ...');
 
       scope.bold = function(){
         var prePostTxt = getTextAroundSelection(elm, 2, 2);
-        console.log('make selection bold...' + prePostTxt.pre + ', ' + prePostTxt.post);
-
         if(prePostTxt.pre === '**' && prePostTxt.post === '**'){
           removeTextAroundSelection(elm, '**', '**');
         }
@@ -176,7 +179,6 @@
       };
       scope.italic = function(){
         var prePostTxt = getTextAroundSelection(elm, 3, 3);
-        console.log('make selection italic...' + prePostTxt.pre + ', ' + prePostTxt.post);
         if(prePostTxt.pre === '***' && prePostTxt.post === '***'){
           removeTextAroundSelection(elm, '*', '*');
         }
@@ -197,7 +199,11 @@
       scope.hyperlink = function(){
         var val = elm.value, textBeforeSelection, textAfterSelection;
         var selection = getSelection(elm);
+        if(!selection.text){
+           return;
+        }
         var prePostTxt = getTextAroundSelection(elm, 1, 1);
+        //if hyperlink is already applied, remove it
         if(prePostTxt.pre === '[' && prePostTxt.post === ']'){
           var tempStart = val.indexOf('(', selection.end);
           var tempEnd = val.indexOf(')', selection.end);
@@ -205,7 +211,7 @@
             textBeforeSelection = val.substr(0, selection.start - 1);
             textAfterSelection = val.substr(tempEnd + 1);
             elm.value = textBeforeSelection + selection.text + textAfterSelection;
-            setSelectionRange(elm, tempStart - 1, selection.end - 2);
+            setSelectionRange(elm, selection.start - 1, selection.end - 1);
           }
         }
         else{
