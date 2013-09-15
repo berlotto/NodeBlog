@@ -3,13 +3,14 @@
 /* Controllers */
 
 (function(module) {
-  module.controller('AdminPostEditCtrl', ['$scope', '$routeParams','$location', 'blogService', '$window',
-    function($scope, $routeParams, $location, blogService, window) {
+  module.controller('AdminPostEditCtrl', ['$scope', '$routeParams','$location',
+    'blogService', 'adminBlogService', '$window',
+    function($scope, $routeParams, $location, blogService, adminBlogService, $window) {
       console.log('Initializing AdminPostEditCtrl Controller');
       var postId = $routeParams.pid;
       var commentInsertKey = 'comments-inserted-' + postId;
       blogService.getPostDetails(postId).success(function(data, status, headers, config) {
-        $scope.markDown = window.marked;
+        $scope.markDown = $window.marked;
         if(data && data.comments){
           for(var i = 0; i < data.comments.length; i++){
             data.comments[i].markedBody = marked(data.comments[i].body);
@@ -23,11 +24,18 @@
           alert(status + ',' +data);
         });
       $scope.save = function(post){
-        blogService.savePost(post).success(function(result){
+        var jsonPost = JSON.stringify(post);
+        var successCallback = function(result){
           console.log(result);
           //redirect to page details in view mode
-          //TODO: $location.move()
-        });
+          $location.path('/posts/' + post.urlLink);
+        };
+        if(post._id){
+          adminBlogService.updatePost(jsonPost).success(successCallback);
+        }
+        else{
+          adminBlogService.addPost(jsonPost).success(successCallback);
+        }
       };
     }]);
 

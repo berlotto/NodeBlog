@@ -16,13 +16,9 @@
     var addComment = function(comment, postId){
         return $http.post('comments/', {postId: postId, comment: comment});
     };
-    var savePost = function(post){
-      //TODO: check id to decide post or put
-        return $http.post('posts/', post);
-    };
+
     return {
       getPosts: getList,
-      savePost: savePost,
       getPostDetails: getDetails,
       addComment: addComment
     }

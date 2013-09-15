@@ -142,7 +142,20 @@
       var collection = db.collection('posts');
       collection.update(
         {urlLink: id},
-        { $set: { 'body': post.body } },
+        { $set:
+          {
+            'urlLink': post.urlLink,
+            'topic': post.topic,
+            'metaTitle': post.metaTitle,
+            'body': post.body,
+            'status': post.status,
+            'disableComment': post.disableComment,
+            'summary': post.summary,
+            'year': post.year,
+            'month': post.month,
+            'day': post.day
+          }
+        },
         function(err, result){
           if(err || !result) {
             deferred.reject(err);
