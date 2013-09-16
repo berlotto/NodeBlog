@@ -31,7 +31,7 @@
           $location.path('/posts/' + post.urlLink);
         };
         if(post._id){
-          adminBlogService.updatePost(jsonPost).success(successCallback);
+          adminBlogService.updatePost(post.urlLink, jsonPost).success(successCallback);
         }
         else{
           adminBlogService.addPost(jsonPost).success(successCallback);
