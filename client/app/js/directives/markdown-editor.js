@@ -30,15 +30,15 @@
         endPos = startPos + selectedText.length;
       }
       // Mozilla version
-      else if (elm.selectionStart != undefined)
+      else if (elm.selectionStart !== undefined)
       {
         startPos = elm.selectionStart;
         endPos = elm.selectionEnd;
-        selectedText = elm.value.substring(startPos, endPos)
+        selectedText = elm.value.substring(startPos, endPos);
       }
       console.log("You selected: " + selectedText);
       return {start: startPos, end: endPos, text: selectedText};
-    }
+    };
 
     var setSelectionRange = function(input, selectionStart, selectionEnd) {
       if (input.setSelectionRange) {
@@ -52,7 +52,7 @@
         range.moveStart('character', selectionStart);
         range.select();
       }
-    }
+    };
 
     function setCursor (input, pos) {
       setSelectionRange(input, pos, pos);
@@ -60,24 +60,24 @@
 
     var insertTextAtCursor = function(el, text) {
       var val = el.value, endIndex, range;
-      if (typeof el.selectionStart != "undefined" && typeof el.selectionEnd != "undefined") {
+      if (typeof el.selectionStart !== "undefined" && typeof el.selectionEnd !== "undefined") {
         endIndex = el.selectionEnd;
         el.value = val.slice(0, endIndex) + text + val.slice(endIndex);
         el.selectionStart = el.selectionEnd = endIndex + text.length;
-      } else if (typeof document.selection != "undefined" && typeof document.selection.createRange != "undefined") {
+      } else if (typeof document.selection !== "undefined" && typeof document.selection.createRange !== "undefined") {
         el.focus();
         range = document.selection.createRange();
         range.collapse(false);
         range.text = text;
         range.select();
       }
-    }
+    };
 
     //set texts around the selected element
     var setTextAroundSelection = function(el, txtPre, txtPost, preCount, postCount) {
       var val = el.value, range, startPos, endPos,
         textBeforeSelection, textAfterSelection;
-      if (typeof el.selectionStart != "undefined" && typeof el.selectionEnd != "undefined") {
+      if (typeof el.selectionStart !== "undefined" && typeof el.selectionEnd !== "undefined") {
         startPos = el.selectionStart;
         endPos = el.selectionEnd;
         var selectedTxt = val.substring(startPos, endPos);
@@ -97,19 +97,19 @@
           postCount = txtPost.length;
         }
         setSelectionRange(el, startPos + preCount, endPos + postCount);
-      } else if (typeof document.selection != "undefined" && typeof document.selection.createRange != "undefined") {
+      } else if (typeof document.selection !== "undefined" && typeof document.selection.createRange !== "undefined") {
         el.focus();
         range = document.selection.createRange();
         range.collapse(false);
-        var selectedTxt = range.text;
-        if(!selectedTxt){
+        var selectedTxt1 = range.text;
+        if(!selectedTxt1){
           return;
         }
-        selectedTxt = $.trim(selectedTxt);
-        range.text = txtPre + selectedTxt + txtPost;
+          selectedTxt1 = $.trim(selectedTxt1);
+        range.text = txtPre + selectedTxt1 + txtPost;
         range.select();
       }
-    }
+    };
 
     //remove texts around the selected element
     var removeTextAroundSelection = function(el, txtPre, txtPost) {
@@ -140,7 +140,7 @@
         range.text = selectedTxt;
         range.select();
       }
-    }
+    };
 
     //get text before and after the selected text until the txtPre or txtPost
     var getTextAroundSelection = function(el, preCount, postCount) {
@@ -163,7 +163,7 @@
       preTemp = val.substring(startPos - preCount, startPos);
       postTemp = val.substring(endPos, endPos + postCount);
       return {pre: preTemp, post: postTemp};
-    }
+    };
 
     var setupEvents = function(scope, elm){
       console.log('setting up events ...');
@@ -195,7 +195,8 @@
       var showDialog = function(show) {
         scope.showDialog = show;
         scope.showHyperlinkDialog = show;
-      }
+      };
+
       scope.hyperlink = function(){
         var val = elm.value, textBeforeSelection, textAfterSelection;
         var selection = getSelection(elm);
@@ -224,13 +225,22 @@
         setTextAroundSelection(elm, '[', '](' + link + ')', 1, 1);
         scope.linkUrl = '';
         showDialog(false);
-      }
+      };
       scope.cancelHyperlink = function(){
         scope.linkUrl = '';
         showDialog(false);
-      }
+      };
+      //TODO: find all lines and prepend '>'
       scope.blockQuote = function(){
+        var selection = getSelection(elm);
+        var textBeforeSelection =  elm.value.substr(0, selection.start);
+        var textAfterSelection =  elm.value.substr(selection.end, elm.value.length);
+        var pattern = /(\n\s*\S)/g;
+        var match = pattern.exec(selection.text);
 
+        var selectedText = selection.text.replace(pattern, match[1]);
+
+        elm.value = textBeforeSelection + selectedText + textAfterSelection;
       };
       scope.image = function(){
 
