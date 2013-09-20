@@ -2,12 +2,13 @@
 
 /* Controllers */
 (function(module) {
-module.controller('BlogSearchCtrl', ['$scope', function($scope) {
+module.controller('BlogSearchCtrl', ['$scope', '$location',
+  function($scope, $location) {
     console.log('Initializing Blog Search Controller');
 
     $scope.search = function(keyword){
       console.log('Searching for ' + keyword);
-      return;
+      $location.path('/search/' + keyword)
     };
   }]);
 })(CtrlModule);

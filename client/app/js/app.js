@@ -7,6 +7,7 @@
     $routeProvider.when('/', {templateUrl: 'partials/posts.html', controller: 'BlogListCtrl'});
     $routeProvider.when('/posts/:pid', {templateUrl: 'partials/blogDetails.html', controller: 'BlogDetailsCtrl'});
     $routeProvider.when('/search', {templateUrl: 'partials/search.html', controller: 'BlogSearchCtrl'});
+    $routeProvider.when('/searchResult/', {templateUrl: 'partials/searchResult.html', controller: 'BlogSearchResultCtrl'});
     $routeProvider.when('/admin', {templateUrl: 'partials/admin/taskList.html', controller: 'AdminTaskListCtrl'});
     $routeProvider.when('/admin/login', {templateUrl: 'partials/admin/login.html', controller: 'AdminLoginCtrl'});
     $routeProvider.when('/admin/posts', {templateUrl: 'partials/admin/posts.html', controller: 'AdminPostsCtrl'});
