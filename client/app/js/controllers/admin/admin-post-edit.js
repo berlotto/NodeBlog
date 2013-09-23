@@ -37,6 +37,7 @@
           adminBlogService.addPost(jsonPost).success(successCallback);
         }
       };
+
     }]);
 
 })(window.CtrlModule);

@@ -108,7 +108,7 @@ fetch the changes and merge them into your project with git.
       js/               --> javascript files
         app.js          --> application
         controllers.js  --> application controllers
-        markdown-editor.js   --> application directives
+        markdown-editor2.js   --> application directives
         filters.js      --> custom angular filters
         blog-service.js     --> custom angular services
       lib/              --> angular and 3rd party javascript libraries

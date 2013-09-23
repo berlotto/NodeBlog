@@ -50,8 +50,14 @@
     <div class="editor-label">
         <label for="content">Content</label>
     </div>
-    <div class="editor-field" id="content">
-        <div wmd-editor content="post.body" preview="false"></div>
+    <div class="editor-field" id="content" style="background-color: White;">
+        <!--<div wmd-editor content="post.body" preview="false"></div>-->
+        <div class="wmd-panel">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea class="wmd-input" id="wmd-input">
+            </textarea>
+        </div>
+        <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
     </div>
 
     <div class="editor-label">
@@ -87,7 +93,15 @@
     </div>
     </form>
     <h3>Preview</h3>
-    <div id="wmd-preview" class="wmd-panel">
-        <p ng-bind-html-unsafe="markDown(post.body)"></p>
-    </div>
+    <!--<div id="wmd-preview" class="wmd-panel">-->
+        <!--<p ng-bind-html-unsafe="markDown(post.body)"></p>-->
+    <!--</div>-->
 </div>
+
+<script>
+    var converter = Markdown.getSanitizingConverter();
+
+    var editor = new Markdown.Editor(converter);
+
+    editor.run();
+</script>
