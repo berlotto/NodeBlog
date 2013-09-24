@@ -102,7 +102,10 @@
                     <label for="Comments">Comments</label>
                 </div>
                 <div class="editor-field">
-                    <div wmd-editor content="post.activeComment.body"  preview="true"></div>
+                    <div markdown-editor content="post.activeComment.body"></div>
+                </div>
+                <div id="wmd-preview" class="wmd-panel editor-field">
+                    <span ng-bind-html-unsafe="markDown(post.activeComment.body)"></span>
                 </div>
                 <div class="editor-field">
                     <input type="button" ng-click="addComment(post.activeComment)" id="submit" class="submit" value="Submit">
