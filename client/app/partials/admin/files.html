@@ -17,92 +17,28 @@
             </tr>
             </thead>
 
-            <tbody><tr>
-                <td><img width="16" height="16" src="/Content/Images/FileTypes/png.png" alt=".PNG"></td>
+            <tbody>
+            <!--<tr>-->
+                <!--<td><img width="16" height="16" ng-src="/Content/Images/FileTypes/{{}}" alt=".PNG"></td>-->
+                <!--<td class="firstcolumn">-->
+                    <!--<a href="/get/BlogModel.PNG">BlogModel.PNG</a>        </td>-->
+                <!--<td>.PNG</td>-->
+                <!--<td class="numeric">8.00 KB</td>-->
+                <!--<td class="date">19-Sep-2012</td>-->
+                <!--<td>-->
+                    <!--<a href="/upload/Delete?filePath=%2FBlogModel.PNG">Delete</a>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <tr ng-repeat="file in files">
+                <td><img width="16" height="16" src="/Content/Images/FileTypes/{{fileTypeIcon}}" alt=".{{extension}}"></td>
                 <td class="firstcolumn">
-                    <a href="/get/BlogEF.PNG">BlogEF.PNG</a>        </td>
-                <td>.PNG</td>
-                <td class="numeric">9.00 KB</td>
-                <td class="date">19-Sep-2012</td>
-                <td>
-                    <a href="/upload/Delete?filePath=%2FBlogEF.PNG">Delete</a>
+                    <a href="/get/{{name}}">{{name}}</a>
                 </td>
-            </tr>
-            <tr>
-                <td><img width="16" height="16" src="/Content/Images/FileTypes/png.png" alt=".PNG"></td>
-                <td class="firstcolumn">
-                    <a href="/get/BlogModel.PNG">BlogModel.PNG</a>        </td>
-                <td>.PNG</td>
-                <td class="numeric">8.00 KB</td>
-                <td class="date">19-Sep-2012</td>
+                <td>.{{extension}}</td>
+                <td class="numeric">{{size}}</td>
+                <td class="date">{{uploadedOn}}</td>
                 <td>
-                    <a href="/upload/Delete?filePath=%2FBlogModel.PNG">Delete</a>
-                </td>
-            </tr>
-            <tr>
-                <td><img width="16" height="16" src="/Content/Images/FileTypes/png.png" alt=".PNG"></td>
-                <td class="firstcolumn">
-                    <a href="/get/BlogNHibernate.PNG">BlogNHibernate.PNG</a>        </td>
-                <td>.PNG</td>
-                <td class="numeric">14.00 KB</td>
-                <td class="date">19-Sep-2012</td>
-                <td>
-                    <a href="/upload/Delete?filePath=%2FBlogNHibernate.PNG">Delete</a>
-                </td>
-            </tr>
-            <tr>
-                <td><img width="16" height="16" src="/Content/Images/FileTypes/png.png" alt=".PNG"></td>
-                <td class="firstcolumn">
-                    <a href="/get/classDiagram1.PNG">classDiagram1.PNG</a>        </td>
-                <td>.PNG</td>
-                <td class="numeric">17.00 KB</td>
-                <td class="date">31-Aug-2012</td>
-                <td>
-                    <a href="/upload/Delete?filePath=%2FclassDiagram1.PNG">Delete</a>
-                </td>
-            </tr>
-            <tr>
-                <td><img width="16" height="16" src="/Content/Images/FileTypes/png.png" alt=".PNG"></td>
-                <td class="firstcolumn">
-                    <a href="/get/classDiagram2.PNG">classDiagram2.PNG</a>        </td>
-                <td>.PNG</td>
-                <td class="numeric">30.00 KB</td>
-                <td class="date">31-Aug-2012</td>
-                <td>
-                    <a href="/upload/Delete?filePath=%2FclassDiagram2.PNG">Delete</a>
-                </td>
-            </tr>
-            <tr>
-                <td><img width="16" height="16" src="/Content/Images/FileTypes/zip.png" alt=".zip"></td>
-                <td class="firstcolumn">
-                    <a href="/get/ConsoleApplication1.zip">ConsoleApplication1.zip</a>        </td>
-                <td>.zip</td>
-                <td class="numeric">1.00 MB</td>
-                <td class="date">31-Aug-2012</td>
-                <td>
-                    <a href="/upload/Delete?filePath=%2FConsoleApplication1.zip">Delete</a>
-                </td>
-            </tr>
-            <tr>
-                <td><img width="16" height="16" src="/Content/Images/FileTypes/png.png" alt=".PNG"></td>
-                <td class="firstcolumn">
-                    <a href="/get/consoleResult.PNG">consoleResult.PNG</a>        </td>
-                <td>.PNG</td>
-                <td class="numeric">11.00 KB</td>
-                <td class="date">31-Aug-2012</td>
-                <td>
-                    <a href="/upload/Delete?filePath=%2FconsoleResult.PNG">Delete</a>
-                </td>
-            </tr>
-            <tr>
-                <td><img width="16" height="16" src="/Content/Images/FileTypes/png.png" alt=".PNG"></td>
-                <td class="firstcolumn">
-                    <a href="/get/file_upload.PNG">file_upload.PNG</a>        </td>
-                <td>.PNG</td>
-                <td class="numeric">29.00 KB</td>
-                <td class="date">09-Sep-2012</td>
-                <td>
-                    <a href="/upload/Delete?filePath=%2Ffile_upload.PNG">Delete</a>
+                    <a ng-href="/upload/Delete?filePath=%2F{{name}}">Delete</a>
                 </td>
             </tr>
             </tbody></table>
@@ -110,21 +46,25 @@
 
     <h2>Upload</h2>
 
-    <form area="Admin" action="/upload/Upload/" enctype="multipart/form-data" method="post" novalidate="novalidate">    <div id="upload-container">
+    <form area="Admin" action="/files" enctype="multipart/form-data" method="post" novalidate="novalidate">
+        <div id="upload-container">
         <div>
-            <input type="hidden" name="path" value="/">
-            <input class="upload" type="file" name="upload-1">&nbsp;<input type="checkbox" name="unzip-upload-1" id="unzip-upload-1" title="unzip" value="true"><label for="unzip-upload-1">unzip</label>&nbsp;<a class="delete-upload" title="delete">delete</a>
+            <input class="upload" type="file" name="uploadFile">
+            &nbsp;
+            <input type="checkbox" name="unzipUpload" id="unzipUpload" title="unzip" value="true">
+            <label for="unzipUpload">unzip</label>
+            &nbsp;
+            <a class="delete-upload" title="delete">delete</a>
         </div>
     </div>
         <input type="submit" value="Submit">
     </form>
     <h2>Create Directory</h2>
 
-    <form area="Admin" action="/upload/CreateDirectory/" enctype="multipart/form-data" method="post" novalidate="novalidate">  <input type="hidden" name="path" value="/">
+    <form area="Admin" action="/folders" enctype="multipart/form-data" method="post" novalidate="novalidate">
         <input type="text" name="name">
         <input type="submit" value="Submit">
     </form>
     Current Storage Provider: Filesystem
-
 
 </div>
