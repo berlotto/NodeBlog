@@ -61,8 +61,9 @@ var setupRoutes = function(server)
   server.delete('/comments/:id', comments.delete);
   server.post('/comments', comments.create);
 
+  server.get('/files', files.get);
   server.post('/files', files.upload);
-  server.delete('/files', files.delete);
+  server.delete('/files/:id', files.delete);
 
   /////// ERROR ROUTING  /////////
   //A Route for Creating a 500 Error (Useful to keep around)
