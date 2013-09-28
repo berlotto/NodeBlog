@@ -347,3 +347,15 @@ a.delete-upload:hover
     cursor: hand;
     cursor: pointer;
 }
+
+.upload-container{
+    width: 400px;
+    height: 200px;
+    border: dotted 1px #d3d3d3;
+}
+.upload-container .instr{
+    font-size: 4em;
+    color: #d1d1d1;
+    margin:40px 0 0 40px;
+    font-family: FontAwesome;
+}

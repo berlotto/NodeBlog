@@ -30,7 +30,8 @@
                 <!--</td>-->
             <!--</tr>-->
             <tr ng-repeat="file in files">
-                <td><img width="16" height="16" src="/public/FileTypes/{{file.fileTypeIcon}}" alt=".{{file.extension}}"></td>
+                <td><img width="16" height="16" src="/public/FileTypes/{{file.fileTypeIcon}}"
+                         alt=".{{file.extension}}"></td>
                 <td class="firstcolumn">
                     <a href="/get/{{file.name}}">{{file.name}}</a>
                 </td>
@@ -47,16 +48,17 @@
     <h2>Upload</h2>
 
     <form area="Admin" action="/files" enctype="multipart/form-data" method="post" novalidate="novalidate">
-        <div id="upload-container">
-        <div>
-            <input class="upload" type="file" name="uploadFile">
-            &nbsp;
-            <input type="checkbox" name="unzipUpload" id="unzipUpload" title="unzip" value="true">
-            <label for="unzipUpload">unzip</label>
-            &nbsp;
-            <a class="delete-upload" title="delete">delete</a>
+        <div id="upload-container" class="upload-container">
+            <div>
+                <input class="upload" type="file" name="uploadFile">
+                &nbsp;
+                <input type="checkbox" name="unzipUpload" id="unzipUpload" title="unzip" value="true">
+                <label for="unzipUpload">unzip</label>
+                &nbsp;
+                <a class="delete-upload" title="delete">delete</a>
+            </div>
+            <div class="instr">Drag files here</div>
         </div>
-    </div>
         <input type="submit" value="Upload">
     </form>
     <h2>Create Directory</h2>
