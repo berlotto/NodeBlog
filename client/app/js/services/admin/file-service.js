@@ -16,11 +16,14 @@
     var remove = function(id){
         return $http.delete('files/' + id);
     };
-
+    var list = function(){
+        return $http.get('files/');
+    };
     return {
       upload: upload,
       download: download,
-      remove: remove
+      remove: remove,
+      list: list
     }
   }]);
 })(window.ServiceModule);

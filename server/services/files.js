@@ -11,41 +11,8 @@
   var fs = require('fs'),
      path = require('path'),
      q = require('q');
-  var fileIcons;
-
-  var _init = function(){
-    var deferred = q.defer();
-    var temp = path.join(__dirname, '../../client/app/img/FileTypes');
-    fs.readdir(temp, function(err, files){
-      if(err) {
-        deferred.reject(err);;
-      }
-      var file, temp;
-      fileIcons = {};
-      for(var i = 0; i < files.length; i++){
-        file = files[i];
-        temp = file.split('.');
-        if(!temp || temp.length <= 1 || !temp[1]){
-          continue;
-        }
-        fileIcons[temp[1]] = file;
-      }
-      deferred.resolve(fileIcons);
-    });
-    return deferred.promise;
-  };
-  var initPromise = _init();
-
-  var _getIconByExt = function(ext){
-     if(!fileIcons.png){
-       return initPromise.then(function(icons){
-         return fileIcons[ext];
-       });
-     }
-     else{
-        return fileIcons[ext];
-     }
-  };
+  var fileIcons = {png: 'png.png', cs: 'cs.png', csproj: 'csproj.png', default: 'default.png', dir: 'dir.png',
+    doc: 'doc.png',  document: 'document.png',  gif: 'gif.png',  jpg: 'jpg.png',  link: 'link.png',  zip: 'zip.png'};
 
   var _getFiles =  function(){
     var deferred = q.defer();
@@ -60,12 +27,15 @@
       var results = [];
       for(var i = 0; i < files.length; i++){
         file = files[i];
-        console.log(file);
         temp = file.split('.');
         if(!temp || temp.length <= 1 || !temp[1]){
           continue;
         }
-        var item = {fileTypeIcon: '', extension:temp[1], name: temp[0], size: '', uploadedOn: ''};
+        //get stats for the file
+        var stat = fs.statSync(path.join(uploadPath, file));
+        console.log(JSON.stringify(stat));
+        var item = {fileTypeIcon: fileIcons[temp[1]], extension:temp[1], name: temp[0],
+          size: stat.size, uploadedOn: stat.atime};
         results.push(item);
       }
       deferred.resolve(results);

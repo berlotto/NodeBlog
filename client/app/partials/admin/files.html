@@ -30,15 +30,15 @@
                 <!--</td>-->
             <!--</tr>-->
             <tr ng-repeat="file in files">
-                <td><img width="16" height="16" src="/Content/Images/FileTypes/{{fileTypeIcon}}" alt=".{{extension}}"></td>
+                <td><img width="16" height="16" src="/public/FileTypes/{{file.fileTypeIcon}}" alt=".{{file.extension}}"></td>
                 <td class="firstcolumn">
-                    <a href="/get/{{name}}">{{name}}</a>
+                    <a href="/get/{{file.name}}">{{file.name}}</a>
                 </td>
-                <td>.{{extension}}</td>
-                <td class="numeric">{{size}}</td>
-                <td class="date">{{uploadedOn}}</td>
+                <td>.{{file.extension}}</td>
+                <td class="numeric">{{file.size}}</td>
+                <td class="date">{{file.uploadedOn}}</td>
                 <td>
-                    <a ng-href="/upload/Delete?filePath=%2F{{name}}">Delete</a>
+                    <a ng-href="/delete?filePath={{file.name + '.' + file.extension}}">Delete</a>
                 </td>
             </tr>
             </tbody></table>
@@ -57,13 +57,13 @@
             <a class="delete-upload" title="delete">delete</a>
         </div>
     </div>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Upload">
     </form>
     <h2>Create Directory</h2>
 
     <form area="Admin" action="/folders" enctype="multipart/form-data" method="post" novalidate="novalidate">
         <input type="text" name="name">
-        <input type="submit" value="Submit">
+        <input type="submit" value="Create">
     </form>
     Current Storage Provider: Filesystem
 
