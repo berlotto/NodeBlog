@@ -4,7 +4,6 @@
  */
 
 var express = require('express')
-  , connect = require('connect')
   , path = require('path')
   , interaction = require('./server/infrastructure/interaction.js')
   , routes = require('./server/infrastructure/routes.js');

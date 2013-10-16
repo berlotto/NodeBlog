@@ -1,10 +1,29 @@
 var fs = require('fs'),
+    passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy;
     path = require('path'),
     blogs = require('../services/blogs.js'),
     comments = require('../services/comments.js'),
     files = require('../services/files.js'),
     users = require('../services/users.js'),
     errors = require('./errors');
+
+
+
+///////////////////////////////////////////
+//         Security With Passport        //
+///////////////////////////////////////////
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+        users.validate(username, password, function (err, user) {
+            if (err) { return done(err); }
+            if (!user) {
+                return done(null, false, { message: 'Incorrect username or password.' });
+            }
+            return done(null, user);
+        });
+    }
+));
 
 ///////////////////////////////////////////
 //              Routes                   //

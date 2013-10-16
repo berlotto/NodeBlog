@@ -8,22 +8,10 @@
 (function(){
   var MongoClient = require('mongodb').MongoClient
     , format = require('util').format
+    , baseDac = require('./base-dac')
     , q = require('q');
 
-  var host = process.env['MONGO_NODE_DRIVER_HOST'] != null ? process.env['MONGO_NODE_DRIVER_HOST'] : 'localhost';
-  var port = process.env['MONGO_NODE_DRIVER_PORT'] != null ? process.env['MONGO_NODE_DRIVER_PORT'] : 27017;
-  var database = null;
-  var _init = function(){
-    var deferred = q.defer();
-    if(database){
-      deferred.resolve(database);
-    }
-    MongoClient.connect(format("mongodb://%s:%s/blogs?w=1", host, port), function(err, db) {
-      database = db;
-      deferred.resolve(db);
-    });
-    return deferred.promise;
-  };
+  var _init = baseDac.init;
 
 /*********************Private functions*************************/
   var _findAll = function(options){
@@ -79,7 +67,6 @@
       comments: []
     });
     var postRecords = [];
-    console.log("Connecting to " + host + ":" + port);
 
     var getPosts = function(coll, callback){
       coll.find().each(function(err, item) {
