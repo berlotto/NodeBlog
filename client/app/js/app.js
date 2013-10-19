@@ -8,16 +8,16 @@
     $routeProvider.when('/posts/:pid', {templateUrl: 'partials/blogDetails.html', controller: 'BlogDetailsCtrl'});
     $routeProvider.when('/search', {templateUrl: 'partials/search.html', controller: 'BlogSearchCtrl'});
     $routeProvider.when('/searchResult/', {templateUrl: 'partials/searchResult.html', controller: 'BlogSearchResultCtrl'});
-    $routeProvider.when('/admin', {templateUrl: 'partials/admin/taskList.html', controller: 'AdminTaskListCtrl'});
-    $routeProvider.when('/admin/login', {templateUrl: 'partials/admin/login.html', controller: 'AdminLoginCtrl'});
-    $routeProvider.when('/admin/posts', {templateUrl: 'partials/admin/posts.html', controller: 'AdminPostsCtrl'});
-    $routeProvider.when('/admin/create', {templateUrl: 'partials/admin/create.html', controller: 'AdminPostCreateCtrl'});
-    $routeProvider.when('/admin/posts/:pid', {templateUrl: 'partials/admin/edit.html', controller: 'AdminPostEditCtrl'});
-    $routeProvider.when('/admin/comments', {templateUrl: 'partials/admin/comments.html', controller: 'AdminCommentsCtrl'});
-    $routeProvider.when('/admin/tasks', {templateUrl: 'partials/admin/tasks.html', controller: 'AdminTasksCtrl'});
-    $routeProvider.when('/admin/files', {templateUrl: 'partials/admin/files.html', controller: 'AdminFilesCtrl'});
-    $routeProvider.when('/admin/pingBacks', {templateUrl: 'partials/admin/pingBacks.html', controller: 'AdminPingBacksCtrl'});
-    $routeProvider.when('/admin/settings', {templateUrl: 'partials/admin/settings.html', controller: 'AdminSettingsCtrl'});
+    $routeProvider.when('/partials', {templateUrl: 'partials/partials/taskList.html', controller: 'AdminTaskListCtrl'});
+    $routeProvider.when('/partials/login', {templateUrl: 'partials/partials/login.html', controller: 'AdminLoginCtrl'});
+    $routeProvider.when('/partials/posts', {templateUrl: 'partials/partials/posts.html', controller: 'AdminPostsCtrl'});
+    $routeProvider.when('/partials/create', {templateUrl: 'partials/partials/create.html', controller: 'AdminPostCreateCtrl'});
+    $routeProvider.when('/partials/posts/:pid', {templateUrl: 'partials/partials/edit.html', controller: 'AdminPostEditCtrl'});
+    $routeProvider.when('/partials/comments', {templateUrl: 'partials/partials/comments.html', controller: 'AdminCommentsCtrl'});
+    $routeProvider.when('/partials/tasks', {templateUrl: 'partials/partials/tasks.html', controller: 'AdminTasksCtrl'});
+    $routeProvider.when('/partials/files', {templateUrl: 'partials/partials/files.html', controller: 'AdminFilesCtrl'});
+    $routeProvider.when('/partials/pingBacks', {templateUrl: 'partials/partials/pingBacks.html', controller: 'AdminPingBacksCtrl'});
+    $routeProvider.when('/partials/settings', {templateUrl: 'partials/partials/settings.html', controller: 'AdminSettingsCtrl'});
 
     $routeProvider.otherwise({redirectTo: '/'});
   }]);

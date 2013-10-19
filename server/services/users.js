@@ -34,7 +34,13 @@
         return deferred.promise;
     };
 
+
+    var findByEmail = function(email){
+        return dac.findByEmail(email);
+    };
+
     exports.validate = validate;
+    exports.findByEmail = findByEmail;
 })();
 
 

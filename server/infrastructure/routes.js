@@ -5,35 +5,7 @@ var fs = require('fs'),
     blogs = require('../services/blogs.js'),
     comments = require('../services/comments.js'),
     files = require('../services/files.js'),
-    users = require('../services/users.js'),
     errors = require('./errors');
-
-
-
-///////////////////////////////////////////
-//         Security With Passport        //
-///////////////////////////////////////////
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-    User.findOne({ _id: id }, function (err, user) {
-        done(err, user);
-    });
-});
-
-passport.use(new LocalStrategy(
-    function(username, password, done) {
-        users.validate(username, password, function (err, user) {
-            if (err) { return done(err); }
-            if (!user) {
-                return done(null, false, { message: 'Incorrect username or password.' });
-            }
-            return done(null, user);
-        });
-    }
-));
 
 ///////////////////////////////////////////
 //              Routes                   //
@@ -75,12 +47,7 @@ var setupRoutes = function(server)
       res.send(req.session.name);
   });
 
-
-  //Passport module configuration
-  server.get('/admin', passport.authenticate('local'));
-
-
-    //////////////////////////////////////
+  //////////////////////////////////////
   //////////RESTful Web Api//////////////
   /////////////////////////////////////
   server.get('/posts', blogs.findAll);
