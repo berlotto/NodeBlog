@@ -17,7 +17,10 @@
   var _findAll = function(options){
     var deferred = q.defer();
 
-    var users = [];//TODO initialize default users from config file
+    var users = [];//Initialize default users from config file
+    users.push({email:'jeff@jeffjin.com', name:'Jeff Jin', password:'1111'});
+    users.push({email:'jeff@jeffjin.net', name:'Jeff Kim', password:'1111'});
+    users.push({email:'jeff@nodeblog.ca', name:'Jeff Z', password:'1111'});
 
     var getUsers = function(coll, callback){
       coll.find().each(function(err, item) {

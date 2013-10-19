@@ -1,6 +1,6 @@
 /**
  * Created with JetBrains WebStorm.
- * User: jeffjin
+ * User: jeff jin
  * Date: 7/27/13
  * Time: 12:59 AM
  * To change this template use File | Settings | File Templates.
@@ -13,7 +13,7 @@
         var deferred = q.defer();
         var userPromise = dac.findByEmail(userName);
         userPromise.then(function(user){
-            if(user.password === password){//TODO MD5 hash
+            if(user.password === password){//TODO MD5 hash check
                 if(callback){
                     callback(null, user);
                 }

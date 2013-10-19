@@ -13,6 +13,16 @@ var fs = require('fs'),
 ///////////////////////////////////////////
 //         Security With Passport        //
 ///////////////////////////////////////////
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+    User.findOne({ _id: id }, function (err, user) {
+        done(err, user);
+    });
+});
+
 passport.use(new LocalStrategy(
     function(username, password, done) {
         users.validate(username, password, function (err, user) {
@@ -65,8 +75,14 @@ var setupRoutes = function(server)
       res.send(req.session.name);
   });
 
-  /////// RESTFUL API ROUTING  /////////
-  //TODO implement findALl and patch/update
+
+  //Passport module configuration
+  server.get('/admin', passport.authenticate('local'));
+
+
+    //////////////////////////////////////
+  //////////RESTful Web Api//////////////
+  /////////////////////////////////////
   server.get('/posts', blogs.findAll);
   server.get('/posts/:id', blogs.find);
   server.put('/posts/:id', blogs.update);
