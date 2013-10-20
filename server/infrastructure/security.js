@@ -38,5 +38,22 @@ var init = function (passport, config) {
             //users.findOrCreateFaceBookUser(profile, done);
         }));
     };
+// Simple route middleware to ensure user is authenticated.  Otherwise send to login page.
+var ensureAuthenticated = function ensureAuthenticated(req, res, next) {
+    console.log('check authentication...')
+    if (req.isAuthenticated()) { return next(); }
+    res.send(403);
+};
+
+// Check for admin middleware, this is unrelated to passport.js
+// You can delete this if you use different method to check for admins or don't need admins
+var ensureAdmin = function ensureAdmin(req, res, next) {
+    if(req.user && req.user.admin === true)
+        next();
+    else
+        res.send(403);
+};
 
 module.exports.init = init;
+module.exports.ensureAdmin = ensureAdmin;
+module.exports.ensureAuthenticated = ensureAuthenticated;

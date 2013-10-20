@@ -1,10 +1,9 @@
 var fs = require('fs'),
-    passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy;
     path = require('path'),
     blogs = require('../services/blogs.js'),
     comments = require('../services/comments.js'),
     files = require('../services/files.js'),
+    security = require('./security.js'),
     errors = require('./errors');
 
 ///////////////////////////////////////////
@@ -26,9 +25,17 @@ var setupRoutes = function(server)
       });
   };
 
+
   /////// PAGE ROUTING  /////////
   server.get('/', function(req,res){
-    mapResource(req, res, fs, '../../client/app', 'index.html');
+    mapResource(req, res, fs, '../../client', 'index.html');
+  });
+
+  // set up our security to be enforced on all requests to secure paths
+  server.get('/admin/:dir/:file',  function(req,res){
+      return security.ensureAuthenticated(req, res, function(){
+          mapResource(req, res, fs, '../../client/admin/' + req.params.dir, req.params.file);
+      });
   });
 
   server.post('/postmarkinbound', function(req, res){
@@ -75,8 +82,8 @@ var setupRoutes = function(server)
   //server.get('/*',errors.notFound);
 };
 
-var setupSockets = function (s){
-   comments.initSocket(s);
+var setupSockets = function (socket){
+   comments.initSocket(socket);
   //blogs.initSocket(s);
 } ;
 

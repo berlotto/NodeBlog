@@ -22,7 +22,6 @@ security.init(passport, config);
 console.log('start configuring expressJS...');
 var server = express();
 
-
 server.configure(function(){
     server.set('port', process.env.PORT || 3000);
     server.use(express.favicon());
@@ -33,9 +32,8 @@ server.configure(function(){
     server.use(passport.initialize());
     server.use(express.methodOverride());
     server.use(server.router);
-    //TODO Need to protect partials related files with Passport Authentication
-    //server.use(express.static(path.join(__dirname, '/client/app/partials')));
-    server.use(express.static(path.join(__dirname, '/client/app')));
+    server.use('/app', express.static(path.join(__dirname, '/client/app')));
+//    server.use('/admin', express.static(path.join(__dirname, '/client/admin')));
     server.use('/public', express.static(path.join(__dirname, '/public')));
 });
 

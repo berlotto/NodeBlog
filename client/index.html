@@ -14,10 +14,10 @@
     <link title="Blog Feed" rel="alternate" type="application/atom+xml" href="http://localhost:8033/feed">
     <link title="Comments Feed" rel="alternate" type="application/atom+xml" href="http://localhost:8033/commentfeed">
     <link rel="EditURI" type="application/rsd+xml" href="http://localhost:8033/rsd.xml" title="RSD">
-    <link href="img/favicon.png" type="image/png" rel="icon">
-    <link rel="stylesheet" type="text/css" href="css/base.css?cdv=1">
-    <link rel="stylesheet" type="text/css" href="css/admin.css?cdv=1">
-    <link rel="stylesheet" type="text/css" href="css/theme.css?cdv=1">
+    <link href="app/img/favicon.png" type="image/png" rel="icon">
+    <link rel="stylesheet" type="text/css" href="app/css/base.css?cdv=1">
+    <link rel="stylesheet" type="text/css" href="app/css/admin.css?cdv=1">
+    <link rel="stylesheet" type="text/css" href="app/css/theme.css?cdv=1">
 
     <meta content="Jeff Jin Consulting" name="description">
     <meta content=".net, c#, WCF, javascript, jquery, AngularJS, NodeJs, NoSQL, MVC" name="keywords">
@@ -67,37 +67,37 @@
 
   <script src="/socket.io/socket.io.js"></script>
 
-  <script src="lib/jshash/md5-min.js"></script>
-  <script src="lib/marked.js"></script>
-  <script src="lib/prettify.js"></script>
-  <script src="lib/underscore.js"></script>
-  <script src="lib/underscore.string.js"></script>
+  <script src="app/lib/jshash/md5-min.js"></script>
+  <script src="app/lib/marked.js"></script>
+  <script src="app/lib/prettify.js"></script>
+  <script src="app/lib/underscore.js"></script>
+  <script src="app/lib/underscore.string.js"></script>
   <script>
       _.mixin(_.str.exports());
   </script>
-  <script src="lib/jquery.min.js"></script>
-  <script src="lib/angular/angular.js"></script>
-  <script src="lib/Markdown.Converter.js"></script>
-  <script src="lib/Markdown.Sanitizer.js"></script>
-  <script src="lib/Markdown.Editor.js"></script>
+  <script src="app/lib/jquery.min.js"></script>
+  <script src="app/lib/angular/angular.js"></script>
+  <script src="app/lib/Markdown.Converter.js"></script>
+  <script src="app/lib/Markdown.Sanitizer.js"></script>
+  <script src="app/lib/Markdown.Editor.js"></script>
 
-  <script src="js/localization.js"></script>
-  <script src="js/bootstrap.js"></script>
-  <script src="js/filters/filters.js"></script>
-  <script src="js/directives/markdown-editor.js"></script>
-  <script src="js/services/socket-service.js"></script>
-  <script src="js/services/blog-service.js"></script>
-  <script src="admin/services/settings-service.js"></script>
-  <script src="admin/services/file-service.js"></script>
-  <script src="admin/services/auth-service.js"></script>
-  <script src="admin/services/admin-blog-service.js"></script>
+  <script src="app/js/localization.js"></script>
+  <script src="app/bootstrap.js"></script>
+  <script src="app/js/filters/filters.js"></script>
+  <script src="app/js/directives/markdown-editor.js"></script>
+  <script src="app/js/services/socket-service.js"></script>
+  <script src="app/js/services/blog-service.js"></script>
 
-    <script src="js/controllers/blog-details.js"></script>
-  <script src="js/controllers/blog-admin.js"></script>
-  <script src="js/controllers/blog-list.js"></script>
-  <script src="js/controllers/blog-search.js"></script>
-  <script src="js/controllers/header.js"></script>
+  <script src="app/js/controllers/blog-details.js"></script>
+  <script src="app/js/controllers/blog-admin.js"></script>
+  <script src="app/js/controllers/blog-list.js"></script>
+  <script src="app/js/controllers/blog-search.js"></script>
+  <script src="app/js/controllers/header.js"></script>
 
+    <script src="admin/services/settings-service.js"></script>
+    <script src="admin/services/file-service.js"></script>
+    <script src="admin/services/auth-service.js"></script>
+    <script src="admin/services/admin-blog-service.js"></script>
     <script src="admin/controllers/admin-header.js"></script>
     <script src="admin/controllers/admin-posts.js"></script>
     <script src="admin/controllers/admin-post-edit.js"></script>
@@ -110,7 +110,7 @@
     <script src="admin/controllers/admin-tasks.js"></script>
     <script src="admin/controllers/admin-post-create.js"></script>
 
-  <script src="js/app.js"></script>
+  <script src="app/app.js"></script>
 
 </body>
 </html>
