@@ -6,55 +6,61 @@
  * To change this template use File | Settings | File Templates.
  */
 (function(){
-  var MongoClient = require('mongodb').MongoClient,
-     format = require('util').format,
-     baseDac = require('./base-dac'),
+  var baseDac = require('./base-dac'),
      q = require('q');
 
-  var _init = baseDac.init;
+  var _init = function(){
+      var users = [];//Initialize default users from config file
+      users.push({email:'jeff@jeffjin.com', name:'Jeff Jin', password:'1111'});
+      users.push({email:'jeff@jeffjin.net', name:'Jeff Kim', password:'1111'});
+      users.push({email:'jeff@nodeblog.ca', name:'Jeff Z', password:'1111'});
+
+      var deferred = q.defer();
+       baseDac.init().then(function(db){
+           var collection = db.collection('users');
+           collection.count({}, function(err, count) {
+               if(err){
+                   deferred.reject(err);
+               }
+               if(count === 0){
+                   collection.insert(users, {safe: true}, function(err, records){
+                       console.log(records.length + " records are inserted into the users collection.");
+                       deferred.resolve(db);
+                   });
+               }
+               else{
+                   deferred.resolve(db);
+               }
+           });
+
+          deferred.resolve(db);
+      }, function(reason){
+          deferred.reject(reason);
+      });
+      return deferred.promise;
+  };
+
 
 /*********************Private functions*************************/
-  var _findAll = function(options){
+  var _findAll = function(callback){
     var deferred = q.defer();
-
-    var users = [];//Initialize default users from config file
-    users.push({email:'jeff@jeffjin.com', name:'Jeff Jin', password:'1111'});
-    users.push({email:'jeff@jeffjin.net', name:'Jeff Kim', password:'1111'});
-    users.push({email:'jeff@nodeblog.ca', name:'Jeff Z', password:'1111'});
-
-    var getUsers = function(coll, callback){
-      coll.find().each(function(err, item) {
-        if(item != null) {
-          users.push(item);
-        }
-        else{//end of the query
-          if(callback){
-            callback(users);
-          }
-        }
-      })
-    };
-
+    var users = [];
     _init().then(function(db){
-      var collection = db.collection('users');
-      collection.count({}, function(err, count) {
-        if(err){
-          deferred.reject(err);
-        }
-        if(count === 0){
-          collection.insert(users, {safe: true}, function(err, records){
-            console.log(records.length + " records are inserted into the users collection.");
-            getUsers(collection, function(list){
-              deferred.resolve(list);
-            });
-          });
-        }
-        else{
-          getUsers(collection, function(list){
-            deferred.resolve(list);
-          });
-        }
-      });
+        var coll = db.collection('users');
+        coll.find().each(function(err, item) {
+            if(item != null) {
+                users.push(item);
+            }
+            else if(err){
+                deferred.reject(err);
+            }
+            else{//end of the query
+                if(callback){
+                    callback(users);
+                }
+                deferred.resolve(users);
+            }
+        });
     });
     return deferred.promise;
   };
@@ -66,10 +72,14 @@
       var collection = db.collection('users');
       collection.findOne({email: email}, function(err, item) {
         if(err || !item) {
-          deferred.reject(item);
+            console.log('user with email "' + email + '" was not found!');
+            deferred.reject(err);
         }
-        console.log('user with email "' + email + '" has been found successfully!');
-        deferred.resolve(item);
+        else{
+            console.log('user with email "' + email + '" has been found successfully!');
+            console.log('user => ' + JSON.stringify(item));
+            deferred.resolve(item);
+        }
       });
     });
     return deferred.promise;

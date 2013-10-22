@@ -38,13 +38,23 @@ var setupRoutes = function(server)
       });
   });
 
-  server.post('/postmarkinbound', function(req, res){
-    console.log('postmarkinbound => ' + JSON.stringify(req.body));
+  server.post('/authenticate',  function(req, res){
+      console.log('authenticate => ' + JSON.stringify(req.body));
+      security.validate(req.body.uname, req.body.pwd).then(function(result){
+
+          res.send(200);
+      }, function(reason){
+          res.send(403, 'Sorry! you cant see that.');
+      });
+  });
+
+  server.post('/postmarkInbound', function(req, res){
+    console.log('postmarkInbound => ' + JSON.stringify(req.body));
     res.send(req.body);
   });
 
-  server.post('/postmarkbounce', function(req, res){
-      console.log('postmarkbounce => ' + req.body);
+  server.post('/postmarkBounce', function(req, res){
+      console.log('postmarkBounce => ' + req.body);
       res.send(req.body);
     });
 

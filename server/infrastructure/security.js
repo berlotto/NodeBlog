@@ -8,6 +8,7 @@ var LocalStrategy = require('passport-local').Strategy
 ///////////////////////////////////////////
 
 var init = function (passport, config) {
+    console.log('Initialize passport authentication...')
     passport.serializeUser(function(user, done) {
         done(null, user.email);
     });
@@ -39,7 +40,7 @@ var init = function (passport, config) {
         }));
     };
 // Simple route middleware to ensure user is authenticated.  Otherwise send to login page.
-var ensureAuthenticated = function ensureAuthenticated(req, res, next) {
+var ensureAuthenticated = function(req, res, next) {
     console.log('check authentication...')
     if (req.isAuthenticated()) { return next(); }
     res.send(403);
@@ -47,13 +48,18 @@ var ensureAuthenticated = function ensureAuthenticated(req, res, next) {
 
 // Check for admin middleware, this is unrelated to passport.js
 // You can delete this if you use different method to check for admins or don't need admins
-var ensureAdmin = function ensureAdmin(req, res, next) {
+var ensureAdmin = function(req, res, next) {
     if(req.user && req.user.admin === true)
         next();
     else
         res.send(403);
 };
 
+var validate = function(uname, pwd) {
+    return users.validate(uname, pwd);
+};
+
 module.exports.init = init;
+module.exports.validate = validate;
 module.exports.ensureAdmin = ensureAdmin;
 module.exports.ensureAuthenticated = ensureAuthenticated;

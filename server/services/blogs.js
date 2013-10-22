@@ -22,7 +22,7 @@
 
     module.exports.findAll = function(req, res) {
       dac.findAll(null).then(function(result){
-        console.log(result);
+        //console.log(result);
         res.send(result);
       });
     };

@@ -7,7 +7,8 @@
  */
 
 (function(){
-    var dac = require('../repository/user-dac.js');
+    var q = require('q'),
+        dac = require('../repository/user-dac.js');
 
     var validate =function(userName, password, callback){
         var deferred = q.defer();

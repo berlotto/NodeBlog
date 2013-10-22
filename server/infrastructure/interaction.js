@@ -1,5 +1,5 @@
 var io = require('socket.io'),
-    q = require('q');
+    q = require('q'),
     util = require('util');
 
 //server is expressJS instance

@@ -6,9 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 (function(){
-  var MongoClient = require('mongodb').MongoClient
-    , format = require('util').format
-    , baseDac = require('./base-dac')
+  var baseDac = require('./base-dac')
     , q = require('q');
 
   var _init = baseDac.init;
