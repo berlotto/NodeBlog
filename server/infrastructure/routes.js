@@ -38,14 +38,18 @@ var setupRoutes = function(server)
       });
   });
 
-  server.post('/authenticate',  function(req, res){
+  server.post('/authenticate',  function(req, res, next){
       console.log('authenticate => ' + JSON.stringify(req.body));
-      security.validate(req.body.uname, req.body.pwd).then(function(result){
+//      return security.validate(req.body.uname, req.body.pwd).then(function(result){
+//          console.log('authentication success!');
+//          res.send(200);
+//      }, function(reason){
+//          console.log('authentication failure reason => ' + reason);
+//
+//          res.send(403, 'Sorry! you cant see that.');
+//      });
 
-          res.send(200);
-      }, function(reason){
-          res.send(403, 'Sorry! you cant see that.');
-      });
+      security.authenticate(req, res, next);
   });
 
   server.post('/postmarkInbound', function(req, res){

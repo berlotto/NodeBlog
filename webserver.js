@@ -12,12 +12,12 @@ var express = require('express')
 
 /////////////////////////////////
 ////////Setup and configure//////
-/////////ExpressJS Server////////
+/////////Express JS Server////////
 /////////////////////////////////
 
 var env = process.env.NODE_ENV || 'development',
     config = require('./server/infrastructure/config')[env];
-security.init(passport, config);
+    security.init(passport, config);
 
 console.log('start configuring expressJS...');
 var server = express();
@@ -27,10 +27,11 @@ server.configure(function(){
     server.use(express.favicon());
     server.use(express.logger('dev'));
     server.use(express.bodyParser());
-    server.use( express.cookieParser() );
+    server.use(express.cookieParser() );
     server.use(express.session({ secret: 'Ch!n00k 3tud1o' }));
-    server.use(passport.initialize());
     server.use(express.methodOverride());
+    server.use(passport.initialize());
+    server.use(passport.session());
     server.use(server.router);
     server.use('/app', express.static(path.join(__dirname, '/client/app')));
 //    server.use('/admin', express.static(path.join(__dirname, '/client/admin')));

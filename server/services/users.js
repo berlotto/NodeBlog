@@ -18,6 +18,7 @@
                 if(callback){
                     callback(null, user);
                 }
+
                 deferred.resolve(user);
             }
             else{
