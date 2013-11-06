@@ -10,27 +10,29 @@ var _passport = null;
 var init = function (passport, config) {
     console.log('Initialize passport authentication...');
     _passport = passport;
-    passport.serializeUser(function(user, done) {
+    _passport.serializeUser(function(user, done) {
         console.log('Passport serializing user ' + JSON.stringify(user));
         done(null, user.email);
     });
 
-    passport.deserializeUser(function(email, done) {
+    _passport.deserializeUser(function(email, done) {
         console.log('Passport deserializing user ' + email);
-        users.findByEmail(email).then(function (err, user) {
-            done(err, user);
+        users.findByEmail(email).then(function (user) {
+            done(null, user);
+        }, function(err){
+            done(err, null);
         });
     });
-    console.log('using LocalStrategy to initialize passport')
-    passport.use(new LocalStrategy(
+    _passport.use(new LocalStrategy(
         function(username, password, done) {
             console.log('validating ' + username);
-            users.validate(username, password, function (err, user) {
-                if (err) { return done(err); }
+            users.validate(username, password).then(function(user) {
                 if (!user) {
                     return done(null, false, { message: 'Incorrect username or password.' });
                 }
                 return done(null, user);
+            }, function(error){
+                return done(error);
             });
         }
     ));
@@ -42,7 +44,8 @@ var init = function (passport, config) {
 //        function(accessToken, refreshToken, profile, done) {
 //            //users.findOrCreateFaceBookUser(profile, done);
 //        }));
-    };
+    return _passport;
+};
 // Simple route middleware to ensure user is authenticated.  Otherwise send to login page.
 var ensureAuthenticated = function(req, res, next) {
     console.log('check authentication for user ' + JSON.stringify(req.user));
@@ -75,15 +78,15 @@ var authenticate = function(req, res, next) {
         console.warn('passport is not initialized.');
         return;
     }
-    return _passport.authenticate('local', function(err, user, info) {
+    _passport.authenticate('local', function(err, user, info) {
+        console.log('passport start authenticating ' + user + ', info = ' + info);
         if (err) { return next(err) }
         if (!user) {
-            req.flash('error', info.message);
-            return res.redirect('/login')
+            return res.redirect('/#/login')
         }
         req.logIn(user, function(err) {
             if (err) { return next(err); }
-            return res.redirect('/#/login/' + user.username);
+            return res.send(200);
         });
     })(req, res, next);
 };

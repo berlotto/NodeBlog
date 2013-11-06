@@ -15,9 +15,13 @@ var express = require('express')
 /////////Express JS Server////////
 /////////////////////////////////
 
+
+
 var env = process.env.NODE_ENV || 'development',
     config = require('./server/infrastructure/config')[env];
-    security.init(passport, config);
+
+//initialize passport
+passport = security.init(passport, config);
 
 console.log('start configuring expressJS...');
 var server = express();
@@ -28,7 +32,7 @@ server.configure(function(){
     server.use(express.logger('dev'));
     server.use(express.bodyParser());
     server.use(express.cookieParser() );
-    server.use(express.session({ secret: 'Ch!n00k 3tud1o' }));
+    server.use(express.session({ secret: 'Ch!n00k 3tud1o', key: 'sid' }));
     server.use(express.methodOverride());
     server.use(passport.initialize());
     server.use(passport.session());
@@ -37,7 +41,6 @@ server.configure(function(){
 //    server.use('/admin', express.static(path.join(__dirname, '/client/admin')));
     server.use('/public', express.static(path.join(__dirname, '/public')));
 });
-
 
 server.configure('development', function(){
     server.use(express.errorHandler());

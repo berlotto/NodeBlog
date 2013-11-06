@@ -8,10 +8,10 @@
 (function(module){
   module.service('authService', ['$http', function($http){
     var authenticate = function(userName, pwd){
-        return $http.post('authenticate/', {uname:userName, pwd: pwd});
+        return $http.post('authenticate/', {username:userName, password: pwd});
     };
     var authorize = function(userName, pwd){
-        return $http.post('/authorize', {uname:userName, pwd: pwd});
+        return $http.post('/authorize', {username:userName, password: pwd});
     };
 
     return {

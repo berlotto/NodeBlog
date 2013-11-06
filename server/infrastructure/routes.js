@@ -33,22 +33,13 @@ var setupRoutes = function(server)
 
   // set up our security to be enforced on all requests to secure paths
   server.get('/admin/:dir/:file',  function(req,res){
-      return security.ensureAuthenticated(req, res, function(){
+      security.ensureAuthenticated(req, res, function(){
           mapResource(req, res, fs, '../../client/admin/' + req.params.dir, req.params.file);
       });
   });
 
   server.post('/authenticate',  function(req, res, next){
       console.log('authenticate => ' + JSON.stringify(req.body));
-//      return security.validate(req.body.uname, req.body.pwd).then(function(result){
-//          console.log('authentication success!');
-//          res.send(200);
-//      }, function(reason){
-//          console.log('authentication failure reason => ' + reason);
-//
-//          res.send(403, 'Sorry! you cant see that.');
-//      });
-
       security.authenticate(req, res, next);
   });
 

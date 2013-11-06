@@ -6,10 +6,10 @@ module.controller('SiteLoginCtrl', ['$scope', '$location', 'authService',
   function($scope, $location, authService) {
     console.log('Initializing Site Login Controller');
 
-    $scope.login = function(uname, pwd){
-      console.log('validating user name ' + uname + ' with password ' + pwd);
+    $scope.login = function(username, password){
+      console.log('validating user name ' + username + ' with password ' + password);
 
-      authService.authenticate(uname, pwd).then(function(result){
+      authService.authenticate(username, password).then(function(result){
           console.log('success for ' + result);
           $location.path('/admin');
       }, function(reason){

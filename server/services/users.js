@@ -10,27 +10,17 @@
     var q = require('q'),
         dac = require('../repository/user-dac.js');
 
-    var validate =function(userName, password, callback){
+    var validate =function(userName, password){
         var deferred = q.defer();
         var userPromise = dac.findByEmail(userName);
         userPromise.then(function(user){
             if(user.password === password){//TODO MD5 hash check
-                if(callback){
-                    callback(null, user);
-                }
-
                 deferred.resolve(user);
             }
             else{
-                if(callback){
-                    callback("Invalid password", null);
-                }
                 deferred.reject("Invalid password");
             }
         }, function(reason){
-            if(callback){
-                callback(reason, null);
-            }
             deferred.reject(reason);
         });
         return deferred.promise;
