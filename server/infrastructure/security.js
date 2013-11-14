@@ -55,7 +55,7 @@ var ensureAuthenticated = function(req, res, next) {
         return next();
     }
     else{
-        res.send(403);
+        res.send(403);//serve login page
     }
 };
 
@@ -65,7 +65,7 @@ var ensureAdmin = function(req, res, next) {
     if(req.user && req.user.admin === true)
         next();
     else
-        res.send(403);
+        res.send(401);//serve page not found
 };
 
 var validate = function(uname, pwd) {
@@ -76,7 +76,7 @@ var validate = function(uname, pwd) {
 var authenticate = function(req, res, next) {
     if(!_passport){
         console.warn('passport is not initialized.');
-        return;
+        return res.send(500);
     }
     _passport.authenticate('local', function(err, user, info) {
         console.log('passport start authenticating ' + user + ', info = ' + info);

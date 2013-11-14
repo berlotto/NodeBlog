@@ -15,24 +15,37 @@ var setupRoutes = function(server)
 {
   var mapResource = function(req, res, fs, folder, file){
       var p = path.join(__dirname, folder, file);
-      fs.readFile(p, function(err, data){
-          if (err) {
-              res.writeHead(500);
-              return res.end('Error loading ' + file);
-          }
-          res.writeHead(200);
-          res.end(data);
-      });
+
+      if(file.endsWith('.js')){
+          console.log('sending javascript file: ' + file);
+          res.set('Content-Type', 'text/javascript');
+          res.sendfile(p);
+      }
+      else if(file.endsWith('.html')){
+          console.log('sending html file: ' + file);
+          res.set('Content-Type', 'text/html');
+          res.sendfile(p);
+      }
+      else{
+          fs.readFile(p, function(err, data){
+              if (err) {
+                  res.writeHead(500);
+                  return res.end('Error loading ' + file);
+              }
+              res.writeHead(200);
+              res.end(data);
+          });
+      }
   };
 
 
   /////// PAGE ROUTING  /////////
-  server.get('/', function(req,res){
+  server.get('/', function(req, res){
     mapResource(req, res, fs, '../../client', 'index.html');
   });
 
   // set up our security to be enforced on all requests to secure paths
-  server.get('/admin/:dir/:file',  function(req,res){
+  server.get('/admin/:dir/:file',  function(req, res){
       security.ensureAuthenticated(req, res, function(){
           mapResource(req, res, fs, '../../client/admin/' + req.params.dir, req.params.file);
       });
@@ -83,8 +96,9 @@ var setupRoutes = function(server)
   //A Route for Creating a 500 Error (Useful to keep around)
   server.get('/500',errors.serverError );
 
-  //The 404 Route (ALWAYS Keep this as the last route)
-  //server.get('/*',errors.notFound);
+  //The 404 Route
+  server.get('/400',errors.notFound);
+  // (ALWAYS Keep this as the last route)
 };
 
 var setupSockets = function (socket){

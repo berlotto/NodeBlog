@@ -5,10 +5,12 @@
 (function(module){
   module.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {templateUrl: 'app/partials/posts.html', controller: 'BlogListCtrl'});
-      $routeProvider.when('/login', {templateUrl: 'app/partials/login.html', controller: 'SiteLoginCtrl'});
-      $routeProvider.when('/posts/:pid', {templateUrl: 'app/partials/blogDetails.html', controller: 'BlogDetailsCtrl'});
+    $routeProvider.when('/login', {templateUrl: 'app/partials/login.html', controller: 'SiteLoginCtrl'});
+    $routeProvider.when('/posts/:pid', {templateUrl: 'app/partials/blogDetails.html', controller: 'BlogDetailsCtrl'});
     $routeProvider.when('/search', {templateUrl: 'app/partials/search.html', controller: 'BlogSearchCtrl'});
     $routeProvider.when('/searchResult/', {templateUrl: 'app/partials/searchResult.html', controller: 'BlogSearchResultCtrl'});
+
+    //admin routes
     $routeProvider.when('/admin', {templateUrl: 'admin/partials/taskList.html', controller: 'AdminTaskListCtrl'});
     $routeProvider.when('/admin/login', {templateUrl: 'admin/partials/login.html', controller: 'AdminLoginCtrl'});
     $routeProvider.when('/admin/posts', {templateUrl: 'admin/partials/posts.html', controller: 'AdminPostsCtrl'});
@@ -20,6 +22,10 @@
     $routeProvider.when('/admin/pingBacks', {templateUrl: 'admin/partials/pingBacks.html', controller: 'AdminPingBacksCtrl'});
     $routeProvider.when('/admin/settings', {templateUrl: 'admin/partials/settings.html', controller: 'AdminSettingsCtrl'});
 
+    //error routes
+    $routeProvider.when('/404', {templateUrl: 'app/partials/error.html', controller: 'ErrorCtrl'});
+
+    //default routes
     $routeProvider.otherwise({redirectTo: '/'});
   }]);
   module.run(function($rootScope, $window) {

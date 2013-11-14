@@ -3,11 +3,12 @@
  */
 
 (function(module){
-    module.factory('httpInterceptor', function ($q) {
+    module.factory('httpInterceptor', function ($q, $location) {
         return {
             // request method
             'request': function(config) {
                 console.log(' request method');
+
                 return config || $q.when(config);
             },
 
@@ -21,12 +22,21 @@
             // response method
             'response': function(response) {
                 console.log(' response method');
+
                 return response || $q.when(response);
             },
 
             // response error method
             'responseError': function(rejection) {
                 console.log(' response error method');
+                if(rejection.status === 403){
+                    //user not logged in, render login page
+                    $location.path('/login')
+                }
+                else{
+                    //do not have permission
+                    $location.path('/404')
+                }
                 return $q.reject(rejection);
             }
         };

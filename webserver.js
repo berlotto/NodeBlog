@@ -6,15 +6,19 @@
 var express = require('express')
   , path = require('path')
   , passport = require('passport')
+  , global = require('./server/infrastructure/global.js')
   , interaction = require('./server/infrastructure/interaction.js')
   , security = require('./server/infrastructure/security.js')
   , routes = require('./server/infrastructure/routes.js');
+
+//Global function configuration
+global.init();
+
 
 /////////////////////////////////
 ////////Setup and configure//////
 /////////Express JS Server////////
 /////////////////////////////////
-
 
 
 var env = process.env.NODE_ENV || 'development',
