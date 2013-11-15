@@ -6,6 +6,8 @@
  * To change this template use File | Settings | File Templates.
  */
 //Global function configuration
+
+
 var init = function (){
     //1) setup string endsWith
     if (typeof String.prototype.endsWith !== 'function') {

@@ -11,9 +11,12 @@ module.controller('SiteLoginCtrl', ['$scope', '$location', 'authService',
 
       authService.authenticate(username, password).then(function(result){
           console.log('success for ' + result);
+          console.log('loading all admin scripts...');
+          $scope.loadFile('/admin/controllers/admin-task-list.js', 'js');
+
           $location.path('/admin');
       }, function(reason){
-          alert(reason.data);
+          console.log(reason.data);
           $location.path('/login');
       });
 
