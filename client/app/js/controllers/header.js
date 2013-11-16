@@ -2,8 +2,13 @@
 
 /* Controllers */
 (function(module) {
-module.controller('HeaderCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+module.controller('HeaderCtrl', ['$scope', '$rootScope', '$routeParams', '$location',
+    function($scope, $rootScope, $routeParams, $location) {
      console.log('Initializing Header Controller');
-     $scope.headerText = 'junglelaw';
+     $scope.headerText = 'Law of the Jungle';
+     $scope.logout = function(){
+         console.log('logging out...');
+
+     };
   }]);
 })(window.CtrlModule);
