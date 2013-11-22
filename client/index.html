@@ -39,7 +39,7 @@
                 <ul>
                     <li><a href="/#/">Home</a></li>
                     <li><a href="/#/posts/latest">Latest Blog</a></li>
-                    <li><a href="https://www.github.com/JeffJin">Projects</a></li>
+                    <li><a href="/#/external?url=www.github.com/JeffJin">Projects</a></li>
                     <li><a href="https://www.fishoverflow.com">Games</a></li>
                     <li><a href="/#/admin">Settings</a></li>
                     <li><a href="" ng-click="logout()">Logout</a></li>
@@ -60,7 +60,6 @@
         <div ng-view></div>
     </div>
 
-
     <footer>
         <p>Powered by <a href="http://www.nodeblog.ca"><i>Node Blog</i></a>, AngularJS + NodeJS + MongoDB</p>
         <p>And the wolf that shall keep it may prosper, but the wolf that shall break it must die.</p>
@@ -68,31 +67,33 @@
 
   <script src="/socket.io/socket.io.js"></script>
 
-  <script src="app/lib/jshash/md5-min.js"></script>
-  <script src="app/lib/marked.js"></script>
-  <script src="app/lib/prettify.js"></script>
-  <script src="app/lib/underscore.js"></script>
-  <script src="app/lib/underscore.string.js"></script>
-  <script>
-      _.mixin(_.str.exports());
+    <script src="lib/jshash/md5-min.js"></script>
+    <script src="lib/marked.js"></script>
+    <script src="lib/prettify.js"></script>
+    <script src="lib/underscore/underscore.js"></script>
+    <script src="lib/underscore/underscore.string.js"></script>
+    <script>
+        _.mixin(_.str.exports());
   </script>
-  <script src="app/lib/jquery.min.js"></script>
-  <script src="app/lib/angular/angular.js"></script>
-  <script src="app/lib/Markdown.Converter.js"></script>
-  <script src="app/lib/Markdown.Sanitizer.js"></script>
-  <script src="app/lib/Markdown.Editor.js"></script>
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/angular/angular1.1.5.js"></script>
+    <script src="lib/Markdown.Converter.js"></script>
+    <script src="lib/Markdown.Sanitizer.js"></script>
+    <script src="lib/Markdown.Editor.js"></script>
 
-  <script src="app/js/localization.js"></script>
-  <script src="app/bootstrap.js"></script>
-  <script src="app/js/filters/filters.js"></script>
-  <script src="app/js/directives/markdown-editor.js"></script>
+    <script src="app/bootstrap.js"></script>
+    <script src="app/js/localization.js"></script>
+    <script src="app/js/filters/filters.js"></script>
+    <script src="app/js/directives/markdown-editor.js"></script>
   <script src="app/js/services/socket-service.js"></script>
   <script src="app/js/services/auth-service.js"></script>
   <script src="app/js/services/blog-service.js"></script>
+    <script src="app/js/services/session-service.js"></script>
 
-  <script src="app/js/providers/httpInterceptor.js"></script>
+    //http interceptor
+    <script src="app/js/providers/httpInterceptor.js"></script>
 
-  <script src="app/js/controllers/blog-details.js"></script>
+    <script src="app/js/controllers/blog-details.js"></script>
   <script src="app/js/controllers/blog-admin.js"></script>
   <script src="app/js/controllers/blog-list.js"></script>
   <script src="app/js/controllers/blog-search.js"></script>
@@ -118,5 +119,7 @@
 
   <script src="app/app.js"></script>
 
+    <!-- Load custom scripts via RequireJS -->
+    <!--<script src="/Scripts/require.js" data-main="/scripts/main"></script>-->
 </body>
 </html>

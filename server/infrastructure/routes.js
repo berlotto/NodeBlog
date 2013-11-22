@@ -56,8 +56,13 @@ var setupRoutes = function(server)
       security.authenticate(req, res, next);
   });
 
-  server.post('/postmarkInbound', function(req, res){
-    console.log('postmarkInbound => ' + JSON.stringify(req.body));
+    server.post('/logout', function (req, res) {
+        console.log('logging out... ');
+        security.logout(req, res);
+    });
+
+    server.post('/postmarkInbound', function (req, res) {
+        console.log('postmarkInbound => ' + JSON.stringify(req.body));
     res.send(req.body);
   });
 
