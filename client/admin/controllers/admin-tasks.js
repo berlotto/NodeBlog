@@ -2,10 +2,12 @@
 
 /* Controllers */
 
-(function(module) {
-  module.controller('AdminTasksCtrl', ['$scope', '$routeParams', 'adminTaskService', 'authService',
-    function($scope, $routeParams, adminTaskService, authService) {
-      console.log('Initializing AdminTasksCtrl Controller');
+(function (module) {
+    console.log('registering AdminTasksCtrl...')
 
-    }]);
-})(window.CtrlModule);
+    module.lazy.controller('AdminTasksCtrl', ['$scope', function ($scope) {
+        console.log('executingAdminTasksCtrl Controller');
+
+    }]
+    );
+})(window.app);

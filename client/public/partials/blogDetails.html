@@ -1,0 +1,131 @@
+<div class="intro">
+    <div class="intro-in">
+        <p>{{post.summary}}</p>
+    </div>
+</div>
+<div class="content">
+    <h1>
+        <a href="/{{post.topic}}">{{post.topic}}</a>
+    </h1>
+
+    <div class="entry-date">
+        <span class="month">{{post.month}} {{post.day}}</span>
+        <span class="year">{{post.year}}</span>
+    </div>
+    <div class="entry-container">
+
+        <div class="entry" ng-bind-html-unsafe="post.markedBody">
+        </div>
+
+        <div class="facebook">
+            <!--<iframe src="http://www.facebook.com/plugins/like.php?href=http%3a%2f%2flocalhost%3a8033%2fjavascript-singleton&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border: none; overflow: hidden; width: 450px; height: 80px;" allowtransparency="true"></iframe>-->
+        </div>
+        <span class="tags"></span>
+
+        <div class="entry-tools">
+            <span>Posted by: {{post.author}}</span>
+            <br>
+            <span>Last revised:
+                <a ng-href="/{{post.urlLink}}?revision={{revision}}">
+                <span class="date" title="{{post.month}} {{post.day}}, {{post.year}}">
+                    {{post.month}} {{post.day}}, {{post.year}}
+                </span>
+                </a>
+            </span>
+            <span><a href="/#/history-of/{{post.topic}}">History</a></span>
+        </div>
+
+    </div>
+    <div class="clear">
+    </div>
+    <div class="comments">
+        <div class="comments-in">
+            <a name="comments"></a>
+
+            <h2>Comments</h2>
+
+            <div ng-repeat="cmt in post.comments" class="comment">
+                <a name="comment-2"></a>
+
+                <div class="comment-author vcard">
+                    <!--<img class="gravatar photo" ng-src="http://www.gravatar.com/avatar/{{cmt.authorEmailHash}}&amp;size=50&amp;default=identicon" alt="{{cmt.authorName}}">-->
+                    <br>
+                    <span class="fn" url="">{{cmt.authorName}}</span>
+                </div>
+                <div class="comment-body">
+                    <div class="comment-date">
+                        <span class="date" title="{{cmt.month}} {{cmt.day}}, {{cmt.year}}">{{cmt.month}} {{cmt.day}}, {{cmt.year}}</span>
+                    </div>
+                    <p ng-bind-html-unsafe="cmt.body"></p>
+
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2>Your Comments</h2>
+
+    <div class="entry-comment">
+        <form class="promptBeforeUnload" novalidate="novalidate">
+            <div class="form-body">
+                <div class="editor-label">
+                    <label for="CommenterName">Name</label>
+                </div>
+                <div class="editor-field">
+                    <input class="medium" data-val="true"
+                           data-val-length="The field Name must be a string with a maximum length of 50."
+                           data-val-length-max="50" data-val-notallowed="Name contains inappropriate content."
+                           data-val-notallowed-notallowedwords="porn,adult,sex"
+                           data-val-required="The Name field is required."
+                           id="CommenterName" maxlength="50" name="CommenterName" type="text"
+                           ng-model="post.activeComment.authorName">
+                    <span class="field-validation-valid" data-valmsg-for="CommenterName"
+                          data-valmsg-replace="true"></span>
+
+                </div>
+                <div class="editor-label">
+                    <label for="CommenterBlog">Blog URL</label>
+                </div>
+                <div class="editor-field">
+                    <input class="medium" data-val="true"
+                           data-val-length="The field Blog URL must be a string with a maximum length of 200."
+                           data-val-length-max="200" id="CommenterBlog" maxlength="200" name="CommenterBlog" type="text"
+                           ng-model="post.activeComment.blogUrl">
+                    <span class="field-validation-valid" data-valmsg-for="CommenterBlog"
+                          data-valmsg-replace="true"></span>
+
+                </div>
+                <div class="editor-label">
+                    <label for="CommenterEmail">E-mail</label>
+                </div>
+                <div class="editor-field">
+                    <input class="medium" data-val="true"
+                           data-val-length="The field E-mail must be a string with a maximum length of 100."
+                           data-val-length-max="100" data-val-regex="Please enter a valid email address"
+                           data-val-regex-pattern="^[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+\.)+([A-Za-z0-9]{2,4}|museum)$"
+                           id="CommenterEmail" maxlength="100" name="CommenterEmail"
+                           type="text" ng-model="post.activeComment.authorEmail">
+                    <span class="field-validation-valid" data-valmsg-for="CommenterEmail"
+                          data-valmsg-replace="true"></span>
+                    <span class="hint">Used for your <a href="http://en.gravatar.com/" class="new-window">gravatar</a>. Not required. Will not be public.</span>
+                </div>
+                <div class="editor-label">
+                    <label for="Comments">Comments</label>
+                </div>
+                <div class="editor-field">
+                    <div markdown-editor content="post.activeComment.body"></div>
+                </div>
+                <div id="wmd-preview" class="wmd-panel editor-field">
+                    <span ng-bind-html-unsafe="markDown(post.activeComment.body)"></span>
+                </div>
+                <div class="editor-field">
+                    <input type="button" ng-click="addComment(post.activeComment)" id="submit" class="submit"
+                           value="Submit">
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>

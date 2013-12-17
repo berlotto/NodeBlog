@@ -41,9 +41,9 @@ server.configure(function(){
     server.use(passport.initialize());
     server.use(passport.session());
     server.use(server.router);
-    server.use('/app', express.static(path.join(__dirname, '/client/app')));
+    server.use('/public', express.static(path.join(__dirname, '/client/public')));
     server.use('/lib', express.static(path.join(__dirname, '/client/lib')));
-    server.use('/public', express.static(path.join(__dirname, '/public')));
+    server.use('/shared', express.static(path.join(__dirname, '/public')));
 });
 
 server.configure('development', function(){

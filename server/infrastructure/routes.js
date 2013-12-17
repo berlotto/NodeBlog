@@ -38,8 +38,17 @@ var setupRoutes = function(server)
       }
   };
 
+    server.get('/client/appBootstrap.js', function (req, res) {
+        mapResource(req, res, fs, '../../client', 'appBootstrap.js');
+    });
+    server.get('/client/appModule.js', function (req, res) {
+        mapResource(req, res, fs, '../../client', 'appModule.js');
+    });
+    server.get('/client/appRoutes.js', function (req, res) {
+        mapResource(req, res, fs, '../../client', 'appRoutes.js');
+    });
 
-  /////// PAGE ROUTING  /////////
+    /////// PAGE ROUTING  /////////
   server.get('/', function(req, res){
     mapResource(req, res, fs, '../../client', 'index.html');
   });

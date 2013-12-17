@@ -1,9 +1,12 @@
 <!doctype html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"  ng-app="chinook"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"  ng-app="chinook"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"  ng-app="chinook"> <![endif]-->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js" lang="en"  ng-app="chinook">
+<html class="no-js" lang="en">
 <!--<![endif]-->
 <head>
     <title>The Law Of The Jungle</title>
@@ -14,10 +17,10 @@
     <link title="Blog Feed" rel="alternate" type="application/atom+xml" href="http://localhost:8033/feed">
     <link title="Comments Feed" rel="alternate" type="application/atom+xml" href="http://localhost:8033/commentfeed">
     <link rel="EditURI" type="application/rsd+xml" href="http://localhost:8033/rsd.xml" title="RSD">
-    <link href="app/img/favicon.png" type="image/png" rel="icon">
-    <link rel="stylesheet" type="text/css" href="app/css/base.css?cdv=1">
-    <link rel="stylesheet" type="text/css" href="app/css/admin.css?cdv=1">
-    <link rel="stylesheet" type="text/css" href="app/css/theme.css?cdv=1">
+    <link href="public/img/favicon.png" type="image/png" rel="icon">
+    <link rel="stylesheet" type="text/css" href="public/css/base.css?cdv=1">
+    <link rel="stylesheet" type="text/css" href="public/css/admin.css?cdv=1">
+    <link rel="stylesheet" type="text/css" href="public/css/theme.css?cdv=1">
 
     <meta content="Jeff Jin Consulting" name="description">
     <meta content=".net, c#, WCF, javascript, jquery, AngularJS, NodeJs, NoSQL, MVC" name="keywords">
@@ -32,8 +35,8 @@
     </script>
 </head>
 <body>
-    <header  ng-controller="HeaderCtrl">
-        <a title="The Law of the Jungle" href="/" class="logo">The Law of the Jungle</a>
+<header>
+    <a title="The Law of the Jungle" href="/" class="logo">The Law of the Jungle</a>
         <div>
             <nav>
                 <ul>
@@ -45,8 +48,8 @@
                     <li><a href="" ng-click="logout()">Logout</a></li>
                 </ul>
             </nav>
-            <div class="search" ng-controller="BlogSearchCtrl">
-                <form novalidate="novalidate">
+            <div class="search">
+            <form novalidate="novalidate">
                     <p>
                         <input type="text" value="" ng-model="keyword" name="q" id="q" class="medium" alt="Search">
                         <input type="button" ng-click="search(keyword)" value="Search" class="submit" id="search">
@@ -65,61 +68,27 @@
         <p>And the wolf that shall keep it may prosper, but the wolf that shall break it must die.</p>
     </footer>
 
-  <script src="/socket.io/socket.io.js"></script>
+<script src="/socket.io/socket.io.js"></script>
 
-    <script src="lib/jshash/md5-min.js"></script>
+<script src="lib/jshash/md5-min.js"></script>
     <script src="lib/marked.js"></script>
     <script src="lib/prettify.js"></script>
     <script src="lib/underscore/underscore.js"></script>
     <script src="lib/underscore/underscore.string.js"></script>
     <script>
         _.mixin(_.str.exports());
-  </script>
-    <script src="lib/jquery.min.js"></script>
-    <script src="lib/angular/angular1.1.5.js"></script>
-    <script src="lib/Markdown.Converter.js"></script>
+    </script>
+<script src="lib/jquery.min.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular/angular-route.js"></script>
+<script src="lib/Markdown.Converter.js"></script>
     <script src="lib/Markdown.Sanitizer.js"></script>
     <script src="lib/Markdown.Editor.js"></script>
 
-    <script src="app/bootstrap.js"></script>
-    <script src="app/js/localization.js"></script>
-    <script src="app/js/filters/filters.js"></script>
-    <script src="app/js/directives/markdown-editor.js"></script>
-  <script src="app/js/services/socket-service.js"></script>
-  <script src="app/js/services/auth-service.js"></script>
-  <script src="app/js/services/blog-service.js"></script>
-    <script src="app/js/services/session-service.js"></script>
-
     //http interceptor
-    <script src="app/js/providers/httpInterceptor.js"></script>
+<!--<script src="app/js/providers/httpInterceptor.js"></script>--
 
-    <script src="app/js/controllers/blog-details.js"></script>
-  <script src="app/js/controllers/blog-admin.js"></script>
-  <script src="app/js/controllers/blog-list.js"></script>
-  <script src="app/js/controllers/blog-search.js"></script>
-  <script src="app/js/controllers/header.js"></script>
-  <script src="app/js/controllers/site-login.js"></script>
-
-  <!--Admin scripts, protected area, to be loaded after user logged in-->
-    <!--<script src="admin/services/settings-service.js"></script>-->
-    <!--<script src="admin/services/file-service.js"></script>-->
-    <!--<script src="admin/services/admin-blog-service.js"></script>-->
-    <!--<script src="admin/controllers/admin-header.js"></script>-->
-    <!--<script src="admin/controllers/admin-posts.js"></script>-->
-    <!--<script src="admin/controllers/admin-post-edit.js"></script>-->
-    <!--<script src="admin/controllers/admin-settings.js"></script>-->
-    <!--<script src="admin/controllers/admin-task-list.js"></script>-->
-    <!--<script src="admin/controllers/admin-comments.js"></script>-->
-    <!--<script src="admin/controllers/admin-login.js"></script>-->
-    <!--<script src="admin/controllers/admin-files.js"></script>-->
-    <!--<script src="admin/controllers/admin-pingbacks.js"></script>-->
-    <!--<script src="admin/controllers/admin-tasks.js"></script>-->
-    <!--<script src="admin/controllers/admin-post-create.js"></script>-->
-  <!--Admin scripts, protected area-->
-
-  <script src="app/app.js"></script>
-
-    <!-- Load custom scripts via RequireJS -->
-    <!--<script src="/Scripts/require.js" data-main="/scripts/main"></script>-->
+<!-- Load custom scripts via RequireJS -->
+<script src="lib/require.js" data-main="/client/appBootstrap"></script>
 </body>
 </html>
