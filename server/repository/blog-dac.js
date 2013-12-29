@@ -97,6 +97,7 @@
         }
         else{
           getPosts(collection, function(list){
+              console.log(list.length + " records are found from the posts collection.");
             deferred.resolve(list);
           });
         }
@@ -152,9 +153,11 @@
     });
     return deferred.promise;
   };
+
   var _delete = function(id) {
 
   };
+
   var _create = function(post) {
     var deferred = q.defer();
     _init().then(function(db){
@@ -169,6 +172,7 @@
     });
     return deferred.promise;
   };
+
   var _addComment = function(postId, comment) {
     var deferred = q.defer();
     _init().then(function(db){

@@ -12,8 +12,7 @@
 
     var validate =function(userName, password){
         var deferred = q.defer();
-        var userPromise = dac.findByEmail(userName);
-        userPromise.then(function(user){
+        dac.findByEmail(userName).then(function(user){
             if(user.password === password){//TODO MD5 hash check
                 deferred.resolve(user);
             }

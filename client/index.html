@@ -1,12 +1,9 @@
 <!doctype html>
-<!--[if lt IE 7]>
-<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>
-<html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>
-<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"  ng-app="chinook"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"  ng-app="chinook"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"  ng-app="chinook"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js" lang="en">
+<html class="no-js" lang="en"  ng-app="chinook">
 <!--<![endif]-->
 <head>
     <title>The Law Of The Jungle</title>
@@ -17,10 +14,10 @@
     <link title="Blog Feed" rel="alternate" type="application/atom+xml" href="http://localhost:8033/feed">
     <link title="Comments Feed" rel="alternate" type="application/atom+xml" href="http://localhost:8033/commentfeed">
     <link rel="EditURI" type="application/rsd+xml" href="http://localhost:8033/rsd.xml" title="RSD">
-    <link href="public/img/favicon.png" type="image/png" rel="icon">
-    <link rel="stylesheet" type="text/css" href="public/css/base.css?cdv=1">
-    <link rel="stylesheet" type="text/css" href="public/css/admin.css?cdv=1">
-    <link rel="stylesheet" type="text/css" href="public/css/theme.css?cdv=1">
+    <link href="app/img/favicon.png" type="image/png" rel="icon">
+    <link rel="stylesheet" type="text/css" href="app/css/base.css?cdv=1">
+    <link rel="stylesheet" type="text/css" href="app/css/admin.css?cdv=1">
+    <link rel="stylesheet" type="text/css" href="app/css/theme.css?cdv=1">
 
     <meta content="Jeff Jin Consulting" name="description">
     <meta content=".net, c#, WCF, javascript, jquery, AngularJS, NodeJs, NoSQL, MVC" name="keywords">
@@ -35,21 +32,20 @@
     </script>
 </head>
 <body>
-<header>
-    <a title="The Law of the Jungle" href="/" class="logo">The Law of the Jungle</a>
+    <header  ng-controller="HeaderCtrl">
+        <a title="The Law of the Jungle" href="/" class="logo">The Law of the Jungle</a>
         <div>
             <nav>
                 <ul>
                     <li><a href="/#/">Home</a></li>
                     <li><a href="/#/posts/latest">Latest Blog</a></li>
-                    <li><a href="/#/external?url=www.github.com/JeffJin">Projects</a></li>
+                    <li><a href="https://www.github.com/JeffJin">Projects</a></li>
                     <li><a href="https://www.fishoverflow.com">Games</a></li>
-                    <li><a href="/#/admin">Settings</a></li>
-                    <li><a href="" ng-click="logout()">Logout</a></li>
+                    <li><a href="/#/admin">Admin</a></li>
                 </ul>
             </nav>
-            <div class="search">
-            <form novalidate="novalidate">
+            <div class="search" ng-controller="BlogSearchCtrl">
+                <form novalidate="novalidate">
                     <p>
                         <input type="text" value="" ng-model="keyword" name="q" id="q" class="medium" alt="Search">
                         <input type="button" ng-click="search(keyword)" value="Search" class="submit" id="search">
@@ -63,32 +59,63 @@
         <div ng-view></div>
     </div>
 
+
     <footer>
         <p>Powered by <a href="http://www.nodeblog.ca"><i>Node Blog</i></a>, AngularJS + NodeJS + MongoDB</p>
         <p>And the wolf that shall keep it may prosper, but the wolf that shall break it must die.</p>
     </footer>
 
-<script src="/socket.io/socket.io.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
 
-<script src="lib/jshash/md5-min.js"></script>
-    <script src="lib/marked.js"></script>
-    <script src="lib/prettify.js"></script>
-    <script src="lib/underscore/underscore.js"></script>
-    <script src="lib/underscore/underscore.string.js"></script>
-    <script>
-        _.mixin(_.str.exports());
-    </script>
-<script src="lib/jquery.min.js"></script>
-<script src="lib/angular/angular.js"></script>
-<script src="lib/angular/angular-route.js"></script>
-<script src="lib/Markdown.Converter.js"></script>
-    <script src="lib/Markdown.Sanitizer.js"></script>
-    <script src="lib/Markdown.Editor.js"></script>
+  <script src="app/lib/jshash/md5-min.js"></script>
+  <script src="app/lib/marked.js"></script>
+  <script src="app/lib/prettify.js"></script>
+  <script src="app/lib/underscore.js"></script>
+  <script src="app/lib/underscore.string.js"></script>
+  <script>
+      _.mixin(_.str.exports());
+  </script>
+  <script src="app/lib/jquery.min.js"></script>
+  <script src="app/lib/angular/angular.js"></script>
+  <script src="app/lib/Markdown.Converter.js"></script>
+  <script src="app/lib/Markdown.Sanitizer.js"></script>
+  <script src="app/lib/Markdown.Editor.js"></script>
 
-    //http interceptor
-<!--<script src="app/js/providers/httpInterceptor.js"></script>--
+  <script src="app/js/localization.js"></script>
+  <script src="app/bootstrap.js"></script>
+  <script src="app/js/filters/filters.js"></script>
+  <script src="app/js/directives/markdown-editor.js"></script>
+  <script src="app/js/services/socket-service.js"></script>
+  <script src="app/js/services/auth-service.js"></script>
+  <script src="app/js/services/blog-service.js"></script>
 
-<!-- Load custom scripts via RequireJS -->
-<script src="lib/require.js" data-main="/client/appBootstrap"></script>
+  <script src="app/js/providers/httpInterceptor.js"></script>
+
+  <script src="app/js/controllers/blog-details.js"></script>
+  <script src="app/js/controllers/blog-admin.js"></script>
+  <script src="app/js/controllers/blog-list.js"></script>
+  <script src="app/js/controllers/blog-search.js"></script>
+  <script src="app/js/controllers/header.js"></script>
+  <script src="app/js/controllers/error.js"></script>
+  <script src="app/js/controllers/site-login.js"></script>
+
+  <!--Admin scripts-->
+    <script src="app/js/services/admin/settings-service.js"></script>
+    <script src="app/js/services/admin/file-service.js"></script>
+    <script src="app/js/services/admin/admin-blog-service.js"></script>
+    <script src="app/js/controllers/admin/admin-header.js"></script>
+    <script src="app/js/controllers/admin/admin-posts.js"></script>
+    <script src="app/js/controllers/admin/admin-post-edit.js"></script>
+    <script src="app/js/controllers/admin/admin-settings.js"></script>
+    <script src="app/js/controllers/admin/admin-task-list.js"></script>
+    <script src="app/js/controllers/admin/admin-comments.js"></script>
+    <script src="app/js/controllers/admin/admin-files.js"></script>
+    <script src="app/js/controllers/admin/admin-pingbacks.js"></script>
+    <script src="app/js/controllers/admin/admin-tasks.js"></script>
+    <script src="app/js/controllers/admin/admin-post-create.js"></script>
+  <!--Admin scripts, protected area-->
+
+  <script src="app/app.js"></script>
+
 </body>
 </html>
