@@ -45,11 +45,11 @@ var setupRoutes = function(server)
   });
 
   // set up our security to be enforced on all requests to secure paths
-  server.get('/admin/:dir/:file',  function(req, res){
-      security.ensureAuthenticated(req, res, function(){
-          mapResource(req, res, fs, '../../client/admin/' + req.params.dir, req.params.file);
-      });
-  });
+//  server.get('/admin/:dir/:file',  function(req, res){
+//      security.ensureAuthenticated(req, res, function(){
+//          mapResource(req, res, fs, '../../client/admin/' + req.params.dir, req.params.file);
+//      });
+//  });
 
   server.post('/authenticate',  function(req, res, next){
       console.log('authenticate => ' + JSON.stringify(req.body));

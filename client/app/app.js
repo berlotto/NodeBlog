@@ -11,16 +11,16 @@
     $routeProvider.when('/searchResult/', {templateUrl: 'app/partials/searchResult.html', controller: 'BlogSearchResultCtrl'});
 
     //admin routes
-    $routeProvider.when('/admin', {templateUrl: 'admin/partials/taskList.html', controller: 'AdminTaskListCtrl'});
-    $routeProvider.when('/admin/login', {templateUrl: 'admin/partials/login.html', controller: 'AdminLoginCtrl'});
-    $routeProvider.when('/admin/posts', {templateUrl: 'admin/partials/posts.html', controller: 'AdminPostsCtrl'});
-    $routeProvider.when('/admin/create', {templateUrl: 'admin/partials/create.html', controller: 'AdminPostCreateCtrl'});
-    $routeProvider.when('/admin/posts/:pid', {templateUrl: 'admin/partials/edit.html', controller: 'AdminPostEditCtrl'});
-    $routeProvider.when('/admin/comments', {templateUrl: 'admin/partials/comments.html', controller: 'AdminCommentsCtrl'});
-    $routeProvider.when('/admin/tasks', {templateUrl: 'admin/partials/tasks.html', controller: 'AdminTasksCtrl'});
-    $routeProvider.when('/admin/files', {templateUrl: 'admin/partials/files.html', controller: 'AdminFilesCtrl'});
-    $routeProvider.when('/admin/pingBacks', {templateUrl: 'admin/partials/pingBacks.html', controller: 'AdminPingBacksCtrl'});
-    $routeProvider.when('/admin/settings', {templateUrl: 'admin/partials/settings.html', controller: 'AdminSettingsCtrl'});
+    $routeProvider.when('/admin', {templateUrl: 'app/partials/admin/taskList.html', controller: 'AdminTaskListCtrl'});
+    $routeProvider.when('/admin/login', {templateUrl: 'app/partials/admin/login.html', controller: 'AdminLoginCtrl'});
+    $routeProvider.when('/admin/posts', {templateUrl: 'app/partials/admin/posts.html', controller: 'AdminPostsCtrl'});
+    $routeProvider.when('/admin/create', {templateUrl: 'app/partials/admin/create.html', controller: 'AdminPostCreateCtrl'});
+    $routeProvider.when('/admin/posts/:pid', {templateUrl: 'app/partials/admin/edit.html', controller: 'AdminPostEditCtrl'});
+    $routeProvider.when('/admin/comments', {templateUrl: 'app/partials/admin/comments.html', controller: 'AdminCommentsCtrl'});
+    $routeProvider.when('/admin/tasks', {templateUrl: 'app/partials/admin/tasks.html', controller: 'AdminTasksCtrl'});
+    $routeProvider.when('/admin/files', {templateUrl: 'app/partials/admin/files.html', controller: 'AdminFilesCtrl'});
+    $routeProvider.when('/admin/pingBacks', {templateUrl: 'app/partials/admin/pingBacks.html', controller: 'AdminPingBacksCtrl'});
+    $routeProvider.when('/admin/settings', {templateUrl: 'app/partials/admin/settings.html', controller: 'AdminSettingsCtrl'});
 
     //error routes
     $routeProvider.when('/404', {templateUrl: 'app/partials/error.html', controller: 'ErrorCtrl'});

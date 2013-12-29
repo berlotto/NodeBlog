@@ -11,7 +11,7 @@
         $scope.posts = data;
       }).
       error(function(data, status, headers, config) {
-        alert(status + ',' +data);
+        console.error(status + ',' +data);
       });
 
   }]);

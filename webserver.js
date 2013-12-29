@@ -42,7 +42,6 @@ server.configure(function(){
     server.use(passport.session());
     server.use(server.router);
     server.use('/app', express.static(path.join(__dirname, '/client/app')));
-//    server.use('/admin', express.static(path.join(__dirname, '/client/admin')));
     server.use('/public', express.static(path.join(__dirname, '/public')));
 });
 

@@ -80,12 +80,12 @@ var authenticate = function(req, res, next) {
     }
     _passport.authenticate('local', function(err, user, info) {
         console.log('passport start authenticating ' + user + ', info = ' + info);
-        if (err) { return next(err) }
+        if (err && next) { return next(err) }
         if (!user) {
             return res.redirect('/#/login')
         }
         req.logIn(user, function(err) {
-            if (err) { return next(err); }
+            if (err && next) { return next(err); }
             return res.send(200);
         });
     })(req, res, next);

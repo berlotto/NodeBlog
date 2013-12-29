@@ -19,7 +19,7 @@
         $scope.post = data;
         $scope.post.markedBody = marked(data.body);
       }).error(function(data, status, headers, config) {
-        alert(status + ',' +data);
+        console.error(status + ',' +data);
       });
 
       $scope.addComment = function(cmt){
