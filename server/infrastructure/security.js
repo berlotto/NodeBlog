@@ -86,7 +86,7 @@ var authenticate = function(req, res, next) {
         }
         req.logIn(user, function(err) {
             if (err && next) { return next(err); }
-            return res.send(200);
+            return res.send(user);
         });
     })(req, res, next);
 };
