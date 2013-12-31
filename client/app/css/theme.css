@@ -105,6 +105,11 @@ header nav ul li a:hover {
     margin: 0 0 10px;
     padding: 0;
 }
+.comment .comment-date a{
+    color: #444444;
+    font-weight: bold;
+    text-decoration:underline;
+}
 pre {
     background: none repeat scroll 0 0 #F0E8E8;
     border: 1px dotted #D0A090;

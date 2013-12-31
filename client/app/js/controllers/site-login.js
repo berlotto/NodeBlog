@@ -11,7 +11,7 @@ module.controller('SiteLoginCtrl', ['$scope', '$rootScope', '$location', 'authSe
 
       authService.authenticate(username, password).then(function(result){
           console.log('success for ' + result);
-          $rootScope.loggedInAs = result.config.data;
+          $rootScope.loggedInAs = result.data;
           $location.path('/admin');
       }, function(reason){
           console.error(reason.data);

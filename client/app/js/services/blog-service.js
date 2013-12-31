@@ -13,14 +13,14 @@
     var getDetails = function(id){
         return $http.get('posts/' + id);
     };
-    var addComment = function(comment, postId){
+    var saveComment = function(comment, postId){
         return $http.post('comments/', {postId: postId, comment: comment});
     };
 
     return {
       getPosts: getList,
       getPostDetails: getDetails,
-      addComment: addComment
+      saveComment: saveComment
     }
   }]);
 })(window.ServiceModule);

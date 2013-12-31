@@ -19,19 +19,19 @@
             }
           }
         }
-        $scope.hasEditRight = $rootScope.loggedInAs && $rootScope.loggedInAs.isAdmin;
+        $scope.hasEditRight = $rootScope.loggedInAs && ($rootScope.loggedInAs.isAdmin || $rootScope.loggedInAs.isOwner);
         $scope.post = data;
         $scope.post.markedBody = marked(data.body);
       }).error(function(data, status, headers, config) {
         console.error(status + ',' +data);
       });
 
-      $scope.addComment = function(cmt){
+      $scope.saveComment = function(cmt){
         var today = new Date();
         cmt.year = today.year;
         cmt.month = today.month;
         cmt.day = today.day;
-        blogService.addComment(cmt, postId).then(function(){
+        blogService.saveComment(cmt, postId).then(function(){
           //clear the comment form
           $scope.post.activeComment.authorEmail = '';
           $scope.post.activeComment.authorName = '';
@@ -39,6 +39,12 @@
           $scope.post.activeComment.blogUrl = '';
           $scope.post.activeComment.body = '';
         });
+      };
+      $scope.editComment = function(cmt){
+          $scope.editCmt = cmt;
+      };
+      $scope.updateComment = function(cmt){
+          $scope.editCmt = null;
       };
 
       //setup events for slave piece move
