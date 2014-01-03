@@ -82,7 +82,6 @@ var setupRoutes = function(server)
   server.delete('/posts/:id', blogs.delete);
   server.post('/posts', blogs.create);
 
-  server.get('/comments', comments.findAll);
   server.get('/comments/:id', comments.find);
   server.put('/comments/:id', comments.update);
   server.delete('/comments/:id', comments.delete);

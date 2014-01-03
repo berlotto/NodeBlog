@@ -14,6 +14,9 @@
         return $http.get('posts/' + id);
     };
     var saveComment = function(comment, postId){
+        if(!comment._id){
+            return $http.put('comments/', {postId: postId, comment: comment});
+        }
         return $http.post('comments/', {postId: postId, comment: comment});
     };
 

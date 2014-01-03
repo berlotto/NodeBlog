@@ -98,7 +98,7 @@
                             <span ng-bind-html-unsafe="markDown(editCmt.body)"></span>
                         </div>
                         <div class="editor-field">
-                            <input type="button" ng-click="saveComment(editCmt)" class="submit" value="Save">
+                            <input type="button" ng-click="updateComment(editCmt)" class="submit" value="Save">
                         </div>
                     </div>
 
@@ -148,7 +148,7 @@
                     <span ng-bind-html-unsafe="markDown(post.activeComment.body)"></span>
                 </div>
                 <div class="editor-field">
-                    <input type="button" ng-click="saveComment(cmt)" class="submit" value="Save">
+                    <input type="button" ng-click="addComment(cmt)" class="submit" value="Save">
                 </div>
             </div>
 

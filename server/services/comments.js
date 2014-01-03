@@ -8,6 +8,7 @@
 (function(){
 
   var blogDac = require('../repository/blog-dac.js')
+    , commentDac = require('../repository/comment-dac.js')
     , marked = require('marked')
     , q = require('q');
 
@@ -17,19 +18,15 @@
        socket = s;
     };
 
-    module.exports.findAll = function(req, res){
-//        _findById(req.params.id).then(function(result){
-//            res.send(result);
-//        });
-    };
     module.exports.find = function(req, res){
-//        _findById(req.params.id).then(function(result){
-//            res.send(result);
-//        });
+        commentDac.findById(req.params.id).then(function(result){
+            res.send(result);
+        });
     };
     module.exports.update = function(req, res){
-//        _update(req.params.id, req.body);
-//        res.send(200);
+        commentDac.update(req.params.id, req.body).then(function(){
+            res.send(200);
+        });
     };
     module.exports.delete = function(req, res) {
 //        _delete(req.id);

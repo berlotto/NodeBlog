@@ -10,6 +10,7 @@ var _passport = null;
 var init = function (passport, config) {
     console.log('Initialize passport authentication...');
     _passport = passport;
+    //TODO checkout autheticated session ??????
     _passport.serializeUser(function(user, done) {
         console.log('Passport serializing user ' + JSON.stringify(user));
         done(null, user.email);

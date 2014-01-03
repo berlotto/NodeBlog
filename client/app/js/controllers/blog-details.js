@@ -26,11 +26,9 @@
         console.error(status + ',' +data);
       });
 
-      $scope.saveComment = function(cmt){
-        var today = new Date();
-        cmt.year = today.year;
-        cmt.month = today.month;
-        cmt.day = today.day;
+      $scope.addComment = function(cmt){
+        cmt.createdOn = new Date();
+        cmt.updatedOn = null;
         blogService.saveComment(cmt, postId).then(function(){
           //clear the comment form
           $scope.post.activeComment.authorEmail = '';
@@ -40,11 +38,17 @@
           $scope.post.activeComment.body = '';
         });
       };
+
       $scope.editComment = function(cmt){
           $scope.editCmt = cmt;
       };
+
       $scope.updateComment = function(cmt){
-          $scope.editCmt = null;
+          cmt.updatedOn = new Date();
+          blogService.saveComment(cmt, postId).then(function(){
+              //clear the comment form
+              $scope.editCmt = null;
+          });
       };
 
       //setup events for slave piece move
