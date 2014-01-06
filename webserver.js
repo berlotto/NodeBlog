@@ -66,6 +66,9 @@ var socketPromise = interaction.initSockets(serverListener);
 ////////////////////////////////
 console.log('setting up routes with security...');
 routes.setupRoutes(server);
+console.log('finishing up routes with security...');
+
+console.log('finishing up sockets...');
 socketPromise.then(function(socket){
-  routes.setupSockets(socket);
+    routes.setupSockets(socket);
 });

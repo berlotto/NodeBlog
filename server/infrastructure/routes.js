@@ -38,7 +38,6 @@ var setupRoutes = function(server)
       }
   };
 
-
   /////// PAGE ROUTING  /////////
   server.get('/', function(req, res){
     mapResource(req, res, fs, '../../client', 'index.html');
@@ -56,6 +55,10 @@ var setupRoutes = function(server)
       security.authenticate(req, res, next);
   });
 
+  server.get('/loggedIn', function(req, res) { res.send(req.isAuthenticated() ? req.user : null); });
+
+  server.post('/logout', function(req, res){ req.logOut(); res.send(200); });
+
   server.post('/postmarkInbound', function(req, res){
     console.log('postmarkInbound => ' + JSON.stringify(req.body));
     res.send(req.body);
@@ -72,7 +75,14 @@ var setupRoutes = function(server)
       res.send(req.session.name);
   });
 
-  //////////////////////////////////////
+  /////// PASSPORT SECURITY CHECK ///////
+  // route to test if the user is logged in or not
+  // server.get('/loggedIn', function(req, res) { res.send(req.isAuthenticated() ? req.user : '0'); });
+  // route to log in
+  // server.post('/login', security.authenticate('local'), function(req, res) { res.send(req.user); });
+  // route to log out
+
+    //////////////////////////////////////
   //////////RESTful Web Api//////////////
   /////////////////////////////////////
   server.get('/posts', blogs.findAll);

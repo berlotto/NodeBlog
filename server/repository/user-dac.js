@@ -1,6 +1,6 @@
 /**
  * Created with JetBrains WebStorm.
- * User: jeffjin
+ * User: jeff jin
  * Date: 7/27/13
  * Time: 12:59 AM
  * To change this template use File | Settings | File Templates.
@@ -95,7 +95,8 @@
           {
             'name': user.name,
             'email': user.email,
-            'password': user.password//TODO: Need to encrypt with MD5
+            'password': user.password,//TODO: Need to encrypt with MD5
+            'isAuthenticated': user.isAuthenticated ? true : false//TODO: Need to encrypt with MD5
           }
         },
         function(err, result){

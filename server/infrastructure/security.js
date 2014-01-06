@@ -13,17 +13,25 @@ var init = function (passport, config) {
     //TODO checkout autheticated session ??????
     _passport.serializeUser(function(user, done) {
         console.log('Passport serializing user ' + JSON.stringify(user));
+        users.update(user).then(function (user) {
+            console.log('user service updated a user with logged in status');
+            done(null, user);
+        }, function(err){
+            done(err, null);
+        });
         done(null, user.email);
     });
 
     _passport.deserializeUser(function(email, done) {
         console.log('Passport deserializing user ' + email);
         users.findByEmail(email).then(function (user) {
+            console.log('user service found a user with email :: ' + email);
             done(null, user);
         }, function(err){
             done(err, null);
         });
     });
+
     _passport.use(new LocalStrategy(
         function(username, password, done) {
             console.log('validating ' + username);
@@ -83,7 +91,8 @@ var authenticate = function(req, res, next) {
         console.log('passport start authenticating ' + user + ', info = ' + info);
         if (err && next) { return next(err) }
         if (!user) {
-            return res.redirect('/#/login')
+            //return res.redirect('/#/login');//not valid in SPA context
+            return res.send(401);
         }
         req.logIn(user, function(err) {
             if (err && next) { return next(err); }
