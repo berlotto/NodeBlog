@@ -10,22 +10,16 @@ var _passport = null;
 var init = function (passport, config) {
     console.log('Initialize passport authentication...');
     _passport = passport;
-    //TODO checkout autheticated session ??????
+
     _passport.serializeUser(function(user, done) {
-        console.log('Passport serializing user ' + JSON.stringify(user));
-        users.update(user).then(function (user) {
-            console.log('user service updated a user with logged in status');
-            done(null, user);
-        }, function(err){
-            done(err, null);
-        });
+        console.log('Passport serializing user ' + user.email);
         done(null, user.email);
     });
 
-    _passport.deserializeUser(function(email, done) {
-        console.log('Passport deserializing user ' + email);
-        users.findByEmail(email).then(function (user) {
-            console.log('user service found a user with email :: ' + email);
+    _passport.deserializeUser(function(id, done) {
+        console.log('Passport deserializing user ' + id);
+        users.findByEmail(id).then(function (user) {
+            console.log('user service found a user with ' + id);
             done(null, user);
         }, function(err){
             done(err, null);
@@ -88,7 +82,7 @@ var authenticate = function(req, res, next) {
         return res.send(500);
     }
     _passport.authenticate('local', function(err, user, info) {
-        console.log('passport start authenticating ' + user + ', info = ' + info);
+        console.log('passport start authenticating ' + user.email);
         if (err && next) { return next(err) }
         if (!user) {
             //return res.redirect('/#/login');//not valid in SPA context

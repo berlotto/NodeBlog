@@ -64,7 +64,13 @@
         <p>Powered by <a href="http://www.nodeblog.ca"><i>Node Blog</i></a>, AngularJS + NodeJS + MongoDB</p>
         <p>And the wolf that shall keep it may prosper, but the wolf that shall break it must die.</p>
     </footer>
-
+  <script>
+      if(!console){
+          console.log = function(){};
+          console.error = function(){};
+          console.warn = function(){};
+      }
+  </script>
   <script src="/socket.io/socket.io.js"></script>
 
   <script src="app/lib/jshash/md5-min.js"></script>

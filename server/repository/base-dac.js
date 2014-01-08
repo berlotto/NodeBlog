@@ -19,11 +19,13 @@
         console.log('Resolving Existing MongoClient...');
         deferred.resolve(database);
     }
-    console.log('Initializing MongoClient...');
-    MongoClient.connect(format("mongodb://%s:%s/blogs?w=1", host, port), function(err, db) {
-      database = db;
-      deferred.resolve(db);
-    });
+    else{
+        console.log('Initializing MongoClient...');
+        MongoClient.connect(format("mongodb://%s:%s/blogs?w=1", host, port), function(err, db) {
+            database = db;
+            deferred.resolve(db);
+        });
+    }
     return deferred.promise;
   };
 

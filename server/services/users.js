@@ -25,6 +25,9 @@
         return deferred.promise;
     };
 
+    var updateUser = function(id, user){
+        return dac.update(id, user);
+    };
 
     var findByEmail = function(email){
         return dac.findByEmail(email);
@@ -32,6 +35,7 @@
 
     exports.validate = validate;
     exports.findByEmail = findByEmail;
+    exports.update = updateUser;
 })();
 
 

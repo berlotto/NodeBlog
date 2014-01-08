@@ -13,10 +13,14 @@
     var authorize = function(userName, pwd){
         return $http.post('/authorize', {username:userName, password: pwd});
     };
+    var getLoggedIn = function(){
+        return $http.get('/loggedIn');
+    };
 
     return {
       authenticate: authenticate,
-      authorize: authorize
+      authorize: authorize,
+      getLoggedIn: getLoggedIn
     }
   }]);
 })(window.ServiceModule);
