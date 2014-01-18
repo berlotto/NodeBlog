@@ -43,6 +43,7 @@ server.configure(function(){
     server.use(server.router);
     server.use('/app', express.static(path.join(__dirname, '/client/app')));
     server.use('/public', express.static(path.join(__dirname, '/public')));
+    server.use(require('prerender-node').set('prerenderToken', 'RMhpOd2vK9oc7LFMJo8O'));
 });
 
 server.configure('development', function(){
