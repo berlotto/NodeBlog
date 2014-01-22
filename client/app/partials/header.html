@@ -7,14 +7,15 @@
                 <li><a href="/#/posts/latest">Latest Blog</a></li>
                 <li><a href="https://www.github.com/JeffJin">Projects</a></li>
                 <li><a href="https://www.fishoverflow.com">Games</a></li>
-                <li><a href="/admin">Admin</a></li>
+                <li><a href="/#/admin/">Admin</a></li>
             </ul>
         </nav>
         <div class="search" ng-controller="BlogSearchCtrl">
             <form novalidate="novalidate">
                 <p>
-                    <input type="text" value="" ng-model="keyword" name="q" id="q" class="medium" alt="Search">
-                    <input type="button" ng-click="search(keyword)" value="Search" class="submit" id="search">
+                    <!--Setup ng keydown event for 'Enter' to search-->
+                    <input type="text" value="" ng-model="keyword" class="medium" ng-enter="search(keyword)" placeholder="title or keywords" alt="Search">
+                    <input type="button" ng-disabled="!keyword || keyword.length < 3" ng-click="search(keyword)" value="Search" class="submit" id="search">
                 </p>
             </form>
         </div>

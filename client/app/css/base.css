@@ -551,6 +551,11 @@ li.log-information {
     margin: 0;
     padding: 0;
 }
+.search input#search:disabled {
+    color: grey;
+}
+
+
 .paginator {
     background: none repeat scroll 0 0 #FAFAFA;
     border-top: 1px solid #EEEEEE;

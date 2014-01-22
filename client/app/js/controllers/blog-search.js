@@ -8,7 +8,7 @@ module.controller('BlogSearchCtrl', ['$scope', '$location',
 
     $scope.search = function(keyword){
       console.log('Searching for ' + keyword);
-      $location.path('/searchResult/');
+      $location.path('/searchResult/' + keyword);
     };
   }]);
 })(CtrlModule);

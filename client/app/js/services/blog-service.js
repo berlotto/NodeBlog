@@ -6,11 +6,17 @@
 // Demonstrate how to register services
 // In this case it is a simple value service.
 (function(module){
-  module.service('blogService', ['$http', function($http){
+  module.service('blogService', ['$http', '$q', function($http, $q){
     var getList = function(dateRange, size){
         return $http.get('posts');
     };
     var getDetails = function(id){
+        var deferred = $q.defer();
+        if(id === 'new'){
+            var newPost =  {topic: '', urlLink: '', metaTitle: '', summary: '', disableComment: false, status: 'draft', body: ''};
+            deferred.resolve(newPost);
+            return deferred.promise;
+        }
         return $http.get('posts/' + id);
     };
     var saveComment = function(comment, postId){
@@ -19,11 +25,15 @@
         }
         return $http.post('comments/', {postId: postId, comment: comment});
     };
+    var deletePost = function(postId){
+        return $http.delete('posts/', {postId: postId});
+    };
 
     return {
       getPosts: getList,
       getPostDetails: getDetails,
-      saveComment: saveComment
+      saveComment: saveComment,
+      deletePost: deletePost
     }
   }]);
 })(window.ServiceModule);

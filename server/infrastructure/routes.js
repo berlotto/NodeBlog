@@ -43,13 +43,12 @@ var setupRoutes = function(server)
     mapResource(req, res, fs, '../../client', 'index.html');
   });
 
-  // set up our security to be enforced on all requests to secure paths
-  server.get('/admin',  function(req, res){
+//  // set up our security to be enforced on all requests to secure paths
+//  server.get('/admin/:dir/:file',  function(req, res){
 //      security.ensureAuthenticated(req, res, function(){
-//          mapResource(req, res, fs, '../../client/admin/' + req.params.dir, req.params.file);
+//          mapResource(req, res, fs, '../../client/' + req.params.dir, req.params.file);
 //      });
-      mapResource(req, res, fs, '../../client', 'admin.html');
-  });
+//  });
 
     server.post('/authenticate',  function(req, res, next){
       console.log('authenticate => ' + JSON.stringify(req.body));

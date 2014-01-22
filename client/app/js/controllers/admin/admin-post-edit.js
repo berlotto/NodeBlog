@@ -8,7 +8,7 @@
     function($scope, $routeParams, $location, blogService, adminBlogService, $window) {
       console.log('Initializing AdminPostEditCtrl Controller');
       var postId = $routeParams.pid;
-      var commentInsertKey = 'comments-inserted-' + postId;
+      var COMMENT_INSERT_KEY = 'comments-inserted-' + postId;
       blogService.getPostDetails(postId).success(function(data, status, headers, config) {
         $scope.markDown = $window.marked;
         if(data && data.comments){

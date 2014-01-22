@@ -7,21 +7,21 @@
     <form>
         <div class="form-body">
             <div class="editor-label">
-                <label for="Username">Username</label>
+                <label for="Username">User name</label>
             </div>
             <div class="editor-field">
-                <input class="medium" id="Username" maxlength="100" name="Username" type="text" ng-model="uname" required >
+                <input class="medium" id="Username" maxlength="100" name="Username" type="text" ng-model="uname" required  ng-enter="login(uname, pwd)" />
             </div>
             <div class="editor-label">
                 <label for="Password">Password</label>
             </div>
             <div class="editor-field">
-                <input class="medium" id="Password" maxlength="100" required name="Password"  ng-model="pwd" type="password">
+                <input class="medium" id="Password" maxlength="100" required name="Password"  ng-model="pwd" type="password" ng-enter="login(uname, pwd)" />
             </div>
             <div class="editor-label">
             </div>
             <div class="editor-field">
-                <input type="button" id="submit" class="submit" value="Submit" ng-click="login(uname, pwd)">
+                <input type="button" id="submit" class="submit" value="Submit" ng-click="login(uname, pwd)" />
             </div>
         </div>
 

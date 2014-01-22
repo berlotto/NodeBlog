@@ -16,7 +16,9 @@
 (function(){
   var dac = require('../repository/blog-dac.js')
     , marked = require('marked')
-    , _ = require('underscore');
+//    , _ = require('underscore');
+    , _ = require('lodash/dist/lodash.underscore');
+
 
   /*********************End of Private functions*************************/
 
