@@ -8,7 +8,19 @@
 
 (function(module){
     module.service('storage', ['$rootScope', function ($rootScope) {
-         //amplify.store
-         //amplify.get
+
+        var set = function(key, value){
+            amplify.store(key, value);
+        };
+
+        var get = function(key){
+            return amplify.store(key);
+        };
+
+
+         return {
+             get: get,
+             set: set
+         }
     }]);
 })(window.ServiceModule);

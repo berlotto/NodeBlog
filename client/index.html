@@ -45,13 +45,16 @@
         console.warn = function(){};
     }
 </script>
+<!-- Socket IO -->
 <script src="/socket.io/socket.io.js"></script>
 
+<!-- Common Libraries -->
 <script src="app/lib/jshash/md5-min.js"></script>
 <script src="app/lib/marked.js"></script>
 <script src="app/lib/prettify.js"></script>
-<script src="app/lib/underscore.js"></script>
+<script src="app/lib/lodash.underscore.js"></script>
 <script src="app/lib/underscore.string.js"></script>
+<script src="app/lib/amplify.js"></script>
 <script>
     _.mixin(_.str.exports());
 </script>
@@ -62,6 +65,7 @@
 <script src="app/lib/Markdown.Sanitizer.js"></script>
 <script src="app/lib/Markdown.Editor.js"></script>
 
+<!-- SPA Application -->
 <script src="app/js/localization.js"></script>
 <script src="app/bootstrap.js"></script>
 <script src="app/js/filters/filters.js"></script>
@@ -99,7 +103,6 @@
 <script src="app/js/controllers/admin/admin-comments.js"></script>
 <script src="app/js/controllers/admin/admin-files.js"></script>
 <script src="app/js/controllers/admin/admin-tasks.js"></script>
-<script src="app/js/controllers/admin/admin-post-create.js"></script>
 <!--Admin scripts, protected area-->
 
 <script src="app/app.js"></script>

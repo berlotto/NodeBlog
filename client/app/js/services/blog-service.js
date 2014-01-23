@@ -12,9 +12,9 @@
     };
     var getDetails = function(id){
         var deferred = $q.defer();
-        if(id === 'new'){
-            var newPost =  {topic: '', urlLink: '', metaTitle: '', summary: '', disableComment: false, status: 'draft', body: ''};
-            deferred.resolve(newPost);
+        if(id === 'new' || !id){
+            var newPost =  {topic: 'topic for the new post', urlLink: '', metaTitle: '', summary: 'please write a summary', disableComment: false, status: 'draft', body: 'new post content here'};
+            deferred.resolve({data: newPost});
             return deferred.promise;
         }
         return $http.get('posts/' + id);
