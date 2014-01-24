@@ -54,12 +54,18 @@
 <script src="app/lib/prettify.js"></script>
 <script src="app/lib/lodash.underscore.js"></script>
 <script src="app/lib/underscore.string.js"></script>
-<script src="app/lib/amplify.js"></script>
 <script>
     _.mixin(_.str.exports());
 </script>
 <script src="app/lib/jquery.min.js"></script>
+<script src="app/lib/amplify.js"></script>
 <script src="app/lib/angular/angular.js"></script>
+<script src="app/lib/angular/angular-cookies.js"></script>
+<script src="app/lib/angular/angular-loader.js"></script>
+<script src="app/lib/angular/angular-touch.js"></script>
+<script src="app/lib/angular/angular-route.js"></script>
+<script src="app/lib/angular/angular-animate.js"></script>
+<script src="app/lib/angular/angular-sanitize.js"></script>
 <script src="app/lib/moment.min.js"></script>
 <script src="app/lib/Markdown.Converter.js"></script>
 <script src="app/lib/Markdown.Sanitizer.js"></script>
@@ -68,13 +74,16 @@
 <!-- SPA Application -->
 <script src="app/js/localization.js"></script>
 <script src="app/bootstrap.js"></script>
-<script src="app/js/filters/filters.js"></script>
+<script src="app/js/filters/pg-lang-filter.js"></script>
 
 <!-- Directives -->
 <script src="app/js/directives/markdown-editor.js"></script>
 <script src="app/js/directives/ng-enter.js"></script>
 
+<script src="app/js/filters/pg-lang-filter.js"></script>
+
 <!-- Services -->
+<script src="app/js/services/storage-service.js"></script>
 <script src="app/js/services/socket-service.js"></script>
 <script src="app/js/services/auth-service.js"></script>
 <script src="app/js/services/blog-service.js"></script>
