@@ -6,7 +6,7 @@
 // Demonstrate how to register services
 // In this case it is a simple value service.
 (function(module){
-  module.service('adminBlogService', ['$http', function($http){
+  module.factory('adminBlogService', ['$http', function($http){
     var deleteComment = function(commentId, postId){
       return $http.delete('comments/', {postId: postId, commentId: commentId});
     };

@@ -7,7 +7,7 @@
 /* This service will wrap AmplifyJS to store WIP data and restore accordingly */
 
 (function(module){
-    module.service('entityManager', ['storage', function (storage) {
+    module.factory('entityManager', ['storage', function (storage) {
 
         //register and unregister entities to watch/unwatch
         //we need $scope to watch on an entity

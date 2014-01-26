@@ -20,6 +20,12 @@ describe('StorageService', function() {
     it('should save partial works in local storage or fallback persistent storage', inject(function(StorageService) {
 
       expect(StorageService).toBeDefined();
+
+      StorageService.set('key1', {value: 'value1'});
+      var result = StorageService.get('key1');
+
+        expect(result.value).toBe('value1');
+
     }));
   });
 });

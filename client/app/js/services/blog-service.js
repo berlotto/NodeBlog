@@ -6,7 +6,7 @@
 // Demonstrate how to register services
 // In this case it is a simple value service.
 (function(module){
-  module.service('blogService', ['$http', '$q', function($http, $q){
+  module.factory('blogService', ['$http', '$q', function($http, $q){
     var getList = function(dateRange, size){
         return $http.get('posts');
     };

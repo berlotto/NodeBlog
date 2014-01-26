@@ -6,7 +6,7 @@
 // Demonstrate how to register services
 // In this case it is a simple value service.
 (function(module){
-  module.service('socket', function ($rootScope, $window) {
+  module.factory('socket', function ($rootScope, $window) {
     var socket = $window.io.connect();
     return {
       on: function (eventName, callback) {

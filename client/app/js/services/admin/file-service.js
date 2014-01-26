@@ -6,7 +6,7 @@
 // Demonstrate how to register services
 // In this case it is a simple value service.
 (function(module){
-  module.service('fileService', ['$http', function($http){
+  module.factory('fileService', ['$http', function($http){
     var upload = function(){
         return $http.post('files');
     };

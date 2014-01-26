@@ -3,14 +3,13 @@
 /* Controllers */
 
 (function(module) {
-  module.controller('BlogListCtrl', ['$scope', 'blogService', '$routeParams', '$rootScope',
-    function($scope, blogService, $routeParams, $rootScope) {
+  module.controller('BlogListCtrl', ['$scope', 'blogService', '$routeParams',
+    function($scope, blogService, $routeParams) {
     console.log('Initializing Blog List Controller');
     blogService.getPosts({from:$routeParams.from, to:$routeParams.to}, 20)
-      .success(function(data, status, headers, config) {
+      .success(function(data) {
         $scope.posts = data;
-      }).
-      error(function(data, status, headers, config) {
+      }).error(function(data, status) {
         console.error(status + ',' +data);
       });
 

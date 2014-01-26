@@ -7,6 +7,6 @@
    exports.DirectiveModule = angular.module('chinook.directives', []);
    exports.CtrlModule = angular.module('chinook.controllers', []);
    exports.MainModule = angular.module('chinook',
-       ['chinook.filters', 'chinook.services', 'chinook.factories', 'chinook.directives', 'chinook.controllers']);
+       ['ngRoute', 'chinook.filters', 'chinook.services', 'chinook.factories', 'chinook.directives', 'chinook.controllers']);
 
 })(window);
