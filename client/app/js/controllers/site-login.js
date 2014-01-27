@@ -15,7 +15,7 @@ module.controller('SiteLoginCtrl', ['$scope', '$rootScope', '$location', 'authSe
           $location.path('/admin');
       }, function(reason){
           console.error(reason.data);
-          $location.path('/login');
+          $location.path('/login').replace();
       });
 
     };

@@ -2,7 +2,7 @@
 
     <h2>
         Directory Listing:
-        / <a href="/upload">Home</a></h2>
+        / <a href="/admin/upload">Home</a></h2>
 
     <div>
         <table>
@@ -30,7 +30,7 @@
                 <!--</td>-->
             <!--</tr>-->
             <tr ng-repeat="file in files">
-                <td><img width="16" height="16" src="/public/FileTypes/{{file.fileTypeIcon}}"
+                <td><img width="16" height="16" src="/shared/FileTypes/{{file.fileTypeIcon}}"
                          alt=".{{file.extension}}"></td>
                 <td class="firstcolumn">
                     <a href="/get/{{file.name}}">{{file.name}}</a>
@@ -47,7 +47,7 @@
 
     <h2>Upload</h2>
 
-    <form area="Admin" action="/files" enctype="multipart/form-data" method="post" novalidate="novalidate">
+    <form area="Admin" action="/admin/files" enctype="multipart/form-data" method="post" novalidate="novalidate">
         <div id="upload-container" class="upload-container">
             <div>
                 <input class="upload" type="file" name="uploadFile">
@@ -63,7 +63,7 @@
     </form>
     <h2>Create Directory</h2>
 
-    <form area="Admin" action="/folders" enctype="multipart/form-data" method="post" novalidate="novalidate">
+    <form area="Admin" action="/admin/folders" enctype="multipart/form-data" method="post" novalidate="novalidate">
         <input type="text" name="name">
         <input type="submit" value="Create">
     </form>

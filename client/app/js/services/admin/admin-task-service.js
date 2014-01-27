@@ -8,10 +8,10 @@
 (function(module){
   module.factory('adminTaskService', ['$http', function($http){
     var addTask = function(){
-        return $http.get('tasks');
+        return $http.get('/api/tasks');
     };
     var removeTask = function(id){
-        return $http.delete('tasks/' + id);
+        return $http.delete('/api/tasks/' + id);
     };
 
     return {

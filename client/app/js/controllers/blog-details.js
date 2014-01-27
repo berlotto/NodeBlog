@@ -3,8 +3,8 @@
 /* Controllers */
 
 (function(module) {
-  module.controller('BlogDetailsCtrl', ['$scope', '$rootScope', '$routeParams', 'blogService', 'socket',
-    function($scope, $rootScope, $routeParams, blogService, socket) {
+  module.controller('BlogDetailsCtrl', ['$scope', '$rootScope', '$routeParams', '$sce', 'blogService', 'socket',
+    function($scope, $rootScope, $routeParams, $sce, blogService, socket) {
       console.log('Initializing Blog Details Controller');
       var postId = $routeParams.pid;
       var commentInsertKey = 'comments-inserted-' + postId;
@@ -21,7 +21,8 @@
         }
         $scope.hasEditRight = $rootScope.loggedInAs && ($rootScope.loggedInAs.isAdmin || $rootScope.loggedInAs.isOwner);
         $scope.post = data;
-        $scope.post.markedBody = marked(data.body);
+        $scope.post.markedBody = $sce.trustAsHtml(marked(data.body));
+
       }).error(function(data, status, headers, config) {
         console.error(status + ',' +data);
       });

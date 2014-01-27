@@ -8,7 +8,7 @@
 (function(module){
   module.factory('blogService', ['$http', '$q', function($http, $q){
     var getList = function(dateRange, size){
-        return $http.get('posts');
+        return $http.get('/api/posts');
     };
     var getDetails = function(id){
         var deferred = $q.defer();
@@ -17,16 +17,16 @@
             deferred.resolve({data: newPost});
             return deferred.promise;
         }
-        return $http.get('posts/' + id);
+        return $http.get('/api/posts/' + id);
     };
     var saveComment = function(comment, postId){
         if(!comment._id){
-            return $http.put('comments/', {postId: postId, comment: comment});
+            return $http.put('/api/comments/', {postId: postId, comment: comment});
         }
-        return $http.post('comments/', {postId: postId, comment: comment});
+        return $http.post('/api/comments/', {postId: postId, comment: comment});
     };
     var deletePost = function(postId){
-        return $http.delete('posts/', {postId: postId});
+        return $http.delete('/api/posts/', {postId: postId});
     };
 
     return {

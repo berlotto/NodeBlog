@@ -8,16 +8,16 @@
 (function(module){
   module.factory('adminBlogService', ['$http', function($http){
     var deleteComment = function(commentId, postId){
-      return $http.delete('comments/', {postId: postId, commentId: commentId});
+      return $http.delete('/api/comments/', {postId: postId, commentId: commentId});
     };
     var updateComment = function(commentId, postId){
-      return $http.delete('comments/', {postId: postId, commentId: commentId});
+      return $http.delete('/api/comments/', {postId: postId, commentId: commentId});
     };
     var addPost = function(post){
-      return $http.post('posts/', post);
+      return $http.post('/api/posts/', post);
     };
     var updatePost = function(postId, post){
-      return $http.put('posts/' + postId, post);
+      return $http.put('/api/posts/' + postId, post);
     };
     return {
       deleteComment: deleteComment,

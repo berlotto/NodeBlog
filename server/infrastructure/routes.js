@@ -43,6 +43,10 @@ var setupRoutes = function(server)
     mapResource(req, res, fs, '../../client', 'index.html');
   });
 
+  server.get('/public/(.*)', function(req, res){
+    mapResource(req, res, fs, '../../client', 'index.html');
+  });
+
 //  // set up our security to be enforced on all requests to secure paths
 //  server.get('/admin/:dir/:file',  function(req, res){
 //      security.ensureAuthenticated(req, res, function(){
@@ -50,26 +54,26 @@ var setupRoutes = function(server)
 //      });
 //  });
 
-    server.post('/authenticate',  function(req, res, next){
+  server.post('/api/authenticate',  function(req, res, next){
       console.log('authenticate => ' + JSON.stringify(req.body));
       security.authenticate(req, res, next);
   });
 
-  server.get('/loggedIn', function(req, res) { res.send(req.isAuthenticated() ? req.user : null); });
+  server.get('/api/loggedIn', function(req, res) { res.send(req.isAuthenticated() ? req.user : null); });
 
-  server.post('/logout', function(req, res){ req.logOut(); res.send(200); });
+  server.post('/api/logout', function(req, res){ req.logOut(); res.send(200); });
 
   server.post('/postmarkInbound', function(req, res){
     console.log('postmarkInbound => ' + JSON.stringify(req.body));
     res.send(req.body);
   });
 
-  server.post('/postmarkBounce', function(req, res){
+  server.post('/api/postmarkBounce', function(req, res){
       console.log('postmarkBounce => ' + req.body);
       res.send(req.body);
     });
 
-  server.get('/cookie', function(req,res){
+  server.get('/api/cookie', function(req,res){
       console.log(req.sessionID);
       req.session.name = req.session.name || new Date().toUTCString();
       res.send(req.session.name);
@@ -85,21 +89,21 @@ var setupRoutes = function(server)
     //////////////////////////////////////
   //////////RESTful Web Api//////////////
   /////////////////////////////////////
-  server.get('/posts', blogs.findAll);
-  server.get('/posts/:id', blogs.find);
-  server.put('/posts/:id', blogs.update);
-  server.patch('/posts/:id', blogs.patch);
-  server.delete('/posts/:id', blogs.delete);
-  server.post('/posts', blogs.create);
+  server.get('/api/posts', blogs.findAll);
+  server.get('/api/posts/:id', blogs.find);
+  server.put('/api/posts/:id', blogs.update);
+  server.patch('/api/posts/:id', blogs.patch);
+  server.delete('/api/posts/:id', blogs.delete);
+  server.post('/api/posts', blogs.create);
 
-  server.get('/comments/:id', comments.find);
-  server.put('/comments/:id', comments.update);
-  server.delete('/comments/:id', comments.delete);
-  server.post('/comments', comments.create);
+  server.get('/api/comments/:id', comments.find);
+  server.put('/api/comments/:id', comments.update);
+  server.delete('/api/comments/:id', comments.delete);
+  server.post('/api/comments', comments.create);
 
-  server.get('/files', files.get);
-  server.post('/files', files.upload);
-  server.delete('/files/:id', files.delete);
+  server.get('/api/files', files.get);
+  server.post('/api/files', files.upload);
+  server.delete('/api/files/:id', files.delete);
 
   /////// ERROR ROUTING  /////////
   //A Route for Creating a 500 Error (Useful to keep around)
@@ -107,7 +111,12 @@ var setupRoutes = function(server)
 
   //The 404 Route
   server.get('/400',errors.notFound);
-  // (ALWAYS Keep this as the last route)
+
+//  // (ALWAYS Keep this as the last route)
+//  server.get(/^\/(.*)/, function (req, res) {
+//      //everything else
+//      mapResource(req, res, fs, '../../client', 'index.html');
+//  });
 };
 
 var setupSockets = function (socket){

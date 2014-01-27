@@ -11,27 +11,27 @@
     <table>
         <thead>
         <tr>
-            <td><a href="/#/admin/posts?sort=Slug&amp;asc=True">SLUG</a></td>
-            <td><a href="/#/admin/posts?sort=Title&amp;asc=True">Title</a></td>
-            <td><a href="/#/admin/posts?sort=Comments&amp;asc=True">Comments</a></td>
-            <td><a href="/#/admin/posts?sort=Published&amp;asc=True">Published</a></td>
+            <td><a href="/admin/posts?sort=Slug&amp;asc=True">SLUG</a></td>
+            <td><a href="/admin/posts?sort=Title&amp;asc=True">Title</a></td>
+            <td><a href="/admin/posts?sort=Comments&amp;asc=True">Comments</a></td>
+            <td><a href="/admin/posts?sort=Published&amp;asc=True">Published</a></td>
             <td>Revision</td>
             <td>Delete</td>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="post in posts">
-            <td><a ng-href="/#/posts/{{post.urlLink}}" title="View this page">{{post.urlLink}}</a></td>
-            <td><a ng-href="/#/admin/posts/{{post.urlLink}}" title="Edit this page">{{post.topic}}</a></td>
+            <td><a ng-href="/public/posts/{{post.urlLink}}" title="View this page">{{post.urlLink}}</a></td>
+            <td><a ng-href="/admin/posts/{{post.urlLink}}" title="Edit this page">{{post.topic}}</a></td>
             <td>
-                <a ng-disabled="post.comments.length == 0" ng-href="/#/{{post.urlLink}}#comments">
+                <a ng-disabled="post.comments.length == 0" ng-href="/public/{{post.urlLink}}#comments">
                     <span ng-if="post.comments.length > 1"  class="comment-count">{{post.comments.length}} comments</span>
                     <span ng-if="post.comments.length == 0">no comment</span>
                     <span ng-if="post.comments.length == 1">one comment</span>
                 </a>
             </td>
             <td><span class="date">{{post.month}} {{post.day}}, {{post.year}}</span></td>
-            <td><span class="date">{{post.month}} {{post.day}}, {{post.year}}</span> (<a href="/history-of/{{post.urlLink}}">History</a>)</td>
+            <td><span class="date">{{post.month}} {{post.day}}, {{post.year}}</span> (<a href="/public/history-of/{{post.urlLink}}">History</a>)</td>
             <td>
                 <span>
                     <button type="button" ng-click="deletePost(post.id)">Delete</button>

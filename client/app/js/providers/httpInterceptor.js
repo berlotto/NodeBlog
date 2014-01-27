@@ -31,11 +31,11 @@
                 console.log(' response error method');
                 if(rejection.status === 403){
                     //user not logged in, render login page
-                    $location.path('/login')
+                    $location.path('/login').replace();
                 }
                 else{
                     //do not have permission
-                    $location.path('/404')
+                    $location.path('/404').replace();
                 }
                 return $q.reject(rejection);
             }
