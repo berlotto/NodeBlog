@@ -5,7 +5,7 @@
 </div>
 <div class="content">
     <h1>
-        <a href="/public/posts/{{post.topic}}">{{post.topic}}</a>
+        <a href="/#!/posts/{{post.topic}}">{{post.topic}}</a>
     </h1>
     <div class="entry-date">
         <span class="month" >{{post.month}} {{post.day}}</span>
@@ -24,13 +24,13 @@
             <span>Posted by: {{post.author}}</span>
             <br>
             <span>Last revised:
-                <a ng-href="/public/posts/{{post.urlLink}}?revision={{revision}}">
+                <a ng-href="/#!/posts/{{post.urlLink}}?revision={{revision}}">
                 <span class="date" title="{{post.month}} {{post.day}}, {{post.year}}">
                     {{post.month}} {{post.day}}, {{post.year}}
                 </span>
                 </a>
             </span>
-            <span><a href="/public/history-of/{{post.topic}}">History</a></span>
+            <span><a href="/#!/history-of/{{post.topic}}">History</a></span>
         </div>
 
     </div>

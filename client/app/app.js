@@ -7,7 +7,7 @@
         // Initialize a new promise
         var deferred = $q.defer();
         // Make an AJAX call to check if the user is logged in
-        $http.get('/loggedIn').success(function(user){
+        $http.get('/api/loggedIn').success(function(user){
             // Authenticated
             if (user) $timeout(deferred.resolve, 0);
             // Not Authenticated
@@ -21,14 +21,14 @@
     };
 
     module.config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/public/', {templateUrl: '/app/partials/posts.html', controller: 'BlogListCtrl'});
-        $routeProvider.when('/public/login', {templateUrl: '/app/partials/login.html', controller: 'SiteLoginCtrl'});
-        $routeProvider.when('/public/posts/:pid', {templateUrl: '/app/partials/blogDetails.html', controller: 'BlogDetailsCtrl'});
-        $routeProvider.when('/public/advancedSearch', {templateUrl: '/app/partials/advancedSearch.html', controller: 'BlogSearchCtrl'});
-        $routeProvider.when('/public/searchResult', {templateUrl: '/app/partials/searchResult.html', controller: 'BlogSearchCtrl'});
+        $routeProvider.when('/', {templateUrl: '/app/partials/posts.html', controller: 'BlogListCtrl'});
+        $routeProvider.when('/login', {templateUrl: '/app/partials/login.html', controller: 'SiteLoginCtrl'});
+        $routeProvider.when('/posts/:pid', {templateUrl: '/app/partials/blogDetails.html', controller: 'BlogDetailsCtrl'});
+        $routeProvider.when('/advancedSearch/:key/:start/:end', {templateUrl: '/app/partials/advancedSearch.html', controller: 'BlogSearchCtrl'});
+        $routeProvider.when('/searchResult', {templateUrl: '/app/partials/searchResult.html', controller: 'BlogSearchCtrl'});
 
         //admin routes
-        $routeProvider.when('/admin/', {templateUrl: '/app/partials/admin/adminList.html', controller: 'AdminListCtrl', resolve: {isAuthenticated: checkAuthentication}});
+        $routeProvider.when('/admin', {templateUrl: '/app/partials/admin/adminList.html', controller: 'AdminListCtrl', resolve: {isAuthenticated: checkAuthentication}});
         $routeProvider.when('/admin/posts', {templateUrl: '/app/partials/admin/posts.html', controller: 'AdminPostsCtrl', resolve: {isAuthenticated: checkAuthentication}});
         $routeProvider.when('/admin/posts/new', {templateUrl: '/app/partials/admin/create.html', controller: 'AdminPostEditCtrl', resolve: {isAuthenticated: checkAuthentication}});
         $routeProvider.when('/admin/posts/:pid', {templateUrl: '/app/partials/admin/edit.html', controller: 'AdminPostEditCtrl', resolve: {isAuthenticated: checkAuthentication}});
@@ -42,10 +42,10 @@
         $routeProvider.when('/404', {templateUrl: '/app/partials/error.html', controller: 'ErrorCtrl'});
 
         //default routes
-        $routeProvider.otherwise({redirectTo: '/public/'});
+        $routeProvider.otherwise({redirectTo: '/'});
     }]);
     module.config(['$locationProvider', function($locationProvider){
-        $locationProvider.html5Mode(true).hashPrefix('!');
+        $locationProvider.html5Mode(false).hashPrefix('!');
     }]);
     module.run(function($rootScope, $window) {
         $rootScope.r = $window.r;

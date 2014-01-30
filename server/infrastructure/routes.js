@@ -43,10 +43,6 @@ var setupRoutes = function(server)
     mapResource(req, res, fs, '../../client', 'index.html');
   });
 
-  server.get('/public/(.*)', function(req, res){
-    mapResource(req, res, fs, '../../client', 'index.html');
-  });
-
 //  // set up our security to be enforced on all requests to secure paths
 //  server.get('/admin/:dir/:file',  function(req, res){
 //      security.ensureAuthenticated(req, res, function(){
