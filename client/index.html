@@ -16,9 +16,9 @@
     <link title="Comments Feed" rel="alternate" type="application/atom+xml" href="http://localhost:8033/commentfeed">
     <link rel="EditURI" type="application/rsd+xml" href="http://localhost:8033/rsd.xml" title="RSD">
     <link href="app/img/favicon.png" type="image/png" rel="icon">
-    <link rel="stylesheet" type="text/css" href="app/css/base.css?cdv=1">
-    <link rel="stylesheet" type="text/css" href="app/css/admin.css?cdv=1">
-    <link rel="stylesheet" type="text/css" href="app/css/theme.css?cdv=1">
+    <link rel="stylesheet" type="text/css" href="/app/css/base.css?cdv=1">
+    <link rel="stylesheet" type="text/css" href="/app/css/admin.css?cdv=1">
+    <link rel="stylesheet" type="text/css" href="/app/css/theme.css?cdv=1">
 
     <meta content="Jeff Jin Consulting" name="description">
     <meta content=".net, c#, WCF, javascript, jquery, AngularJS, NodeJs, NoSQL, MVC" name="keywords">
@@ -50,72 +50,73 @@
 <script src="/socket.io/socket.io.js"></script>
 
 <!-- Common Libraries -->
-<script src="app/lib/jshash/md5-min.js"></script>
-<script src="app/lib/marked.js"></script>
-<script src="app/lib/prettify.js"></script>
-<script src="app/lib/lodash.underscore.js"></script>
-<script src="app/lib/underscore.string.js"></script>
+<script src="/app/lib/jshash/md5-min.js"></script>
+<script src="/app/lib/marked.js"></script>
+<script src="/app/lib/prettify.js"></script>
+<script src="/app/lib/lodash.underscore.js"></script>
+<script src="/app/lib/underscore.string.js"></script>
 <script>
     _.mixin(_.str.exports());
 </script>
-<script src="app/lib/jquery.min.js"></script>
-<script src="app/lib/amplify.js"></script>
-<script src="app/lib/angular/angular.js"></script>
-<script src="app/lib/angular/angular-cookies.js"></script>
-<script src="app/lib/angular/angular-loader.js"></script>
-<script src="app/lib/angular/angular-touch.js"></script>
-<script src="app/lib/angular/angular-route.js"></script>
-<script src="app/lib/angular/angular-animate.js"></script>
-<script src="app/lib/angular/angular-sanitize.js"></script>
-<script src="app/lib/moment.min.js"></script>
-<script src="app/lib/Markdown.Converter.js"></script>
-<script src="app/lib/Markdown.Sanitizer.js"></script>
-<script src="app/lib/Markdown.Editor.js"></script>
+<script src="/app/lib/jquery.min.js"></script>
+<script src="/app/lib/amplify.js"></script>
+<script src="/app/lib/angular/angular.js"></script>
+<script src="/app/lib/angular/angular-cookies.js"></script>
+<script src="/app/lib/angular/angular-loader.js"></script>
+<script src="/app/lib/angular/angular-touch.js"></script>
+<script src="/app/lib/angular/angular-route.js"></script>
+<script src="/app/lib/angular/angular-animate.js"></script>
+<script src="/app/lib/angular/angular-sanitize.js"></script>
+<script src="/app/lib/moment.min.js"></script>
+<script src="/app/lib/Markdown.Converter.js"></script>
+<script src="/app/lib/Markdown.Sanitizer.js"></script>
+<script src="/app/lib/Markdown.Editor.js"></script>
 
 <!-- SPA Application -->
-<script src="app/js/localization.js"></script>
-<script src="app/bootstrap.js"></script>
-<script src="app/js/filters/pg-lang-filter.js"></script>
+<script src="/app/bootstrap.js"></script>
+<script src="/app/js/filters/pg-lang-filter.js"></script>
 
 <!-- Directives -->
-<script src="app/js/directives/markdown-editor.js"></script>
-<script src="app/js/directives/ng-enter.js"></script>
+<script src="/app/js/directives/markdown-editor.js"></script>
+<script src="/app/js/directives/ng-enter.js"></script>
 
-<script src="app/js/filters/pg-lang-filter.js"></script>
+<script src="/app/js/filters/pg-lang-filter.js"></script>
 
 <!-- Services -->
-<script src="app/js/services/storage-service.js"></script>
-<script src="app/js/services/socket-service.js"></script>
-<script src="app/js/services/auth-service.js"></script>
-<script src="app/js/services/blog-service.js"></script>
+<script src="/app/js/services/storage-service.js"></script>
+<script src="/app/js/services/socket-service.js"></script>
+<script src="/app/js/services/auth-service.js"></script>
+<script src="/app/js/services/blog-service.js"></script>
+<script src="/app/js/services/httpInterceptor.js"></script>
+
 
 <!-- Custom Providers -->
-<script src="app/js/providers/httpInterceptor.js"></script>
+<script src="/app/js/providers/localizeProvider.js"></script>
 
 <!-- Controllers -->
-<script src="app/js/controllers/blog-details.js"></script>
-<script src="app/js/controllers/blog-admin.js"></script>
-<script src="app/js/controllers/blog-list.js"></script>
-<script src="app/js/controllers/blog-search.js"></script>
-<script src="app/js/controllers/header.js"></script>
-<script src="app/js/controllers/error.js"></script>
-<script src="app/js/controllers/site-login.js"></script>
+<script src="/app/js/controllers/blog-details.js"></script>
+<script src="/app/js/controllers/blog-admin.js"></script>
+<script src="/app/js/controllers/blog-list.js"></script>
+<script src="/app/js/controllers/blog-search.js"></script>
+<script src="/app/js/controllers/header.js"></script>
+<script src="/app/js/controllers/error.js"></script>
+<script src="/app/js/controllers/site-login.js"></script>
 
 <!--Admin scripts-->
-<script src="app/js/services/admin/settings-service.js"></script>
-<script src="app/js/services/admin/file-service.js"></script>
-<script src="app/js/services/admin/admin-blog-service.js"></script>
-<script src="app/js/controllers/admin/admin-header.js"></script>
-<script src="app/js/controllers/admin/admin-posts.js"></script>
-<script src="app/js/controllers/admin/admin-post-edit.js"></script>
-<script src="app/js/controllers/admin/admin-settings.js"></script>
-<script src="app/js/controllers/admin/admin-list.js"></script>
-<script src="app/js/controllers/admin/admin-comments.js"></script>
-<script src="app/js/controllers/admin/admin-files.js"></script>
-<script src="app/js/controllers/admin/admin-tasks.js"></script>
+<script src="/app/js/services/admin/settings-service.js"></script>
+<script src="/app/js/services/admin/file-service.js"></script>
+<script src="/app/js/services/admin/admin-blog-service.js"></script>
+<script src="/app/js/controllers/admin/admin-header.js"></script>
+<script src="/app/js/controllers/admin/admin-posts.js"></script>
+<script src="/app/js/controllers/admin/admin-post-edit.js"></script>
+<script src="/app/js/controllers/admin/admin-settings.js"></script>
+<script src="/app/js/controllers/admin/admin-list.js"></script>
+<script src="/app/js/controllers/admin/admin-comments.js"></script>
+<script src="/app/js/controllers/admin/admin-files.js"></script>
+<script src="/app/js/controllers/admin/admin-tasks.js"></script>
 <!--Admin scripts, protected area-->
 
-<script src="app/app.js"></script>
+<script src="/app/app.js"></script>
 
 </body>
 </html>
