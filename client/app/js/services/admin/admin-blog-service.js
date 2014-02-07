@@ -14,10 +14,13 @@
       return $http.delete('/api/comments/', {postId: postId, commentId: commentId});
     };
     var addPost = function(post){
-      return $http.post('/api/posts/', post);
+        post.createdOn = new Date();
+        var jsonPost = JSON.stringify(post);
+        return $http.post('/api/posts/', jsonPost);
     };
     var updatePost = function(postId, post){
-      return $http.put('/api/posts/' + postId, post);
+        post.updatedOn = new Date();
+        return $http.put('/api/posts/' + postId, post);
     };
     return {
       deleteComment: deleteComment,

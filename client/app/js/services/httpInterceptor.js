@@ -7,7 +7,7 @@
         return {
             // request method
             'request': function(config) {
-                console.log(' request method');
+                //console.log(' request method');
 
                 return config || $q.when(config);
             },
@@ -21,7 +21,7 @@
 
             // response method
             'response': function(response) {
-                console.log(' response method');
+                //console.log(' response method');
 
                 return response || $q.when(response);
             },
@@ -45,5 +45,5 @@
         $httpProvider.interceptors.push('httpInterceptor');
     });
 
-})(window.FactoryModule);
+})(window.ServiceModule);
 

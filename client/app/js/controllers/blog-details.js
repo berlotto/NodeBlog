@@ -10,6 +10,7 @@
       var commentInsertKey = 'comments-inserted-' + postId;
       blogService.getPostDetails(postId).success(function(data, status, headers, config) {
         if(data && data.comments){
+          data.lastRevised = moment(data.updatedOn || data.createdOn).format('MMM Do YYYY');
           for(var i = 0; i < data.comments.length; i++){
             var cmt = data.comments[i];
             cmt.markedBody = marked(cmt.body);

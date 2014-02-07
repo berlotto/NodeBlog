@@ -1,6 +1,6 @@
 <div class="content">
     <h1>Edit: {{post.topic}}</h1>
-    <form area="Admin" action="/admin/posts/{{post.urlLink}}" method="post" novalidate="novalidate">
+    <form area="Admin">
     <div class="form-body">
     <div class="editor-label">
         <label for="Name">SLUG</label>
@@ -83,7 +83,6 @@
     </div>
     <h3>Preview</h3>
     <div id="wmd-preview" class="wmd-panel">
-        <span ng-bind-html="markDown(post.body)"></span>
     </div>
     </div>
     </form>

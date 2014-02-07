@@ -15,17 +15,16 @@
             <div class="post-line " ng-repeat="post in posts">
                 <div class="revised">
                     <div>
-                    <span class="month" >{{post.month}} {{post.day}}</span>
-                    <span class="year">{{post.year}}</span>
+                    <span class="entry-date" >{{(post.createdOn || post.createdOn) | dateFormat}}</span>
                     </div>
                 </div>
                 <div class="comments">
                     <div>
                     <a href="/#!/posts/{{post.urlLink}}#comments" ng-disabled="post.comments.length == 0">
                         <span ng-if="post.comments.length >= 1" class="comment-count">{{post.comments.length}}</span>
-                        <span ng-if="post.comments.length == 0">&nbsp;&nbsp;no&nbsp;&nbsp;</span>
+                        <span ng-if="!post.comments || post.comments.length == 0">&nbsp;&nbsp;no&nbsp;&nbsp;</span>
                         <span ng-if="post.comments.length > 1">comments</span>
-                        <span ng-if="post.comments.length <= 1">comment</span>
+                        <span ng-if="!post.comments || post.comments.length <= 1">comment</span>
                     </a>
                     </div>
                 </div>

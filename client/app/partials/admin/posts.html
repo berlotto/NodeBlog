@@ -26,12 +26,12 @@
             <td>
                 <a ng-disabled="post.comments.length == 0" ng-href="/#!/{{post.urlLink}}#comments">
                     <span ng-if="post.comments.length > 1"  class="comment-count">{{post.comments.length}} comments</span>
-                    <span ng-if="post.comments.length == 0">no comment</span>
+                    <span ng-if="!post.comments || post.comments.length == 0">no comment</span>
                     <span ng-if="post.comments.length == 1">one comment</span>
                 </a>
             </td>
-            <td><span class="date">{{post.month}} {{post.day}}, {{post.year}}</span></td>
-            <td><span class="date">{{post.month}} {{post.day}}, {{post.year}}</span> (<a href="/#!/history-of/{{post.urlLink}}">History</a>)</td>
+            <td><span class="date">{{post.createdOn | dateFormat}}</span></td>
+            <td><span class="date">{{(post.updatedOn || post.createdOn) | dateFormat:'short'}}</span> (<a href="/#!/history-of/{{post.urlLink}}">History</a>)</td>
             <td>
                 <span>
                     <button type="button" ng-click="deletePost(post.id)">Delete</button>

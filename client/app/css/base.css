@@ -138,15 +138,9 @@ header div.search {
     width: 76px;
 }
 .post-line .revised div{
-    margin-top:3px;
+    margin-top:5px;
 }
 
-.post-line .revised .month {
-    font-size: 14pt;
-}
-.post-line .revised .year {
-    font-size: 11pt;
-}
 .post-line .comments {
     background: none repeat scroll 0 0 #E4E4E4;
     border-radius: 3px 3px 3px 3px;

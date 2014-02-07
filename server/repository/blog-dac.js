@@ -17,9 +17,7 @@
 
     var posts = [];//sample test data
     posts.push({
-      year: 2012,
-      month: 'July',
-      day: 12,
+      createdOn: new Date(2012, 12, 11, 13, 0, 0, 0),
       topic: 'Singleton with JavaScript',
       urlLink: 'javascript-singleton',
       status: 'public',
@@ -29,9 +27,7 @@
       comments: []
     });
     posts.push({
-      year: 2012,
-      month: 'June',
-      day: 12,
+      createdOn: new Date(2011, 12, 1, 11, 0, 0, 0),
       topic: 'Aspect Oriented Programming with JavaScript',
       urlLink: 'aop-with-javascript',
       status: 'public',
@@ -41,9 +37,7 @@
       comments: []
     });
     posts.push({
-      year: 2011,
-      month: 'July',
-      day: 11,
+      createdOn: new Date(2013, 1, 11, 9, 0, 0, 0),
       topic: 'Javascript Pitfalls',
       urlLink: 'javascript-pitfalls',
       status: 'public',
@@ -53,9 +47,7 @@
       comments: []
     });
     posts.push({
-      year: 2013,
-      month: 'July',
-      day: 12,
+      createdOn: new Date(2010, 12, 11, 10, 0, 0, 0),
       topic: 'Will JavaScript be universal?',
       urlLink: 'javascript-universal',
       status: 'draft',

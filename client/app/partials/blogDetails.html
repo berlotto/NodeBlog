@@ -8,8 +8,7 @@
         <a href="/#!/posts/{{post.topic}}">{{post.topic}}</a>
     </h1>
     <div class="entry-date">
-        <span class="month" >{{post.month}} {{post.day}}</span>
-        <span class="year">{{post.year}}</span>
+        {{(post.updatedOn || post.createdOn) | dateFormat}}
     </div>
     <div class="entry-container">
 
@@ -24,11 +23,9 @@
             <span>Posted by: {{post.author}}</span>
             <br>
             <span>Last revised:
-                <a ng-href="/#!/posts/{{post.urlLink}}?revision={{revision}}">
-                <span class="date" title="{{post.month}} {{post.day}}, {{post.year}}">
-                    {{post.month}} {{post.day}}, {{post.year}}
+                <span class="date" title="{{(post.createdOn || post.createdOn) | dateFormat}}">
+                    {{post.lastRevised}}
                 </span>
-                </a>
             </span>
             <span><a href="/#!/history-of/{{post.topic}}">History</a></span>
         </div>
@@ -53,7 +50,7 @@
                         <span class="date" title="{{cmt.dateString}}">{{cmt.dateString}}</span>
                         <button ng-if="hasEditRight" ng-click="editComment(cmt)">Edit</button>
                     </div>
-                    <p ng-bind-html="cmt.markedBody"></p>
+                    <!--<p ng-bind-html="cmt.markedBody"></p>-->
                 </div>
                 <div class="clear">
                 </div>
@@ -95,7 +92,7 @@
                             <div markdown-editor content="editCmt.body"></div>
                         </div>
                         <div class="wmd-panel editor-field">
-                            <span ng-bind-html="markDown(editCmt.body)"></span>
+                            <!--<span ng-bind-html="markDown(editCmt.body)"></span>-->
                         </div>
                         <div class="editor-field">
                             <input type="button" ng-click="updateComment(editCmt)" class="submit" value="Save">
@@ -145,7 +142,7 @@
                     <div markdown-editor content="post.activeComment.body"></div>
                 </div>
                 <div id="wmd-preview" class="wmd-panel editor-field">
-                    <span ng-bind-html="markDown(post.activeComment.body)"></span>
+                    <!--<span ng-bind-html="markDown(post.activeComment.body)"></span>-->
                 </div>
                 <div class="editor-field">
                     <input type="button" ng-click="addComment(cmt)" class="submit" value="Save">
