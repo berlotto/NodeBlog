@@ -18,6 +18,9 @@
     var posts = [];//sample test data
     posts.push({
       createdOn: new Date(2012, 12, 11, 13, 0, 0, 0),
+      updatedOn: new Date(2012, 12, 21, 13, 0, 0, 0),
+      createdBy: 'Jeff Jin',
+      updatedBy: 'Administrator',
       topic: 'Singleton with JavaScript',
       urlLink: 'javascript-singleton',
       status: 'public',
@@ -28,6 +31,10 @@
     });
     posts.push({
       createdOn: new Date(2011, 12, 1, 11, 0, 0, 0),
+
+        updatedOn: new Date(2011, 1, 21, 13, 0, 0, 0),
+        createdBy: 'Jeff Jin',
+        updatedBy: 'Administrator',
       topic: 'Aspect Oriented Programming with JavaScript',
       urlLink: 'aop-with-javascript',
       status: 'public',
@@ -38,6 +45,9 @@
     });
     posts.push({
       createdOn: new Date(2013, 1, 11, 9, 0, 0, 0),
+        updatedOn: new Date(2013, 2, 21, 13, 0, 0, 0),
+        createdBy: 'Jeff Jin',
+        updatedBy: 'Administrator',
       topic: 'Javascript Pitfalls',
       urlLink: 'javascript-pitfalls',
       status: 'public',
@@ -48,11 +58,14 @@
     });
     posts.push({
       createdOn: new Date(2010, 12, 11, 10, 0, 0, 0),
+        updatedOn: new Date(2011, 1, 21, 13, 0, 0, 0),
+        createdBy: 'Jeff Jin',
+        updatedBy: 'Administrator',
       topic: 'Will JavaScript be universal?',
       urlLink: 'javascript-universal',
       status: 'draft',
       disableComment: true,
-      summary: 'With JavasSript based apps are getting more and more popular, will it become universal programming language?',
+      summary: 'With JavaScript based apps are getting more and more popular, will it become universal programming language?',
       body: "Since then, Java and C# started getting more and more popular, and many developers stayed away from C++/C. That probably is why now those C/C++ developers are paid very well, but those languages never become the universal programming language, although they are capable of being it.\r\n\r\nRecently, with the popularity of mobile applications, many developers use their spare time to learn and write applications on iOS, Android and Windows Phone 7/8, dreaming to have their own Angry Bird like apps and retire early. :-)\r\n\r\nQuickly developers run into a problem of duplicating code base for exactly same apps on iOS with Objective C, on android with Java and on windows phone with Xaml and C#.\r\n\r\nDoes it worth to spend much time learning C(Objective one) or Java for .Net developer?\r\n\r\nI would love to learn every language out there, but if I have limited time and resource, I would spend that time on JavaScript and HTML5, which would(hopefully) run on any modern browser, especially on mobile platform. One may argue that apps on browser will never be run the same way as native apps and I agree. \r\n\r\nHowever, a lot of native apps, especially business apps, they never utilize any native app features such as graphic resource, camera and so on and they are best candidate to be implemented in browser.\r\n\r\nWith the rise of many JavaScript libraries, both on client side and server side, such as jQuery, Backbone, Knockout, Angular, Amplify, NodeJS and even latest windows 8 app library, I feel like JavaScript is the mostly spread language in the future, if it is not already there.\r\n\r\nFor a long while, I am lost in many to-be-learned languages, Ruby, ObjectiveC, F#, Java with Android, but now I decided t go deep with JavaScript first, which I started to love a lot.",
       comments: []
     });

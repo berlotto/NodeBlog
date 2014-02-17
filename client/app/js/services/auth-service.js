@@ -23,4 +23,5 @@
       getLoggedIn: getLoggedIn
     }
   }]);
+
 })(window.ServiceModule);

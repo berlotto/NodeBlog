@@ -4,13 +4,13 @@
 
 (function(module) {
 module.controller('AdminPostEditCtrl', ['$scope', '$rootScope', '$routeParams','$location', '$window', '$timeout', '$q',
-    'blogService', 'adminBlogService', 'storage',
-    function($scope, $rootScope, $routeParams, $location, $window, $timeout, $q, blogService, adminBlogService, storage) {
+    'blogService', 'adminBlogService', 'storage', 'identity',
+    function($scope, $rootScope, $routeParams, $location, $window, $timeout, $q, blogService, adminBlogService, storage, identity) {
         console.log('Initializing AdminPostEditCtrl Controller');
         var postId = $routeParams.pid;
         var COMMENT_INSERT_KEY = 'comments-inserted-' + postId;
         console.log('Edit post with id ' + postId);
-        var key = $location.path() + JSON.stringify($rootScope.loggedInAs);
+        var key = $location.path() + JSON.stringify(identity.currentUser);
         var tempPost = storage.get(key);
         if(tempPost && $window.confirm('Would like to restore unsaved work?')){
             $scope.post = tempPost;
@@ -48,7 +48,7 @@ module.controller('AdminPostEditCtrl', ['$scope', '$rootScope', '$routeParams','
               adminBlogService.addPost(post).success(successCallback);
             }
         };
-
+        //Save WIP
         $scope.$watch('post', function(newValue, oldValue) {
             console.log(key);
             storage.set(key, newValue);

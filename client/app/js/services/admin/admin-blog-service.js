@@ -6,25 +6,37 @@
 // Demonstrate how to register services
 // In this case it is a simple value service.
 (function(module){
-  module.factory('adminBlogService', ['$http', function($http){
-    var deleteComment = function(commentId, postId){
-      return $http.delete('/api/comments/', {postId: postId, commentId: commentId});
-    };
-    var updateComment = function(commentId, postId){
-      return $http.delete('/api/comments/', {postId: postId, commentId: commentId});
-    };
+  module.factory('adminBlogService', ['$http', 'identity', function($http, identity){
+
     var addPost = function(post){
-        post.createdOn = new Date();
-        var jsonPost = JSON.stringify(post);
-        return $http.post('/api/posts/', jsonPost);
+        //$http.default.transforResponse does it automatically
+        //var jsonPost = JSON.stringify(post);
+        return $http.post('/api/posts/', post, {
+            transformRequest: [
+                function(data, headersGetter) {
+                    //var header = headersGetter();
+                    data.createdOn = new Date();
+                    data.updatedOn = null;
+                    data.createdBy = identity.currentUser.name;
+                    data.updatedBy = null;
+                    return data;
+                }
+            ].concat($http.defaults.transformRequest)
+        });
     };
     var updatePost = function(postId, post){
-        post.updatedOn = new Date();
-        return $http.put('/api/posts/' + postId, post);
+        return $http.put('/api/posts/' + postId, post, {
+            transformRequest: [
+                function(data, headersGetter) {
+                    //var header = headersGetter();
+                    data.updatedOn = new Date();
+                    data.updatedBy = identity.currentUser.name;
+                    return data;
+                }
+            ].concat($http.defaults.transformRequest)
+        });
     };
     return {
-      deleteComment: deleteComment,
-      updateComment: updateComment,
       addPost: addPost,
       updatePost: updatePost
     }

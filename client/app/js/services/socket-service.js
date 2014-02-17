@@ -6,7 +6,7 @@
 // Demonstrate how to register services
 // In this case it is a simple value service.
 (function(module){
-  module.factory('socket', function ($rootScope, $window) {
+  module.factory('socketService', ['$rootScope', '$window', function ($rootScope, $window) {
     var socket = $window.io.connect();
     return {
       on: function (eventName, callback) {
@@ -31,5 +31,5 @@
         socket.removeAllListeners(eventName);
       }
     };
-  });
+  }]);
 })(window.ServiceModule);

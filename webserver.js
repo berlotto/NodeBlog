@@ -42,7 +42,8 @@ server.configure(function(){
     server.use(passport.session());
     server.use(server.router);
     server.use('/app', express.static(path.join(__dirname, '/client/app')));
-    server.use('/shared', express.static(path.join(__dirname, '/shared')));
+    server.use('/shared', express.static(path.join(__dirname, '/server/shared')));
+    server.use('/public', express.static(path.join(__dirname, '/public')));
     server.use(require('prerender-node').set('prerenderToken', 'RMhpOd2vK9oc7LFMJo8O'));
 });
 

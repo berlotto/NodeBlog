@@ -37,7 +37,6 @@
         <div class="comments-in">
             <a name="comments"></a>
             <h2>Comments</h2>
-
             <div ng-repeat="cmt in post.comments" class="comment">
                 <a name="comment-2"></a>
                 <div class="comment-author vcard">
@@ -50,7 +49,7 @@
                         <span class="date" title="{{cmt.dateString}}">{{cmt.dateString}}</span>
                         <button ng-if="hasEditRight" ng-click="editComment(cmt)">Edit</button>
                     </div>
-                    <!--<p ng-bind-html="cmt.markedBody"></p>-->
+                    <div ng-bind-html="cmt.markedBody"></div>
                 </div>
                 <div class="clear">
                 </div>
@@ -145,7 +144,7 @@
                     <!--<span ng-bind-html="markDown(post.activeComment.body)"></span>-->
                 </div>
                 <div class="editor-field">
-                    <input type="button" ng-click="addComment(cmt)" class="submit" value="Save">
+                    <input type="button" ng-click="addComment(post.activeComment)" class="submit" value="Save">
                 </div>
             </div>
 

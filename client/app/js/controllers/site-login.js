@@ -2,8 +2,8 @@
 
 /* Controllers */
 (function(module) {
-module.controller('SiteLoginCtrl', ['$scope', '$rootScope', '$location', 'authService',
-  function($scope, $rootScope, $location, authService) {
+module.controller('SiteLoginCtrl', ['$scope', '$rootScope', '$location', 'authService', 'identity',
+  function($scope, $rootScope, $location, authService, identity) {
     console.log('Initializing Site Login Controller');
 
     $scope.login = function(username, password){
@@ -11,7 +11,7 @@ module.controller('SiteLoginCtrl', ['$scope', '$rootScope', '$location', 'authSe
 
       authService.authenticate(username, password).then(function(result){
           console.log('success for ' + result);
-          $rootScope.loggedInAs = result.data;
+          identity.currentUser = result.data;
           $location.path('/admin');
       }, function(reason){
           console.error(reason.data);

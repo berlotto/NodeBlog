@@ -59,7 +59,7 @@ var setupRoutes = function(server)
 
   server.post('/api/logout', function(req, res){ req.logOut(); res.send(200); });
 
-  server.post('/postmarkInbound', function(req, res){
+  server.post('/api/postmarkInbound', function(req, res){
     console.log('postmarkInbound => ' + JSON.stringify(req.body));
     res.send(req.body);
   });
