@@ -33,11 +33,11 @@
     </script>
 </head>
 <body>
-<ng-include src="'app/partials/header.html'"></ng-include>
+<jj-header></jj-header>
 
 <div ng-view></div>
 
-<ng-include src="'app/partials/footer.html'"></ng-include>
+<jj-footer></jj-footer>
 
 <script>
     if(!console){
@@ -80,10 +80,10 @@
 <script src="/app/js/filters/date-format.js"></script>
 
 <!-- Directives -->
-<script src="/app/js/directives/markdown-editor.js"></script>
+<script src="/app/js/directives/jj-header.js"></script>
+<script src="/app/js/directives/jj-footer.js"></script>
+<script src="/app/js/directives/jj-markdown-editor.js"></script>
 <script src="/app/js/directives/ng-enter.js"></script>
-
-<script src="/app/js/filters/pg-lang-filter.js"></script>
 
 <!-- Services -->
 <script src="/app/js/services/storage-service.js"></script>

@@ -4,7 +4,7 @@
 
 
 (function(module){
-  module.directive('markdownEditor', ['$window', function($window) {
+  module.directive('jjMarkdownEditor', ['$window', function($window) {
 
     return {
       restrict: 'EA',
