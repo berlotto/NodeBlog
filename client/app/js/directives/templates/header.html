@@ -10,14 +10,6 @@
                 <li><a href="/#!/admin/">Admin</a></li>
             </ul>
         </nav>
-        <div class="search" ng-controller="BlogSearchCtrl">
-            <form novalidate="novalidate">
-                <p>
-                    <!--Setup ng keydown event for 'Enter' to search-->
-                    <input type="text" value="" ng-model="keyword" class="medium" ng-enter="search(keyword)" placeholder="title or keywords" alt="Search">
-                    <input type="button" ng-disabled="!keyword || keyword.length < 3" ng-click="search(keyword)" value="Search" class="submit" id="search">
-                </p>
-            </form>
-        </div>
+        <jj-search-form></jj-search-form>
     </div>
 </header>
