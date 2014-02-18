@@ -10,7 +10,6 @@
       function($http, $q, $sce, commentService, identity, moment, md5, marked){
           console.log('Initializing Blog Service');
 
-
           var getList = function(dateRange, size){
             return $http.get('/api/posts');
           };
