@@ -9,11 +9,11 @@
    module.factory('validatorService', ['$sce', 'moment', 'md5', function($sce, moment, md5){
       console.log('Initializing Validator Service');
       var isValidPositiveNumber = function(n){
-          return true;
+          return !!n;
       };
 
       var isValidDateString = function(s){
-         return true;
+         return !!s;
       }
 
       return {

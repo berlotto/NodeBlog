@@ -11,7 +11,7 @@
          console.log('Initializing Comment Service');
 
          var getList = function(dateRange, maxSize){
-            var queryString = '?';
+            var queryString = '';
             if(dateRange){
                if(validator.isValidDateString(dateRange.from)){
                   queryString = queryString + 'from=' + dateRange.from;
@@ -22,6 +22,9 @@
             }
             if(validator.isValidPositiveNumber(maxSize)){
                queryString = queryString + '&max=' + maxSize;
+            }
+            if(queryString){
+               queryString = '?' + queryString;
             }
             return $http.get('/api/comments' + queryString);
          };

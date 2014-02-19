@@ -27,6 +27,7 @@ describe('CommentService', function() {
       inject(function($injector) {
          $httpBackend = $injector.get('$httpBackend');
          $httpBackend.when('GET', '/api/comments').respond(comments);
+         $httpBackend.when('GET', '/api/comments?from=2013-12-01&to=2014-1-1&max=11').respond(comments.slice(4));
       });
    });
 
@@ -40,11 +41,16 @@ describe('CommentService', function() {
             expect(result.length).toBe(14);
          });
 
+         $httpBackend.flush();
+      }]));
 
-         commentService.getList({from:'2013-12-01', to:'2014-1-1'}, 10).success(function(result){
+      it('should retrieve filtered comments when date range and max size are passed in', inject(['commentService', function(commentService) {
+
+         expect(commentService).toBeDefined();
+
+         commentService.getList({from:'2013-12-01', to:'2014-1-1'}, 11).success(function(result){
             expect(result.length).toBe(10);
          });
-
 
          $httpBackend.flush();
       }]));
