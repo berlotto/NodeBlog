@@ -2,7 +2,7 @@
 
 /* jasmine specs for controllers go here */
 
-describe('BlogController', function(){
+describe('BlogListController', function(){
 
    var mockRouteParams, mockScope, mockBlogService;
    var blogListController;
@@ -23,9 +23,9 @@ describe('BlogController', function(){
    );
 
 
-   it('should return 4 posts from 2010 to 2014', inject(function($rootScope, $controller) {
+   it('should return BlogListCtrl', inject(function($rootScope, $controller) {
       var scope = $rootScope.$new();
       blogListController = $controller('BlogListCtrl', {$scope: scope, blogService: mockBlogService, $routeParams: mockRouteParams});
-      //blogListController
+      expect(blogListController).toBeDefined();
    }));
 });

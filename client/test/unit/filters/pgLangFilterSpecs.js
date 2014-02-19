@@ -7,8 +7,8 @@ describe('filter', function() {
 
 
   describe('pgLang filter', function() {
-    it('should remove inappropriate words', inject(function(pgLangFilter) {
+    it('should remove inappropriate words', inject(['pgLangFilter', function(pgLangFilter) {
       expect(pgLangFilter(['school', 'student', 'sex', 'fuck'])).toEqual(['school', 'student', 'sex']);
-    }));
+    }]));
   });
 });
