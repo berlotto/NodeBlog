@@ -7,7 +7,7 @@
     function($scope, $routeParams, blogService) {
         console.log('Initializing AdminPostsCtrl Controller');
         var loadPosts = function(){
-            blogService.getPosts({from:$routeParams.from, to:$routeParams.to}, 20)
+            blogService.getList({from:$routeParams.from, to:$routeParams.to}, 20)
                 .success(function(data, status, headers, config) {
                     $scope.posts = data;
                 }).

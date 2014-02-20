@@ -9,7 +9,7 @@ describe('BlogDetailsController', function(){
    beforeEach(function(){
          mockRouteParams = {pid:'javascript-pitfalls'};
          mockScope = {};
-         mockBlogService = {getPostDetails:function(){
+         mockBlogService = {getDetails:function(){
             return {success:function(){return {error: function(){}}}};
          }};
          mockCmtService = {};

@@ -8,7 +8,7 @@
       console.log('Initializing Blog Details Controller');
       var postId = $routeParams.pid;
       var commentInsertKey = 'comments-inserted-' + postId;
-      blogService.getPostDetails(postId).success(function(result, status, headers, config) {
+      blogService.getDetails(postId).success(function(result, status, headers, config) {
         $scope.hasEditRight = identity.currentUser && (identity.currentUser.isAdmin || identity.currentUser.isOwner);
         $scope.post = result;
       }).error(function(data, status, headers, config) {

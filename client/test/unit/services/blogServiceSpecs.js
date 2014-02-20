@@ -26,7 +26,7 @@ describe('BlogService', function() {
 
          expect(blogService).toBeDefined();
 
-         blogService.getPosts().success(function(result){
+         blogService.getList().success(function(result){
             expect(result.length).toBe(4);
          });
 
@@ -36,7 +36,7 @@ describe('BlogService', function() {
       it('should retrieve 2 posts when params are passed in', inject(['blogService', function(blogService) {
          $httpBackend.when('GET', '/api/posts?from=2013-12-01&to=2014-1-1&max=3').respond(window.posts.slice(2));
 
-         blogService.getPosts({from:'2013-12-01', to:'2014-1-1'}, 3).success(function(result){
+         blogService.getList({from:'2013-12-01', to:'2014-1-1'}, 3).success(function(result){
             expect(result.length).toBe(2);
          });
 
@@ -44,7 +44,7 @@ describe('BlogService', function() {
       }]));
 
       it('should retrieve 1 post when "new" is passed in', inject(['blogService', function(blogService) {
-         blogService.getPostDetails('new').then(function(result){
+         blogService.getDetails('new').then(function(result){
             expect(result.data.topic).toBe('topic for the new post');
             expect(result.data.summary).toBe('please write a summary');
             expect(result.data.disableComment).toBe(false);
@@ -54,7 +54,7 @@ describe('BlogService', function() {
       it('should retrieve 1 post when id is passed in', inject(['blogService', function(blogService) {
          $httpBackend.when('GET', '/api/posts/javascript-pitfalls').respond(window.posts[2]);
 
-         blogService.getPostDetails('javascript-pitfalls').then(function(result){
+         blogService.getDetails('javascript-pitfalls').then(function(result){
             expect(result.data.topic).toBe('Javascript Pitfalls');
             expect(result.data.createdBy).toBe('Jeff Jin');
             expect(result.data.status).toBe('public');
@@ -67,8 +67,18 @@ describe('BlogService', function() {
       it('should retrieve no post when invalid id is passed in', inject(['blogService', function(blogService) {
          $httpBackend.when('GET', '/api/posts/javascript-pitfalls111').respond(null);
 
-         blogService.getPostDetails('javascript-pitfalls111').then(function(result){
+         blogService.getDetails('javascript-pitfalls111').then(function(result){
             expect(result.data).toBe(null);
+         });
+
+         $httpBackend.flush();
+      }]));
+
+      it('should retrieve 3 post when only max param is passed in', inject(['blogService', function(blogService) {
+         $httpBackend.when('GET', '/api/posts?max=3').respond(window.posts.slice(1));
+
+         blogService.getList(null, 3).success(function(result){
+            expect(result.length).toBe(3);
          });
 
          $httpBackend.flush();

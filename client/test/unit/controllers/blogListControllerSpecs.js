@@ -10,7 +10,7 @@ describe('BlogListController', function(){
          mockRouteParams = {from:'2010-12-1', to:'2014-1-1'};
          mockScope = {};
          var serviceStub = sinon.stub();
-         mockBlogService = {getPosts:function(){
+         mockBlogService = {getList:function(){
             return {success:function(){return {error: function(){}}}};
          }}
 

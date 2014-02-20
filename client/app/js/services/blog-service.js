@@ -21,7 +21,12 @@
                }
             }
             if(validator.isValidPositiveNumber(maxSize)){
-               queryString = queryString + '&max=' + maxSize;
+               if(queryString){
+                  queryString = queryString + '&max=' + maxSize;
+               }
+               else{
+                  queryString = 'max=' + maxSize;
+               }
             }
             if(queryString){
                queryString = '?' + queryString;
@@ -53,8 +58,8 @@
          };
 
          return {
-            getPosts: getList,
-            getPostDetails: getDetails
+            getList: getList,
+            getDetails: getDetails
          }
       }]);
 })(window.ServiceModule);

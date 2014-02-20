@@ -17,7 +17,7 @@ module.controller('AdminPostEditCtrl', ['$scope', '$rootScope', '$routeParams','
             storageService.set(key, null);
         }
         else{
-            blogService.getPostDetails(postId).then(
+            blogService.getDetails(postId).then(
                 function(result) {
                     $scope.markDown = $window.marked;
                     if(result.data && result.data.comments){
