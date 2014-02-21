@@ -10,7 +10,7 @@ describe('BlogService', function() {
       module('chinook.services');
       inject(function($injector) {
          $httpBackend = $injector.get('$httpBackend');
-         $httpBackend.when('POST', '/api/posts/').respond(200);
+         $httpBackend.when('POST', '/api/posts/').respond(12345);
          $httpBackend.when('PUT', '/api/posts/').respond(200);
       });
    });
