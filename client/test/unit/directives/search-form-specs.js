@@ -26,12 +26,19 @@ describe('ng-enter directive', function() {
       // wrap our directive inside a form to be able to test
       // that our form integration works well (via ngModelController)
       // our directive instance is then put in the global 'elm' variable for further tests
-      if (!tpl) tpl = '/app/js/directives/templates/search.html';
+      if (!tpl) tpl = '<div class="search">' +
+                        '<form novalidate="novalidate">' +
+                         '<p>'+
+                           '<input type="text" value="" ng-model="keyword" class="medium" ng-enter="search(keyword)" placeholder="title or keywords" alt="Search">' +
+                              '<input type="button" ng-disabled="!keyword || keyword.length < 3" ng-click="search(keyword)" value="Search" class="submit" id="search">' +
+                              '</p>' +
+                           '</form>' +
+                        '</div>';
       // inject allows you to use AngularJS dependency injection
       // to retrieve and use other services
       inject(function($compile) {
-         var form = $compile(tpl)(scope);
-         elm = form.find('div');
+         var elem = $compile(tpl)(scope);
+         elm = elem.find('div.search');
       });
       // $digest is necessary to finalize the directive generation
       scope.$digest();
@@ -40,23 +47,10 @@ describe('ng-enter directive', function() {
    it('should update form validity initialy', function() {
       // test with a min attribute that is out of bounds
       // first set the min value
-      scope.testMin = 45;
       // then produce our directive using it
       compileDirective('<div rn-stepper min="testMin" ng-model="testModel"></div>');
       // this should impact the form validity
-      expect(scope.form.$valid).toBeFalsy();
+      expect(elm).toBeDefined();
    });
 
-   it('decrease button should be disabled when min reached', function() {
-      // test the initial button status
-      compileDirective('<div rn-stepper min="40" ng-model="testModel"></div>');
-      expect(elm.find('button').attr('disabled')).not.toBeDefined();
-      // update the scope model value
-      scope.testModel = 40;
-      // force model change propagation
-      scope.$digest();
-      // validate it has updated the button status
-      expect(elm.find('button').attr('disabled')).toEqual('disabled');
-   });
-   // and many others...
 });
