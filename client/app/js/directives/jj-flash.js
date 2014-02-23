@@ -5,7 +5,7 @@
 'use strict';
 
 (function(module){
-    module.directive('jjFlash', ['$timeOut', function ($timeOut) {
+    module.directive('jjFlash', ['$timeout', function ($timeout) {
         return function (scope, element, attrs) {
 
         };

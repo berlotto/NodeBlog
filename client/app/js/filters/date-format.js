@@ -3,7 +3,7 @@
 /* Filters */
 
 (function(module){
-  module.filter('dateFormat', function() {
+  module.filter('dateFormat', ['moment', function(moment) {
 
     return function(value, type) {
       if(type === 'short'){
@@ -14,5 +14,5 @@
       }
       return  moment(value).format("MMM Do YYYY");
     }
-  });
+  }]);
 })(window.FilterModule);

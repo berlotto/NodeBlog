@@ -3,7 +3,7 @@
  */
 
 (function(module){
-    module.factory('httpInterceptor', function ($q, $location) {
+    module.factory('httpInterceptor', ['$q', '$location', function ($q, $location) {
         return {
             // request method
             'request': function(config) {
@@ -40,7 +40,7 @@
                 return $q.reject(rejection);
             }
         };
-    });
+    }]);
     module.config(function ($httpProvider) {
         $httpProvider.interceptors.push('httpInterceptor');
     });

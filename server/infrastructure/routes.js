@@ -11,7 +11,7 @@ var fs = require('fs'),
 ///////////////////////////////////////////
 
 //param: server is expressJs instance
-var setupRoutes = function(server)
+var setupRoutes = function(server, env)
 {
   var mapResource = function(req, res, fs, folder, file){
       var p = path.join(__dirname, folder, file);
@@ -40,7 +40,12 @@ var setupRoutes = function(server)
 
   /////// PAGE ROUTING  /////////
   server.get('/', function(req, res){
-    mapResource(req, res, fs, '../../client', 'index.html');
+     if(env == 'dev'){
+        mapResource(req, res, fs, '../../client', 'index.html');
+     }
+     else{
+        mapResource(req, res, fs, '../../client', 'home.html');
+     }
   });
 
 //  // set up our security to be enforced on all requests to secure paths

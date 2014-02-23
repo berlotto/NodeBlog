@@ -4,14 +4,14 @@
 
 (function(module) {
 module.controller('AdminPostEditCtrl', ['$scope', '$rootScope', '$routeParams','$location', '$window', '$timeout', '$q',
-    'blogService', 'adminBlogService', 'storageService', 'identity',
-    function($scope, $rootScope, $routeParams, $location, $window, $timeout, $q, blogService, adminBlogService, storageService, identity) {
+                  'blogService', 'adminBlogService', 'storageService', 'identity', 'marked',
+    function($scope, $rootScope, $routeParams, $location, $window, $timeout, $q,
+                  blogService, adminBlogService, storageService, identity, marked) {
         console.log('Initializing AdminPostEditCtrl Controller');
         var postId = $routeParams.pid;
-        var COMMENT_INSERT_KEY = 'comments-inserted-' + postId;
         console.log('Edit post with id ' + postId);
         var key = $location.path() + JSON.stringify(identity.currentUser);
-        var tempPost = storage.get(key);
+        var tempPost = storageService.get(key);
         if(tempPost && $window.confirm('Would like to restore unsaved work?')){
             $scope.post = tempPost;
             storageService.set(key, null);
@@ -19,7 +19,7 @@ module.controller('AdminPostEditCtrl', ['$scope', '$rootScope', '$routeParams','
         else{
             blogService.getDetails(postId).then(
                 function(result) {
-                    $scope.markDown = $window.marked;
+                    $scope.markDown = marked;
                     if(result.data && result.data.comments){
                         for(var i = 0; i < result.data.comments.length; i++){
                             result.data.comments[i].markedBody = marked(result.data.comments[i].body);

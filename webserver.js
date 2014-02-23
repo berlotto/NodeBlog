@@ -21,13 +21,13 @@ global.init();
 /////////////////////////////////
 
 
-var env = process.env.NODE_ENV || 'development',
+var env = process.env.NODE_ENV || 'dev',
     config = require('./server/infrastructure/config')[env];
 
 //initialize passport
 passport = security.init(passport, config);
 
-console.log('start configuring expressJS...');
+console.log('start configuring expressJS in ' + env + ' mode...');
 var server = express();
 
 server.configure(function(){
@@ -42,12 +42,13 @@ server.configure(function(){
     server.use(passport.session());
     server.use(server.router);
     server.use('/app', express.static(path.join(__dirname, '/client/app')));
+    server.use('/build', express.static(path.join(__dirname, '/client/build')));
     server.use('/shared', express.static(path.join(__dirname, '/server/shared')));
     server.use('/public', express.static(path.join(__dirname, '/public')));
     server.use(require('prerender-node').set('prerenderToken', 'RMhpOd2vK9oc7LFMJo8O'));
 });
 
-server.configure('development', function(){
+server.configure('dev', function(){
     server.use(express.errorHandler());
 });
 
@@ -67,7 +68,7 @@ var socketPromise = interaction.initSockets(serverListener);
 ////////for this application/////////
 ////////////////////////////////
 console.log('setting up routes with security...');
-routes.setupRoutes(server);
+routes.setupRoutes(server, env);
 console.log('finishing up routes with security...');
 
 console.log('finishing up sockets...');
