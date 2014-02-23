@@ -15,4 +15,7 @@
 
     module.value('md5', hex_md5);
 
+
+    module.value('locale', 'en');
+
 })(window.ServiceModule);

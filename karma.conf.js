@@ -34,13 +34,14 @@ module.exports = function(config) {
         "app/lib/Markdown.Converter.js",
         "app/lib/Markdown.Sanitizer.js" ,
         "app/lib/Markdown.Editor.js",
-        "client/app/js/providers/*.js",
         "app/bootstrap.js" ,
         "app/js/directives/*.js",
         "app/js/filters/*.js",
         "app/js/services/*.js",
         "app/js/controllers/*.js",
-        //test files
+       "app/js/providers/*.js",
+
+       //test files
         'test/unit/data.js',
         'test/unit/**/*.js'
     ],

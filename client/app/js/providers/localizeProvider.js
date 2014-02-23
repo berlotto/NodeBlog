@@ -40,18 +40,18 @@
 
     };
 
-    module.provider('localize', function localizeProvider() {
+    module.provider('localize', function LocalizeProvider() {
         var defaultLocale = 'en';
 
         this.setDefaultLocale = function(value) {
-            defaultLocale = value;
+            defaultLocale = value || defaultLocale;
         };
 
-        this.$get = ['$window', function localizeFactory($window) {
+        this.$get = ['locale', function localizeFactory(locale) {
 
             // let's assume that the UnicornLauncher constructor was also changed to
             // accept and use the useTinfoilShielding argument
-            return new Localizer(defaultLocale);
+            return new Localizer(locale);
         }];
     });
 })(window.ProviderModule, window);

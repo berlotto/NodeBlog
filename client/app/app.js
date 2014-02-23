@@ -47,6 +47,10 @@
     module.config(['$locationProvider', function($locationProvider){
         $locationProvider.html5Mode(false).hashPrefix('!');
     }]);
+   module.config(['localizeProvider', function(localizeProvider){
+      console.log('configuring localize providers')
+      localizeProvider.setDefaultLocale('en');
+   }]).
     module.run(function($rootScope, $window) {
         $rootScope.r = $window.r;
     });
