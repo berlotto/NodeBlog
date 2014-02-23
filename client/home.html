@@ -41,7 +41,9 @@
 
 <script>
     if(!console){
-        console.log = function(){};
+        console.log = function(){
+
+        };
         console.error = function(){};
         console.warn = function(){};
     }
@@ -50,31 +52,10 @@
 <script src="/socket.io/socket.io.js"></script>
 
 <!-- Common Libraries -->
-<script src="/app/lib/jshash/md5-min.js"></script>
-<script src="/app/lib/marked.js"></script>
-<script src="/app/lib/prettify.js"></script>
-<script src="/app/lib/lodash.underscore.min.js"></script>
-<script src="/app/lib/underscore.string.min.js"></script>
-<script>
-    _.mixin(_.str.exports());
-</script>
-<script src="/app/lib/jquery.min.js"></script>
-<script src="/app/lib/amplify.min.js"></script>
-<script src="/app/lib/angular/angular.min.js"></script>
-<script src="/app/lib/angular/angular-cookies.min.js"></script>
-<script src="/app/lib/angular/angular-loader.min.js"></script>
-<script src="/app/lib/angular/angular-touch.min.js"></script>
-<script src="/app/lib/angular/angular-route.min.js"></script>
-<script src="/app/lib/angular/angular-animate.min.js"></script>
-<script src="/app/lib/angular/angular-sanitize.min.js"></script>
-<script src="/app/lib/moment.min.js"></script>
-<script src="/app/lib/Markdown.Converter.js"></script>
-<script src="/app/lib/Markdown.Sanitizer.js"></script>
-<script src="/app/lib/Markdown.Editor.js"></script>
+<script src="/build/lib.js"></script>
 
 <!-- SPA Application -->
 <script src="/build/blog.min.js"></script>
-<script src="/app/app.js"></script>
 
 </body>
 </html>

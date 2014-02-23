@@ -1,4 +1,22 @@
 module.exports = function(grunt) {
+   var fileList = [
+      "client/app/lib/jshash/md5-min.js",
+      "client/app/lib/marked.min.js",
+      "client/app/lib/prettify.js",
+      "client/app/lib/lodash.underscore.min.js",
+      "client/app/lib/jquery.min.js",
+      "client/app/lib/amplify.min.js",
+      "client/app/lib/angular/angular.min.js",
+      "client/app/lib/angular/angular-cookies.min.js",
+      "client/app/lib/angular/angular-loader.min.js",
+      "client/app/lib/angular/angular-touch.min.js",
+      "client/app/lib/angular/angular-route.min.js",
+      "client/app/lib/angular/angular-animate.min.js",
+      "client/app/lib/angular/angular-sanitize.min.js",
+      "client/app/lib/moment.min.js",
+      "client/app/lib/Markdown.Converter.min.js",
+      "client/app/lib/Markdown.Sanitizer.min.js" ,
+      "client/app/lib/Markdown.Editor.min.js"];
 
    // Project configuration.
    grunt.initConfig({
@@ -27,14 +45,40 @@ module.exports = function(grunt) {
          bootstrap: {
             src: ['client/app/bootstrap.js'],
             dest: 'client/build/ngmin/bootstrap.js'
+         },
+         app: {
+            src: ['client/app/app.js'],
+            dest: 'client/build/ngmin/app.js'
+         }
+      },
+      concat: {
+         options: {
+            stripBanners: true,
+            banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+               '<%= grunt.template.today("yyyy-mm-dd") %> */',
+            separator: ';'
+         },
+         app: {
+            src: ['client/build/ngmin/bootstrap.js',
+               'client/build/ngmin/providers.js',
+               'client/build/ngmin/services.js',
+               'client/build/ngmin/filters.js',
+               'client/build/ngmin/directives.js',
+               'client/build/ngmin/controllers.js',
+               'client/build/ngmin/app.js'],
+            dest: 'client/build/blog.js'
+         },
+         lib: {
+            src: fileList,
+            dest: 'client/build/lib.js'
          }
       },
       uglify: {
          options: {
             mangle: false
          },
-         build: {
-            src: 'client/build/ngmin/*.js',
+         app: {
+            src: 'client/build/blog.js',
             dest: 'client/build/blog.min.js'
          }
       },
@@ -89,6 +133,7 @@ module.exports = function(grunt) {
    grunt.loadNpmTasks('grunt-ngmin');
    grunt.loadNpmTasks('grunt-contrib-uglify');
    grunt.loadNpmTasks('grunt-contrib-jshint');
+   grunt.loadNpmTasks('grunt-contrib-concat');
    grunt.loadNpmTasks('grunt-karma');
 
 // Default task(s).
