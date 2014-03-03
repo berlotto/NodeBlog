@@ -27,8 +27,8 @@ describe('SearchService', function() {
     });
 
 
-    describe('storage on client side', function() {
-        it('should save partial works in local storage or fallback persistent storage',
+    describe('Search Service should combine the results from blog and comment service', function() {
+        it('should call blogService.search and commentService.search',
             inject(['searchService', function(searchService) {
                 expect(searchService).toBeDefined();
                 var results = searchService.findByKeyword('angular');

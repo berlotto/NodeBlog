@@ -3,7 +3,7 @@
 /* Controllers */
 (function(module) {
     module.controller('BlogSearchCtrl', ['$scope', 'blogService',
-        function($scope, $location, blogService) {
+        function($scope, blogService) {
             console.log('Initializing Blog Search Controller');
             $scope.search = function(keyword){
                 console.log('Searching for ' + keyword);

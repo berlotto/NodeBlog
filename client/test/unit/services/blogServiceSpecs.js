@@ -87,21 +87,26 @@ describe('BlogService', function() {
       it('should retrieve 2 posts when only max param is passed in', inject(['blogService', function(blogService) {
          $httpBackend.when('GET', '/api/posts?q=angular').respond(window.posts.slice(2));
 
-         blogService.search('angular').success(function(result){
-            expect(result.length).toBe(2);
+         blogService.search('angular').then(function(result){
+            expect(result.data.length).toBe(2);
          });
 
          $httpBackend.flush();
       }]));
 
-      it('should retrieve 0 post when only max param is passed in', inject(['blogService', function(blogService) {
-         $httpBackend.when('GET', '/api/posts?q=').respond([]);
-
-         blogService.search('angular').success(function(result){
-            expect(result.length).toBe(0);
+      it('should retrieve 0 post when only no param is passed in', inject(['blogService', function(blogService) {
+         blogService.search().then(function(result){
+            expect(result.data.length).toBe(0);
          });
-
-         $httpBackend.flush();
+         blogService.search(null).then(function(result){
+            expect(result.data.length).toBe(0);
+         });
+         blogService.search(0).then(function(result){
+            expect(result.data.length).toBe(0);
+         });
+         blogService.search('').then(function(result){
+            expect(result.data.length).toBe(0);
+         });
       }]));
 
    });

@@ -60,7 +60,7 @@
             var search = function(keyword){
                 var deferred = $q.defer();
                 if(!keyword){
-                    deferred.resolve([]);
+                    deferred.resolve({data:[]});
                     return deferred.promise;
                 }
                 return $http.get('/api/posts?q=' + keyword);

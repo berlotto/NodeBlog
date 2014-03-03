@@ -96,10 +96,26 @@ describe('CommentService', function() {
       it('should find 3 comments in database when searched by angular', inject(['commentService', function(commentService) {
          $httpBackend.when('GET', '/api/comments?q=angular').respond([comments[0], comments[1], comments[2]]);
          commentService.search('angular').then(function(result){
-            expect(result.length).toBe(3);
+            expect(result.data.length).toBe(3);
          });
 
          $httpBackend.flush();
+
+      }]));
+
+      it('should find no comments in database when searched by null or empty value', inject(['commentService', function(commentService) {
+         commentService.search('').then(function(result){
+            expect(result.data.length).toBe(0);
+         });
+
+         commentService.search().then(function(result){
+            expect(result.data.length).toBe(0);
+         });
+
+         commentService.search(null).then(function(result){
+            expect(result.data.length).toBe(0);
+         });
+
 
       }]));
    });

@@ -79,12 +79,22 @@
             return $http.delete('/api/comments/', {commentId: commentId});
          };
 
+         var search = function(keywords){
+            var deferred = $q.defer();
+            if(!keywords){
+               deferred.resolve({data:[]});
+               return deferred.promise;
+            }
+            return $http.get('/api/comments?q=' + keywords);
+         };
+
          return {
             getList: getList,
             save: saveComment,
             parse: parse,
             parseOne: parseOne,
-            delete: deleteComment
+            delete: deleteComment,
+            search: search
          }
       }]);
 })(window.ServiceModule);
