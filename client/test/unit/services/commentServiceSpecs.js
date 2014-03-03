@@ -92,5 +92,15 @@ describe('CommentService', function() {
          $httpBackend.flush();
 
       }]));
+
+      it('should find 3 comments in database when searched by angular', inject(['commentService', function(commentService) {
+         $httpBackend.when('GET', '/api/comments?q=angular').respond([comments[0], comments[1], comments[2]]);
+         commentService.search('angular').then(function(result){
+            expect(result.length).toBe(3);
+         });
+
+         $httpBackend.flush();
+
+      }]));
    });
 });

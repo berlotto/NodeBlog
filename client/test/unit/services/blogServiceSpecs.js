@@ -84,5 +84,25 @@ describe('BlogService', function() {
          $httpBackend.flush();
       }]));
 
+      it('should retrieve 2 posts when only max param is passed in', inject(['blogService', function(blogService) {
+         $httpBackend.when('GET', '/api/posts?q=angular').respond(window.posts.slice(2));
+
+         blogService.search('angular').success(function(result){
+            expect(result.length).toBe(2);
+         });
+
+         $httpBackend.flush();
+      }]));
+
+      it('should retrieve 0 post when only max param is passed in', inject(['blogService', function(blogService) {
+         $httpBackend.when('GET', '/api/posts?q=').respond([]);
+
+         blogService.search('angular').success(function(result){
+            expect(result.length).toBe(0);
+         });
+
+         $httpBackend.flush();
+      }]));
+
    });
 });
