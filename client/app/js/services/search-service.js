@@ -9,23 +9,29 @@
    module.factory('searchService', ['$q', 'blogService', 'commentService',
       function($q, blogService, commentService){
          console.log('Initializing Search Service');
+         var searchResult = {};
          var searchBlogs = function(k){
-            blogService.search(k).then(function(result){
-
+            return blogService.search(k).then(function(result){
+                searchResult.posts = result.data;
             });
          };
          var searchComments = function(k){
-            commentService.search(k).then(function(result){
-
+            return commentService.search(k).then(function(result){
+               searchResult.comments = result.data;
             });
          };
 
 
          return {
+            searchTest: function(k){
+               return blogService.search(k).then(function(result){
+                  searchResult.posts = result.data;
+               });
+            },
             search: function(keyword){
                //TODO
-               $q.when([searchBlogs(keyword), searchComments(keyword)]).then(function(){
-
+               return $q.all([searchBlogs(keyword), searchComments(keyword)]).then(function(){
+                  return searchResult;
                });
             }
          }
