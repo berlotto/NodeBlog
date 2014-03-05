@@ -2,50 +2,58 @@
 
 /* jasmine specs for services go here */
 
-describe('SearchService', function() {
-   var searchService,
-      commentService,
-      blogService,
-      $provide;
+describe('Search Service', function() {
+    var commentService,
+        blogService,
+        $provide,
+        $httpBackend;
 
-   beforeEach(function(){
-      module('chinook.services');
+    beforeEach(function(){
+        module('chinook.services');
 
-      module(['$provide', function(provide) {
-          $provide = provide;
-      }]);
+        module(['$provide', function(provide) {
+            $provide = provide;
+        }]);
 
-      inject(['$q', function($q) {
-         var deferred1 = $q.defer();
-         commentService = {
-            search: function(key){
-               deferred1.resolve(window.comments.slice(0, 2));
-               return deferred1.promise;
-            }
-         };
+        inject(['$q', '$injector', function($q, $injector) {
+            $httpBackend = $injector.get('$httpBackend');
 
-         var deferred2 = $q.defer();
-         blogService = {
-            search: function(key){
-               deferred2.resolve(window.posts.slice(1, 2));
-               return deferred2.promise;
-            }
-         };
-         $provide.value('commentService', commentService);
-         $provide.value('blogService', blogService);
-      }]);
+            commentService = {
+                search: function(key){
+                    var deferred1 = $q.defer();
+                    deferred1.resolve({data:window.comments.slice(0, 2)});
+                    return deferred1.promise;
+                }
+            };
 
-   });
+            blogService = {
+                search: function(key){
+                    var deferred2 = $q.defer();
+                    console.log('mock blogService.search', key);
+                    deferred2.resolve({data: window.posts.slice(0, 2)});
+                    return deferred2.promise;
+                }
+            };
+            $provide.value('commentService', commentService);
+            $provide.value('blogService', blogService);
+        }]);
 
+    });
 
-   describe('Search Service should combine the results from blog and comment service', function() {
-      it('should call blogService.search and commentService.search',
-         inject(['searchService', function(searchService) {
-            expect(searchService).toBeDefined();
-            searchService.searchTest('angular').then(function(result){
-               expect(result.posts.length).toBe(3);
-               expect(result.comments.length).toBe(3);
-            })
-         }]));
-   });
+    afterEach(function() {
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.verifyNoOutstandingRequest();
+    });
+
+    describe('Search Service', function() {
+        it('should combine the results from blog and comment service', inject(['searchService', function(searchService) {
+                expect(searchService).toBeDefined();
+                searchService.search('ember').then(function(result){
+                    console.log('searchService search result', result);
+
+                    expect(result.posts.length).toBe(2);
+                    expect(result.comments.length).toBe(2);
+                })
+            }]));
+    });
 });

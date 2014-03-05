@@ -58,6 +58,8 @@
             };
 
             var search = function(keyword){
+                console.log('blogService.search for ', keyword);
+
                 var deferred = $q.defer();
                 if(!keyword){
                     deferred.resolve({data:[]});
