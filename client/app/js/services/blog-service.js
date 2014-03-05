@@ -8,7 +8,7 @@
 (function(module){
     module.factory('blogService', ['$http', '$q', '$sce', 'commentService', 'identity', 'moment', 'md5', 'marked', 'validatorService',
         function($http, $q, $sce, commentService, identity, moment, md5, marked, validator){
-            console.log('Initializing Blog Service');
+            //console.log('Initializing Blog Service');
 
             var getList = function(dateRange, maxSize){
                 var queryString = '';

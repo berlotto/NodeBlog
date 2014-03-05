@@ -8,7 +8,7 @@
 (function(module){
    module.factory('searchService', ['$q', 'blogService', 'commentService',
       function($q, blogService, commentService){
-         console.log('Initializing Search Service');
+         //console.log('Initializing Search Service');
          var searchResult = {};
          var searchPosts = function(k){
             return blogService.search(k).then(function(result){

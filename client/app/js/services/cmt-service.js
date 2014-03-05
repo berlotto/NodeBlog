@@ -8,7 +8,7 @@
 (function(module){
    module.factory('commentService', ['$http', '$q', '$sce', 'moment', 'md5', 'identity', 'validatorService',
       function($http, $q, $sce, moment, md5, identity, validator){
-         console.log('Initializing Comment Service');
+         //console.log('Initializing Comment Service');
 
          var getList = function(dateRange, maxSize){
             var queryString = '';

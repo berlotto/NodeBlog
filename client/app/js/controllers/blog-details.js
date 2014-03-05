@@ -5,7 +5,7 @@
 (function(module) {
    module.controller('BlogDetailsCtrl', ['$scope', '$routeParams', 'blogService', 'commentService', 'socketService', 'identity',
       function($scope, $routeParams, blogService, commentService, socketService, identity) {
-         console.log('Initializing Blog Details Controller');
+         //console.log('Initializing Blog Details Controller');
          var postId = $routeParams.pid;
          var commentInsertKey = 'comments-inserted-' + postId;
 

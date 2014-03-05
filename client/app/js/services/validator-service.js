@@ -7,7 +7,7 @@
 // In this case it is a simple value service.
 (function(module){
    module.factory('validatorService', ['$sce', 'moment', 'md5', function($sce, moment, md5){
-      console.log('Initializing Validator Service');
+      //console.log('Initializing Validator Service');
       var isValidPositiveNumber = function(n){
           return !!n;
       };

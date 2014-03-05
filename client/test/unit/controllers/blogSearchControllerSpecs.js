@@ -38,7 +38,6 @@ describe('BlogSearchController', function(){
 
             blogSearchController = $controller('BlogSearchCtrl', {$scope: scope, searchService: mockSearchService});
             expect(blogSearchController).toBeDefined();
-            console.log('BlogSearchCtrl', blogSearchController);
 
             scope.search('angular').then(function(){
                 console.log('BlogSearchCtrl.search', scope.searchResult);
