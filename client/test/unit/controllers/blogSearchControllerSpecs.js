@@ -4,44 +4,46 @@
 
 describe('BlogSearchController', function(){
 
-    var mockRouteParams, mockScope, mockBlogService;
+    var mockRouteParams, mockScope, $httpBackend;
     var blogSearchController;
     beforeEach(function(){
             mockRouteParams = {q:'angular'};
             mockScope = {};
-
+            module('chinook.controllers');
             module(function($provide) {
                 $provide.value('$routeParams', mockRouteParams);
             });
-            module('chinook.controllers');
+            inject(function($injector) {
+                $httpBackend = $injector.get('$httpBackend');
+            });
 
         }
     );
 
-
-    it('should return BlogSearchCtrl with default setup', inject(['$rootScope', '$controller',
-        function($rootScope, $controller) {
-            var scope = $rootScope.$new();
-
-            blogSearchController = $controller('BlogSearchCtrl', {$scope: scope, blogService: mockBlogService});
-            expect(blogSearchController).toBeDefined();
-        }]));
+    afterEach(function() {
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.verifyNoOutstandingRequest();
+    });
 
     it('should return three posts for searching "angular"', inject(['$rootScope', '$timeout', '$controller', '$q',
         function($rootScope, $timeout, $controller, $q) {
             var scope = $rootScope.$new();
             var deferred = $q.defer();
-            mockBlogService = {
+            var mockSearchService = {
                 search: function(key){
-                    deferred.resolve(window.posts.slice(2));
+                    deferred.resolve({posts: window.posts.slice(0, 3), comments:window.comments.slice(0, 2)} );
                     return deferred.promise;
                 }
             };
 
-            blogSearchController = $controller('BlogSearchCtrl', {$scope: scope, blogService: mockBlogService});
-            scope.search('angular');
-            $timeout(function(){
-                expect(scope.searchResults.length).toBe(3);
+            blogSearchController = $controller('BlogSearchCtrl', {$scope: scope, searchService: mockSearchService});
+            expect(blogSearchController).toBeDefined();
+            console.log('BlogSearchCtrl', blogSearchController);
+
+            scope.search('angular').then(function(){
+                console.log('BlogSearchCtrl.search', scope.searchResult);
+                expect(scope.searchResult.posts.length).toBe(3);
+                expect(scope.searchResult.comments.length).toBe(2);
             });
         }]));
 

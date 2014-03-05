@@ -2,13 +2,13 @@
 
 /* Controllers */
 (function(module) {
-    module.controller('BlogSearchCtrl', ['$scope', 'blogService',
-        function($scope, blogService) {
+    module.controller('BlogSearchCtrl', ['$scope', 'searchService',
+        function($scope, searchService) {
             console.log('Initializing Blog Search Controller');
             $scope.search = function(keyword){
                 console.log('Searching for ' + keyword);
-                blogService.search(keyword).then(function(posts){
-                    $scope.searchResults = posts;
+                return searchService.search(keyword).then(function(result){
+                    $scope.searchResult = result;
                 });
             };
         }]);
