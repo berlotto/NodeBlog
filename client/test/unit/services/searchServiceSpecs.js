@@ -42,7 +42,7 @@ describe('SearchService', function() {
       it('should call blogService.search and commentService.search',
          inject(['searchService', function(searchService) {
             expect(searchService).toBeDefined();
-            searchService.search('angular').then(function(result){
+            searchService.searchTest('angular').then(function(result){
                expect(result.posts.length).toBe(3);
                expect(result.comments.length).toBe(3);
             })
