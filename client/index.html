@@ -30,7 +30,10 @@
         window.disqus_identifier = document.title || 'Home';
         window.disqus_developer = !! ~document.location.href.indexOf("localhost") ? 1 : 0;
         window.disqus_url = document.location.href;
+
+       window.devMode = true;
     </script>
+   <script src="/app/data.js"></script>
 </head>
 <body>
 <jj-header></jj-header>
@@ -67,6 +70,7 @@
 <script src="/app/lib/Markdown.Converter.min.js"></script>
 <script src="/app/lib/Markdown.Sanitizer.min.js"></script>
 <script src="/app/lib/Markdown.Editor.min.js"></script>
+<script src="/app/lib/iosslider/_src/jquery.iosslider.min.js"></script>
 
 <!-- SPA Application -->
 <script src="/app/bootstrap.js"></script>
@@ -77,12 +81,14 @@
 
 <!-- Directives -->
 <script src="/app/js/directives/jj-header.js"></script>
+<script src="/app/js/directives/jj-image-slider.js"></script>
 <script src="/app/js/directives/jj-search-form.js"></script>
 <script src="/app/js/directives/jj-footer.js"></script>
 <script src="/app/js/directives/jj-markdown-editor.js"></script>
 <script src="/app/js/directives/ng-enter.js"></script>
 
 <!-- Services -->
+<script src="/app/js/services/image-service.js"></script>
 <script src="/app/js/services/storage-service.js"></script>
 <script src="/app/js/services/socket-service.js"></script>
 <script src="/app/js/services/value-services.js"></script>
@@ -102,6 +108,7 @@
 <script src="/app/js/controllers/header.js"></script>
 <script src="/app/js/controllers/error.js"></script>
 <script src="/app/js/controllers/site-login.js"></script>
+<script src="/app/js/controllers/image-list.js"></script>
 
 <!--Admin scripts-->
 <script src="/app/js/services/admin/settings-service.js"></script>

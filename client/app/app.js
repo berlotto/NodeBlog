@@ -26,6 +26,8 @@
       $routeProvider.when('/posts/:pid', {templateUrl: '/app/partials/blogDetails.html', controller: 'BlogDetailsCtrl'});
       $routeProvider.when('/advancedSearch/:key/:start/:end', {templateUrl: '/app/partials/advancedSearch.html', controller: 'BlogSearchCtrl'});
       $routeProvider.when('/searchResult', {templateUrl: '/app/partials/searchResult.html', controller: 'BlogSearchCtrl'});
+      $routeProvider.when('/images', {templateUrl: '/app/partials/images.html', controller: 'ImageListCtrl'});
+      $routeProvider.when('/images-details', {templateUrl: '/app/partials/image-details.html', controller: 'ImageDetailsCtrl'});
 
       //admin routes
       $routeProvider.when('/admin', {templateUrl: '/app/partials/admin/adminList.html', controller: 'AdminListCtrl', resolve: {isAuthenticated: checkAuthentication}});
