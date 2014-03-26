@@ -64,6 +64,24 @@ var setupRoutes = function(server, env)
 
   server.post('/api/logout', function(req, res){ req.logOut(); res.send(200); });
 
+  server.get('/api/im', function(req, res){
+     var input = '/Users/jeffjin/Projects/NodeBlog/server/test/img1.jpg';
+     var output = '/Users/jeffjin/Projects/NodeBlog/server/test/img1Out.jpg';
+     var stat = fs.statSync(input);
+     console.log(JSON.stringify(input, stat));
+
+     var im = require('imagemagick');
+     im.resize({
+        srcPath: input,
+        dstPath: output,
+        width:   1024
+     }, function(err, stdout, stderr){
+        if (err) throw err;
+        console.log('resized ' + input + ' to fit within 1024px');
+        res.send(200);
+     });
+  });
+
   server.post('/api/postmarkInbound', function(req, res){
     console.log('postmarkInbound => ' + JSON.stringify(req.body));
     res.send(req.body);
