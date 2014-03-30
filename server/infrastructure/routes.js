@@ -4,6 +4,7 @@ var fs = require('fs'),
     comments = require('../services/comments.js'),
     files = require('../services/files.js'),
     security = require('./security.js'),
+    im = require('imagemagick'),
     errors = require('./errors');
 
 ///////////////////////////////////////////
@@ -70,7 +71,6 @@ var setupRoutes = function(server, env)
      var stat = fs.statSync(input);
      console.log(JSON.stringify(input, stat));
 
-     var im = require('imagemagick');
      im.resize({
         srcPath: input,
         dstPath: output,

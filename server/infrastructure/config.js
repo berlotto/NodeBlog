@@ -11,7 +11,8 @@ module.exports = function(){
                clientID: "554201907965369",
                clientSecret: "29399a70385f12dea73564f93c3ff938",
                callbackURL: "http://localhost:3000/auth/facebook/callback"
-            }
+            },
+            baseImageFolder : '/Users/jeffjin/Pictures/'
          };
 
       case 'prod':

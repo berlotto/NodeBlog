@@ -7,49 +7,42 @@
  */
 
 (function(){
-    var q = require('q'),
-        fs = require('fs'),
-        gm = require('gm');
-    require('bufferjs');
+   var q = require('q'),
+      fs = require('fs'),
+      im = require('imagemagick'),
+      resize = require('./resize');
 
-    var resize =function(width){
-       var inFile = '/Users/jeffjin/img.jpg';
-       var stat = fs.statSync(inFile);
-       console.log(JSON.stringify(stat));
+   var resizeByDate = function(date, folder){
 
-       gm(inFile)
-          .resize(width)
-          .stream(function(err, stdout, stderr) {
-             var ws = fs.createWriteStream('/Users/jeffjin/imgOut.jpg');
-             //console.log('stdout', stdout);
-             //console.log('stderr', stderr);
+   };
 
-             var i = [];
+   var resizeByDateRange = function(dateFrom, dateTo, folder){
 
-             stdout.on( 'data', function(data){
+   };
 
-                console.log('data');
+   var resizeAndUpload = function(dateFrom, dateTo, images){
 
-                i.push( data );
+   };
 
+   var getInfo = function(path){
+      var deferred = q.defer();
+      console.log('getInfo...');
 
-             });
+      im.identify(path, function(err, features){
+         if (err) {
+            //console.log('getInfo rejecting...');
+            deferred.reject(err);
+         }
+         else{
+            //console.log('getInfo resolving...', features);
+            // { format: 'JPEG', width: 3904, height: 2622, depth: 8 }
+            deferred.resolve(features);
+         }
+      });
+      return deferred.promise;
+   };
 
-             stdout.on( 'close', function(){
-
-                console.log( 'close' );
-
-                var image = Buffer.concat( i );
-                ws.write( image.toString('base64'), 'base64' );
-                ws.end();
-
-             });
-
-          });
-    };
-
-
-    exports.resize = resize;
+   exports.getInfo = getInfo;
 })();
 
 

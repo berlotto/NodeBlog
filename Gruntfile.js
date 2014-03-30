@@ -127,6 +127,12 @@ module.exports = function(grunt) {
          // run karma in the background
          options: {multistr: true}
       }
+//      ,
+//      execute: {
+//         target: {
+//            src: ['server/test/resize-images.js']
+//         }
+//      }
    });
 
 // Load the plugins that provides the following tasks.
@@ -135,8 +141,17 @@ module.exports = function(grunt) {
    grunt.loadNpmTasks('grunt-contrib-jshint');
    grunt.loadNpmTasks('grunt-contrib-concat');
    grunt.loadNpmTasks('grunt-karma');
+   //grunt.loadNpmTasks('grunt-execute');
 
 // Default task(s).
    grunt.registerTask('default', ['jshint']);
+   grunt.registerTask('imageResize', 'Resize images into different resolutions and put them into corresponding folders',
+         function(){
+            grunt.util.spawn({
+               cmd: 'node',
+               args: ['server/test/resize-images.js']
+            });
+            //grunt.task.run('watch');
+         });
 
 };
