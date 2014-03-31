@@ -6,13 +6,34 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
+
 (function(){
    var q = require('q'),
       fs = require('fs'),
+      _ = require('lodash'),
       im = require('imagemagick'),
       resize = require('./resize');
 
-   var resizeByDate = function(date, folder){
+   var findByDate = function(date, folder){
+      var deferred = q.defer();
+
+      var files = fs.readdirSync(folder);
+      var tempFiles = _.filter(files, function(file){
+         console.log(folder + file);
+         var stat = fs.statSync(folder + file);
+         //console.log(stat.mtime.getTime());
+         console.log(stat.mtime.getYear());
+         console.log(stat.mtime.getMonth());
+         console.log(stat.mtime.getDate());
+         console.log(date.getYear());
+         console.log(date.getMonth());
+         return stat.mtime.getYear() == date.getYear() && (stat.mtime.getMonth() + 1) == date.getMonth()
+            && stat.mtime.getDate() == date.getDate();
+      });
+      deferred.resolve(tempFiles);
+      console.log('ImageFiles.length = ', tempFiles.length);
+      return deferred.promise;
 
    };
 
@@ -43,6 +64,7 @@
    };
 
    exports.getInfo = getInfo;
+   exports.findImages = findByDate;
 })();
 
 
