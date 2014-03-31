@@ -8,8 +8,10 @@
     module.directive('jjHeader', ['$window', function($window) {
 
         return {
-            restrict: 'E',
-            replace: true, // The element containing the directive will be replaced with the template
+            restrict: 'AE',
+            replace: true,
+            <!--For unit testing-->
+            //template: '<header><div>The Law of the Jungle</div><h2>{{headerText}}</h2></header>',
             templateUrl: '/app/js/directives/templates/header.html',
             controller: 'HeaderCtrl'
         };

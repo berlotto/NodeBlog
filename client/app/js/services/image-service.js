@@ -1,8 +1,6 @@
 'use strict';
 
 /* Services */
-var _ = require('lodash');
-
 // Demonstrate how to register services
 // In this case it is a simple value service.
 (function(module){

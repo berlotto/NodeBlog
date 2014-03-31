@@ -2,9 +2,9 @@
 
 /* Controllers */
 (function(module) {
-module.controller('HeaderCtrl', ['$scope', 'localize', function($scope, translate) {
+module.controller('HeaderCtrl', ['$scope', function($scope) {
      //console.log('Initializing Header Controller');
-     $scope.headerText = 'The law of the jungle';
+     $scope.headerText = 'Jeff Jin Blog';
 
      //console.log('"blog" translates to ' + translate('blog', 'zh') + ' in Chinese.');
   }]);
