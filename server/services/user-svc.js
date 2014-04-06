@@ -6,7 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-(function(){
+(function(exports){
     var q = require('q'),
         dac = require('../repository/user-dac.js');
 
@@ -36,6 +36,7 @@
     exports.validate = validate;
     exports.findByEmail = findByEmail;
     exports.update = updateUser;
-})();
+
+})(module.exports);
 
 

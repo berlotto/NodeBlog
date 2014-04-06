@@ -1,4 +1,4 @@
-(function(){
+(function(exports){
    var im = require('imagemagick');
    var fs = require('fs');
    var _ = require('lodash');
@@ -35,7 +35,7 @@
       });
    };
 
-   module.exports.resize = function(fileNames, options, baseFolder){
+   exports.resize = function(fileNames, options, baseFolder){
       if(!fileNames || !options){
          console.error('Invalid file name or options!', fileNames, options);
          return;
@@ -47,5 +47,5 @@
          resizeOne(fileNames, options, baseFolder);
       }
    };
-})();
+})(module.exports);
 

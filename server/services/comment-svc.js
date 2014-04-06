@@ -5,7 +5,7 @@
  * Time: 12:59 AM
  * To change this template use File | Settings | File Templates.
  */
-(function(){
+(function(exports){
 
   var blogDac = require('../repository/blog-dac.js')
     , commentDac = require('../repository/comment-dac.js')
@@ -14,30 +14,30 @@
 
     var socket = null;
 
-    module.exports.initSocket = function(s){
+    exports.initSocket = function(s){
        socket = s;
     };
 
-    module.exports.find = function(req, res){
+    exports.find = function(req, res){
         commentDac.findById(req.params.id).then(function(result){
             res.send(result);
         });
     };
-    module.exports.update = function(req, res){
+    exports.update = function(req, res){
         commentDac.update(req.params.id, req.body).then(function(){
             res.send(200);
         });
     };
-    module.exports.delete = function(req, res) {
+    exports.delete = function(req, res) {
 //        _delete(req.id);
 //        res.send(200) ;
     };
-    module.exports.patch = function(req, res) {
+    exports.patch = function(req, res) {
 //        _patch(req.params.id, req.body);
 //        res.send(200);
     };
 //http post create new resource
-    module.exports.create = function(req, res){
+    exports.create = function(req, res){
       console.log('inserting new comment...' + JSON.stringify(req.body));
       var postId = req.body.postId;
       var comment = req.body.comment;
@@ -51,4 +51,4 @@
         });
     };
 
-})();
+})(module.exports);

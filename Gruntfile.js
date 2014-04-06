@@ -123,16 +123,15 @@ module.exports = function(grunt) {
          }
       },
       jshint: {
-         all: ['client/app/js/**/*.js', 'client/app/js/app.js', 'client/app/js/bootstrap.js'],
+         all: ['client/app/js/**/*.js'],
          // run karma in the background
          options: {multistr: true}
+      },
+      nodemon: {
+         dev: {
+            script: 'webserver.js'
+         }
       }
-//      ,
-//      execute: {
-//         target: {
-//            src: ['server/test/resize-images.js']
-//         }
-//      }
    });
 
 // Load the plugins that provides the following tasks.
@@ -141,11 +140,12 @@ module.exports = function(grunt) {
    grunt.loadNpmTasks('grunt-contrib-jshint');
    grunt.loadNpmTasks('grunt-contrib-concat');
    grunt.loadNpmTasks('grunt-karma');
+   grunt.loadNpmTasks('grunt-nodemon');
    //grunt.loadNpmTasks('grunt-execute');
 
 // Default task(s).
-   grunt.registerTask('default', ['jshint']);
-   grunt.registerTask('imageResize', 'Resize images into different resolutions and put them into corresponding folders',
+   grunt.registerTask('default', ['karma']);
+   grunt.registerTask('image-resize', 'Resize images into different resolutions and put them into corresponding folders',
          function(){
             grunt.util.spawn({
                cmd: 'node',

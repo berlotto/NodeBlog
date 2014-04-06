@@ -6,14 +6,12 @@
  * To change this template use File | Settings | File Templates.
  */
 
-
-
-(function(){
+(function(exports){
    var q = require('q'),
       fs = require('fs'),
       _ = require('lodash'),
       im = require('imagemagick'),
-      resize = require('./resize');
+      resize = require('./image-resize-svc');
 
    var findByDate = function(date, folder){
       var deferred = q.defer();
@@ -37,11 +35,7 @@
 
    };
 
-   var resizeByDateRange = function(dateFrom, dateTo, folder){
-
-   };
-
-   var resizeAndUpload = function(dateFrom, dateTo, images){
+   var findByDateRange = function(dateFrom, dateTo, folder){
 
    };
 
@@ -64,7 +58,9 @@
    };
 
    exports.getInfo = getInfo;
-   exports.findImages = findByDate;
-})();
+   exports.findByDate = findByDate;
+   exports.findByDateRange = findByDateRange;
+
+})(module.exports);
 
 

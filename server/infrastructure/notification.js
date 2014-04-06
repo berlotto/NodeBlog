@@ -1,15 +1,20 @@
-var log = function(msg) {
-    console.log(msg);
-}
+(function(exports) {
 
-var sendEmail = function(msg){
-    console.log('sending email :: ' + msg);
-};
+   var log = function (msg) {
+      console.log(msg);
+   }
 
-var sendSms = function(msg){
-    console.log('sending sms :: ' + msg);
-};
+   var sendEmail = function (msg) {
+      console.log('sending email :: ' + msg);
+   };
 
-module.exports.sendEmail = sendEmail;
-module.exports.sendSms = sendSms;
-module.exports.log = log;
+   var sendSms = function (msg) {
+      console.log('sending sms :: ' + msg);
+   };
+
+   exports.sendEmail = sendEmail;
+   exports.sendSms = sendSms;
+   exports.log = log;
+
+})(module.exports);
+
