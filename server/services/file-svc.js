@@ -11,6 +11,7 @@
    var fs = require('fs'),
       path = require('path'),
       q = require('q');
+
    var fileIcons = {png: 'png.png', cs: 'cs.png', csproj: 'csproj.png', default: 'default.png', dir: 'dir.png',
       doc: 'doc.png',  document: 'document.png',  gif: 'gif.png',  jpg: 'jpg.png',  link: 'link.png',  zip: 'zip.png'};
 
