@@ -1,24 +1,43 @@
 (function(exports){
-   var im = require('imagemagick');
-   var fs = require('fs');
-   var _ = require('lodash');
-   var config = require('../infrastructure/config');
-
-   //var input = '/Users/jeffjin/Pictures/_DSC7370.JPG';
+   var im = require('imagemagick'),
+      fs = require('fs'),
+      path = require('path'),
+      storageSvc = require('./storage-svc'),
+      Q = require('q'),
+      _ = require('lodash');
 
    var resize = function(fileName, width, baseFolder) {
-      //var stat = fs.statSync(filePath);
-      //console.log(filePath, JSON.stringify(stat));
-      baseFolder = baseFolder || config.baseImageFolder;
-      var output = baseFolder + width + '/' + fileName;
-      im.resize({
-         srcPath: baseFolder + fileName,
-         dstPath: output,
-         width: width
-      }, function (err, stdout, stderr) {
-         if (err) throw err;
-         console.log('resized ' + fileName + ' to fit within ' + width + 'px');
+
+      var result = storageSvc.createFolder(width.toString(), baseFolder).then(function(outputFolder){
+         var dstPath = path.join(outputFolder, fileName);
+         var srcPath = path.join(baseFolder, fileName);
+         console.log('srcPath exists :: ', srcPath);
+
+         fs.exists(srcPath, function(exists){
+             if(exists){
+                console.log('srcPath exists :: ', srcPath);
+
+                im.resize({
+                   srcPath: srcPath,
+                   dstPath: dstPath,
+                   width: width
+                }, function (err, stdout, stderr) {
+                   if (err) {
+                      throw err;
+                   }
+                   else{
+                      return true;
+                   }
+                   console.log('Re-sized ' + fileName + ' to fit within ' + width + 'px');
+                });
+             }
+            else{
+                console.log('srcPath does not exists :: ', srcPath);
+             }
+         });
       });
+
+      return result;
    };
 
    var resizeOne = function(fileName, options, baseFolder){
@@ -46,6 +65,13 @@
       else{
          resizeOne(fileNames, options, baseFolder);
       }
+   };
+
+   exports.resizeByFolder = function(folder, options){
+      return storageSvc.getImageNamesInFolder(folder).then(function(fileNames){
+         console.log('resizeByFolder.fileNames', fileNames);
+         resizeMany(fileNames, options, folder);
+      });
    };
 })(module.exports);
 
