@@ -1,6 +1,6 @@
 (function(exports){
    exports.init = function(nodeEnv){
-      if(!mode){
+      if(!nodeEnv){
          nodeEnv = process.env.NODE_ENV;
       }
       if(nodeEnv === 'dev'){

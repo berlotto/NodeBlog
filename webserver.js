@@ -21,7 +21,7 @@
    /////////Express JS Server////////
    /////////////////////////////////
    var env = process.env.NODE_ENV || 'dev',
-      config = require('./server/infrastructure/config').init()[env];
+      config = require('./server/infrastructure/config').init(env);
 
    //initialize passport
    passport = security.init(passport, config);
