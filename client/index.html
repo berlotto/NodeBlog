@@ -35,7 +35,7 @@
     </script>
    <script src="/app/data.js"></script>
 </head>
-<body>
+<body ng-controller="AppCtrl">
 <jj-header></jj-header>
 
 <div ng-view></div>
@@ -83,6 +83,7 @@
 <script src="/app/js/directives/jj-header.js"></script>
 <script src="/app/js/directives/jj-image-slider.js"></script>
 <script src="/app/js/directives/jj-search-form.js"></script>
+<script src="/app/js/directives/jj-login-form.js"></script>
 <script src="/app/js/directives/jj-footer.js"></script>
 <script src="/app/js/directives/jj-markdown-editor.js"></script>
 <script src="/app/js/directives/ng-enter.js"></script>
@@ -93,6 +94,7 @@
 <script src="/app/js/services/socket-service.js"></script>
 <script src="/app/js/services/value-services.js"></script>
 <script src="/app/js/services/auth-service.js"></script>
+<script src="/app/js/services/session-service.js"></script>
 <script src="/app/js/services/cmt-service.js"></script>
 <script src="/app/js/services/blog-service.js"></script>
 <script src="/app/js/services/validator-service.js"></script>
@@ -103,12 +105,14 @@
 <script src="/app/js/providers/httpInterceptor.js"></script>
 
 <!-- Controllers -->
+<script src="/app/app-ctrl.js"></script>
 <script src="/app/js/controllers/blog-details.js"></script>
 <script src="/app/js/controllers/blog-list.js"></script>
 <script src="/app/js/controllers/blog-search.js"></script>
 <script src="/app/js/controllers/header.js"></script>
 <script src="/app/js/controllers/error.js"></script>
 <script src="/app/js/controllers/site-login.js"></script>
+<script src="/app/js/controllers/login-form-ctrl.js"></script>
 <script src="/app/js/controllers/image-list.js"></script>
 
 <!--Admin scripts-->
