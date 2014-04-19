@@ -144,7 +144,7 @@ module.exports = function(grunt) {
    //grunt.loadNpmTasks('grunt-execute');
 
 // Default task(s).
-   grunt.registerTask('default', ['karma']);
+   grunt.registerTask('default', ['nodemon']);
    grunt.registerTask('image-resize', 'Resize images into different resolutions and put them into corresponding folders',
          function(){
             grunt.util.spawn({

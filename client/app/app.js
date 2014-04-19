@@ -23,6 +23,7 @@
    module.config(['$routeProvider', function($routeProvider) {
       $routeProvider.when('/', {templateUrl: '/app/partials/posts.html', controller: 'BlogListCtrl'});
       $routeProvider.when('/login', {templateUrl: '/app/partials/login.html', controller: 'SiteLoginCtrl'});
+      $routeProvider.when('/games', {templateUrl: '/app/partials/games.html', controller: 'GamesCtrl', controllerAs: 'games'});
       $routeProvider.when('/posts/:pid', {templateUrl: '/app/partials/blogDetails.html', controller: 'BlogDetailsCtrl'});
       $routeProvider.when('/advancedSearch/:key/:start/:end', {templateUrl: '/app/partials/advancedSearch.html', controller: 'BlogSearchCtrl'});
       $routeProvider.when('/searchResult', {templateUrl: '/app/partials/searchResult.html', controller: 'BlogSearchCtrl'});

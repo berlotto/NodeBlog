@@ -247,3 +247,20 @@ footer {
 .comment .comment-body {
     margin-top: 0;
 }
+
+.games{
+    margin-left: 20px;
+}
+.workflow {
+    margin-left: 20px;
+    width:600px;
+    height: 400px;
+}
+.workflow .node{
+    position:absolute;
+    width:65px;
+    height: 45px;
+    border: solid green 2px;
+    font-family: Verdana;
+    font-size: 1.1em;
+}

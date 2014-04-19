@@ -12,6 +12,8 @@
 
    module.value('md5', hex_md5);
 
+   module.value('jsPlumb', jsPlumb);
+
    module.value('locale', 'en');
 
    module.constant('AUTH_EVENTS', {
