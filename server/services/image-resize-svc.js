@@ -47,11 +47,13 @@
    };
 
    var resizeMany = function(fileNames, options, baseFolder){
+
       _.each(fileNames, function(fileName){
          _.each(options, function(op){
             resize(fileName, op, baseFolder);
          });
       });
+
    };
 
    exports.resize = function(fileNames, options, baseFolder){
@@ -69,8 +71,17 @@
 
    exports.resizeByFolder = function(folder, options){
       return storageSvc.getImageNamesInFolder(folder).then(function(fileNames){
-         console.log('resizeByFolder.fileNames', fileNames);
-         resizeMany(fileNames, options, folder);
+         //console.log('resizeByFolder.fileNames', fileNames);
+         var size = 100;
+//         for(var i = 0; i < fileNames.length; i = i + size){
+//            var temp = fileNames.slice(i, size + i);
+//            console.log('temp', i, size, temp);
+//            //resizeMany(fileNames, options, folder);
+//
+//         }
+         var temp = fileNames.slice(0, 20);
+         console.log('temp', 0, 20, temp);
+         resizeMany(temp, options, folder);
       });
    };
 })(module.exports);

@@ -79,14 +79,14 @@
 //      });
 
       describe('resize many images in folder', function(){
-         it('should return resized images of width and height ratio preserved', function(){
+         it('should return resized images of width and height ratio preserved', function(done){
 
             console.log('resizing images...');
             var imgResizer = require('../services/image-resize-svc');
-            imgResizer.resizeByFolder('/Users/jeffjin/Pictures/', [480, 320])
+            imgResizer.resizeByFolder('/Users/jeffjin/Pictures/', [1600, 1024, 480, 320])
                .then(function(results){
-                    console.log('results', results);
-               });
+                    console.log('test results', results);
+               }).should.notify(done);
          });
 
       });

@@ -42,14 +42,14 @@
       };
 
       /////// PAGE ROUTING  /////////
-      server.get('/', function(req, res){
-         if(env == 'dev'){
-            mapResource(req, res, fs, '../../client', 'index.html');
-         }
-         else{
-            mapResource(req, res, fs, '../../client', 'home.html');
-         }
-      });
+//      server.get('/', function(req, res){
+//         if(env == 'dev'){
+//            mapResource(req, res, fs, '../../app', 'index.html');
+//         }
+//         else{
+//            mapResource(req, res, fs, '../../app', 'home.html');
+//         }
+//      });
 
 //  // set up our security to be enforced on all requests to secure paths
 //  server.get('/admin/:dir/:file',  function(req, res){

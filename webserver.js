@@ -40,11 +40,11 @@
       server.use(passport.initialize());
       server.use(passport.session());
       server.use(server.router);
-      server.use('/app', express.static(path.join(__dirname, '/client/app')));
-      server.use('/build', express.static(path.join(__dirname, '/client/build')));
+      server.use('/', express.static(path.join(__dirname, '/app/')));
+      server.use('/dist', express.static(path.join(__dirname, '/dist')));
       server.use('/shared', express.static(path.join(__dirname, '/server/shared')));
       server.use('/public', express.static(path.join(__dirname, '/public')));
-      server.use(require('prerender-node').set('prerenderToken', 'RMhpOd2vK9oc7LFMJo8O'));
+//      server.use(require('prerender-node').set('prerenderToken', 'RMhpOd2vK9oc7LFMJo8O'));
    });
 
    server.configure('dev', function(){

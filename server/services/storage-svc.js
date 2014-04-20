@@ -105,7 +105,7 @@
          var temp = _.filter(files, function(file){
             return getExtension(file).toLowerCase() === 'jpg';
          });
-         console.log(folder, files);
+         console.log(folder, temp);
          if(err){
             deferred.reject(err);
          }
