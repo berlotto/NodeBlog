@@ -10,43 +10,42 @@
 
    var fs = require('fs'),
       path = require('path'),
+      storageSvc = require('./storage-svc'),
+      _ = require('lodash/dist/lodash.underscore'),
       q = require('q');
 
-   var _getFiles =  function(name, maxSize){
-      var deferred = q.defer();
+   var _getFiles =  function(name, folders, maxSize){
+      console.log('_getFiles', name, folders, maxSize);
 
-      //noinspection JSUnresolvedVariable
       var imagePath = path.join(__dirname, '../../images/' + name);
-      console.log('reading imagePath', imagePath);
-      fs.readdir(imagePath, function(err, files){
-         if(err || !files) {
-            deferred.reject(err);
-         }
-         var file;
-         if(maxSize > files.length){
-            maxSize = files.length;
-         }
-         var results = [];
-         for(var i = 0; i < maxSize; i++){
-            file = files[i];
-            //get stats for the file
-            var stat = fs.statSync(path.join(imagePath, file));
-            console.log(JSON.stringify(stat));
-            var item = {url: '/images/' + name + '/{res}/' + file,
-               thumbnail:'/images/' + name + '/80/' + file,
-               size: stat.size, uploadedOn: stat.atime};
-            results.push(item);
-         }
-         deferred.resolve(results);
+      var basePath = path.join(__dirname, '../../');
+//      console.log('reading imagePath', imagePath, basePath);
+      var tempFolders = _.map(folders, function(folder){
+           return imagePath + '/' + folder;
       });
-      return deferred.promise;
+      var result = storageSvc.findImages(tempFolders);
+
+      return result.then(function (files) {
+            console.log('files', files);
+            //return files;
+            return _.map(files, function (file) {
+               var temp = file.replace(basePath, '/');
+               return {url: temp,
+                  thumbnail:'/images/' + name + '/80/' + file,
+                  size: stat.size, uploadedOn: stat.atime};
+            });
+         },
+         function (err) {
+            console.log('error finding images...', err);
+         }
+      );
    };
 
 
 
    exports.getImages = function(req, res){
-      console.log('req.params', req.params);
-      _getFiles(req.params.name, req.params.max).then(function(files){
+      var folders = req.params.folders.split(',');
+      _getFiles(req.params.name, folders, req.params.max).then(function(files){
          res.send(files);
       });
    };

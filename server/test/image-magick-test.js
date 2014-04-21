@@ -83,7 +83,7 @@
 
             console.log('resizing images...');
             var imgResizer = require('../services/image-resize-svc');
-            imgResizer.resizeByFolder('/Users/jeffjin/Pictures/', [1600, 1024, 480, 320])
+            imgResizer.resizeByFolder('/Users/jeffjin/Pictures/mason', [1600, 1024, 480, 80])
                .then(function(results){
                     console.log('test results', results);
                }).should.notify(done);

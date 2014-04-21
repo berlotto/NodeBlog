@@ -102,7 +102,7 @@
       server.post('/api/files', files.upload);
       server.delete('/api/files/:id', files.delete);
 
-      server.get('/api/images/:name/:max', images.getImages);
+      server.get('/api/images/:name/:folders/:max', images.getImages);
       /////// ERROR ROUTING  /////////
       //A Route for Creating a 500 Error (Useful to keep around)
       server.get('/500',errors.serverError );
