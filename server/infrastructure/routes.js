@@ -5,6 +5,7 @@
       blogs = require('../services/blog-svc.js'),
       comments = require('../services/comment-svc.js'),
       files = require('../services/file-svc.js'),
+      images = require('../services/image-svc.js'),
       security = require('./security.js'),
       im = require('imagemagick'),
       errors = require('./errors');
@@ -42,14 +43,6 @@
       };
 
       /////// PAGE ROUTING  /////////
-//      server.get('/', function(req, res){
-//         if(env == 'dev'){
-//            mapResource(req, res, fs, '../../app', 'index.html');
-//         }
-//         else{
-//            mapResource(req, res, fs, '../../app', 'home.html');
-//         }
-//      });
 
 //  // set up our security to be enforced on all requests to secure paths
 //  server.get('/admin/:dir/:file',  function(req, res){
@@ -66,23 +59,6 @@
       server.get('/api/loggedIn', function(req, res) { res.send(req.isAuthenticated() ? req.user : null); });
 
       server.post('/api/logout', function(req, res){ req.logOut(); res.send(200); });
-
-      server.get('/api/im', function(req, res){
-         var input = '/Users/jeffjin/Projects/NodeBlog/server/test/img1.jpg';
-         var output = '/Users/jeffjin/Projects/NodeBlog/server/test/img1Out.jpg';
-         var stat = fs.statSync(input);
-         console.log(JSON.stringify(input, stat));
-
-         im.resize({
-            srcPath: input,
-            dstPath: output,
-            width:   1024
-         }, function(err, stdout, stderr){
-            if (err) throw err;
-            console.log('resized ' + input + ' to fit within 1024px');
-            res.send(200);
-         });
-      });
 
       server.post('/api/postmarkInbound', function(req, res){
          console.log('postmarkInbound => ' + JSON.stringify(req.body));
@@ -126,6 +102,7 @@
       server.post('/api/files', files.upload);
       server.delete('/api/files/:id', files.delete);
 
+      server.get('/api/images/:name/:max', images.getImages);
       /////// ERROR ROUTING  /////////
       //A Route for Creating a 500 Error (Useful to keep around)
       server.get('/500',errors.serverError );

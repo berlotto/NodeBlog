@@ -42,8 +42,7 @@
       server.use(server.router);
       server.use('/', express.static(path.join(__dirname, '/app/')));
       server.use('/shared', express.static(path.join(__dirname, '/server/shared')));
-      server.use('/public', express.static(path.join(__dirname, '/app/public')));
-//      server.use(require('prerender-node').set('prerenderToken', 'RMhpOd2vK9oc7LFMJo8O'));
+      server.use('/images', express.static(path.join(__dirname, '/images')));
    });
 
    server.configure('dev', function(){
