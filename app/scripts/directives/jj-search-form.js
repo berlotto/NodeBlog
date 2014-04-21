@@ -10,7 +10,7 @@
             restrict: 'E',
             replace: true, // The element containing the directive will be replaced with the template
             transclude: false,
-            templateUrl: 'scripts/directives/templates/search.html',
+            templateUrl: 'views/templates/search.html',
             controller: 'BlogSearchCtrl'
         };
     }]);

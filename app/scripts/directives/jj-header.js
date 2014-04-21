@@ -12,7 +12,7 @@
             replace: true,
             <!--For unit testing-->
             //template: '<header><div>The Law of the Jungle</div><h2>{{headerText}}</h2></header>',
-            templateUrl: '/app/js/directives/templates/header.html',
+            templateUrl: 'views/templates/header.html',
             controller: 'HeaderCtrl'
         };
     }]);

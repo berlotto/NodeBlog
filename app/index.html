@@ -1,0 +1,170 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+   <meta charset="utf-8">
+   <title>The Law Of The Jungle</title>
+   <meta name="description" content="">
+   <meta name="viewport" content="width=device-width">
+   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+   <meta content="text/html; charset=utf-8" http-equiv="content-type">
+   <meta content="english" name="language">
+   <meta content="The Law of the Jungle" name="author">
+   <meta name="fragment" content="!" />
+
+   <meta content="Jeff Jin Consulting" name="description">
+   <meta content=".net, c#, WCF, javascript, jquery, AngularJS, NodeJs, NoSQL, MVC" name="keywords">
+
+   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+   <!-- build:css styles/vendor.css -->
+   <!-- bower:css -->
+   <!-- endbower -->
+   <!-- endbuild -->
+   <!-- build:css({.tmp,app}) styles/main.css -->
+   <!--<link rel="stylesheet" href="styles/main.css">-->
+   <link rel="stylesheet" type="text/css" href="styles/base.css?cdv=1">
+   <link rel="stylesheet" type="text/css" href="styles/admin.css?cdv=1">
+   <link rel="stylesheet" type="text/css" href="styles/theme.css?cdv=1">
+
+   <!-- endbuild -->
+</head>
+<body ng-app="chinook">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div class="container" ng-view=""></div>
+
+
+<script>
+   if(!console){
+      console.log = function(){};
+      console.error = function(){};
+      console.warn = function(){};
+   }
+</script>
+<!-- Socket IO -->
+<script src="/socket.io/socket.io.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+   ga('create', 'UA-XXXXX-X');
+   ga('send', 'pageview');
+</script>
+
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.min.js"></script>
+<![endif]-->
+
+<!-- build:js scripts/vendor.js -->
+
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
+<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/lodash/dist/lodash.compat.js"></script>
+<!-- endbower -->
+
+<script src="bower_components/amplify/lib/amplify.store.min.js"></script>
+<script src="bower_components/marked/lib/marked.js"></script>
+<script src="bower_components/jsPlumb/dist/js/jquery.jsPlumb-1.5.5-min.js"></script>
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+
+
+<!-- Common Libraries -->
+<script src="vendor/jshash/md5-min.js"></script>
+<script src="vendor/iosslider/_src/jquery.iosslider.min.js"></script>
+
+<!-- SPA Application -->
+<script src="scripts/bootstrap.js"></script>
+
+<!-- Filters -->
+<script src="scripts/filters/pg-lang-filter.js"></script>
+<script src="scripts/filters/date-format.js"></script>
+
+<!-- Directives -->
+<script src="scripts/directives/jj-header.js"></script>
+<script src="scripts/directives/jj-workflow.js"></script>
+<script src="scripts/directives/jj-image-slider.js"></script>
+<script src="scripts/directives/jj-search-form.js"></script>
+<script src="scripts/directives/jj-login-form.js"></script>
+<script src="scripts/directives/jj-footer.js"></script>
+<script src="scripts/directives/jj-markdown-editor.js"></script>
+<script src="scripts/directives/ng-enter.js"></script>
+
+<!-- Services -->
+<script src="scripts/services/image-service.js"></script>
+<script src="scripts/services/storage-service.js"></script>
+<script src="scripts/services/socket-service.js"></script>
+<script src="scripts/services/constants.js"></script>
+<script src="scripts/services/auth-service.js"></script>
+<script src="scripts/services/session-service.js"></script>
+<script src="scripts/services/cmt-service.js"></script>
+<script src="scripts/services/blog-service.js"></script>
+<script src="scripts/services/validator-service.js"></script>
+<script src="scripts/services/search-service.js"></script>
+
+<!-- Custom Providers -->
+<script src="scripts/providers/localizeProvider.js"></script>
+<script src="scripts/providers/httpInterceptor.js"></script>
+
+<!-- Controllers -->
+<script src="scripts/app-ctrl.js"></script>
+<script src="scripts/controllers/blog-details.js"></script>
+<script src="scripts/controllers/workflow-ctrl.js"></script>
+<script src="scripts/controllers/blog-list.js"></script>
+<script src="scripts/controllers/blog-search.js"></script>
+<script src="scripts/controllers/header.js"></script>
+<script src="scripts/controllers/error.js"></script>
+<script src="scripts/controllers/site-login.js"></script>
+<script src="scripts/controllers/login-form-ctrl.js"></script>
+<script src="scripts/controllers/image-list.js"></script>
+<script src="scripts/controllers/games.js"></script>
+
+<!--Admin scripts-->
+<script src="scripts/services/admin/settings-service.js"></script>
+<script src="scripts/services/admin/file-service.js"></script>
+<script src="scripts/services/admin/admin-blog-service.js"></script>
+<script src="scripts/controllers/admin/admin-header.js"></script>
+<script src="scripts/controllers/admin/admin-posts.js"></script>
+<script src="scripts/controllers/admin/admin-post-edit.js"></script>
+<script src="scripts/controllers/admin/admin-settings.js"></script>
+<script src="scripts/controllers/admin/admin-list.js"></script>
+<script src="scripts/controllers/admin/admin-comments.js"></script>
+<script src="scripts/controllers/admin/admin-files.js"></script>
+<script src="scripts/controllers/admin/admin-tasks.js"></script>
+<!--Admin scripts, protected area-->
+
+<script src="scripts/app.js"></script>
+
+<!-- endbuild -->
+</body>
+</html>

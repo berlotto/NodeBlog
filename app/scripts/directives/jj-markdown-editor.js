@@ -9,7 +9,7 @@
     return {
       restrict: 'EA',
       replace: true, // The element containing the directive will be replaced with the template
-      templateUrl: 'scripts/directives/templates/markdown-editor.html',
+      templateUrl: 'views/templates/markdown-editor.html',
       scope: {
         content: '='
       },

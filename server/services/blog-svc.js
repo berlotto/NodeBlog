@@ -21,7 +21,9 @@
   /*********************End of Private functions*************************/
 
     exports.findAll = function(req, res) {
-      dac.findAll(null).then(function(result){
+       console.log('findAll...');
+
+       dac.findAll(null).then(function(result){
         //console.log(result);
         res.send(result);
       });

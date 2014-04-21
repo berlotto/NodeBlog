@@ -8,7 +8,7 @@
    module.directive('jjWorkflow', ['$timeout', 'jsPlumb', function ($timeout, jsPlumb) {
       var def = {
          restrict: 'AE',
-         templateUrl: 'scripts/directives/templates/workflow.html',
+         templateUrl: 'views/templates/workflow.html',
          controller: 'WorkflowCtrl',
          controllerAs: 'workflow',
          link: function(scope, element, attrs){

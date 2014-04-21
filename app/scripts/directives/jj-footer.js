@@ -10,7 +10,7 @@
         return {
             restrict: 'EA',
             replace: true, // The element containing the directive will be replaced with the template
-            templateUrl: 'scripts/directives/templates/footer.html',
+            templateUrl: 'views/templates/footer.html',
             link: function (scope, element, attrs) {
 
             }

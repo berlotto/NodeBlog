@@ -6,7 +6,7 @@
    module.directive('jjImageSlider', ['$timeout', function ($timeout) {
         var def = {
             restrict: 'AE',
-            templateUrl: 'scripts/directives/templates/ios-slider.html',
+            templateUrl: 'views/templates/ios-slider.html',
             controller: 'ImageListCtrl',
             link: function(scope, element, attrs){
                 console.log('cnkImageSlider link is called');

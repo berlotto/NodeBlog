@@ -10,7 +10,7 @@
          restrict: 'EA',
          replace: true,
          transclude: false,
-         templateUrl: 'scripts/directives/templates/login-form.html',
+         templateUrl: 'views/templates/login-form.html',
          controller: 'LoginFormCtrl',
          link: function(scope, element, attrs){
 
