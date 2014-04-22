@@ -19,21 +19,24 @@
 
       var imagePath = path.join(__dirname, '../../images/' + name);
       var basePath = path.join(__dirname, '../../');
-//      console.log('reading imagePath', imagePath, basePath);
+      console.log('reading imagePath', imagePath, basePath);
       var tempFolders = _.map(folders, function(folder){
            return imagePath + '/' + folder;
       });
       var result = storageSvc.findImages(tempFolders);
 
       return result.then(function (files) {
-            console.log('files', files);
+            //console.log('files', files);
             //return files;
-            return _.map(files, function (file) {
+            var result = _.map(files, function (file) {
                var temp = file.replace(basePath, '/');
+               var stat = fs.statSync(file);
                return {url: temp,
-                  thumbnail:'/images/' + name + '/80/' + file,
+                  thumbnail:'/images/' + name + '/80/' + path.basename(file),
                   size: stat.size, uploadedOn: stat.atime};
             });
+            console.log('result', result);
+            return result.slice(0, maxSize);
          },
          function (err) {
             console.log('error finding images...', err);

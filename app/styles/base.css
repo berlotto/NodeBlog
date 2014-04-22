@@ -7,7 +7,7 @@ body {
     color: #333333;
     font: 80% "Segoe UI",Sans-Serif;
     margin: 0 auto;
-    max-width: 950px;
+    /*max-width: 950px;*/
     padding: 0;
 }
 a {
@@ -48,6 +48,7 @@ header {
     overflow: hidden;
     padding: 3px;
     width: 100%;
+    margin: 0 40px 0 30px;
 }
 header a.logo {
     display: block;
@@ -628,119 +629,6 @@ blockquote {
     background: #d0f0ff;
 }
 
-.wmd-panel
-{
-    margin-left: 0%;
-    margin-right: 25%;
-    width: 50%;
-    min-width: 539px;
-}
-
-.wmd-button-bar
-{
-    width: 100%;
-    background-color: White;
-}
-
-.wmd-input
-{
-    height: 300px;
-    width: 100%;
-    background-color: Gainsboro;
-    border: 1px solid DarkGray;
-}
-
-.wmd-preview
-{
-    background-color: #c0e0ff;
-}
-
-.wmd-button-row
-{
-    position: relative;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    margin-top: 10px;
-    padding: 0px;
-    height: 20px;
-}
-
-.wmd-spacer
-{
-    width: 1px;
-    height: 20px;
-    margin-left: 14px;
-
-    position: absolute;
-    background-color: Silver;
-    display: inline-block;
-    list-style: none;
-}
-
-.wmd-button {
-    width: 20px;
-    height: 20px;
-    padding-left: 2px;
-    padding-right: 3px;
-    position: absolute;
-    display: inline-block;
-    list-style: none;
-    cursor: pointer;
-}
-
-.wmd-button > span {
-    background: url(../../client/app/img/wmd-buttons.png) no-repeat 0px 0px;
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-}
-
-.wmd-spacer1
-{
-    left: 50px;
-}
-.wmd-spacer2
-{
-    left: 175px;
-}
-.wmd-spacer3
-{
-    left: 300px;
-}
-
-
-
-
-.wmd-prompt-background
-{
-    background-color: Black;
-}
-
-.wmd-prompt-dialog
-{
-    border: 1px solid #999999;
-    background-color: #F5F5F5;
-}
-
-.wmd-prompt-dialog > div {
-    font-size: 0.8em;
-    font-family: arial, helvetica, sans-serif;
-}
-
-
-.wmd-prompt-dialog > form > input[type="text"] {
-    border: 1px solid #999999;
-    color: black;
-}
-
-.wmd-prompt-dialog > form > input[type="button"]{
-    border: 1px solid #888888;
-    font-family: trebuchet MS, helvetica, sans-serif;
-    font-size: 0.8em;
-    font-weight: bold;
-}
-
 .str {
     color: #008800;
 }
@@ -941,9 +829,30 @@ a.tag {
 }
 
 /*****iOS Slider settings*****/
+.fluidHeight {
+    position: relative;
+    width: 100%;
+    height: 700px;
+}
+@media screen and (max-width: 900px) {
+
+    .fluidHeight {
+        height: 0;
+        padding: 0 0 33.333% 0;
+    }
+
+}
+
+.sliderContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
 .iosSlider {
-    width: 1024px;
-    height: 668px;
+    width: 100%;
+    height: 100%;
+    background: #aaa;
 }
 
 .iosSlider .slider {
@@ -951,33 +860,51 @@ a.tag {
     height: 100%;
 }
 
+/*.iosSlider .slider .item {*/
+/*background-size: cover;*/
+/*}*/
+
 .iosSlider .slider .item {
     position: relative;
     top: 0;
     left: 0;
+
+    max-width: 900px;
     width: 100%;
-    height: 768px;
-    margin: 0 0 0 0;
-    background: #aaa;
+    height: 100%;
+}
+
+
+.iosSlider .slider .item img {
+    position: relative;
+    top: 0;
+    left: 0;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .iosSlider .slider .item .caption {
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
 
-    width: 886px;
-    padding: 7px;
+    width: 100%;
+    padding: 1px;
     text-align: center;
-    display: none;
+    /*display: none;*/
 }
 
 .iosSlider .slider .item .caption .bg {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
     height: 100%;
+
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
 
     background: #000;
     opacity: 0.5;
@@ -996,20 +923,16 @@ a.tag {
     z-index: 1;
 }
 
-.iosSlider .slider .item {
-    background-size: cover;
-}
-
 .iosSliderButtons {
-    margin: 10px 0 0 205px;
-    width: 490px;
+    margin: 10px 0 0 25px;
+    width: 100%;
     height: 60px;
 }
 
 .iosSliderButtons .button {
     float: left;
-    margin: 0 0 0 10px;
-    width: 115px;
+    margin: 0 0 0 0;
+    width: 90px;
     height: 60px;
     opacity: 0.5;
     filter: alpha(opacity:50);
@@ -1019,7 +942,7 @@ a.tag {
     border: 5px solid #000;
     opacity: 0.5;
     width: 80px;
-    height: 60px;
+    height: 50px;
 }
 
 .iosSliderButtons .first {

@@ -9,17 +9,7 @@
          console.log('Initializing Image Service');
 
          var getList = function(maxSize){
-            if($window.devMode){
-               var deferred = $q.defer();
-               if(maxSize > $window.images.length){
-                  maxSize =  $window.images.length;
-               }
-               deferred.resolve({data:$window.images.slice(0, maxSize)});
-               return deferred.promise;
-            }
-
-            var queryString = '?max=' + maxSize;
-            return $http.get('/api/images' + queryString);
+            return $http.get('/api/images/mason/1024/' + maxSize);
          };
 
          var getDetails = function(id){

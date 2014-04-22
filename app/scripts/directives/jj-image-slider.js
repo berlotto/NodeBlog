@@ -3,19 +3,22 @@
  */
 
 (function(module){
-   module.directive('jjImageSlider', ['$timeout', function ($timeout) {
-        var def = {
+   module.directive('jjImageSlider', ['$timeout', 'imageService', '$routeParams',
+      function ($timeout, imageService, $routeParams) {
+         var def = {
             restrict: 'AE',
             templateUrl: 'views/templates/ios-slider.html',
             controller: 'ImageListCtrl',
-            link: function(scope, element, attrs){
-                console.log('cnkImageSlider link is called');
-                $timeout(function(){
-                    $('.iosSlider').iosSlider({
+            link: function($scope, element, attrs){
+               console.log('cnkImageSlider link is called');
+               var initSlider = function(){
+                  $timeout(function(){
+                     $('.iosSlider').iosSlider({
                         scrollbar: true,
                         snapToChildren: true,
                         desktopClickDrag: true,
                         infiniteSlider: true,
+                        snapSlideCenter: true,
                         navSlideSelector: $('.iosSliderButtons .button'),
                         scrollbarHeight: '2px',
                         scrollbarBorderRadius: '0',
@@ -23,17 +26,25 @@
                         onSlideChange: slideContentChange,
                         onSliderLoaded: slideContentChange,
                         keyboardControls: true
-                    });
+                     });
 
-                    function slideContentChange(args) {
+                     function slideContentChange(args) {
                         /* indicator */
                         $('.iosSliderButtons .button').removeClass('selected');
                         $('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
-                    }
-                });
-
+                     }
+                  });
+               };
+               imageService.getList($routeParams.size || 20)
+                  .then(function(result) {
+                     $scope.images = result.data;
+                     initSlider();
+                  }, function(data, status) {
+                     console.error(status + ',' +data);
+                     $scope.images = [];
+               });
             }
-        };
-        return def;
-    }]);
+         };
+         return def;
+      }]);
 })(window.DirectiveModule);
