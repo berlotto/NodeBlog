@@ -6,6 +6,8 @@
 (function(module){
    module.value('identity', {currentUser: {}});
 
+   module.value('amplify', amplify);
+
    module.value('marked', marked);
 
    module.value('moment', moment);

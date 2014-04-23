@@ -2,7 +2,7 @@
 
     <h2>
         Directory Listing:
-        / <a href="/#!/admin/upload">Home</a></h2>
+        / <a href="/#/admin/upload">Home</a></h2>
 
     <div>
         <table>
@@ -33,13 +33,13 @@
                 <td><img width="16" height="16" src="/shared/FileTypes/{{file.fileTypeIcon}}"
                          alt=".{{file.extension}}"></td>
                 <td class="firstcolumn">
-                    <a href="/#!/get/{{file.name}}">{{file.name}}</a>
+                    <a href="/#/get/{{file.name}}">{{file.name}}</a>
                 </td>
                 <td>.{{file.extension}}</td>
                 <td class="numeric">{{file.size}}</td>
                 <td class="date">{{file.uploadedOn}}</td>
                 <td>
-                    <a ng-href="/#!/delete?filePath={{file.name + '.' + file.extension}}">Delete</a>
+                    <a ng-href="/#/delete?filePath={{file.name + '.' + file.extension}}">Delete</a>
                 </td>
             </tr>
             </tbody></table>

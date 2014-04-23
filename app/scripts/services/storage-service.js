@@ -7,20 +7,20 @@
 /* This service will wrap AmplifyJS to store WIP data and restore accordingly */
 
 (function(module){
-    module.factory('storageService', ['$window', function ($window) {
+   module.factory('storageService', ['amplify', function (amplify) {
 
-        var set = function(key, value){
-            amplify.store(key, value);
-        };
+      var set = function(key, value){
+         amplify.store(key, value);
+      };
 
-        var get = function(key){
-            return amplify.store(key);
-        };
+      var get = function(key){
+         return amplify.store(key);
+      };
 
 
-         return {
-             get: get,
-             set: set
-         }
-    }]);
+      return {
+         get: get,
+         set: set
+      };
+   }]);
 })(window.ServiceModule);

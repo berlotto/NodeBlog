@@ -24,9 +24,9 @@
    <!-- endbower -->
    <!-- endbuild -->
    <!-- build:css({.tmp,app}) styles/main.css -->
-   <link rel="stylesheet" type="text/css" href="styles/base.css?cdv=1">
-   <link rel="stylesheet" type="text/css" href="styles/admin.css?cdv=1">
-   <link rel="stylesheet" type="text/css" href="styles/theme.css?cdv=1">
+   <link rel="stylesheet" type="text/css" href="styles/base.css">
+   <link rel="stylesheet" type="text/css" href="styles/admin.css">
+   <link rel="stylesheet" type="text/css" href="styles/theme.css">
 
    <!-- endbuild -->
 </head>
@@ -66,8 +66,6 @@
 <![endif]-->
 
 <!-- build:js scripts/vendor.js -->
-
-<!-- bower:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
@@ -91,29 +89,19 @@
 <script src="bower_components/lodash/dist/lodash.compat.js"></script>
 <script src="bower_components/codemirror/lib/codemirror.js"></script>
 <script src="bower_components/angular-ui-codemirror/ui-codemirror.js"></script>
-<!-- endbower -->
-
-<script src="bower_components/amplify/lib/amplify.store.min.js"></script>
+<script src="bower_components/jquery.easing/js/jquery.easing.js"></script>
+<script src="bower_components/amplify/lib/amplify.store.js"></script>
 <script src="bower_components/marked/lib/marked.js"></script>
-<script src="bower_components/jsPlumb/dist/js/jquery.jsPlumb-1.5.5-min.js"></script>
-<script src="bower_components/jquery.easing/js/jquery.easing.min.js"></script>
+<script src="bower_components/jsPlumb/dist/js/jquery.jsPlumb-1.5.5.js"></script>
+<!-- bower:js -->
+<!-- endbower -->
+<script src="vendor/jshash/md5.js"></script>
+<script src="vendor/iosslider/_src/jquery.iosslider.js"></script>
 <!-- endbuild -->
 
-<!-- build:js({.tmp,app}) scripts/scripts.js -->
-
-
-<!-- Common Libraries -->
-<script src="vendor/jshash/md5-min.js"></script>
-<script src="vendor/iosslider/_src/jquery.iosslider.min.js"></script>
-
-<!-- SPA Application -->
 <script src="scripts/bootstrap.js"></script>
-
-<!-- Filters -->
 <script src="scripts/filters/pg-lang-filter.js"></script>
 <script src="scripts/filters/date-format.js"></script>
-
-<!-- Directives -->
 <script src="scripts/directives/jj-header.js"></script>
 <script src="scripts/directives/jj-workflow.js"></script>
 <script src="scripts/directives/jj-image-slider.js"></script>
@@ -122,8 +110,6 @@
 <script src="scripts/directives/jj-footer.js"></script>
 <script src="scripts/directives/jj-markdown-editor.js"></script>
 <script src="scripts/directives/ng-enter.js"></script>
-
-<!-- Services -->
 <script src="scripts/services/image-service.js"></script>
 <script src="scripts/services/storage-service.js"></script>
 <script src="scripts/services/socket-service.js"></script>
@@ -134,12 +120,8 @@
 <script src="scripts/services/blog-service.js"></script>
 <script src="scripts/services/validator-service.js"></script>
 <script src="scripts/services/search-service.js"></script>
-
-<!-- Custom Providers -->
 <script src="scripts/providers/localizeProvider.js"></script>
 <script src="scripts/providers/httpInterceptor.js"></script>
-
-<!-- Controllers -->
 <script src="scripts/app-ctrl.js"></script>
 <script src="scripts/controllers/blog-details.js"></script>
 <script src="scripts/controllers/workflow-ctrl.js"></script>
@@ -152,7 +134,6 @@
 <script src="scripts/controllers/image-list.js"></script>
 <script src="scripts/controllers/games.js"></script>
 
-<!--Admin scripts-->
 <script src="scripts/services/admin/settings-service.js"></script>
 <script src="scripts/services/admin/file-service.js"></script>
 <script src="scripts/services/admin/admin-blog-service.js"></script>
@@ -164,9 +145,8 @@
 <script src="scripts/controllers/admin/admin-comments.js"></script>
 <script src="scripts/controllers/admin/admin-files.js"></script>
 <script src="scripts/controllers/admin/admin-tasks.js"></script>
-<!--Admin scripts, protected area-->
-
 <script src="scripts/app.js"></script>
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
 
 <!-- endbuild -->
 </body>

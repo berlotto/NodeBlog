@@ -12,14 +12,14 @@
          $interpolateProvider.endSymbol(']]');
       }])
       .factory('commentParser', ['$interpolate',
-      function($interpolate) {
-         // a service to handle parsing
-         return {
-            parse: function(text, context) {
-               var template = $interpolate(text);
-               return template(context);
-            }
-         };
-      }]);
+         function($interpolate) {
+            // a service to handle parsing
+            return {
+               parse: function(text, context) {
+                  var template = $interpolate(text);
+                  return template(context);
+               }
+            };
+         }]);
 
 })(window.ParserModule);

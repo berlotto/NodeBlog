@@ -19,7 +19,7 @@
                deferred.resolve(
                   {
                      data: _.find(id.images, function(img){
-                         img.id = name;
+                        img.id = name;
                      })
                   });
                return deferred.promise;
@@ -36,7 +36,7 @@
          };
 
          var parseOne = function(img){
-            img.createdOn = moment(img.dateTime).format("dddd, MMMM Do YYYY");
+            img.createdOn = moment(img.dateTime).format('dddd, MMMM Do YYYY');
             return img;
          };
 
@@ -65,6 +65,6 @@
             parseOne: parseOne,
             delete: deleteImage,
             search: search
-         }
+         };
       }]);
 })(window.ServiceModule);

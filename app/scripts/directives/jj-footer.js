@@ -5,15 +5,15 @@
 'use strict';
 
 (function(module){
-    module.directive('jjFooter', ['$window', function($window) {
+   module.directive('jjFooter', ['$window', function($window) {
 
-        return {
-            restrict: 'EA',
-            replace: true, // The element containing the directive will be replaced with the template
-            templateUrl: 'views/templates/footer.html',
-            link: function (scope, element, attrs) {
+      return {
+         restrict: 'EA',
+         replace: true, // The element containing the directive will be replaced with the template
+         templateUrl: 'views/templates/footer.html',
+         link: function (scope, element, attrs) {
 
-            }
-        };
-    }]);
+         }
+      };
+   }]);
 })(window.DirectiveModule);

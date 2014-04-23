@@ -1,6 +1,4 @@
-/**
- * Created by jeffjin on 2014-03-22.
- */
+'use strict';
 
 (function(module){
    module.directive('jjImageSlider', ['$timeout', 'imageService', '$routeParams',
@@ -11,6 +9,13 @@
             controller: 'ImageListCtrl',
             link: function($scope, element, attrs){
                console.log('cnkImageSlider link is called');
+
+               function slideContentChange(args) {
+                  /* indicator */
+                  $('.iosSliderButtons .button').removeClass('selected');
+                  $('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
+               }
+
                var initSlider = function(){
                   $timeout(function(){
                      $('.iosSlider').iosSlider({
@@ -28,11 +33,6 @@
                         keyboardControls: true
                      });
 
-                     function slideContentChange(args) {
-                        /* indicator */
-                        $('.iosSliderButtons .button').removeClass('selected');
-                        $('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
-                     }
                   });
                };
                imageService.getList($routeParams.size || 15)
@@ -42,7 +42,7 @@
                   }, function(data, status) {
                      console.error(status + ',' +data);
                      $scope.images = [];
-               });
+                  });
             }
          };
          return def;

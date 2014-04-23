@@ -15,12 +15,12 @@
             var count = 1;
             var node0, node1;
             jsPlumb.ready(function() {
-               jsPlumb.Defaults.Container = $("#workflow");
-               jsPlumb.draggable($(".workflow .node"), {
-                  containment:"workflow"
+               jsPlumb.Defaults.Container = $('#workflow');
+               jsPlumb.draggable($('.workflow .node'), {
+                  containment:'workflow'
                });
-               node0 = jsPlumb.addEndpoint("node0");
-               node1 = jsPlumb.addEndpoint("node1");
+               node0 = jsPlumb.addEndpoint('node0');
+               node1 = jsPlumb.addEndpoint('node1');
                jsPlumb.connect({ source:node0, target:node1 });
             });
 
@@ -28,8 +28,8 @@
                jsPlumb.connect({ source:s, target:t });
             };
             scope.addNew = function(){
-               var node = jsPlumb.addEndpoint("node" + (count++));
-               var nextNode = jsPlumb.addEndpoint("node" + (count++));
+               var node = jsPlumb.addEndpoint('node' + (count++));
+               var nextNode = jsPlumb.addEndpoint('node' + (count++));
                jsPlumb.connect({ source:node, target:nextNode });
             };
          }

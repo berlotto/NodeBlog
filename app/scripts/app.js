@@ -9,7 +9,9 @@
       // Make an AJAX call to check if the user is logged in
       $http.get('/api/loggedIn').success(function(user){
          // Authenticated
-         if (user) $timeout(deferred.resolve, 0);
+         if (user) {
+            $timeout(deferred.resolve, 0);
+         }
          // Not Authenticated
          else {
             $rootScope.message = 'You need to log in.';
@@ -48,14 +50,17 @@
       //default routes
       $routeProvider.otherwise({redirectTo: '/'});
    }]);
+
    module.config(['$locationProvider', function($locationProvider){
-      $locationProvider.html5Mode(false).hashPrefix('!');
+      $locationProvider.html5Mode(false);
    }]);
+
    module.config(['localizeProvider', function(localizeProvider){
-      console.log('configuring localize providers')
       localizeProvider.setDefaultLocale('en');
    }]);
+
    module.run(function($rootScope, $window) {
       $rootScope.r = $window.r;
    });
+
 })(window.MainModule);

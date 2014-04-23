@@ -5,15 +5,13 @@
 'use strict';
 
 (function(module){
-    module.directive('jjHeader', ['$window', function($window) {
+   module.directive('jjHeader', ['$window', function($window) {
 
-        return {
-            restrict: 'AE',
-            replace: true,
-            <!--For unit testing-->
-            //template: '<header><div>The Law of the Jungle</div><h2>{{headerText}}</h2></header>',
-            templateUrl: 'views/templates/header.html',
-            controller: 'HeaderCtrl'
-        };
-    }]);
+      return {
+         restrict: 'AE',
+         replace: true,
+         templateUrl: 'views/templates/header.html',
+         controller: 'HeaderCtrl'
+      };
+   }]);
 })(window.DirectiveModule);

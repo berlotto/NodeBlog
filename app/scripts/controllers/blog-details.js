@@ -41,10 +41,10 @@
             $scope.hasEditRight = identity.currentUser && (identity.currentUser.isAdmin || identity.currentUser.isOwner);
             $scope.post = result;
          }).error(function(data, status) {
-               console.error(status + ',' +data);
-               $scope.hasEditRight = false;
-               $scope.post = {};
-            });
+            console.error(status + ',' +data);
+            $scope.hasEditRight = false;
+            $scope.post = {};
+         });
 
       }]);
 })(window.CtrlModule);

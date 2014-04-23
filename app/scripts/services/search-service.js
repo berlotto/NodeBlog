@@ -12,7 +12,7 @@
          var searchResult = {};
          var searchPosts = function(k){
             return blogService.search(k).then(function(result){
-                searchResult.posts = result.data;
+               searchResult.posts = result.data;
             });
          };
          var searchComments = function(k){
@@ -37,13 +37,13 @@
 
 
 
-          return {
+         return {
             search: function(keyword){
                //TODO
                return $q.all([searchPosts(keyword), searchComments(keyword)]).then(function(){
                   return searchResult;
                });
             }
-         }
+         };
       }]);
 })(window.ServiceModule);

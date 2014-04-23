@@ -6,8 +6,8 @@
 // Demonstrate how to register services
 // In this case it is a simple value service.
 (function(module){
-   module.factory('commentService', ['$http', '$q', '$sce', 'moment', 'md5', 'identity', 'validatorService',
-      function($http, $q, $sce, moment, md5, identity, validator){
+   module.factory('commentService', ['$http', '$q', '$sce', 'moment', 'marked', 'md5', 'identity', 'validatorService',
+      function($http, $q, $sce, moment, marked, md5, identity, validator){
          //console.log('Initializing Comment Service');
 
          var getList = function(dateRange, maxSize){
@@ -38,7 +38,7 @@
 
          var parseOne = function(cmt){
             cmt.markedBody = $sce.trustAsHtml(marked(cmt.body));
-            cmt.dateString = moment(cmt.createdOn).format("dddd, MMMM Do YYYY, h:mm:ss a");
+            cmt.dateString = moment(cmt.createdOn).format('dddd, MMMM Do YYYY, h:mm:ss a');
             if(cmt.authorEmail){
                cmt.authorEmailHash = md5(cmt.authorEmail);
             }
@@ -95,6 +95,6 @@
             parseOne: parseOne,
             delete: deleteComment,
             search: search
-         }
+         };
       }]);
 })(window.ServiceModule);

@@ -7,7 +7,7 @@
       function($scope, imageService, $routeParams) {
          console.log('Initializing Image Details Controller');
          imageService.getDetails($routeParams.name).then(function(img){
-             $scope.image = img;
+            $scope.image = img;
          });
       }]);
 })(window.CtrlModule);

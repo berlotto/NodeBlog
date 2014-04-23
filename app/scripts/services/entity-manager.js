@@ -7,23 +7,23 @@
 /* This service will wrap AmplifyJS to store WIP data and restore accordingly */
 
 (function(module){
-    module.factory('entityManager', ['$location', 'storage', function ($location, storage) {
+   module.factory('entityManager', ['$location', 'storage', function ($location, storage) {
 
-        //register and unregister entities to watch/unwatch
-        //we need $scope to watch on an entity
-        var register = function(login, entity, scope){
-            //storage.set()
-        };
+      //register and unregister entities to watch/unwatch
+      //we need $scope to watch on an entity
+      var register = function(login, entity, scope){
+         //storage.set()
+      };
 
-        var unregister = function(login, scope){
+      var unregister = function(login, scope){
 
-        };
+      };
 
 
-        //store data into persistent storage
+      //store data into persistent storage
 
-        //retrieve data from persistent storage
+      //retrieve data from persistent storage
 
-        //watch on
-    }]);
+      //watch on
+   }]);
 })(window.ServiceModule);

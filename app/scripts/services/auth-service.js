@@ -39,7 +39,7 @@
          isAuthenticated: isAuthenticated,
          isAuthorized: isAuthorized,
          getLoggedIn: getLoggedIn
-      }
+      };
    }]);
 
 })(window.ServiceModule);

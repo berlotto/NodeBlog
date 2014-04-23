@@ -5,13 +5,13 @@
 'use strict';
 
 (function(module){
-    module.directive('jjSearchForm', ['$window', function ($window) {
-        return {
-            restrict: 'E',
-            replace: true, // The element containing the directive will be replaced with the template
-            transclude: false,
-            templateUrl: 'views/templates/search.html',
-            controller: 'BlogSearchCtrl'
-        };
-    }]);
+   module.directive('jjSearchForm', ['$window', function ($window) {
+      return {
+         restrict: 'E',
+         replace: true, // The element containing the directive will be replaced with the template
+         transclude: false,
+         templateUrl: 'views/templates/search.html',
+         controller: 'BlogSearchCtrl'
+      };
+   }]);
 })(window.DirectiveModule);

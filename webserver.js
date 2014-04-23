@@ -15,12 +15,13 @@
    //Global function configuration
    global.init();
 
+   var nodeArgs = process.argv.slice(2);
 
    /////////////////////////////////
    ////////Setup and configure//////
    /////////Express JS Server////////
    /////////////////////////////////
-   var env = process.env.NODE_ENV || 'dev',
+   var env = process.env.NODE_ENV || nodeArgs[0] || 'dev',
       config = require('./server/infrastructure/config').init(env);
 
    //initialize passport
@@ -40,7 +41,12 @@
       server.use(passport.initialize());
       server.use(passport.session());
       server.use(server.router);
-      server.use('/', express.static(path.join(__dirname, '/app/')));
+      if(env === 'dev'){
+         server.use('/', express.static(path.join(__dirname, '/app/')));
+      }
+      else{
+         server.use('/', express.static(path.join(__dirname, '/dist/')));
+      }
       server.use('/shared', express.static(path.join(__dirname, '/server/shared')));
       server.use('/images', express.static(path.join(__dirname, '/images')));
    });

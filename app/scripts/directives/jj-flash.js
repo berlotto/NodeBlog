@@ -5,9 +5,9 @@
 'use strict';
 
 (function(module){
-    module.directive('jjFlash', ['$timeout', function ($timeout) {
-        return function (scope, element, attrs) {
+   module.directive('jjFlash', ['$timeout', function ($timeout) {
+      return function (scope, element, attrs) {
 
-        };
-    }]);
+      };
+   }]);
 })(window.DirectiveModule);

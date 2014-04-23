@@ -5,9 +5,9 @@
 'use strict';
 
 (function(module){
-    module.directive('jjNewComment', ['entityManager', function (entityManager) {
-        return function (scope, element, attrs) {
+   module.directive('jjNewComment', ['entityManager', function (entityManager) {
+      return function (scope, element, attrs) {
 
-        };
-    }]);
+      };
+   }]);
 })(window.DirectiveModule);

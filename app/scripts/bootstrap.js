@@ -8,14 +8,14 @@
    exports.CtrlModule = angular.module('chinook.controllers', []);
    exports.ParserModule = angular.module('chinook.parsers', []);
    exports.MainModule = angular.module('chinook',
-       [
-          'ngRoute', 'ui.codemirror',
-          'chinook.filters',
-          'chinook.services',
-          'chinook.providers',
-          'chinook.directives',
-          'chinook.controllers',
-          'chinook.parsers'
-       ]);
+      [
+         'ngRoute', 'ui.codemirror',
+         'chinook.filters',
+         'chinook.services',
+         'chinook.providers',
+         'chinook.directives',
+         'chinook.controllers',
+         'chinook.parsers'
+      ]);
 
 })(window);
