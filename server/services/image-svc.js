@@ -14,8 +14,8 @@
       _ = require('lodash/dist/lodash.underscore'),
       q = require('q');
 
-   var _getFiles =  function(name, folders, maxSize){
-      console.log('_getFiles', name, folders, maxSize);
+   var _getFiles =  function(name, folders, pageIndex, pageSize){
+      console.log('_getFiles', name, folders, pageIndex, pageSize);
 
       var imagePath = path.join(__dirname, '../../images/' + name);
       var basePath = path.join(__dirname, '../../');
@@ -27,7 +27,6 @@
 
       return result.then(function (files) {
             //console.log('files', files);
-            //return files;
             var result = _.map(files, function (file) {
                var temp = file.replace(basePath, '/');
                var stat = fs.statSync(file);
@@ -35,8 +34,14 @@
                   thumbnail:'/images/' + name + '/80/' + path.basename(file),
                   size: stat.size, uploadedOn: stat.atime};
             });
+
+            result = _.sortBy(result, function(f){
+               return f.thumbnail;
+            });
+
+            result = result.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize );
             console.log('result', result);
-            return result.slice(0, maxSize);
+            return result;
          },
          function (err) {
             console.log('error finding images...', err);
@@ -48,7 +53,7 @@
 
    exports.getImages = function(req, res){
       var folders = req.params.folders.split(',');
-      _getFiles(req.params.name, folders, req.params.max).then(function(files){
+      _getFiles(req.params.name, folders, req.params.index, req.params.size).then(function(files){
          res.send(files);
       });
    };

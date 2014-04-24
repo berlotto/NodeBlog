@@ -4,27 +4,15 @@
 // Demonstrate how to register services
 // In this case it is a simple value service.
 (function(module){
-   module.factory('imageService', ['$http', '$q', '$sce', 'moment', '$window',
-      function($http, $q, $sce, moment, $window){
-         console.log('Initializing Image Service');
+   module.factory('imageService', ['$http', '$q', 'moment', 'device',
+      function($http, $q, moment, device){
+         console.log('Initializing Image Service', device);
 
-         var getList = function(maxSize){
-            return $http.get('/api/images/mason/1024/' + maxSize);
+         var getList = function(pageIndex, pageSize){
+            return $http.get('/api/images/mason/' + device.getAvailableImageWidth() + '/' + pageIndex + '/' + pageSize);
          };
 
          var getDetails = function(id){
-            if($window.devMode){
-               var deferred = $q.defer();
-
-               deferred.resolve(
-                  {
-                     data: _.find(id.images, function(img){
-                        img.id = name;
-                     })
-                  });
-               return deferred.promise;
-            }
-
             return $http.get('/api/images/' + id);
          };
 

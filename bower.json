@@ -18,7 +18,8 @@
     "amplify": "~1.1.2",
     "marked": "~0.3.2",
     "jsPlumb": "~1.5.5",
-    "angular-ui-codemirror": "bower"
+    "angular-ui-codemirror": "bower",
+    "angular-adaptive-detection": "latest"
   },
   "devDependencies": {
     "angular-mocks": "1.2.15",
