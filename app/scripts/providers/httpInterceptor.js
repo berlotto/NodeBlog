@@ -39,9 +39,5 @@
          }
       };
    }]);
-   module.config(function ($httpProvider) {
-      $httpProvider.interceptors.push('httpInterceptor');
-   });
-
 })(window.ServiceModule);
 

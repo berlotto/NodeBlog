@@ -832,9 +832,9 @@ a.tag {
 .fluidHeight {
     position: relative;
     width: 100%;
-    height: 700px;
+    height: 890px;
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1023px) {
 
     .fluidHeight {
         height: 0;
@@ -869,7 +869,7 @@ a.tag {
     top: 0;
     left: 0;
 
-    max-width: 900px;
+    max-width: 1024px;
     width: 100%;
     height: 100%;
 }
@@ -879,7 +879,7 @@ a.tag {
     position: relative;
     top: 0;
     left: 0;
-    max-width: 900px;
+    max-width: 1024px;
     width: 100%;
     margin: 0 auto;
 }
@@ -902,11 +902,11 @@ a.tag {
     right: 0;
     height: 100%;
 
-    max-width: 900px;
+    max-width: 1024px;
     width: 100%;
     margin: 0 auto;
 
-    background: #000;
+    background: transparent;
     opacity: 0.5;
     filter: alpha(opacity:50);
     z-index: 0;
@@ -924,9 +924,15 @@ a.tag {
 }
 
 .iosSliderButtons {
-    margin: 3px 0 0 40px;
+    position: fixed;
+    bottom: 0;
+    margin:0 50px 60px 50px;
     width: 100%;
     height: 60px;
+    z-index: 1000;
+    opacity: 0.7;
+    filter: alpha(opacity:70);
+    border-radius: 8px;
 }
 
 .iosSliderButtons .button {
@@ -934,13 +940,16 @@ a.tag {
     margin: 0 0 0 0;
     width: 90px;
     height: 60px;
-    opacity: 0.5;
-    filter: alpha(opacity:50);
+    opacity: 0.7;
+    filter: alpha(opacity:70);
+    border-radius: 8px;
 }
 
 .iosSliderButtons .button .border {
     border: 5px solid #000;
-    opacity: 0.5;
+    border-radius: 8px;
+    opacity: 0.7;
+    filter: alpha(opacity:70);
     width: 80px;
     height: 50px;
 }
@@ -950,9 +959,11 @@ a.tag {
 }
 
 .iosSliderButtons .selected,
+.iosSliderButtons .selected .border,
 .iosSliderButtons .button:hover {
     opacity: 1;
     filter: alpha(opacity:100);
+    border-color: #000000;
 }
 
 /********Code Editor********/

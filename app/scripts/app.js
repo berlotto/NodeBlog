@@ -54,13 +54,12 @@
    module.config(['$locationProvider', function($locationProvider){
       $locationProvider.html5Mode(false);
    }]);
-
-   module.config(['localizeProvider', function(localizeProvider){
-      localizeProvider.setDefaultLocale('en');
+   module.config(['$httpProvider', function ($httpProvider) {
+      $httpProvider.interceptors.push('httpInterceptor');
    }]);
 
-   module.run(function($rootScope, $window) {
-      $rootScope.r = $window.r;
-   });
+//   module.config(['localizeProvider', function(localizeProvider){
+//      localizeProvider.setDefaultLocale('en');
+//   }]);
 
 })(window.MainModule);

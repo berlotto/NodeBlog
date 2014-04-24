@@ -1,11 +1,11 @@
-<div class = 'fluidHeight'>
+<div class ="fluidHeight">
 
-   <div class = 'sliderContainer'>
+   <div class ="sliderContainer">
 
       <div class = "iosSlider">
 
          <div class = "slider">
-            <div class = "item" ng-repeat="image in images" style="background: url({{image.url}}) no-repeat 0 0;background-size: cover;">
+            <div class = "item" ng-repeat="image in images" style="background: url({{image.url}}) no-repeat 0 -100px;background-size: cover;">
                <div class = "caption">
                     <span>
                         <strong>{{image.uploadedOn}}</strong>
@@ -20,11 +20,9 @@
       </div>
 
       <div class="iosSliderButtons">
-
-         <div class="button" ng-class="{first : $index == 0 }" ng-repeat="image in images" style="background: url({{image.thumbnail}}) no-repeat 0 0;background-size: cover;">
+         <div class="button" ng-class="{first : $index == 0 }" ng-repeat="image in images" style="background: url({{image.thumbnail}}) no-repeat 0 -10px;background-size: cover;">
             <div class = "border"></div>
          </div>
-
       </div>
    </div>
 </div>

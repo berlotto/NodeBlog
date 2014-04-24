@@ -6,8 +6,7 @@
 // Demonstrate how to register services
 // In this case it is a simple value service.
 (function(module){
-   module.config(['$interpolateProvider',
-      function($interpolateProvider) {
+   module.config(['$interpolateProvider', function($interpolateProvider) {
          $interpolateProvider.startSymbol('[[');
          $interpolateProvider.endSymbol(']]');
       }])

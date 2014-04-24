@@ -35,7 +35,7 @@
 
                   });
                };
-               imageService.getList($routeParams.size || 15)
+               imageService.getList($routeParams.size || 30)
                   .then(function(result) {
                      $scope.images = result.data;
                      initSlider();
