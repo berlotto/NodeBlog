@@ -45,6 +45,11 @@
 
          };
 
+         var mergeImages = function(source, target){
+            //...
+             return source;
+         };
+
          return {
             getDetails: getDetails,
             getList: getList,
@@ -52,7 +57,8 @@
             parse: parse,
             parseOne: parseOne,
             delete: deleteImage,
-            search: search
+            search: search,
+            mergeImages: mergeImages
          };
       }]);
 })(window.ServiceModule);

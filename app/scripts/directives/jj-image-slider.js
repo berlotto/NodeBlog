@@ -3,6 +3,19 @@
 (function(module){
    module.directive('jjImageSlider', ['$timeout', 'imageService',
       function ($timeout, imageService) {
+         var cleanupExistingImages = function(images, pageIndex, pageSize){
+            //remove very old images to reduce memory consumption in browser
+            if( pageIndex < 2){
+               return images;
+            }
+            images.splice((pageIndex - 2) * pageSize, pageSize);
+            return images;
+         };
+
+         var shouldLoadMoreImages = function(pageIndex, currentIndex, totalSize){
+
+         } ;
+
          var def = {
             restrict: 'AE',
             templateUrl: 'views/templates/ios-slider.html',
@@ -17,15 +30,23 @@
                   //increasing direction
                   if(currentSlideIndex >= (pageSize - 2) && args.targetSlideNumber > args.prevSlideNumber){
                      console.log('currentSlideIndex', currentSlideIndex);
-                     pageIndex++;
-                     console.log('pageIndex', pageIndex);
-                     imageService.getList(pageIndex, pageSize)
-                        .then(function(result) {
-                           $scope.images = $scope.images.concat(result.data);
-                           initSlider();
-                        }, function(data, status) {
-                           console.error(status + ',' +data);
-                        });
+                     if(shouldLoadMoreImages(pageIndex, pageSize, pageSize)){
+
+                        pageIndex++;
+                        console.log('pageIndex', pageIndex);
+
+                        imageService.getList(pageIndex, pageSize)
+                           .then(function(result) {
+                              var images = imageService.mergeImages($scope.images, result.data);
+                              images = cleanupExistingImages(images, pageIndex, pageSize);
+
+                              $scope.images = images;
+                              initSlider();
+                           }, function(data, status) {
+                              console.error(status + ',' +data);
+                           });
+                     }
+
                   }
                   //decreasing direction
 //                  else if
