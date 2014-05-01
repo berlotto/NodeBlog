@@ -3,18 +3,89 @@
 (function(module){
    module.directive('jjImageSlider', ['$timeout', 'imageService',
       function ($timeout, imageService) {
-         var cleanupExistingImages = function(images, pageIndex, pageSize){
-            //remove very old images to reduce memory consumption in browser
-            if( pageIndex < 2){
-               return images;
+         var scope;
+         var originalImages = [];
+         var pageIndex = 0, pageSize = 15, currentSlideIndex = 0;
+
+         var setupSlider = function(defaultIndex){
+            if($('.iosSlider').iosSlider){
+               $('.iosSlider').iosSlider('destroy');
             }
-            images.splice((pageIndex - 2) * pageSize, pageSize);
-            return images;
+            $timeout(function(){
+               $('.iosSlider').iosSlider({
+                  scrollbar: true,
+                  snapToChildren: true,
+                  desktopClickDrag: true,
+                  infiniteSlider: false,
+                  snapSlideCenter: true,
+                  navSlideSelector: $('.iosSliderButtons .button'),
+                  scrollbarHeight: '2px',
+                  scrollbarBorderRadius: '0',
+                  scrollbarOpacity: '0.5',
+                  onSlideChange: slideContentChange,
+                  onSliderLoaded: slideContentChange,
+                  keyboardControls: true
+               });
+//               $timeout(function() {
+//                  $('.iosSlider').iosSlider('goToSlide', defaultIndex);
+//               }, 500);
+            }, 200);
          };
 
-         var shouldLoadMoreImages = function(pageIndex, currentIndex, totalSize){
+         var calculateImageRange = function(imgs, index, size){
+            console.log('resetting pages', 'start', index, 'end', index + size);
+            return imgs.slice(index, index + size);
+         };
 
-         } ;
+         var addSlides = function(currentIndex, size){
+            scope.$apply(function(){
+               scope.images = calculateImageRange(originalImages, currentIndex, size);
+               setupSlider(1);
+            })
+         };
+
+         var removeSlides = function(currentIndex, size){
+            scope.$apply(function(){
+               scope.images = calculateImageRange(originalImages, currentIndex - size, size);
+               setupSlider(size );
+            });
+         };
+
+         function slideContentChange(args) {
+            /* indicator */
+            console.log('targetSlideNumber', args.targetSlideNumber);
+            console.log('prevSlideNumber', args.prevSlideNumber);
+
+            $('.iosSliderButtons .button').removeClass('selected');
+            $('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
+
+            //increasing direction
+            if(args.targetSlideNumber > args.prevSlideNumber) {
+               currentSlideIndex ++;
+            }
+            else if(args.targetSlideNumber < args.prevSlideNumber) {
+               currentSlideIndex --;
+            }
+            console.log('slideContentChange', 'currentSlideIndex', currentSlideIndex);
+            if(args.currentSlideNumber === pageSize && args.targetSlideNumber > args.prevSlideNumber){
+               console.log('adding slides');
+               $timeout(function() {
+                  addSlides(currentSlideIndex, pageSize);
+               }, 500);
+            }
+            if((currentSlideIndex + 1) >= pageSize && args.currentSlideNumber == 1 && args.targetSlideNumber < args.prevSlideNumber){
+               console.log('removing slides');
+               $timeout(function() {
+                  removeSlides(currentSlideIndex + 1, pageSize);
+               }, 500);
+            }
+         }
+
+         var init = function(s){
+            scope = s;
+            scope.images = calculateImageRange(originalImages, currentSlideIndex, pageSize);
+            setupSlider(1);
+         };
 
          var def = {
             restrict: 'AE',
@@ -22,61 +93,12 @@
             controller: 'ImageListCtrl',
             link: function($scope, element, attrs){
                console.log('cnkImageSlider link is called');
-               var pageIndex = 0, pageSize = 15, currentSlideIndex = 0;
-               function slideContentChange(args) {
-                  /* indicator */
-                  currentSlideIndex = args.currentSlideNumber - 1;
-                  //console.log('args', args);
-                  //increasing direction
-                  if(currentSlideIndex >= (pageSize - 2) && args.targetSlideNumber > args.prevSlideNumber){
-                     console.log('currentSlideIndex', currentSlideIndex);
-                     if(shouldLoadMoreImages(pageIndex, pageSize, pageSize)){
 
-                        pageIndex++;
-                        console.log('pageIndex', pageIndex);
-
-                        imageService.getList(pageIndex, pageSize)
-                           .then(function(result) {
-                              var images = imageService.mergeImages($scope.images, result.data);
-                              images = cleanupExistingImages(images, pageIndex, pageSize);
-
-                              $scope.images = images;
-                              initSlider();
-                           }, function(data, status) {
-                              console.error(status + ',' +data);
-                           });
-                     }
-
-                  }
-                  //decreasing direction
-//                  else if
-                  $('.iosSliderButtons .button').removeClass('selected');
-                  $('.iosSliderButtons .button:eq(' + (currentSlideIndex) + ')').addClass('selected');
-               }
-
-               var initSlider = function(){
-                  $timeout(function(){
-                     $('.iosSlider').iosSlider({
-                        scrollbar: true,
-                        snapToChildren: true,
-                        desktopClickDrag: true,
-                        infiniteSlider: true,
-                        snapSlideCenter: true,
-                        navSlideSelector: $('.iosSliderButtons .button'),
-                        scrollbarHeight: '2px',
-                        scrollbarBorderRadius: '0',
-                        scrollbarOpacity: '0.5',
-                        onSlideChange: slideContentChange,
-                        onSliderLoaded: slideContentChange,
-                        keyboardControls: true
-                     });
-
-                  });
-               };
-               imageService.getList(pageIndex, pageSize)
+               imageService.getList(pageIndex, 1500)
                   .then(function(result) {
-                     $scope.images = $scope.images.concat(result.data);
-                     initSlider();
+                     originalImages = result.data;
+
+                     init($scope);
                   }, function(data, status) {
                      console.error(status + ',' +data);
                   });
