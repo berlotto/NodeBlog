@@ -8,8 +8,12 @@
       function($http, $q, moment, device){
          console.log('Initializing Image Service', device);
 
-         var getList = function(pageIndex, pageSize){
-            return $http.get('/api/images/mason/' + device.getAvailableImageWidth() + '/' + pageIndex + '/' + pageSize);
+         var getFolderList = function(){
+            return $http.get('/api/image-folders');
+         };
+
+         var getList = function(folderName, pageIndex, pageSize){
+            return $http.get('/api/images/' + folderName + '/' + device.getAvailableImageWidth() + '/' + pageIndex + '/' + pageSize);
          };
 
          var getDetails = function(id){
@@ -58,7 +62,8 @@
             parseOne: parseOne,
             delete: deleteImage,
             search: search,
-            mergeImages: mergeImages
+            mergeImages: mergeImages,
+            getFolderList: getFolderList
          };
       }]);
 })(window.ServiceModule);

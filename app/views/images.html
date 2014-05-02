@@ -1,1 +1,10 @@
-<jj-image-slider page-size="10" source="images"></jj-image-slider>
+<div >
+   <div style="position: fixed; left: 0;z-index:100; margin-top:50px">
+      <div  ng-repeat="folder in folders">
+         <div style="opacity: 0.7;margin: 5px 0 0 5px;width:100px;height:100px;background-color:beige;border:1px solid darkred">{{folder}}</div>
+      </div>
+   </div>
+
+   <jj-image-slider page-size="10" source="images"></jj-image-slider>
+</div>
+

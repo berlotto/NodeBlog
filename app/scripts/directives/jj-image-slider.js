@@ -93,15 +93,19 @@
             controller: 'ImageListCtrl',
             link: function($scope, element, attrs){
                console.log('cnkImageSlider link is called');
+               imageService.getFolderList().then(function(result){
+                  $scope.folders = result.data;
+                  $scope.selectedFolder = $scope.folders[4];
+               }).then(function(){
+                  imageService.getList($scope.selectedFolder, pageIndex, 100)
+                     .then(function(result) {
+                        originalImages = result.data;
 
-               imageService.getList(pageIndex, 1500)
-                  .then(function(result) {
-                     originalImages = result.data;
-
-                     init($scope);
-                  }, function(data, status) {
-                     console.error(status + ',' +data);
-                  });
+                        init($scope);
+                     }, function(data, status) {
+                        console.error(status + ',' +data);
+                     });
+               });
             }
          };
          return def;
