@@ -5,7 +5,7 @@
       function ($timeout, imageService) {
          var scope;
          var originalImages = [];
-         var pageIndex = 0, pageSize = 15, currentSlideIndex = 0;
+         var pageIndex = 0, pageSize = 45, currentSlideIndex = 0;
 
          var setupSlider = function(defaultIndex){
             if($('.iosSlider').iosSlider){
@@ -59,26 +59,26 @@
             $('.iosSliderButtons .button').removeClass('selected');
             $('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
 
-            //increasing direction
-            if(args.targetSlideNumber > args.prevSlideNumber) {
-               currentSlideIndex ++;
-            }
-            else if(args.targetSlideNumber < args.prevSlideNumber) {
-               currentSlideIndex --;
-            }
-            console.log('slideContentChange', 'currentSlideIndex', currentSlideIndex);
-            if(args.currentSlideNumber === pageSize && args.targetSlideNumber > args.prevSlideNumber){
-               console.log('adding slides');
-               $timeout(function() {
-                  addSlides(currentSlideIndex, pageSize);
-               }, 500);
-            }
-            if((currentSlideIndex + 1) >= pageSize && args.currentSlideNumber == 1 && args.targetSlideNumber < args.prevSlideNumber){
-               console.log('removing slides');
-               $timeout(function() {
-                  removeSlides(currentSlideIndex + 1, pageSize);
-               }, 500);
-            }
+//            //increasing direction
+//            if(args.targetSlideNumber > args.prevSlideNumber) {
+//               currentSlideIndex ++;
+//            }
+//            else if(args.targetSlideNumber < args.prevSlideNumber) {
+//               currentSlideIndex --;
+//            }
+//            console.log('slideContentChange', 'currentSlideIndex', currentSlideIndex);
+//            if(args.currentSlideNumber === pageSize && args.targetSlideNumber > args.prevSlideNumber){
+//               console.log('adding slides');
+//               $timeout(function() {
+//                  addSlides(currentSlideIndex, pageSize);
+//               }, 500);
+//            }
+//            if((currentSlideIndex + 1) >= pageSize && args.currentSlideNumber == 1 && args.targetSlideNumber < args.prevSlideNumber){
+//               console.log('removing slides');
+//               $timeout(function() {
+//                  removeSlides(currentSlideIndex + 1, pageSize);
+//               }, 500);
+//            }
          }
 
          var init = function(s){
