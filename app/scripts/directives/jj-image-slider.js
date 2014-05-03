@@ -1,8 +1,8 @@
 'use strict';
 
 (function(module){
-   module.directive('jjImageSlider', ['$timeout', 'imageService',
-      function ($timeout, imageService) {
+   module.directive('jjImageSlider', ['$timeout', '$routeParams', 'imageService',
+      function ($timeout, $routeParams, imageService) {
          var scope;
          var originalImages = [];
          var pageIndex = 0, pageSize = 45, currentSlideIndex = 0;
@@ -16,7 +16,7 @@
                   scrollbar: true,
                   snapToChildren: true,
                   desktopClickDrag: true,
-                  infiniteSlider: false,
+                  infiniteSlider: true,
                   snapSlideCenter: true,
                   navSlideSelector: $('.iosSliderButtons .button'),
                   scrollbarHeight: '2px',
@@ -55,30 +55,9 @@
             /* indicator */
             console.log('targetSlideNumber', args.targetSlideNumber);
             console.log('prevSlideNumber', args.prevSlideNumber);
-
-            $('.iosSliderButtons .button').removeClass('selected');
-            $('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
-
-//            //increasing direction
-//            if(args.targetSlideNumber > args.prevSlideNumber) {
-//               currentSlideIndex ++;
-//            }
-//            else if(args.targetSlideNumber < args.prevSlideNumber) {
-//               currentSlideIndex --;
-//            }
-//            console.log('slideContentChange', 'currentSlideIndex', currentSlideIndex);
-//            if(args.currentSlideNumber === pageSize && args.targetSlideNumber > args.prevSlideNumber){
-//               console.log('adding slides');
-//               $timeout(function() {
-//                  addSlides(currentSlideIndex, pageSize);
-//               }, 500);
-//            }
-//            if((currentSlideIndex + 1) >= pageSize && args.currentSlideNumber == 1 && args.targetSlideNumber < args.prevSlideNumber){
-//               console.log('removing slides');
-//               $timeout(function() {
-//                  removeSlides(currentSlideIndex + 1, pageSize);
-//               }, 500);
-//            }
+//
+//            $('.iosSliderButtons .button').removeClass('selected');
+//            $('.iosSliderButtons .button:eq(' + (args.currentSlideNumber - 1) + ')').addClass('selected');
          }
 
          var init = function(s){
@@ -94,10 +73,17 @@
             link: function($scope, element, attrs){
                console.log('cnkImageSlider link is called');
                imageService.getFolderList().then(function(result){
-                  $scope.folders = result.data;
-                  $scope.selectedFolder = $scope.folders[4];
+                  $scope.folders = JSON.parse(result.data);
+                  if($routeParams.folder){
+                     $scope.selectedFolder = _.find($scope.folders, function(f){
+                        return f.name === $routeParams.folder;
+                     });
+                  }
+                  else{
+                     $scope.selectedFolder = $scope.selectedFolder || $scope.folders[0];
+                  }
                }).then(function(){
-                  imageService.getList($scope.selectedFolder, pageIndex, 100)
+                  imageService.getList($scope.selectedFolder.name, pageIndex, 100)
                      .then(function(result) {
                         originalImages = result.data;
 

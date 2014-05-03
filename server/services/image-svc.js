@@ -14,14 +14,14 @@
       _ = require('lodash/dist/lodash.underscore'),
       q = require('q');
 
-   var _getFiles =  function(name, folders, pageIndex, pageSize){
-      //console.log('_getFiles', name, folders, pageIndex, pageSize);
+   var _getFiles =  function(name, imgRes, pageIndex, pageSize){
+      //console.log('_getFiles', name, imgRes, pageIndex, pageSize);
 
       var imagePath = path.join(__dirname, '../../images/' + name);
       var basePath = path.join(__dirname, '../../');
       console.log('reading imagePath', imagePath, basePath);
-      var tempFolders = _.map(folders, function(folder){
-           return imagePath + '/' + folder;
+      var tempFolders = _.map(imgRes, function(folder){
+         return imagePath + '/' + folder;
       });
       var result = storageSvc.findImages(tempFolders);
 
@@ -55,7 +55,7 @@
       var imagePath = path.join(__dirname, '../../images/' + name);
       var basePath = path.join(__dirname, '../../');
       var tempFolders = _.map(folders, function(folder){
-           return imagePath + '/' + folder;
+         return imagePath + '/' + folder;
       });
       var result = storageSvc.findImages(tempFolders);
 
@@ -70,7 +70,7 @@
                   size: stat.size, uploadedOn: stat.mtime};
             });
             result = _.filter(result, function(f){
-               console.log('date', f.uploadedOn.getYear(), f.uploadedOn.getMonth(), f.uploadedOn.getDate());
+               //console.log('date', f.uploadedOn.getYear(), f.uploadedOn.getMonth(), f.uploadedOn.getDate());
                return f.uploadedOn.getYear() === (year - 1900) && f.uploadedOn.getMonth() === (month -1) && f.uploadedOn.getDate() === (day);
             });
 
@@ -91,7 +91,9 @@
 
    exports.getImageFolders = function(req, res){
       var imagePath = path.join(__dirname, '../../images/');
+      var imageWidth = req.params.imageWidth;
       var folders = [];
+      var folderData = [];
       fs.readdir(imagePath, function (err, files) {
          if (err) {
             throw err;
@@ -100,8 +102,27 @@
          folders = files.filter(function (file) {
             return fs.statSync(path.join(imagePath, file)).isDirectory();
          });
-         res.send(folders);
-
+         folderData = _.map(folders, function(f){
+            return _getFiles(f, [imageWidth], 0, 2).then(function(imgs){
+                  console.log('imgs', imageWidth, imgs);
+                  return {
+                     name: f,
+                     title: f.split('-')[0],
+                     date: new Date(parseInt(f.split('-')[1]), parseInt(f.split('-')[2]), 0, 0, 0, 0, 0),
+                     cover: imgs ? imgs[0] : {}
+                  }
+               },
+               function(err){
+                  console.error('_getImageFolders.getThumbnails', err);
+                  return {};
+               });
+         });
+         q.all(folderData).then(function(folderResult){
+            res.send(folderResult);
+         }, function(err){
+            console.error('_getImageFolders.resolveAll', err);
+            res.send([]);
+         });
       });
    };
 

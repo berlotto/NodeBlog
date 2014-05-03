@@ -9,11 +9,18 @@
          console.log('Initializing Image Service', device);
 
          var getFolderList = function(){
-            return $http.get('/api/image-folders');
+            return $http.get('/api/image-folders/' + device.getAvailableImageWidth(),
+               {
+                  transformResponse: function (data, headers) {
+
+                     return data;
+                  }
+               });
          };
 
          var getList = function(folderName, pageIndex, pageSize){
-            return $http.get('/api/images/' + folderName + '/' + device.getAvailableImageWidth() + '/' + pageIndex + '/' + pageSize);
+            return $http.get('/api/images/' + folderName + '/' +
+               device.getAvailableImageWidth() + '/' + pageIndex + '/' + pageSize);
          };
 
          var getDetails = function(id){
@@ -51,7 +58,7 @@
 
          var mergeImages = function(source, target){
             //...
-             return source;
+            return source;
          };
 
          return {

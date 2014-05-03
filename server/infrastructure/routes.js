@@ -102,7 +102,7 @@
       server.post('/api/files', files.upload);
       server.delete('/api/files/:id', files.delete);
 
-      server.get('/api/image-folders', images.getImageFolders);
+      server.get('/api/image-folders/:imageWidth', images.getImageFolders);
       server.get('/api/images/:name/:folders/:date', images.getImagesByDate);
       server.get('/api/images/:name/:folders/:index/:size', images.getImages);
       /////// ERROR ROUTING  /////////

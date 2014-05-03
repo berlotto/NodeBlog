@@ -30,7 +30,7 @@
       $routeProvider.when('/advancedSearch/:key/:start/:end', {templateUrl: 'views/advancedSearch.html', controller: 'BlogSearchCtrl'});
       $routeProvider.when('/searchResult', {templateUrl: 'views/searchResult.html', controller: 'BlogSearchCtrl'});
       $routeProvider.when('/images', {templateUrl: 'views/images.html', controller: 'ImageListCtrl'});
-      $routeProvider.when('/images/:size', {templateUrl: 'views/images.html', controller: 'ImageListCtrl'});
+      $routeProvider.when('/images/:folder/', {templateUrl: 'views/images.html', controller: 'ImageListCtrl'});
       $routeProvider.when('/image-details/:id', {templateUrl: 'views/image-details.html', controller: 'ImageDetailsCtrl'});
 
       //admin routes

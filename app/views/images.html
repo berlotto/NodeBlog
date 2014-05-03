@@ -2,10 +2,16 @@
    <jj-image-slider page-size="10" source="images"></jj-image-slider>
 
    <div class="folder-container">
-      <div class="border" ng-repeat="folder in folders">
-         <div class="folder">
-         {{folder}}
-      </div></div>
+      <div class="border" ng-repeat="folder in folders track by $index">
+         <a ng-href="/#/images/{{folder.name}}">
+            <div class="folder" style="background: url({{folder.cover.thumbnail}}) no-repeat 0 -10px;background-size: cover;">
+               <br>
+               <span class="folder-date">{{folder.date | date:'MMM-yy'}}</span>
+               <br>
+               <span class="folder-title">{{folder.title}}</span>
+            </div>
+         </a>
+      </div>
    </div>
 </div>
 
