@@ -2,7 +2,7 @@
    <jj-image-slider page-size="10" source="images"></jj-image-slider>
 
    <div class="folder-container">
-      <div class="border" ng-repeat="folder in folders track by $index">
+      <div id="{{folder.name}}" class="border" ng-class="{selected: selectedFolder == folder}"  ng-repeat="folder in folders track by $index">
          <a ng-href="/#/images/{{folder.name}}">
             <div class="folder" style="background: url({{folder.cover.thumbnail}}) no-repeat 0 -10px;background-size: cover;">
                <br>

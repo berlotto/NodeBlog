@@ -979,30 +979,50 @@ a.tag {
 }
 
 .folder-container .border{
-    border: none darkolivegreen;
+    border: none #696969;
     border-top: 4px solid;
-    border-bottom: 4px solid; display: inline-block; opacity: 0.7;margin: 0 0 0 0;
+    border-bottom: 4px solid; display: inline-block; opacity: 0.7;
+}
+.folder-container .border.selected{
+    opacity: 1;
 }
 
+.folder-container .selected .folder{
+    border-color:white;
+}
 .folder-container .folder{
     border-top: 4px dashed;
     border-bottom: 4px dashed;
-    border-left: 2px solid #222222;
-
+    border-left: 2px solid;
+    border-color: #696969;
     text-align: center;
-    width:100px;height: 64px;background-color:beige;
+    width:100px;height: 64px;
 }
-.folder-container .folder .folder-date{
+
+.folder-date{
     margin-top: 20px;
-    font: "Segoe UI", Arial, Verdana, sans-serif;
+    font: Arial, Verdana, sans-serif;
     font-weight: bold;
     font-size: large;
     color: grey;
 }
-.folder-container .folder .folder-title{
+
+.folder-title{
     font-weight: lighter;
     font-size: small;
     color: grey;
+}
+
+.selected .folder-date{
+    margin-top: 20px;
+    font: "Segoe UI", Arial, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: large;
+    color: #000000;
+}
+
+.selected .folder-title{
+    color: black;
 }
 
 /********Code Editor********/

@@ -1,8 +1,8 @@
 'use strict';
 
 (function(module){
-   module.directive('jjImageSlider', ['$timeout', '$routeParams', 'imageService',
-      function ($timeout, $routeParams, imageService) {
+   module.directive('jjImageSlider', ['$timeout', '$routeParams',  '$location', '$anchorScroll', 'imageService',
+      function ($timeout, $routeParams, $location, $anchorScroll, imageService) {
          var scope;
          var originalImages = [];
          var pageIndex = 0, pageSize = 45, currentSlideIndex = 0;
@@ -82,6 +82,11 @@
                   else{
                      $scope.selectedFolder = $scope.selectedFolder || $scope.folders[0];
                   }
+                  $timeout(function(){
+                     console.log('scrolling...', $scope.selectedFolder)
+                     $location.hash($scope.selectedFolder.name);
+                     $anchorScroll();
+                  });
                }).then(function(){
                   imageService.getList($scope.selectedFolder.name, pageIndex, 100)
                      .then(function(result) {
@@ -91,6 +96,14 @@
                      }, function(data, status) {
                         console.error(status + ',' +data);
                      });
+               });
+
+               $scope.$watch('selectedFolder', function(newVal, oldVal){
+                  if(!newVal || newVal ===oldVal){
+                     return;
+                  }
+
+
                });
             }
          };
