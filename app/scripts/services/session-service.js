@@ -6,22 +6,35 @@
 // Demonstrate how to register services
 // In this case it is a simple value service.
 (function(module){
-   module.factory('session', function(){
+   module.factory('session', ['storageService', function(storageService){
+      var _user;
       var create = function (sessionId, userId, userRole) {
-         this.currentUser = {
+         _user = {
             id: sessionId,
             userId: userId,
-            userRole: userRole
+            userRole: userRole,
+            token: ''
          };
-         return this.currentUser;
+         storageService.set('user', _user);
+         return _user;
       };
       var destroy = function () {
-         this.currentUser = null;
+         storageService.set('user', null);
       };
+      var currentUser = function(){
+          return storageService.get('user') || _user;
+      };
+
+      var setAuthToken = function(token){
+          _user.token = token;
+      };
+
       return {
+         currentUser: currentUser,
          create: create,
-         destroy: destroy
+         destroy: destroy,
+         setAuthToken: setAuthToken
       };
-   });
+   }]);
 
 })(window.ServiceModule);

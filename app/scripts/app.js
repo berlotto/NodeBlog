@@ -62,4 +62,21 @@
 //      localizeProvider.setDefaultLocale('en');
 //   }]);
 
+   module.run(function($rootScope, $location, authService) {
+      // Set a watch on the $routeChangeStart
+      $rootScope.$on('$routeChangeStart',
+         function (evt, next, curr) {
+
+            if (next.$$route.access_level && !authService.isAuthorized(next.$$route.access_level)) {
+               if (authService.getLoggedIn()) {
+                  // The user is logged in, but does not
+                  // have permissions to view the view
+                  $location.path('/');
+               } else {
+                  $location.path('/login');
+               }
+            }
+         });
+   });
+
 })(window.MainModule);

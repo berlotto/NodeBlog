@@ -7,6 +7,8 @@
 // In this case it is a simple value service.
 (function(module){
    module.factory('authService', ['$http', 'session', function($http, session){
+      var _user = session.currentUser;
+
       var authenticate = function(userName, pwd){
          return $http.post('/api/authenticate', {username:userName, password: pwd})
             .then(function (res) {

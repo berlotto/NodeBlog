@@ -1,7 +1,7 @@
 'use strict';
 
 (function(module){
-   module.factory('httpInterceptor', ['$q', '$location', function ($q, $location) {
+   module.factory('httpInterceptor', ['$q', '$location', 'session', function ($q, $location, session) {
       return {
          // request method
          'request': function(config) {
@@ -20,7 +20,9 @@
          // response method
          'response': function(response) {
             //console.log(' response method');
-
+            if (response.config.url == '/api/login') {
+               session.setAuthToken(response.data.token);
+            }
             return response || $q.when(response);
          },
 
