@@ -37,7 +37,11 @@ if (!filename) {
   throw Error('No target filename was specified.');
 }
 
-server.listen(5432, function() {
-  console.log('Listening for subscribers at port 5432...');
+server.listen('/tmp/watcher.sock', function() {
+  console.log('Listening for subscribers at watcher socket...');
 });
+
+//server.listen(5432, function() {
+//  console.log('Listening for subscribers at port 5432...');
+//});
 

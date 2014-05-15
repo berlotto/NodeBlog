@@ -92,6 +92,18 @@
       server.patch('/api/posts/:id', blogs.patch);
       server.delete('/api/posts/:id', blogs.delete);
       server.post('/api/posts', blogs.create);
+      server.post('/api/tests', function(req, res){
+         console.log('posting post...', req.body);
+         res.send({'msg': 'posting ' + req.body});
+      });
+      server.delete('/api/tests/:id', function(req, res){
+         console.log('deleting post...', req.params.id);
+         res.send({'msg': 'deleting ' + req.params.id});
+      });
+      server.put('/api/tests/:id', function(req, res){
+         console.log('updating post...', req.params.id);
+         res.send({'msg': 'updating ' + req.params.id});
+      });
 
       server.get('/api/comments/:id', comments.find);
       server.put('/api/comments/:id', comments.update);
