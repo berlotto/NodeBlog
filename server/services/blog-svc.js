@@ -25,7 +25,7 @@
 
        dac.findAll(null).then(function(result){
         //console.log(result);
-        res.send(result);
+        res.json(200, result);
       });
     };
     exports.find = function(req, res){
@@ -33,7 +33,7 @@
         _.forEach(result.comments, function(item){
           console.log(item.authorName + ' commented at ' + item.createdOn);
         });
-        res.send(result);
+        res.json(200, result);
       });
     };
     exports.update = function(req, res){
@@ -53,7 +53,7 @@
         console.log('creating new post...');
         var id = dac.create(req.body);
         console.log('New id is '+ id);
-        res.send({'id':id});
+        res.json(200, {'id':id});
     };
 
 })(module.exports);
