@@ -25,6 +25,7 @@
    module.config(['$routeProvider', function($routeProvider) {
       $routeProvider.when('/', {templateUrl: 'views/posts.html', controller: 'BlogListCtrl'});
       $routeProvider.when('/login', {templateUrl: 'views/login.html', controller: 'SiteLoginCtrl'});
+      $routeProvider.when('/map', {templateUrl: 'views/map.html', controller: 'MapCtrl', controllerAs: 'map'});
       $routeProvider.when('/games', {templateUrl: 'views/games.html', controller: 'GamesCtrl', controllerAs: 'games'});
       $routeProvider.when('/posts/:pid', {templateUrl: 'views/blogDetails.html', controller: 'BlogDetailsCtrl'});
       $routeProvider.when('/advancedSearch/:key/:start/:end', {templateUrl: 'views/advancedSearch.html', controller: 'BlogSearchCtrl'});

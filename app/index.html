@@ -48,7 +48,12 @@
 </script>
 <!-- Socket IO -->
 <script src="/socket.io/socket.io.js"></script>
-
+<!-- Google Map -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false">
+</script>
+<script type="text/javascript"
+        src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/keydragzoom/src/keydragzoom.js">
+</script>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <script>
    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -98,10 +103,16 @@
 <script src="vendor/iosslider/_src/jquery.iosslider.js"></script>
 <!-- endbuild -->
 
+
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
+<!-- models -->
+<script src="scripts/models/floor-plan.js"></script>
+
 <script src="scripts/bootstrap.js"></script>
 <script src="scripts/filters/pg-lang-filter.js"></script>
 <script src="scripts/filters/date-format.js"></script>
+<!-- Directives -->
+<script src="scripts/directives/jj-map.js"></script>
 <script src="scripts/directives/jj-header.js"></script>
 <script src="scripts/directives/jj-workflow.js"></script>
 <script src="scripts/directives/jj-image-slider.js"></script>
@@ -110,7 +121,9 @@
 <script src="scripts/directives/jj-footer.js"></script>
 <script src="scripts/directives/jj-markdown-editor.js"></script>
 <script src="scripts/directives/ng-enter.js"></script>
+<!-- Controllers -->
 <script src="scripts/app-ctrl.js"></script>
+<script src="scripts/controllers/map-ctrl.js"></script>
 <script src="scripts/controllers/blog-details.js"></script>
 <script src="scripts/controllers/workflow-ctrl.js"></script>
 <script src="scripts/controllers/blog-list.js"></script>
@@ -119,7 +132,7 @@
 <script src="scripts/controllers/error.js"></script>
 <script src="scripts/controllers/site-login.js"></script>
 <script src="scripts/controllers/login-form-ctrl.js"></script>
-<script src="scripts/controllers/image-list.js"></script>
+<script src="scripts/controllers/image-list-ctrl.js"></script>
 <script src="scripts/controllers/games.js"></script>
 <script src="scripts/controllers/admin/admin-header.js"></script>
 <script src="scripts/controllers/admin/admin-posts.js"></script>
@@ -129,6 +142,8 @@
 <script src="scripts/controllers/admin/admin-comments.js"></script>
 <script src="scripts/controllers/admin/admin-files.js"></script>
 <script src="scripts/controllers/admin/admin-tasks.js"></script>
+<!-- Services -->
+<script src="scripts/services/map-service.js"></script>
 <script src="scripts/services/device-service.js"></script>
 <script src="scripts/services/image-service.js"></script>
 <script src="scripts/services/storage-service.js"></script>
@@ -143,7 +158,7 @@
 <script src="scripts/services/admin/settings-service.js"></script>
 <script src="scripts/services/admin/file-service.js"></script>
 <script src="scripts/services/admin/admin-blog-service.js"></script>
-<script src="scripts/providers/httpInterceptor.js"></script>
+<script src="scripts/providers/http-interceptor.js"></script>
 <script src="scripts/app.js"></script>
 <!-- endbuild -->
 </body>

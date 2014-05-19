@@ -3,8 +3,12 @@
 /* Services */
 
 //store logged in user identity information
-(function(module){
+(function(exports, module){
    module.value('identity', {currentUser: {}});
+
+   module.value('FloorPlan', FloorPlan);
+
+   module.value('gmaps', exports.google.maps);
 
    module.value('amplify', amplify);
 
@@ -35,4 +39,4 @@
       guest: 'guest'
    });
 
-})(window.ServiceModule);
+})(window, window.ServiceModule);

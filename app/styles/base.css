@@ -1032,3 +1032,13 @@ a.tag {
     background-color: #F0F0F0;
 }
 
+#map_container
+{
+    height:600px;
+}
+#map_container #floorDiv
+{
+    /*transform: rotate(72.5deg);*/
+    /*-webkit-transform: rotate(72.5deg);*/
+    /*-ms-transform: rotate(72.5deg);*/
+}
