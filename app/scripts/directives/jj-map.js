@@ -47,6 +47,18 @@
                position: new gmaps.LatLng(lat - 0.00013, lnt - 0.00028),
                map: map});
 
+            var populationOptions = {
+               strokeColor: '#FF0000',
+               strokeOpacity: 0.8,
+               strokeWeight: 1,
+               fillColor: '#FF0000',
+               fillOpacity: 0.35,
+               map: map,
+               center: poi,
+               radius: 5
+            };
+            // Add the circle for this city to the map.
+            var cityCircle = new gmaps.Circle(populationOptions);
 //            map.enableKeyDragZoom({
 //               key: "shift",
 //               boxStyle: {
