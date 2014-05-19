@@ -3,7 +3,7 @@
 /* Controllers */
 
 (function(module) {
-   module.controller('MapCtrl', ['$scope', '$routeParams', 'mapService', 'gmaps',
+   module.controller('FloorPlanCtrl', ['$scope', '$routeParams', 'mapService', 'gmaps',
       function($scope, $routeParams, mapService, gmaps) {
 
       }]);
