@@ -11,79 +11,217 @@
          },
          templateUrl: 'views/templates/jj-floor-plan.html',
          link: function ($scope, element, attrs) {
-            var lat = parseFloat($scope.lat);
-            var lnt = parseFloat($scope.lnt);
-            var poi = new gmaps.LatLng(lat, lnt);
+            var self = this;
 
-            var mapOptions = {
-               zoom: 20,
-               center: poi,
-               mapTypeId: gmaps.MapTypeId.ROADMAP
-            };
+            var lat = parseFloat($scope.lat),
+               lnt = parseFloat($scope.lnt),
+               poi = new gmaps.LatLng(lat, lnt),
+               markers = [],
+               infoWindows = [],
+               mapOptions = {
+                  zoom: 20,
+                  center: poi,
+                  mapTypeId: gmaps.MapTypeId.ROADMAP
+               };
 
             var map = new gmaps.Map(element[0], mapOptions);
-            var marker = new gmaps.Marker({
-               icon: 'http://localhost:3000/images/icons/ibeacon.svg',
-               title: "PC Room",
-               position: poi,
-               map: map});
-            // create InfoWindow object for airport #1
-            var info = new gmaps.InfoWindow({
-               content:
-                  '<span style="font-family: Trebuchet MS; font-size:10pt; color: maroon"><b>Beacon 1</b></span>'
+
+            //Add custom controls
+            var controlDiv = document.createElement('div');
+            controlDiv.style.padding = '5px 5px 0 0';
+
+            var beaconControlUI = document.createElement('div');
+            beaconControlUI.style.backgroundColor = 'white';
+            beaconControlUI.style.borderStyle = 'solid';
+            beaconControlUI.style.borderWidth = '1px';
+            beaconControlUI.style.cursor = 'pointer';
+            beaconControlUI.style.textAlign = 'center';
+            beaconControlUI.title = 'Click to add new beacon';
+            beaconControlUI.style.height = '17px';
+
+            controlDiv.appendChild(beaconControlUI);
+            var beaconControlTxt = document.createElement('div');
+            beaconControlTxt.style.fontFamily = 'Arial,sans-serif';
+            beaconControlTxt.style.fontSize = '12px';
+            beaconControlTxt.style.paddingLeft = '4px';
+            beaconControlTxt.style.paddingRight = '4px';
+            beaconControlTxt.style.textAlign = 'center';
+            beaconControlTxt.style.lineHeight = '1.5';
+            beaconControlTxt.innerHTML = '<b>Add iBeacon</b>';
+            beaconControlUI.appendChild(beaconControlTxt);
+
+            var clearControlUI = document.createElement('div');
+            clearControlUI.style.backgroundColor = 'white';
+            clearControlUI.style.borderStyle = 'solid';
+            clearControlUI.style.borderWidth = '1px';
+            clearControlUI.style.marginTop = '3px';
+            clearControlUI.style.cursor = 'pointer';
+            clearControlUI.style.textAlign = 'center';
+            clearControlUI.title = 'Click to clear controls';
+            clearControlUI.style.height = '17px';
+
+            controlDiv.appendChild(clearControlUI);
+            var clearControlTxt = document.createElement('div');
+            clearControlTxt.style.fontFamily = 'Arial,sans-serif';
+            clearControlTxt.style.fontSize = '12px';
+            clearControlTxt.style.paddingLeft = '4px';
+            clearControlTxt.style.paddingRight = '4px';
+            clearControlTxt.style.textAlign = 'center';
+            clearControlTxt.style.lineHeight = '1.5';
+            clearControlTxt.innerHTML = '<b>Clear iBeacons</b>';
+            clearControlUI.appendChild(clearControlTxt);
+
+            controlDiv.index = 1;
+            map.controls[gmaps.ControlPosition.RIGHT_TOP].push(controlDiv);
+            gmaps.event.addDomListener(clearControlUI, 'click', function() {
+               clearMarkers();
             });
-            gmaps.event.addListener(marker, 'click', function () {
-               closeAll();
-               info.open(map, marker)
+            gmaps.event.addDomListener(beaconControlUI, 'click', function() {
+               createMarker();
+            });
+            gmaps.event.addListener(map, "click",function(event){
+               hideContextMenu();
             });
 
-            var marker0 = new gmaps.Marker({
-               icon: 'http://localhost:3000/images/icons/ibeacon.svg',
-               title: "Washroom",
-               position: new gmaps.LatLng(lat + 0.0001, lnt + 0.00005),
-               map: map});
-            var info0 = new gmaps.InfoWindow({
-               content:
-                  '<span style="font-family: Trebuchet MS; font-size:10pt; color: maroon"><b>Beacon 2</b></span>'
-            });
-            gmaps.event.addListener(marker0, 'click', function () {
-               closeAll();
-               info0.open(map, marker0)
-            });
+            var contextmenuDiv;
+            var rightClickLocation;
+            var geocoder = new google.maps.Geocoder();
 
-            var marker1 = new gmaps.Marker({
-               icon: 'http://localhost:3000/images/icons/ibeacon.svg',
-               title: "Coffee Shop",
-               position: new gmaps.LatLng(lat + 0.00006, lnt),
-               map: map});
-            var info1 = new gmaps.InfoWindow({
-               content:
-                  '<span style="font-family: Trebuchet MS; font-size:10pt; color: maroon"><b>Beacon 3</b></span>'
-            });
-            gmaps.event.addListener(marker1, 'click', function () {
-               closeAll();
-               info1.open(map, marker1)
-            });
+            function getPointerLocation(currentLatLng){
+               var scale = Math.pow(2, map.getZoom());
+               // The NorthWest corner of the current viewport corresponds
+               // to the upper left corner of the map.
+               // The script translates the coordinates of the map's center point
+               // to screen coordinates. Then it subtracts the coordinates of the
+               // coordinates of the map's upper left corner to translate the
+               // currentLatLng location into pixel values in the <div> element that hosts the map.
+               var nw = new gmaps.LatLng(
+                  map.getBounds().getNorthEast().lat(),
+                  map.getBounds().getSouthWest().lng()
+               );
+               // Convert the nw location from geo-coordinates to screen coordinates
+               var worldCoordinateNW = map.getProjection().fromLatLngToPoint(nw);
+               // Convert the location that was clicked to screen coordinates also
+               var worldCoordinate = map.getProjection().fromLatLngToPoint(currentLatLng);
+               var currentLocation = new google.maps.Point(
+                  Math.floor((worldCoordinate.x - worldCoordinateNW.x) * scale),
+                  Math.floor((worldCoordinate.y - worldCoordinateNW.y) * scale)
+               );
+               return currentLocation;
+            }
 
-            var marker2 = new gmaps.Marker({
-               icon: 'http://localhost:3000/images/icons/ibeacon.svg',
-               title: "Kitchen",
-               position: new gmaps.LatLng(lat - 0.00008, lnt - 0.0002),
-               map: map});
-            var info2 = new gmaps.InfoWindow({
-               content:
-                  '<span style="font-family: Trebuchet MS; font-size:10pt; color: maroon"><b>Beacon 4</b></span>'
-            });
-            gmaps.event.addListener(marker2, 'click', function () {
-               closeAll();
-               info2.open(map, marker2)
-            });
+            function positionMenu(currentLatLng){
+               // the map's dimensions:
+               var mapWidth = $('#map_container').width();
+               var mapHeight = $('#map_container').height();
+               // the menu's dimensions:
+               var menuWidth = $('.contextmenu').width();
+               var menuHeight = $('.contextmenu').height();
+               // the position that was clicked in pixel coordinates in the map's placeholder
+               var clickedPosition = getPointerLocation(currentLatLng);
+               // The x and y coordinates of the point that was clicked
+               // in the <div> element that holds the map.
+               // THEY ARE NOT ABSOLUTE SCREEN COORDINATES MEASURED FROM THE UPPER LEFT CORNER OF THE SCREEN!
+               // Instead, they are measured from the upper left corner of the map's placeholder.
+               var x = clickedPosition.x ;
+               var y = clickedPosition.y ;
+               // if there's no space to display the context menu to the right of the
+               // point that was clicked, display it to the left of the same point.
+               if((mapWidth - x ) < menuWidth)
+                  x = x - menuWidth;
+               // if there's no space to display the context menu below the
+               // point that was clicked, display it above the same point.
+               // THE SCRIPT ASSUMES THAT THE MAP IS LARGE ENOUGH FOR THE CONTEXT MENU!
+               if((mapHeight - y ) < menuHeight)
+                  y = y - menuHeight;
+               // Now set the location of the context menu's upper left corner.
+               $('.contextmenu').css('left',x  );
+               $('.contextmenu').css('top',y );
+            }
+
+            function hideContextMenu() {
+               if (contextmenuDiv != null) contextmenuDiv.style.visibility = "hidden";
+            }
+
+
+            // The codeLatLng() function uses the geocode method to retrieve
+            // the physical address at any geo-location. The process of geocoding
+            // locations is discussed in detail in Chapter 17.
+            function codeLatLng(location) {
+               geocoder.geocode({'latLng': location}, function(results, status) {
+                  if (status == google.maps.GeocoderStatus.OK) {
+                     if (results[0]) {
+                        alert(results[0].formatted_address);
+                     }
+                  } else {
+                     alert("Geocoder failed due to: " + status);
+                  }
+               });
+            }
+
+            function showContextMenu(currentLocation  ) {
+               console.log('displaying context menu');
+               $('.contextmenu').remove();
+               contextmenuDiv = document.createElement("div");
+               contextmenuDiv.className  = 'contextmenu';
+               rightClickLocation=currentLocation;
+               // create the context menu. It's a <div> element with three hyperlinks,
+               // one for each command.
+               contextmenuDiv.innerHTML =
+                  "<a id='itemAddress' style='cursor: pointer'>" +
+                  "    <div class=context>set radius<\/div><\/a>" +
+                  "<a id='itemZoom' style='cursor: pointer'>" +
+                  "    <div class=context>remove iBeacon<\/div><\/a>";
+               $(map.getDiv()).append(contextmenuDiv);
+               // Call the positionMenu function to place the menu on the page and then make the context menu visible.
+               positionMenu(currentLocation);
+               contextmenuDiv.style.visibility = "visible";
+            }
+
+
+            function createMarker(){
+               //create new beacon and add to the center
+               var tempMarker = new gmaps.Marker({
+                  icon: 'http://localhost:3000/images/icons/ibeacon.svg',
+                  title: "Beacon",
+                  position: poi,
+                  draggable: true,
+                  map: map});
+               markers.push(tempMarker);
+               // create InfoWindow object for airport #1
+               var info = new gmaps.InfoWindow({
+                  content:
+                     '<span style="font-family: Trebuchet MS; font-size:10pt; color: maroon;"><b>iBeacon</b></span>'
+               });
+               infoWindows.push(info);
+               gmaps.event.addListener(tempMarker, 'click', function () {
+                  closeAll();
+                  info.open(map, tempMarker)
+               });
+               gmaps.event.addListener(tempMarker, 'dragstart', function () {
+                  console.log('marker is started dragging at ', tempMarker.getPosition().toString())
+               });
+               gmaps.event.addListener(tempMarker, 'dragend', function () {
+                  console.log('marker is dropped at ', tempMarker.getPosition().toString())
+               });
+               gmaps.event.addListener(tempMarker, "rightclick",function(event){
+                  showContextMenu(event.latLng);
+               });
+
+            }
 
             function closeAll(){
-               info.close();
-               info1.close();
-               info2.close();
-               info0.close();
+               _.each(infoWindows, function(info){
+                  info.close();
+               })
+            }
+
+            function clearMarkers(){
+               _.each(markers, function(m){
+                  m.setMap(null);
+               })
+               markers = [];
+               infoWindows = [];
             }
 
             var populationOptions = {
