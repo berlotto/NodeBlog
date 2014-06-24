@@ -17,7 +17,7 @@
             });
          };
 
-         $scope.login = function (currentUser) {
+         $scope.logout = function (currentUser) {
             authService.logout(currentUser.id).then(function () {
                $scope.currentUser = null;
                $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);

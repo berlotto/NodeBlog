@@ -31,7 +31,7 @@
    var server = express();
 
    server.configure(function(){
-      server.set('port', process.env.PORT || 3000);
+      server.set('port', process.env.PORT || 3001);
       server.use(express.favicon());
       server.use(express.logger('dev'));
       server.use(express.bodyParser());
