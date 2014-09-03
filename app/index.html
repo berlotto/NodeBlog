@@ -15,7 +15,7 @@
    <meta name="fragment" content="!" />
 
    <meta content="Jeff Jin Consulting" name="description">
-   <meta content=".net, c#, WCF, javascript, jquery, AngularJS, NodeJs, NoSQL, MVC" name="keywords">
+   <meta content=".net, c#, WCF, javascript, jquery, AngularJS, NodeJs, NoSQL, MVC, android, swift" name="keywords">
 
    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
    <!-- build:css styles/vendor.css -->
@@ -24,21 +24,24 @@
    <!-- endbower -->
    <!-- endbuild -->
    <!-- build:css({.tmp,app}) styles/main.css -->
+   <link rel="stylesheet" type="text/css" href="styles/reset.css">
    <link rel="stylesheet" type="text/css" href="styles/base.css">
    <link rel="stylesheet" type="text/css" href="styles/admin.css">
    <link rel="stylesheet" type="text/css" href="styles/theme.css">
+   <link rel="stylesheet" type="text/css" href="styles/jquery-ui.css">
 
    <!-- endbuild -->
 </head>
-<body ng-app="chinook">
+<body>
 
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <!-- Add your site or application content here -->
-<div class="container" ng-view=""></div>
-
+<div  ng-app="chinook">
+   <div class="container" ng-view=""></div>
+</div>
 
 <script>
    if(!console){
@@ -145,6 +148,8 @@
 <script src="scripts/controllers/admin/admin-comments.js"></script>
 <script src="scripts/controllers/admin/admin-files.js"></script>
 <script src="scripts/controllers/admin/admin-tasks.js"></script>
+
+<script src="scripts/controllers/fish-ctrl.js"></script>
 <!-- Services -->
 <script src="scripts/services/map-service.js"></script>
 <script src="scripts/services/device-service.js"></script>
