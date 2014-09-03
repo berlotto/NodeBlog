@@ -9,7 +9,7 @@
    exports.ParserModule = angular.module('chinook.parsers', []);
    exports.MainModule = angular.module('chinook',
       [
-         'ngRoute', 'ui.codemirror', 'adaptive.detection',
+         'ngRoute', 'ui.codemirror',
          'chinook.filters',
          'chinook.services',
          'chinook.providers',

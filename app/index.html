@@ -1,55 +1,52 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!DOCTYPE html>
+<html ng-app="chinook">
 <head>
-   <meta charset="utf-8">
-   <title>The Law Of The Jungle</title>
-   <meta name="description" content="">
-   <meta name="viewport" content="width=device-width">
-   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-   <meta content="text/html; charset=utf-8" http-equiv="content-type">
-   <meta content="english" name="language">
-   <meta content="The Law of the Jungle" name="author">
-   <meta name="fragment" content="!" />
-
-   <meta content="Jeff Jin Consulting" name="description">
-   <meta content=".net, c#, WCF, javascript, jquery, AngularJS, NodeJs, NoSQL, MVC, android, swift" name="keywords">
-
-   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-   <!-- build:css styles/vendor.css -->
-   <!-- bower:css -->
-   <link rel="stylesheet" href="bower_components/codemirror/lib/codemirror.css" />
-   <!-- endbower -->
-   <!-- endbuild -->
-   <!-- build:css({.tmp,app}) styles/main.css -->
-   <link rel="stylesheet" type="text/css" href="styles/reset.css">
-   <link rel="stylesheet" type="text/css" href="styles/base.css">
-   <link rel="stylesheet" type="text/css" href="styles/admin.css">
-   <link rel="stylesheet" type="text/css" href="styles/theme.css">
-   <link rel="stylesheet" type="text/css" href="styles/jquery-ui.css">
-
-   <!-- endbuild -->
+   <title>Jeff Jin</title>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <link rel="stylesheet" type="text/css" href="css/style.css"/>
+   <link rel="stylesheet" type="text/css" href="css/page_animations.css"/>
+   <link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+   <link rel="stylesheet" type="text/css" href="css/animate.min.css"/>
+   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+   <link href="css/font-awesome.min.css" rel="stylesheet">
+   <link href='http://fonts.googleapis.com/css?family=Lato:300,300italic|Open+Sans' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body class="theme_{{themeIndex}}" ng-controller="AppCtrl">
 
-<!--[if lt IE 7]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
+<!-- Wrapper -->
+<div id="wrapper">
 
-<!-- Add your site or application content here -->
-<div  ng-app="chinook">
-   <div class="container" ng-view=""></div>
+   <div class="container">
+      <!-- Row -->
+      <div class="row">
+
+         <div ng-view=""></div>
+
+         <div class="clear"></div>
+
+      </div>
+
+      <div class="clear"></div>
+   </div>
+
+   <div class="clear"></div>
 </div>
+<!-- /Wrapper -->
 
-<script>
-   if(!console){
-      console.log = function(){};
-      console.error = function(){};
-      console.warn = function(){};
-   }
-</script>
+<!-- Footer -->
+<div class="footer col-md-12">
+   2014 &copy; eWorkspace Solutions Inc. by <a href="http://www.eworkspace.co">Jeff Jin</a>
+</div>
+<!-- /Footer -->
+
+<!-- Loading Overlay -->
+<div class="loading_overlay">
+   <div><img class="loading" src="img/loading.gif" alt="img" /></div>
+</div>
+<!-- /Loading Overlay -->
+
+
 <!-- Socket IO -->
 <script src="/socket.io/socket.io.js"></script>
 <!-- Google Map -->
@@ -65,7 +62,7 @@
          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-   ga('create', 'UA-XXXXX-X');
+   ga('create', 'UA-54424302-1', 'auto');
    ga('send', 'pageview');
 </script>
 
@@ -73,19 +70,6 @@
 <!-- build:js scripts/vendor.js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
-<script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
-<script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
@@ -98,20 +82,37 @@
 <script src="bower_components/amplify/lib/amplify.store.js"></script>
 <script src="bower_components/marked/lib/marked.js"></script>
 <script src="bower_components/jsPlumb/dist/js/jquery.jsPlumb-1.5.5.js"></script>
+
 <!-- bower:js -->
 <script src="bower_components/es5-shim/es5-shim.js"></script>
 <script src="bower_components/json3/lib/json3.min.js"></script>
-<script src="bower_components/angular-adaptive-detection/src/angular-adaptive-detection.js"></script>
 <!-- endbower -->
 <script src="vendor/jshash/md5.js"></script>
 <script src="vendor/iosslider/_src/jquery.iosslider.js"></script>
 <!-- endbuild -->
 
+<script type="text/javascript" src="vendor/mixitup.min.js"></script>
+<script type="text/javascript" src="vendor/jquery.cycle2.min.js"></script>
+<script type="text/javascript" src="vendor/modernizr.custom.js"></script>
+<script type="text/javascript" src="vendor/jquery.hoverdir.js"></script>
+<script type="text/javascript" src="vendor/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="vendor/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="vendor/jquery.magnific_popup.js"></script>
+<script type="text/javascript" src="vendor/tweetie.min.js"></script>
+<script type="text/javascript" src="vendor/maplace.js"></script>
+<script type="text/javascript" src="vendor/jquery.ba-hashchange.js"></script>
+<script type="text/javascript" src="vendor/jquery.appear.js"></script>
+<script type="text/javascript" src="vendor/scripts.js"></script>
+
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <!-- models -->
 <script src="scripts/models/floor-plan.js"></script>
-
 <script src="scripts/bootstrap.js"></script>
 <script src="scripts/filters/pg-lang-filter.js"></script>
 <script src="scripts/filters/date-format.js"></script>
@@ -149,7 +150,6 @@
 <script src="scripts/controllers/admin/admin-files.js"></script>
 <script src="scripts/controllers/admin/admin-tasks.js"></script>
 
-<script src="scripts/controllers/fish-ctrl.js"></script>
 <!-- Services -->
 <script src="scripts/services/map-service.js"></script>
 <script src="scripts/services/device-service.js"></script>
@@ -169,5 +169,6 @@
 <script src="scripts/providers/http-interceptor.js"></script>
 <script src="scripts/app.js"></script>
 <!-- endbuild -->
+
 </body>
 </html>

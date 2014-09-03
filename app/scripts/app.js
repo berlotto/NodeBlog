@@ -23,7 +23,7 @@
    };
 
    module.config(['$routeProvider', function($routeProvider) {
-      $routeProvider.when('/', {templateUrl: 'views/posts.html', controller: 'BlogListCtrl'});
+      $routeProvider.when('/', {templateUrl: 'views/home.html', controller: 'HomeCtrl'});
       $routeProvider.when('/login', {templateUrl: 'views/login.html', controller: 'SiteLoginCtrl'});
       $routeProvider.when('/custom-floor-plan', {templateUrl: 'views/custom-floor-plan.html', controller: 'CustomFloorPlanCtrl', controllerAs: 'map'});
       $routeProvider.when('/floor-plan', {templateUrl: 'views/floor-plan.html', controller: 'FloorPlanCtrl', controllerAs: 'map'});

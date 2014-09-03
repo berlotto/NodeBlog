@@ -6,5 +6,6 @@
          $scope.currentUser = session.currentUser();
          $scope.userRoles = USER_ROLES;
          $scope.isAuthorized = authService.isAuthorized;
+         $scope.themeIndex = new Date().getDate() % 6;
       }]);
 })(window.CtrlModule);
