@@ -24,6 +24,12 @@
 
    module.config(['$routeProvider', function($routeProvider) {
       $routeProvider.when('/', {templateUrl: 'views/home.html', controller: 'HomeCtrl'});
+      $routeProvider.when('/about', {templateUrl: 'views/about.html', controller: 'AboutCtrl'});
+      $routeProvider.when('/portfolio', {templateUrl: 'views/portfolio.html', controller: 'PortfolioCtrl'});
+      $routeProvider.when('/blog', {templateUrl: 'views/blog.html', controller: 'BlogCtrl'});
+      $routeProvider.when('/contact', {templateUrl: 'views/contact.html', controller: 'ContactCtrl'});
+      $routeProvider.when('/resume', {templateUrl: 'views/resume.html', controller: 'ResumeCtrl'});
+
       $routeProvider.when('/login', {templateUrl: 'views/login.html', controller: 'SiteLoginCtrl'});
       $routeProvider.when('/custom-floor-plan', {templateUrl: 'views/custom-floor-plan.html', controller: 'CustomFloorPlanCtrl', controllerAs: 'map'});
       $routeProvider.when('/floor-plan', {templateUrl: 'views/floor-plan.html', controller: 'FloorPlanCtrl', controllerAs: 'map'});

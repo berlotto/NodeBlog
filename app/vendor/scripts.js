@@ -552,6 +552,8 @@ $(document).ready(function(){
 
          //hash url page changer
          jQuery(window).hashchange( function(e) {
+
+            console.log('hash change triggered...');
             var hash = location.hash;
             if (hash == "")
                return false;
