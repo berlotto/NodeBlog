@@ -374,7 +374,7 @@ module.exports = function (grunt) {
       },
       nodemon: {
          dev: {
-            script: 'webserver.js'
+            script: 'server.js'
          }
       }
    });

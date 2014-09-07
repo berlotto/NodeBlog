@@ -1,0 +1,186 @@
+/*
+ *	Table of Contents:
+ *
+ *	1. Inits & Resets
+ *	2. Menu
+ *	3. Social Icons
+ *	4. Main Content
+ *	5. Home Page
+ *	6. About Page
+ *	7. Resume Page
+ *	8. Portfolio Page
+ *	9. Blog Page
+ * 	10. Contact Page
+ *	11. Footer
+ *	12. Themes
+ *	13. Media Queries
+*/
+
+
+/*
+===============================================
+			1. CSS Reset
+===============================================
+*/
+
+/* inits & resets */
+body{
+	color: #333333;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	line-height: 1;
+	display: block;
+}
+html, body{
+	min-height:100%;
+	height:auto;
+	width: 100%;
+}
+*:focus{
+	outline: none;
+}
+.clear{
+	clear: both;
+}
+
+/* anchor tag */
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
+}
+
+.alpha{
+	padding-left: 0 !important;
+}
+
+.omega{
+	padding-right: 0 !important;
+}
+
+.btn{
+	border-radius: 0 !important;
+}
+
+.anim_element{
+	opacity: 0;
+}
+
+.fullOpacity{
+	opacity: 1 !important;
+}
+
+.responsive_menu_btn{
+	display: none;
+	width: 100%;
+	padding: 10px;
+	text-align: center;
+	background: rgba(0, 0, 0, 0.15);
+	cursor: pointer;
+}
+
+.responsive_menu_btn:hover{
+	background: rgba(0, 0, 0, 0.2);
+}
+
+#wrapper{
+	margin-top: 15px;
+	margin-bottom: 10px;
+	overflow: hidden;
+	opacity: 0;
+}
+
+
+.loading_overlay{
+	display: block;
+	position: absolute;
+	background: rgba(0, 0, 0, 1);
+	width: 100%;
+	height: 100%;
+	left:0;
+	top:0;	
+}
+
+.loading_overlay div{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 50px;
+	height: 52px;
+	line-height: 50px;
+	margin: -30px 0 0 -30px;
+	padding: 6px;
+}
+
+.loading_overlay img{
+	width:50px;
+	height: 52px;
+}
+
+
+
+/*
+===============================================
+			13. Media Queries
+===============================================
+*/
+
+/* responsive css */
+h2{
+    color: #6a96ff;
+}
+pre{
+    width:100%;
+}
+
+.desc::after{
+    content: " - (Full Desktop Site)";
+}
+
+/* Portrait tablet to landscape and desktop */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+    h2{
+        color: #70ff6e;
+    }
+    .desc::after{
+        content: " - (min-width: 768px) and (max-width: 959px)";
+    }
+
+}
+
+/* Landscape phone to portrait tablet */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  h2{
+      color: fuchsia;
+  }
+    .desc::after{
+        content: " - (min-width: 480px) and (max-width: 767px)";
+    }
+
+}
+
+@media only screen and (max-width: 1199px) {
+
+}
+
+@media only screen and (min-width: 991px) {
+
+
+}
+
+@media only screen and (max-width: 991px) {
+
+
+}
+
+/* Landscape phones and down */
+@media only screen and (max-width: 479px) {
+    h2{
+        color: #ff272f;
+    }
+    .desc::after{
+        content: " - (max-width: 479px)";
+    }
+
+}
