@@ -1,7 +1,7 @@
 'use strict';
 
 (function(module){
-   module.directive('eMainMenu', ['$window', function ($window) {
+   module.directive('eHome', ['$window', function ($window) {
 
 
       return {
@@ -9,7 +9,7 @@
          replace: true,
          scope: {
          },
-         templateUrl: 'views/templates/main-menu.html',
+         templateUrl: 'views/templates/e-home.html',
          link: function (scope, element, attrs) {
 
             var anim_in = "pt-page-rotateCubeLeftIn";

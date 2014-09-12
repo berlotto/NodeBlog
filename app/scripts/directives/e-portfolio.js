@@ -1,7 +1,7 @@
 'use strict';
 
 (function(module){
-   module.directive('eMainMenu', ['$window', function ($window) {
+   module.directive('ePortfolio', ['$window', function ($window) {
 
 
       return {

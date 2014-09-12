@@ -13,7 +13,7 @@
          replace: true,
          scope: {
          },
-         templateUrl: 'views/templates/social-buttons.html',
+         templateUrl: 'views/templates/e-social-buttons.html',
          link: function ($scope, element, attrs) {
 
          }
