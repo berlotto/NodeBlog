@@ -8,6 +8,7 @@
          restrict: 'AE',
          replace: true,
          scope: {
+            transition: '='
          },
          templateUrl: 'views/templates/e-home.html',
          link: function (scope, element, attrs) {
@@ -202,11 +203,11 @@
 //            });
 
 //------------------------------------------------------------------------------------------------/
-//            $(".content > div#about").removeClass("pt-page-rotateCubeRightIn").addClass("pt-page-rotateCubeRightOut");
-//            $(".content > div#home").addClass("pt-page-current pt-page-rotateCubeRightIn");
-//            setTimeout(function(){$(".content > div#about").removeAttr("class"); $(".content > div#home").addClass("pt-page-current");}, 600);
+            $(".content > div#home").addClass("pt-page-current pt-page-rotateCubeRightIn");
+            setTimeout(function(){
+               $(".content > div#home").addClass("pt-page-current");
+            }, 600);
 //            $(".content > div#home").removeClass("pt-page-rotateCubeLeftIn").addClass("pt-page-rotateCubeLeftOut");
-//            $(".content > div#about").addClass("pt-page-current pt-page-rotateCubeLeftIn");
 //            setTimeout(function(){$(".content > div#home").removeAttr("class"); $(".content > div#about").addClass("pt-page-current");}, 600);
          }
       };

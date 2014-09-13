@@ -8,6 +8,7 @@
          restrict: 'AE',
          replace: true,
          scope: {
+            transition: '='
          },
          templateUrl: 'views/templates/e-resume.html',
          link: function (scope, element, attrs) {
