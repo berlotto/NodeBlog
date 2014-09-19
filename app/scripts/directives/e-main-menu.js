@@ -1,54 +1,65 @@
 'use strict';
 
 (function(module){
-   module.directive('eMainMenu', ['$window', function ($window) {
+   module.directive('eMainMenu', ['$q', function ($q) {
 
 
       return {
          restrict: 'AE',
          replace: true,
          scope: {
-            transition: '='
+            currentPage: '=?'
          },
          templateUrl: 'views/templates/e-main-menu.html',
          link: function (scope, element, attrs) {
 
-            var anim_in = "pt-page-rotateCubeLeftIn";
-            var anim_out = "pt-page-rotateCubeLeftOut";
-
-            var anim_in_inv = "pt-page-rotateCubeRightIn";
-            var anim_out_inv = "pt-page-rotateCubeRightOut";
-
-            var curr_page_loaded = true;
-            var next_page_loaded = false;
-
-            var next_page, curr_page;
-            var jsp_destroyed = false;
-
             scope.currentPage = 'home';
 
-            function removeCurrentPage(){
+            function removeCurrentPage(backward, page){
+               var deferred = $q.defer();
 
-               $(".content > div#" + scope.currentPage).removeClass("pt-page-rotateCubeRightIn").addClass("pt-page-rotateCubeRightOut");
+               var in_animation =  "pt-page-rotateCubeRightIn";
+               var out_animation = "pt-page-rotateCubeRightOut";
+               if(backward){
+                  in_animation =  "pt-page-rotateCubeLeftIn";
+                  out_animation =  "pt-page-rotateCubeLeftOut";
+               }
+
+               $(".content > div#" + page).removeClass (function (index, css) {
+                  return (css.match (/^pt-page-rotateCube\S+/g));
+               }).addClass(out_animation);
                setTimeout(function(){
-                  $(".content > div#about").removeAttr("class");
+                  $(".content > div#"  + page).removeAttr("class");
+                  deferred.resolve(true);
                }, 600);
+
+               return deferred.promise;
 
             }
 
             scope.goHome = function(){
-               removeCurrentPage();
-               scope.currentPage = 'home';
-               $(".content > div#home").addClass("pt-page-rotateCubeRightIn");
+
+               //remove
+               $(".content > div#about").removeClass('pt-page-rotateCubeRightIn').addClass('pt-page-rotateCubeLeftOut');
+               setTimeout(function(){
+                  $(".content > div#about").removeAttr("class");
+               }, 600);
+
+               //add
+               $(".content > div#home").addClass("pt-page-current pt-page-rotateCubeLeftIn");
                setTimeout(function(){
                   $(".content > div#home").addClass("pt-page-current");
                }, 600);
             };
 
             scope.goAbout = function(){
-               removeCurrentPage();
-               scope.currentPage = 'about';
-               $(".content > div#about").addClass("pt-page-rotateCubeLeftIn");
+               $(".content > div#home").removeClass('pt-page-rotateCubeLeftIn').addClass('pt-page-rotateCubeRightOut');
+               setTimeout(function(){
+                  $(".content > div#home").removeAttr("class");
+               }, 600);
+
+
+               $(".content > div#about").addClass("pt-page-current pt-page-rotateCubeRightIn");
                setTimeout(function(){
                   $(".content > div#about").addClass("pt-page-current");
                }, 600);

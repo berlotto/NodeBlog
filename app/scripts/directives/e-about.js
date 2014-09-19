@@ -202,11 +202,11 @@
 //
 //            });
 
-//------------------------------------------------------------------------------------------------/
-            $(".content > div#about").removeClass("pt-page-rotateCubeRightIn").addClass("pt-page-rotateCubeRightOut");
-            setTimeout(function(){
-               $(".content > div#about").removeAttr("class");
-            }, 600);
+////------------------------------------------------------------------------------------------------/
+//            $(".content > div#about").removeClass("pt-page-rotateCubeRightIn").addClass("pt-page-rotateCubeRightOut");
+//            setTimeout(function(){
+//               $(".content > div#about").removeAttr("class");
+//            }, 600);
 //
 //            $(".content > div#about").addClass("pt-page-current pt-page-rotateCubeLeftIn");
 //            setTimeout(function(){
