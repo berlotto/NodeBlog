@@ -2,13 +2,10 @@
 
 (function(module){
    module.directive('eHome', ['$window', function ($window) {
-
-
       return {
          restrict: 'AE',
          replace: true,
          scope: {
-            transition: '='
          },
          templateUrl: 'views/templates/e-home.html',
          link: function (scope, element, attrs) {

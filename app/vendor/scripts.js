@@ -34,11 +34,13 @@ $(document).ready(function(){
          if (win_width > 991){
             var pageHeight = $(window).height();
             var pHeight = $(".content > div.pt-page-current").height();
-            if (pHeight != pageHeight && pHeight != 1){
-               $("#wrapper .main_content").css("height", pHeight+"px");
-            }else{
-               $("#wrapper .main_content").css("height", pageHeight-30+"px");
-            }
+
+            $("#wrapper .main_content").css("height", "1000px");
+//            if (pHeight != pageHeight && pHeight != 1){
+//               $("#wrapper .main_content").css("height", pHeight+"px");
+//            }else{
+//               $("#wrapper .main_content").css("height", pageHeight-30+"px");
+//            }
          }
 //
 //         //description rotator
@@ -785,5 +787,5 @@ $(document).ready(function(){
 //            }
 //         });
       }
-      , 1000);
+      , 2000);
 });

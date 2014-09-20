@@ -8,7 +8,6 @@
          restrict: 'AE',
          replace: true,
          scope: {
-            transition: '='
          },
          templateUrl: 'views/templates/e-blog.html',
          link: function (scope, element, attrs) {
